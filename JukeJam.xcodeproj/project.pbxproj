@@ -1,0 +1,787 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		572BA0B021D2CF05008B9611 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0AF21D2CF05008B9611 /* AppDelegate.swift */; };
+		572BA0B221D2CF05008B9611 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0B121D2CF05008B9611 /* ViewController.swift */; };
+		572BA0B521D2CF05008B9611 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 572BA0B321D2CF05008B9611 /* Main.storyboard */; };
+		572BA0B721D2CF06008B9611 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 572BA0B621D2CF06008B9611 /* Assets.xcassets */; };
+		572BA0BA21D2CF06008B9611 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 572BA0B821D2CF06008B9611 /* LaunchScreen.storyboard */; };
+		572BA0C521D2CF06008B9611 /* JukeJamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0C421D2CF06008B9611 /* JukeJamTests.swift */; };
+		572BA0D021D2CF06008B9611 /* JukeJamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0CF21D2CF06008B9611 /* JukeJamUITests.swift */; };
+		6C0B1E09361F58906D84A2F3 /* Pods_JukeJamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD3CC97D5A614AF90DEEF07 /* Pods_JukeJamTests.framework */; };
+		A1F0F08000C2292DD772E676 /* Pods_JukeJam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD56AA57DC2B552A72801F06 /* Pods_JukeJam.framework */; };
+		D969C5B6AAE018FCFAC6BBFF /* Pods_JukeJamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C93CC1E41993409B02F900F /* Pods_JukeJamUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		572BA0C121D2CF06008B9611 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 572BA0A421D2CF05008B9611 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 572BA0AB21D2CF05008B9611;
+			remoteInfo = JukeJam;
+		};
+		572BA0CC21D2CF06008B9611 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 572BA0A421D2CF05008B9611 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 572BA0AB21D2CF05008B9611;
+			remoteInfo = JukeJam;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0D583E12588DEB0E9F00A2BD /* Pods-JukeJamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamUITests/Pods-JukeJamUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		18DF8330E1C444000D0320B0 /* Pods-JukeJamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamUITests/Pods-JukeJamUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2C93CC1E41993409B02F900F /* Pods_JukeJamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B2250F7DA03EDBAF36FD879 /* Pods-JukeJamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamTests/Pods-JukeJamTests.release.xcconfig"; sourceTree = "<group>"; };
+		572BA0AC21D2CF05008B9611 /* JukeJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JukeJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		572BA0AF21D2CF05008B9611 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		572BA0B121D2CF05008B9611 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		572BA0B421D2CF05008B9611 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		572BA0B621D2CF06008B9611 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		572BA0B921D2CF06008B9611 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		572BA0BB21D2CF06008B9611 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		572BA0C021D2CF06008B9611 /* JukeJamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JukeJamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		572BA0C421D2CF06008B9611 /* JukeJamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JukeJamTests.swift; sourceTree = "<group>"; };
+		572BA0C621D2CF06008B9611 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		572BA0CB21D2CF06008B9611 /* JukeJamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JukeJamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		572BA0CF21D2CF06008B9611 /* JukeJamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JukeJamUITests.swift; sourceTree = "<group>"; };
+		572BA0D121D2CF06008B9611 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E30250E2C1DC638FB3F7486 /* Pods-JukeJam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJam.release.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam.release.xcconfig"; sourceTree = "<group>"; };
+		9FD3CC97D5A614AF90DEEF07 /* Pods_JukeJamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2FF16CA1354CC94ED668744 /* Pods-JukeJam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam.debug.xcconfig"; sourceTree = "<group>"; };
+		DBAF9F272C09C8411ED536E5 /* Pods-JukeJamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamTests/Pods-JukeJamTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DD56AA57DC2B552A72801F06 /* Pods_JukeJam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		572BA0A921D2CF05008B9611 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1F0F08000C2292DD772E676 /* Pods_JukeJam.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		572BA0BD21D2CF06008B9611 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6C0B1E09361F58906D84A2F3 /* Pods_JukeJamTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		572BA0C821D2CF06008B9611 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D969C5B6AAE018FCFAC6BBFF /* Pods_JukeJamUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4628A16CA0FE9FC06747B923 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DD56AA57DC2B552A72801F06 /* Pods_JukeJam.framework */,
+				9FD3CC97D5A614AF90DEEF07 /* Pods_JukeJamTests.framework */,
+				2C93CC1E41993409B02F900F /* Pods_JukeJamUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		572BA0A321D2CF05008B9611 = {
+			isa = PBXGroup;
+			children = (
+				572BA0AE21D2CF05008B9611 /* JukeJam */,
+				572BA0C321D2CF06008B9611 /* JukeJamTests */,
+				572BA0CE21D2CF06008B9611 /* JukeJamUITests */,
+				572BA0AD21D2CF05008B9611 /* Products */,
+				6E4DEBE39D4F9C51BF127063 /* Pods */,
+				4628A16CA0FE9FC06747B923 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		572BA0AD21D2CF05008B9611 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				572BA0AC21D2CF05008B9611 /* JukeJam.app */,
+				572BA0C021D2CF06008B9611 /* JukeJamTests.xctest */,
+				572BA0CB21D2CF06008B9611 /* JukeJamUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		572BA0AE21D2CF05008B9611 /* JukeJam */ = {
+			isa = PBXGroup;
+			children = (
+				572BA0AF21D2CF05008B9611 /* AppDelegate.swift */,
+				572BA0B121D2CF05008B9611 /* ViewController.swift */,
+				572BA0B321D2CF05008B9611 /* Main.storyboard */,
+				572BA0B621D2CF06008B9611 /* Assets.xcassets */,
+				572BA0B821D2CF06008B9611 /* LaunchScreen.storyboard */,
+				572BA0BB21D2CF06008B9611 /* Info.plist */,
+			);
+			path = JukeJam;
+			sourceTree = "<group>";
+		};
+		572BA0C321D2CF06008B9611 /* JukeJamTests */ = {
+			isa = PBXGroup;
+			children = (
+				572BA0C421D2CF06008B9611 /* JukeJamTests.swift */,
+				572BA0C621D2CF06008B9611 /* Info.plist */,
+			);
+			path = JukeJamTests;
+			sourceTree = "<group>";
+		};
+		572BA0CE21D2CF06008B9611 /* JukeJamUITests */ = {
+			isa = PBXGroup;
+			children = (
+				572BA0CF21D2CF06008B9611 /* JukeJamUITests.swift */,
+				572BA0D121D2CF06008B9611 /* Info.plist */,
+			);
+			path = JukeJamUITests;
+			sourceTree = "<group>";
+		};
+		6E4DEBE39D4F9C51BF127063 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B2FF16CA1354CC94ED668744 /* Pods-JukeJam.debug.xcconfig */,
+				6E30250E2C1DC638FB3F7486 /* Pods-JukeJam.release.xcconfig */,
+				DBAF9F272C09C8411ED536E5 /* Pods-JukeJamTests.debug.xcconfig */,
+				3B2250F7DA03EDBAF36FD879 /* Pods-JukeJamTests.release.xcconfig */,
+				0D583E12588DEB0E9F00A2BD /* Pods-JukeJamUITests.debug.xcconfig */,
+				18DF8330E1C444000D0320B0 /* Pods-JukeJamUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		572BA0AB21D2CF05008B9611 /* JukeJam */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 572BA0D421D2CF06008B9611 /* Build configuration list for PBXNativeTarget "JukeJam" */;
+			buildPhases = (
+				E40F7E2EA4928A7F9A8DB83F /* [CP] Check Pods Manifest.lock */,
+				572BA0A821D2CF05008B9611 /* Sources */,
+				572BA0A921D2CF05008B9611 /* Frameworks */,
+				572BA0AA21D2CF05008B9611 /* Resources */,
+				F303A3EEBC6319F0649F3B4A /* [CP] Embed Pods Frameworks */,
+				39AA7E6402C01F363B8D1412 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JukeJam;
+			productName = JukeJam;
+			productReference = 572BA0AC21D2CF05008B9611 /* JukeJam.app */;
+			productType = "com.apple.product-type.application";
+		};
+		572BA0BF21D2CF06008B9611 /* JukeJamTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 572BA0D721D2CF06008B9611 /* Build configuration list for PBXNativeTarget "JukeJamTests" */;
+			buildPhases = (
+				757DCE7E2352FABEE3680968 /* [CP] Check Pods Manifest.lock */,
+				572BA0BC21D2CF06008B9611 /* Sources */,
+				572BA0BD21D2CF06008B9611 /* Frameworks */,
+				572BA0BE21D2CF06008B9611 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				572BA0C221D2CF06008B9611 /* PBXTargetDependency */,
+			);
+			name = JukeJamTests;
+			productName = JukeJamTests;
+			productReference = 572BA0C021D2CF06008B9611 /* JukeJamTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		572BA0CA21D2CF06008B9611 /* JukeJamUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 572BA0DA21D2CF06008B9611 /* Build configuration list for PBXNativeTarget "JukeJamUITests" */;
+			buildPhases = (
+				E5191E475E8DE4097CE92B40 /* [CP] Check Pods Manifest.lock */,
+				572BA0C721D2CF06008B9611 /* Sources */,
+				572BA0C821D2CF06008B9611 /* Frameworks */,
+				572BA0C921D2CF06008B9611 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				572BA0CD21D2CF06008B9611 /* PBXTargetDependency */,
+			);
+			name = JukeJamUITests;
+			productName = JukeJamUITests;
+			productReference = 572BA0CB21D2CF06008B9611 /* JukeJamUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		572BA0A421D2CF05008B9611 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Ben Fortier";
+				TargetAttributes = {
+					572BA0AB21D2CF05008B9611 = {
+						CreatedOnToolsVersion = 9.4;
+					};
+					572BA0BF21D2CF06008B9611 = {
+						CreatedOnToolsVersion = 9.4;
+						TestTargetID = 572BA0AB21D2CF05008B9611;
+					};
+					572BA0CA21D2CF06008B9611 = {
+						CreatedOnToolsVersion = 9.4;
+						TestTargetID = 572BA0AB21D2CF05008B9611;
+					};
+				};
+			};
+			buildConfigurationList = 572BA0A721D2CF05008B9611 /* Build configuration list for PBXProject "JukeJam" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 572BA0A321D2CF05008B9611;
+			productRefGroup = 572BA0AD21D2CF05008B9611 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				572BA0AB21D2CF05008B9611 /* JukeJam */,
+				572BA0BF21D2CF06008B9611 /* JukeJamTests */,
+				572BA0CA21D2CF06008B9611 /* JukeJamUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		572BA0AA21D2CF05008B9611 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				572BA0BA21D2CF06008B9611 /* LaunchScreen.storyboard in Resources */,
+				572BA0B721D2CF06008B9611 /* Assets.xcassets in Resources */,
+				572BA0B521D2CF05008B9611 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		572BA0BE21D2CF06008B9611 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		572BA0C921D2CF06008B9611 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		39AA7E6402C01F363B8D1412 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		757DCE7E2352FABEE3680968 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JukeJamTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E40F7E2EA4928A7F9A8DB83F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JukeJam-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5191E475E8DE4097CE92B40 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JukeJamUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F303A3EEBC6319F0649F3B4A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FontAwesome.swift/FontAwesome_swift.framework",
+				"${BUILT_PRODUCTS_DIR}/GSMessages/GSMessages.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/LGButton/LGButton.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftIconFont/SwiftIconFont.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyOnboard/SwiftyOnboard.framework",
+				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FontAwesome_swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GSMessages.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftIconFont.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyOnboard.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		572BA0A821D2CF05008B9611 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				572BA0B221D2CF05008B9611 /* ViewController.swift in Sources */,
+				572BA0B021D2CF05008B9611 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		572BA0BC21D2CF06008B9611 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				572BA0C521D2CF06008B9611 /* JukeJamTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		572BA0C721D2CF06008B9611 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				572BA0D021D2CF06008B9611 /* JukeJamUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		572BA0C221D2CF06008B9611 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 572BA0AB21D2CF05008B9611 /* JukeJam */;
+			targetProxy = 572BA0C121D2CF06008B9611 /* PBXContainerItemProxy */;
+		};
+		572BA0CD21D2CF06008B9611 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 572BA0AB21D2CF05008B9611 /* JukeJam */;
+			targetProxy = 572BA0CC21D2CF06008B9611 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		572BA0B321D2CF05008B9611 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				572BA0B421D2CF05008B9611 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		572BA0B821D2CF06008B9611 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				572BA0B921D2CF06008B9611 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		572BA0D221D2CF06008B9611 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		572BA0D321D2CF06008B9611 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		572BA0D521D2CF06008B9611 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2FF16CA1354CC94ED668744 /* Pods-JukeJam.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK376JAYY6;
+				INFOPLIST_FILE = JukeJam/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Fortier.JukeJam;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		572BA0D621D2CF06008B9611 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E30250E2C1DC638FB3F7486 /* Pods-JukeJam.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK376JAYY6;
+				INFOPLIST_FILE = JukeJam/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Fortier.JukeJam;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		572BA0D821D2CF06008B9611 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBAF9F272C09C8411ED536E5 /* Pods-JukeJamTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK376JAYY6;
+				INFOPLIST_FILE = JukeJamTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Fortier.JukeJamTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JukeJam.app/JukeJam";
+			};
+			name = Debug;
+		};
+		572BA0D921D2CF06008B9611 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B2250F7DA03EDBAF36FD879 /* Pods-JukeJamTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK376JAYY6;
+				INFOPLIST_FILE = JukeJamTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Fortier.JukeJamTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JukeJam.app/JukeJam";
+			};
+			name = Release;
+		};
+		572BA0DB21D2CF06008B9611 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D583E12588DEB0E9F00A2BD /* Pods-JukeJamUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK376JAYY6;
+				INFOPLIST_FILE = JukeJamUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Fortier.JukeJamUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JukeJam;
+			};
+			name = Debug;
+		};
+		572BA0DC21D2CF06008B9611 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18DF8330E1C444000D0320B0 /* Pods-JukeJamUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UK376JAYY6;
+				INFOPLIST_FILE = JukeJamUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Fortier.JukeJamUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JukeJam;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		572BA0A721D2CF05008B9611 /* Build configuration list for PBXProject "JukeJam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				572BA0D221D2CF06008B9611 /* Debug */,
+				572BA0D321D2CF06008B9611 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		572BA0D421D2CF06008B9611 /* Build configuration list for PBXNativeTarget "JukeJam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				572BA0D521D2CF06008B9611 /* Debug */,
+				572BA0D621D2CF06008B9611 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		572BA0D721D2CF06008B9611 /* Build configuration list for PBXNativeTarget "JukeJamTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				572BA0D821D2CF06008B9611 /* Debug */,
+				572BA0D921D2CF06008B9611 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		572BA0DA21D2CF06008B9611 /* Build configuration list for PBXNativeTarget "JukeJamUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				572BA0DB21D2CF06008B9611 /* Debug */,
+				572BA0DC21D2CF06008B9611 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 572BA0A421D2CF05008B9611 /* Project object */;
+}
