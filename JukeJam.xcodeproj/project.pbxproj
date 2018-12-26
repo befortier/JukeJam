@@ -7,11 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		572BA0B021D2CF05008B9611 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0AF21D2CF05008B9611 /* AppDelegate.swift */; };
-		572BA0B221D2CF05008B9611 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0B121D2CF05008B9611 /* ViewController.swift */; };
-		572BA0B521D2CF05008B9611 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 572BA0B321D2CF05008B9611 /* Main.storyboard */; };
-		572BA0B721D2CF06008B9611 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 572BA0B621D2CF06008B9611 /* Assets.xcassets */; };
-		572BA0BA21D2CF06008B9611 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 572BA0B821D2CF06008B9611 /* LaunchScreen.storyboard */; };
+		5705940221D2D31500F4F5CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570593F721D2D31300F4F5CB /* AppDelegate.swift */; };
+		5705940321D2D31500F4F5CB /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570593F821D2D31300F4F5CB /* HomeController.swift */; };
+		5705940421D2D31500F4F5CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 570593F921D2D31300F4F5CB /* Assets.xcassets */; };
+		5705940521D2D31500F4F5CB /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570593FA21D2D31300F4F5CB /* LoginController.swift */; };
+		5705940621D2D31500F4F5CB /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570593FB21D2D31400F4F5CB /* WelcomeController.swift */; };
+		5705940821D2D31500F4F5CB /* Login_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570593FD21D2D31400F4F5CB /* Login_Extension.swift */; };
+		5705940921D2D31500F4F5CB /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570593FE21D2D31400F4F5CB /* ForgotPassword.swift */; };
+		5705940A21D2D31500F4F5CB /* loginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570593FF21D2D31400F4F5CB /* loginButton.swift */; };
+		5705940C21D2D31500F4F5CB /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705940121D2D31400F4F5CB /* SignUpController.swift */; };
+		5705940E21D2D3D300F4F5CB /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 5705940D21D2D3D300F4F5CB /* Base.lproj */; };
+		5705941021D2D3F400F4F5CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5705940F21D2D3F400F4F5CB /* Main.storyboard */; };
+		5705942321D319E300F4F5CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5705942221D319E300F4F5CB /* GoogleService-Info.plist */; };
 		572BA0C521D2CF06008B9611 /* JukeJamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0C421D2CF06008B9611 /* JukeJamTests.swift */; };
 		572BA0D021D2CF06008B9611 /* JukeJamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0CF21D2CF06008B9611 /* JukeJamUITests.swift */; };
 		6C0B1E09361F58906D84A2F3 /* Pods_JukeJamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD3CC97D5A614AF90DEEF07 /* Pods_JukeJamTests.framework */; };
@@ -41,12 +48,19 @@
 		18DF8330E1C444000D0320B0 /* Pods-JukeJamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamUITests/Pods-JukeJamUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2C93CC1E41993409B02F900F /* Pods_JukeJamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B2250F7DA03EDBAF36FD879 /* Pods-JukeJamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamTests/Pods-JukeJamTests.release.xcconfig"; sourceTree = "<group>"; };
+		570593F721D2D31300F4F5CB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		570593F821D2D31300F4F5CB /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		570593F921D2D31300F4F5CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		570593FA21D2D31300F4F5CB /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		570593FB21D2D31400F4F5CB /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
+		570593FD21D2D31400F4F5CB /* Login_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login_Extension.swift; sourceTree = "<group>"; };
+		570593FE21D2D31400F4F5CB /* ForgotPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
+		570593FF21D2D31400F4F5CB /* loginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginButton.swift; sourceTree = "<group>"; };
+		5705940121D2D31400F4F5CB /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		5705940D21D2D3D300F4F5CB /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Base.lproj; path = ../../iVote/iVote/iVote/Base.lproj; sourceTree = "<group>"; };
+		5705940F21D2D3F400F4F5CB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		5705942221D319E300F4F5CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		572BA0AC21D2CF05008B9611 /* JukeJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JukeJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		572BA0AF21D2CF05008B9611 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		572BA0B121D2CF05008B9611 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		572BA0B421D2CF05008B9611 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		572BA0B621D2CF06008B9611 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		572BA0B921D2CF06008B9611 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		572BA0BB21D2CF06008B9611 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		572BA0C021D2CF06008B9611 /* JukeJamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JukeJamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		572BA0C421D2CF06008B9611 /* JukeJamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JukeJamTests.swift; sourceTree = "<group>"; };
@@ -124,11 +138,18 @@
 		572BA0AE21D2CF05008B9611 /* JukeJam */ = {
 			isa = PBXGroup;
 			children = (
-				572BA0AF21D2CF05008B9611 /* AppDelegate.swift */,
-				572BA0B121D2CF05008B9611 /* ViewController.swift */,
-				572BA0B321D2CF05008B9611 /* Main.storyboard */,
-				572BA0B621D2CF06008B9611 /* Assets.xcassets */,
-				572BA0B821D2CF06008B9611 /* LaunchScreen.storyboard */,
+				5705940F21D2D3F400F4F5CB /* Main.storyboard */,
+				570593F721D2D31300F4F5CB /* AppDelegate.swift */,
+				570593F921D2D31300F4F5CB /* Assets.xcassets */,
+				570593FE21D2D31400F4F5CB /* ForgotPassword.swift */,
+				5705942221D319E300F4F5CB /* GoogleService-Info.plist */,
+				5705940D21D2D3D300F4F5CB /* Base.lproj */,
+				570593F821D2D31300F4F5CB /* HomeController.swift */,
+				570593FD21D2D31400F4F5CB /* Login_Extension.swift */,
+				570593FF21D2D31400F4F5CB /* loginButton.swift */,
+				570593FA21D2D31300F4F5CB /* LoginController.swift */,
+				5705940121D2D31400F4F5CB /* SignUpController.swift */,
+				570593FB21D2D31400F4F5CB /* WelcomeController.swift */,
 				572BA0BB21D2CF06008B9611 /* Info.plist */,
 			);
 			path = JukeJam;
@@ -238,6 +259,7 @@
 				TargetAttributes = {
 					572BA0AB21D2CF05008B9611 = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 0940;
 					};
 					572BA0BF21D2CF06008B9611 = {
 						CreatedOnToolsVersion = 9.4;
@@ -274,9 +296,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				572BA0BA21D2CF06008B9611 /* LaunchScreen.storyboard in Resources */,
-				572BA0B721D2CF06008B9611 /* Assets.xcassets in Resources */,
-				572BA0B521D2CF05008B9611 /* Main.storyboard in Resources */,
+				5705940E21D2D3D300F4F5CB /* Base.lproj in Resources */,
+				5705942321D319E300F4F5CB /* GoogleService-Info.plist in Resources */,
+				5705940421D2D31500F4F5CB /* Assets.xcassets in Resources */,
+				5705941021D2D3F400F4F5CB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,15 +325,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
@@ -324,15 +343,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-JukeJamTests-checkManifestLockResult.txt",
 			);
@@ -346,15 +361,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-JukeJam-checkManifestLockResult.txt",
 			);
@@ -368,15 +379,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-JukeJamUITests-checkManifestLockResult.txt",
 			);
@@ -389,8 +396,6 @@
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam-frameworks.sh",
@@ -414,8 +419,6 @@
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
@@ -448,8 +451,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				572BA0B221D2CF05008B9611 /* ViewController.swift in Sources */,
-				572BA0B021D2CF05008B9611 /* AppDelegate.swift in Sources */,
+				5705940321D2D31500F4F5CB /* HomeController.swift in Sources */,
+				5705940821D2D31500F4F5CB /* Login_Extension.swift in Sources */,
+				5705940C21D2D31500F4F5CB /* SignUpController.swift in Sources */,
+				5705940521D2D31500F4F5CB /* LoginController.swift in Sources */,
+				5705940621D2D31500F4F5CB /* WelcomeController.swift in Sources */,
+				5705940A21D2D31500F4F5CB /* loginButton.swift in Sources */,
+				5705940221D2D31500F4F5CB /* AppDelegate.swift in Sources */,
+				5705940921D2D31500F4F5CB /* ForgotPassword.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,25 +492,6 @@
 			targetProxy = 572BA0CC21D2CF06008B9611 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		572BA0B321D2CF05008B9611 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				572BA0B421D2CF05008B9611 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		572BA0B821D2CF06008B9611 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				572BA0B921D2CF06008B9611 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		572BA0D221D2CF06008B9611 /* Debug */ = {
@@ -623,6 +613,7 @@
 			baseConfigurationReference = B2FF16CA1354CC94ED668744 /* Pods-JukeJam.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK376JAYY6;
 				INFOPLIST_FILE = JukeJam/Info.plist;
@@ -632,6 +623,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Fortier.JukeJam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "JukeJam/JukeJam-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -642,6 +635,7 @@
 			baseConfigurationReference = 6E30250E2C1DC638FB3F7486 /* Pods-JukeJam.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UK376JAYY6;
 				INFOPLIST_FILE = JukeJam/Info.plist;
@@ -651,6 +645,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Fortier.JukeJam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "JukeJam/JukeJam-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
