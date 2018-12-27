@@ -21,6 +21,7 @@
 		5705942521D4631000F4F5CB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705942421D4631000F4F5CB /* User.swift */; };
 		5705942721D53DE000F4F5CB /* FbLoginHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705942621D53DE000F4F5CB /* FbLoginHandler.swift */; };
 		5705942C21D5416A00F4F5CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5705942B21D5416A00F4F5CB /* Main.storyboard */; };
+		5705942F21D571A500F4F5CB /* ConfirmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705942E21D571A500F4F5CB /* ConfirmController.swift */; };
 		572BA0C521D2CF06008B9611 /* JukeJamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0C421D2CF06008B9611 /* JukeJamTests.swift */; };
 		572BA0D021D2CF06008B9611 /* JukeJamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0CF21D2CF06008B9611 /* JukeJamUITests.swift */; };
 		6C0B1E09361F58906D84A2F3 /* Pods_JukeJamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD3CC97D5A614AF90DEEF07 /* Pods_JukeJamTests.framework */; };
@@ -64,6 +65,7 @@
 		5705942421D4631000F4F5CB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5705942621D53DE000F4F5CB /* FbLoginHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FbLoginHandler.swift; sourceTree = "<group>"; };
 		5705942B21D5416A00F4F5CB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		5705942E21D571A500F4F5CB /* ConfirmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmController.swift; sourceTree = "<group>"; };
 		572BA0AC21D2CF05008B9611 /* JukeJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JukeJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		572BA0BB21D2CF06008B9611 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		572BA0C021D2CF06008B9611 /* JukeJamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JukeJamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +129,7 @@
 				570593FD21D2D31400F4F5CB /* Login_Extension.swift */,
 				570593FF21D2D31400F4F5CB /* loginButton.swift */,
 				5705942621D53DE000F4F5CB /* FbLoginHandler.swift */,
+				5705942E21D571A500F4F5CB /* ConfirmController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -156,9 +159,9 @@
 		572BA0AE21D2CF05008B9611 /* JukeJam */ = {
 			isa = PBXGroup;
 			children = (
+				5705942B21D5416A00F4F5CB /* Main.storyboard */,
 				5705942D21D541D100F4F5CB /* Login */,
 				570593F721D2D31300F4F5CB /* AppDelegate.swift */,
-				5705942B21D5416A00F4F5CB /* Main.storyboard */,
 				570593F921D2D31300F4F5CB /* Assets.xcassets */,
 				5705940D21D2D3D300F4F5CB /* Base.lproj */,
 				570593F821D2D31300F4F5CB /* HomeController.swift */,
@@ -475,6 +478,7 @@
 				5705940221D2D31500F4F5CB /* AppDelegate.swift in Sources */,
 				5705942721D53DE000F4F5CB /* FbLoginHandler.swift in Sources */,
 				5705940921D2D31500F4F5CB /* ForgotPassword.swift in Sources */,
+				5705942F21D571A500F4F5CB /* ConfirmController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

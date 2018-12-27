@@ -88,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
             def.set(userID, forKey: "id")
             def.synchronize()
             nc.post(name: .endAnime, object: nil, userInfo: obj)
-            self.checkAuth()
+//            self.checkAuth()
         }
     }
     

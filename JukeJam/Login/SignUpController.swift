@@ -19,9 +19,7 @@ class SignUpController: UIViewController, NVActivityIndicatorViewable {
     @IBOutlet weak var password: SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var username: SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var email: SkyFloatingLabelTextFieldWithIcon!
-    
     @IBOutlet weak var registerButton: loginButton!
-    
     @IBOutlet weak var registerLabel: UILabel!
     
     var curEmail: String = "";
@@ -50,7 +48,6 @@ class SignUpController: UIViewController, NVActivityIndicatorViewable {
         }
         Auth.auth().createUser(withEmail: curEmail, password: curPassword) { (authResult, error) in
             guard let user = authResult?.user else {
-
                 if let errCode = AuthErrorCode(rawValue: error!._code) {
                     switch errCode {
                         
@@ -62,7 +59,6 @@ class SignUpController: UIViewController, NVActivityIndicatorViewable {
                     }
                 }
                 return
-                
             }
             self.startAnimate(wholeView: self.whiteView, frame: self, message: "Creating Account")
             var obj: [String:Any] = [:]

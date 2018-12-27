@@ -72,6 +72,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
         Dict["email"] = obj?["email"]
         fillUserData(Dict: Dict)
         endAnimate(wholeView: wholeView, frame: self)
+        self.switchControllers()
     }
     //Allows UIView's to be touched and function called
     func addEvents(){

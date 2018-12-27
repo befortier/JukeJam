@@ -505,8 +505,8 @@
                                                     <segue destination="BYZ-38-t0r" kind="show" id="nBZ-As-Edc"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ntW-EM-eUG" customClass="loginButton" customModule="JukeJam" customModuleProvider="target">
-                                                <rect key="frame" x="97" y="404" width="136" height="36"/>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ntW-EM-eUG" customClass="loginButton" customModule="JukeJam" customModuleProvider="target">
+                                                <rect key="frame" x="99" y="404" width="132" height="36"/>
                                                 <color key="backgroundColor" red="0.40000000000000002" green="1" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="132" id="93F-ME-11I"/>
@@ -584,6 +584,183 @@
             </objects>
             <point key="canvasLocation" x="780" y="865"/>
         </scene>
+        <!--Confirm Controller-->
+        <scene sceneID="nkV-QF-HsM">
+            <objects>
+                <viewController storyboardIdentifier="ConfirmController" id="UD7-yY-WaS" customClass="ConfirmController" customModule="JukeJam" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="itn-yo-d4V">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="915"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z7e-fL-FB2">
+                                <rect key="frame" x="16" y="39" width="343" height="834"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="gLy-3q-RE1" userLabel="Input View">
+                                        <rect key="frame" x="40" y="319" width="263" height="356"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SDQ-mu-Ouz" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="0.0" y="0.0" width="263" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="UM3-m5-iyj"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="iconTypeValue">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Name"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hWG-ez-rmK" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="0.0" y="78" width="263" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Ifs-bG-M23"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="iconTypeValue">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Username"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wDk-Sf-mmj" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="0.0" y="156" width="263" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="ePm-yF-bAO"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="iconTypeValue">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Email"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ufu-Rz-X5O" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="0.0" y="234" width="263" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="fUw-La-YNA"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="iconTypeValue">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Birthday"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="dp:" destination="UD7-yY-WaS" eventType="editingDidBegin" id="4Xi-pe-ql0"/>
+                                                </connections>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CrA-zx-0uc" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
+                                                <rect key="frame" x="0.0" y="312" width="263" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="mKt-XI-VKj"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="iconTypeValue">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Hometown"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="S8s-tB-Y89">
+                                        <rect key="frame" x="89" y="109" width="164" height="164"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="164" id="BJ4-AD-SHv"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="164" id="oFz-PA-grj"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbl-P6-O1U" customClass="loginButton" customModule="JukeJam" customModuleProvider="target">
+                                        <rect key="frame" x="105" y="741" width="132" height="36"/>
+                                        <color key="backgroundColor" red="0.40000000000000002" green="1" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="132" id="UzH-P7-tYA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <state key="normal" title="Confirm">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="registerAccount:" destination="ZRs-gd-3ik" eventType="touchUpInside" id="TQw-UV-gxq"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsd-r2-n4D">
+                                        <rect key="frame" x="0.0" y="21" width="343" height="43"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="zsd-r2-n4D" firstAttribute="leading" secondItem="Z7e-fL-FB2" secondAttribute="leading" id="37d-sJ-WYG"/>
+                                    <constraint firstItem="gLy-3q-RE1" firstAttribute="top" secondItem="S8s-tB-Y89" secondAttribute="bottom" constant="46" id="7je-96-8eG"/>
+                                    <constraint firstItem="S8s-tB-Y89" firstAttribute="centerX" secondItem="Z7e-fL-FB2" secondAttribute="centerX" id="AZO-Ys-zTB"/>
+                                    <constraint firstItem="zsd-r2-n4D" firstAttribute="top" secondItem="Z7e-fL-FB2" secondAttribute="top" constant="21" id="PyO-hH-Guv"/>
+                                    <constraint firstItem="zsd-r2-n4D" firstAttribute="leading" secondItem="Z7e-fL-FB2" secondAttribute="leading" id="Rih-uY-eO3"/>
+                                    <constraint firstItem="S8s-tB-Y89" firstAttribute="top" secondItem="zsd-r2-n4D" secondAttribute="bottom" constant="45" id="StD-BF-4kD"/>
+                                    <constraint firstItem="zsd-r2-n4D" firstAttribute="top" secondItem="Z7e-fL-FB2" secondAttribute="top" constant="21" id="Vzq-1V-3OL"/>
+                                    <constraint firstItem="wbl-P6-O1U" firstAttribute="top" secondItem="Z7e-fL-FB2" secondAttribute="top" constant="741" id="aHN-rY-zNX"/>
+                                    <constraint firstAttribute="trailing" secondItem="S8s-tB-Y89" secondAttribute="trailing" constant="90" id="bFl-Pe-QpL"/>
+                                    <constraint firstAttribute="trailing" secondItem="gLy-3q-RE1" secondAttribute="trailing" constant="40" id="fik-aG-g5x"/>
+                                    <constraint firstAttribute="trailing" secondItem="wbl-P6-O1U" secondAttribute="trailing" constant="106" id="i23-Sf-3I2"/>
+                                    <constraint firstItem="wbl-P6-O1U" firstAttribute="centerX" secondItem="Z7e-fL-FB2" secondAttribute="centerX" constant="-0.5" id="lfn-5u-VYH"/>
+                                    <constraint firstAttribute="bottom" secondItem="wbl-P6-O1U" secondAttribute="bottom" constant="31" id="n5Q-Li-5Mx"/>
+                                    <constraint firstAttribute="trailing" secondItem="zsd-r2-n4D" secondAttribute="trailing" id="r9e-gg-Nf4"/>
+                                    <constraint firstItem="S8s-tB-Y89" firstAttribute="centerX" secondItem="Z7e-fL-FB2" secondAttribute="centerX" id="uvO-C9-tSM"/>
+                                    <constraint firstAttribute="trailing" secondItem="zsd-r2-n4D" secondAttribute="trailing" id="xL4-7A-md9"/>
+                                    <constraint firstItem="gLy-3q-RE1" firstAttribute="leading" secondItem="Z7e-fL-FB2" secondAttribute="leading" constant="40" id="zdh-fA-5ri"/>
+                                    <constraint firstItem="S8s-tB-Y89" firstAttribute="leading" secondItem="Z7e-fL-FB2" secondAttribute="leading" constant="89" id="ziY-G4-dyq"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="Z7e-fL-FB2" firstAttribute="trailing" secondItem="vjB-Gu-rrc" secondAttribute="trailing" constant="-16" id="1t5-1l-Wf4"/>
+                            <constraint firstItem="Z7e-fL-FB2" firstAttribute="top" secondItem="vjB-Gu-rrc" secondAttribute="top" constant="19" id="Kf2-Sq-IJE"/>
+                            <constraint firstItem="Z7e-fL-FB2" firstAttribute="bottom" secondItem="vjB-Gu-rrc" secondAttribute="bottom" constant="-42" id="aSp-h3-E6U"/>
+                            <constraint firstItem="Z7e-fL-FB2" firstAttribute="trailing" secondItem="vjB-Gu-rrc" secondAttribute="trailing" constant="-16" id="fQ5-Y8-XhX"/>
+                            <constraint firstItem="Z7e-fL-FB2" firstAttribute="leading" secondItem="vjB-Gu-rrc" secondAttribute="leading" constant="16" id="lWV-nU-cyQ"/>
+                            <constraint firstItem="Z7e-fL-FB2" firstAttribute="top" secondItem="vjB-Gu-rrc" secondAttribute="top" constant="19" id="w0P-Zb-Tz7"/>
+                            <constraint firstItem="Z7e-fL-FB2" firstAttribute="bottom" secondItem="vjB-Gu-rrc" secondAttribute="bottom" constant="-42" id="wCE-Ij-223"/>
+                            <constraint firstItem="Z7e-fL-FB2" firstAttribute="leading" secondItem="vjB-Gu-rrc" secondAttribute="leading" constant="16" id="zHx-wE-ZfK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vjB-Gu-rrc"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="915"/>
+                    <connections>
+                        <outlet property="birthday" destination="Ufu-Rz-X5O" id="EL3-Aj-lZt"/>
+                        <outlet property="confirm" destination="wbl-P6-O1U" id="DUI-lV-7y0"/>
+                        <outlet property="email" destination="wDk-Sf-mmj" id="XWD-5q-vbP"/>
+                        <outlet property="hometown" destination="CrA-zx-0uc" id="lXD-yO-g3v"/>
+                        <outlet property="name" destination="SDQ-mu-Ouz" id="ZxM-o5-vwZ"/>
+                        <outlet property="profPic" destination="S8s-tB-Y89" id="89N-Oz-EDZ"/>
+                        <outlet property="scrollView" destination="Z7e-fL-FB2" id="jZy-dX-Nmk"/>
+                        <outlet property="topLabel" destination="zsd-r2-n4D" id="YdV-s9-Tgb"/>
+                        <outlet property="username" destination="hWG-ez-rmK" id="mTE-bb-vrl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zYl-ZL-XRw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1684" y="1014.2428785607198"/>
+        </scene>
         <!--Home Controller-->
         <scene sceneID="Ek1-Rd-wjK">
             <objects>
@@ -624,7 +801,7 @@
         <image name="facebookLogo" width="501" height="501"/>
         <image name="forgotPassword" width="1337" height="972"/>
         <image name="googleLogo" width="800" height="600"/>
-        <image name="logo" width="908" height="909"/>
+        <image name="logo" width="454" height="454"/>
         <image name="registerLogo" width="225" height="225"/>
     </resources>
     <inferredMetricsTieBreakers>

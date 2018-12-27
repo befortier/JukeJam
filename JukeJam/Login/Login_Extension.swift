@@ -10,19 +10,19 @@ var blurEffectView: UIVisualEffectView?
 extension UIViewController  {
     
     //Switches from current controller to HomeController
-     func switchControllers(){
+    func switchControllers(home: Bool){
         let def = UserDefaults.standard
-        let val = def.bool(forKey: "visited")
-        if val != false{
+        if home{
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeController") as? HomeController
             {
                 present(vc, animated: true, completion: nil)
             }
         }
         else{
-            def.set(true, forKey: "visited")
-            let vc = WelcomeController()
-            present(vc, animated: true, completion: nil)
+            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConfirmController") as? ConfirmController
+            {
+                present(vc, animated: true, completion: nil)
+            }
             
         }
         
@@ -100,6 +100,8 @@ extension SkyFloatingLabelTextFieldWithIcon{
         self.iconFont = UIFont.fontAwesome(ofSize: size, style: .solid)
         self.iconText = String.fontAwesomeIcon(name: type)
         self.errorColor = UIColor.red
+        self.iconMarginBottom = -1.0 // more precise icon positioning. Usually needed to tweak on a per font basis.
+        self.iconMarginLeft = 2.0
     }
     
 
