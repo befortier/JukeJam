@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Location: NSObject, NSCoding{
     var city: String
@@ -99,7 +100,7 @@ class User: NSObject, NSCoding{
         self.email = (aDecoder.decodeObject(forKey: "email") as? String)!
         self.gender = (aDecoder.decodeObject(forKey: "gender") as? String)!
         self.location = (aDecoder.decodeObject(forKey: "location") as? String)!
-        self.address = (aDecoder.decodeObject(forKey: "address") as? Location)!
+//        self.address = (aDecoder.decodeObject(forKey: "address") as? Location)!
         self.F_id = (aDecoder.decodeObject(forKey: "F_id") as? String)!
         self.G_id = (aDecoder.decodeObject(forKey: "G_id") as? String)!
         self.username = (aDecoder.decodeObject(forKey: "username") as? String)!
@@ -112,7 +113,7 @@ class User: NSObject, NSCoding{
         aCoder.encode(birthday, forKey: "birthday")
         aCoder.encode(gender, forKey: "gender")
         aCoder.encode(email, forKey: "email")
-        aCoder.encode(address, forKey: "address")
+//        aCoder.encode(address, forKey: "address")
         aCoder.encode(location, forKey: "location")
         aCoder.encode(G_id, forKey: "G_id")
         aCoder.encode(F_id, forKey: "F_id")
@@ -121,4 +122,17 @@ class User: NSObject, NSCoding{
 
     
     
+}
+
+extension UIViewController {
+ 
+    func loadInfo(){
+        let def = UserDefaults.standard
+        var curUser: User?
+        let userData = def.object(forKey: "user") as? NSData
+        if let user = userData {
+            curUser = (NSKeyedUnarchiver.unarchiveObject(with: user as Data) as? User)!
+        }
+        print("Current User \(curUser?.name)")
+    }
 }

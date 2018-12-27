@@ -19,6 +19,7 @@ class HomeController: UIViewController {
         let def = UserDefaults.standard
         let userID = def.string(forKey: "id")
         self.navigationItem.title = "Home"
+        loadInfo()
 
     }
 

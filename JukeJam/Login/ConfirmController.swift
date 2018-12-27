@@ -32,9 +32,7 @@ class ConfirmController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func loadInfo(){
-        
-    }
+  
     func customizeView(){
         scrollView.backgroundColor = UIColor.white
         scrollView.clipsToBounds = true
