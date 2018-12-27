@@ -8,11 +8,8 @@ import FontAwesome_swift
 var blurEffectView: UIVisualEffectView?
 
 extension UIViewController  {
-    func my_test(){
-        print("Test")
-    }
     
-    //Switches from LoginController to HomeController
+    //Switches from current controller to HomeController
      func switchControllers(){
         let def = UserDefaults.standard
         let val = def.bool(forKey: "visited")
@@ -42,27 +39,25 @@ extension UIViewController  {
     
     //Checks to see if info is stored in DB, else saves it.
     func saveDatabase(Data: [String: Any]){
-        
-    
         let userID = Auth.auth().currentUser?.uid
-        print("UID \(userID)")
         var ref: DatabaseReference!
         ref = Database.database().reference()
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             if snapshot.exists(){
+                ref.child("users").child(userID!).updateChildValues(Data)
             }else{
                 ref.child("users").child(userID!).setValue(Data)
             }
         })
     }
     
+    //Function that checks to see if a skyfloatinglabeltext field has changed values, if the value changes to have something remove error message
     @objc func checkReset(sender: SkyFloatingLabelTextFieldWithIcon){
         if sender.text != ""{
             sender.errorMessage = ""
         }
-        
     }
-    
+// Used to alert users of a message usually error
     func alertUser(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "OK",
@@ -76,6 +71,7 @@ extension UIViewController  {
     
 }
 extension SkyFloatingLabelTextFieldWithIcon{
+//    Animates a skyfloatingtextfield to shake
     func animateField(){
         let animation = CABasicAnimation(keyPath: "position")
         animation.duration = 0.07
@@ -85,11 +81,14 @@ extension SkyFloatingLabelTextFieldWithIcon{
         animation.toValue = NSValue(cgPoint: CGPoint(x: self.center.x + 10, y: self.center.y))
         self.layer.add(animation, forKey: "position")
     }
+    
+//    Shakes the field and sets error message
     func handleError(message: String){
         self.animateField()
         self.errorMessage = message
     }
     
+//    Intializes text field
     func intializeInfo(title: String, placeholder: String, color: UIColor, size: CGFloat, type: FontAwesome, password: Bool){
         self.placeholder = placeholder
         self.title = title
@@ -107,7 +106,7 @@ extension SkyFloatingLabelTextFieldWithIcon{
 }
 extension NVActivityIndicatorViewable{
 
-    
+//    Creates the loading effect
     func initActivity(thisSelf: UIViewController){
         let color = UIColor(red: 159/255,green: 90/255,blue :253/255, alpha: 1)
         NVActivityIndicatorView.DEFAULT_TEXT_COLOR = UIColor.white
@@ -116,7 +115,7 @@ extension NVActivityIndicatorViewable{
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView?.frame = thisSelf.view.frame
     }
-    
+//    Starts the loading effect + blurs background
     func startAnimate( wholeView: UIView, frame: UIViewController, message: String){
         if let temp = frame as? SignUpController {
             temp.startAnimating(CGSize.init(width: frame.view.frame.width/2, height: frame.view.frame.height/2), message: message, type: .orbit)
@@ -129,7 +128,7 @@ extension NVActivityIndicatorViewable{
         frame.view.insertSubview(blurEffectView!, at: 2)
         frame.view.insertSubview(blurEffectView!, at: 3)
     }
-    
+// Unblurs background + ends loading effect
     func endAnimate(wholeView: UIView, frame: UIViewController){
         blurEffectView?.removeFromSuperview()
         wholeView.tintColor = nil

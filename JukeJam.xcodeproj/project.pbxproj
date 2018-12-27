@@ -17,10 +17,10 @@
 		5705940A21D2D31500F4F5CB /* loginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570593FF21D2D31400F4F5CB /* loginButton.swift */; };
 		5705940C21D2D31500F4F5CB /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705940121D2D31400F4F5CB /* SignUpController.swift */; };
 		5705940E21D2D3D300F4F5CB /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 5705940D21D2D3D300F4F5CB /* Base.lproj */; };
-		5705941021D2D3F400F4F5CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5705940F21D2D3F400F4F5CB /* Main.storyboard */; };
 		5705942321D319E300F4F5CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5705942221D319E300F4F5CB /* GoogleService-Info.plist */; };
 		5705942521D4631000F4F5CB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705942421D4631000F4F5CB /* User.swift */; };
 		5705942721D53DE000F4F5CB /* FbLoginHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705942621D53DE000F4F5CB /* FbLoginHandler.swift */; };
+		5705942C21D5416A00F4F5CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5705942B21D5416A00F4F5CB /* Main.storyboard */; };
 		572BA0C521D2CF06008B9611 /* JukeJamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0C421D2CF06008B9611 /* JukeJamTests.swift */; };
 		572BA0D021D2CF06008B9611 /* JukeJamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0CF21D2CF06008B9611 /* JukeJamUITests.swift */; };
 		6C0B1E09361F58906D84A2F3 /* Pods_JukeJamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD3CC97D5A614AF90DEEF07 /* Pods_JukeJamTests.framework */; };
@@ -60,10 +60,10 @@
 		570593FF21D2D31400F4F5CB /* loginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginButton.swift; sourceTree = "<group>"; };
 		5705940121D2D31400F4F5CB /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		5705940D21D2D3D300F4F5CB /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Base.lproj; path = ../../iVote/iVote/iVote/Base.lproj; sourceTree = "<group>"; };
-		5705940F21D2D3F400F4F5CB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5705942221D319E300F4F5CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5705942421D4631000F4F5CB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5705942621D53DE000F4F5CB /* FbLoginHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FbLoginHandler.swift; sourceTree = "<group>"; };
+		5705942B21D5416A00F4F5CB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		572BA0AC21D2CF05008B9611 /* JukeJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JukeJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		572BA0BB21D2CF06008B9611 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		572BA0C021D2CF06008B9611 /* JukeJamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JukeJamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +117,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5705942D21D541D100F4F5CB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				570593FA21D2D31300F4F5CB /* LoginController.swift */,
+				5705940121D2D31400F4F5CB /* SignUpController.swift */,
+				570593FE21D2D31400F4F5CB /* ForgotPassword.swift */,
+				570593FB21D2D31400F4F5CB /* WelcomeController.swift */,
+				570593FD21D2D31400F4F5CB /* Login_Extension.swift */,
+				570593FF21D2D31400F4F5CB /* loginButton.swift */,
+				5705942621D53DE000F4F5CB /* FbLoginHandler.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		572BA0A321D2CF05008B9611 = {
 			isa = PBXGroup;
 			children = (
@@ -142,21 +156,15 @@
 		572BA0AE21D2CF05008B9611 /* JukeJam */ = {
 			isa = PBXGroup;
 			children = (
-				5705940F21D2D3F400F4F5CB /* Main.storyboard */,
+				5705942D21D541D100F4F5CB /* Login */,
 				570593F721D2D31300F4F5CB /* AppDelegate.swift */,
+				5705942B21D5416A00F4F5CB /* Main.storyboard */,
 				570593F921D2D31300F4F5CB /* Assets.xcassets */,
-				570593FE21D2D31400F4F5CB /* ForgotPassword.swift */,
-				5705942221D319E300F4F5CB /* GoogleService-Info.plist */,
 				5705940D21D2D3D300F4F5CB /* Base.lproj */,
 				570593F821D2D31300F4F5CB /* HomeController.swift */,
-				570593FD21D2D31400F4F5CB /* Login_Extension.swift */,
-				570593FF21D2D31400F4F5CB /* loginButton.swift */,
-				570593FA21D2D31300F4F5CB /* LoginController.swift */,
-				5705940121D2D31400F4F5CB /* SignUpController.swift */,
-				570593FB21D2D31400F4F5CB /* WelcomeController.swift */,
-				572BA0BB21D2CF06008B9611 /* Info.plist */,
 				5705942421D4631000F4F5CB /* User.swift */,
-				5705942621D53DE000F4F5CB /* FbLoginHandler.swift */,
+				572BA0BB21D2CF06008B9611 /* Info.plist */,
+				5705942221D319E300F4F5CB /* GoogleService-Info.plist */,
 			);
 			path = JukeJam;
 			sourceTree = "<group>";
@@ -303,9 +311,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5705940E21D2D3D300F4F5CB /* Base.lproj in Resources */,
+				5705942C21D5416A00F4F5CB /* Main.storyboard in Resources */,
 				5705942321D319E300F4F5CB /* GoogleService-Info.plist in Resources */,
 				5705940421D2D31500F4F5CB /* Assets.xcassets in Resources */,
-				5705941021D2D3F400F4F5CB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -40,6 +40,7 @@ class SignUpController: UIViewController, NVActivityIndicatorViewable {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+//    Does prelimary checking to make sure info is validated, then calls Firebases createUser
     @IBAction func registerAccount(_ sender: UIButton) {
         if !checkFilled() {
             return
@@ -60,11 +61,15 @@ class SignUpController: UIViewController, NVActivityIndicatorViewable {
                         print("Create User Error: \(error!)")
                     }
                 }
-                return }
-       
+                return
+                
+            }
             self.startAnimate(wholeView: self.whiteView, frame: self, message: "Creating Account")
+            var obj: [String:Any] = [:]
+            obj["email"] = self.curEmail
+            obj["username"] = self.curUsername
             self.saveLoggedState()
-            self.saveDatabase(Data: [:])
+            self.saveDatabase(Data: obj)
             self.endAnimate(wholeView: self.whiteView, frame: self)
             self.showMessage("Account registered", type: .success)
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
@@ -73,12 +78,13 @@ class SignUpController: UIViewController, NVActivityIndicatorViewable {
         }
     }
     
+    //Validates fields: Passwords secure, emails are emails, usernames long enough
     func validate() -> Bool{
         var success: Bool = true
         let numbers = CharacterSet(charactersIn: "1234567890")
         let symbols = CharacterSet(charactersIn: "!@#$%^&*-_~`")
-        if curUsername.count < 5 || curUsername.count > 25 {
-            self.username.errorMessage = "Must be between 5 and 25 characters"
+        if curUsername.count < 4 || curUsername.count > 45 {
+            self.username.errorMessage = "Must be between 4 and 45 characters"
             success = false
         }
         if(curEmail.count < 3 || !self.email.text!.contains("@")) {
@@ -108,7 +114,7 @@ class SignUpController: UIViewController, NVActivityIndicatorViewable {
         return success
     }
     
-    
+//    Checks to make sure all fields are filled out
     func checkFilled() -> Bool{
         var success: Bool = true;
         if self.username.text != nil{
@@ -160,7 +166,7 @@ class SignUpController: UIViewController, NVActivityIndicatorViewable {
         email.intializeInfo(title: "Email", placeholder: "Email", color: overcastBlueColor, size: 15, type: .envelope, password: false)
         username.intializeInfo(title: "Username", placeholder: "Username", color: green, size: 15, type: .user, password: false)
         password.intializeInfo(title: "Password", placeholder: "Password", color: orange, size: 15, type: .lock, password: true)
-        confirmPassword.intializeInfo(title: "Confirm Password", placeholder: "Confirm Password", color: red, size: 15, type: .lock, password: false)
+        confirmPassword.intializeInfo(title: "Confirm Password", placeholder: "Confirm Password", color: red, size: 15, type: .lock, password: true)
         email.addTarget(self, action: #selector(checkReset(sender:)), for: .editingChanged)
         password.addTarget(self, action: #selector(checkReset(sender:)), for: .editingChanged)
         username.addTarget(self, action: #selector(checkReset(sender:)), for: .editingChanged)
@@ -169,6 +175,7 @@ class SignUpController: UIViewController, NVActivityIndicatorViewable {
     
 }
 extension String {
+//    Used to check if password is valid with symbols, caps, and number
     func isValidPassword() -> Bool {
         //let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[ !\"\\\\#$%&'()*+,-./:;<=>?@\\[\\]^_`{|}~])[A-Za-z\\d !\"\\\\#$%&'()*+,-./:;<=>?@\\[\\]^_`{|}~]{8,}"
         //safe to escape all regex chars

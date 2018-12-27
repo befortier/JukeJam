@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
     
     //Deals with googleSign in, if succesful sets UserDefault info and switches page.
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if let err = error{
+        if (error) != nil{
             let alert = UIAlertController(title: "Failed to authenticate", message: "Sorry, but we could not authenticate your google account, please try again.", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "OK",
                                              style: .cancel, handler: nil)
@@ -55,9 +55,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
             window?.rootViewController?.present(alert, animated: true, completion: nil)
             return
         }
+        
+
         let nc = NotificationCenter.default
+        var obj: [String:Any] = [:]
+        obj["name"] = user.profile.name
+        obj["email"] = user.profile.email
+        obj["last_name"] = user.profile.familyName
+        obj["first_name"] = user.profile.givenName
+        obj["imageBool"] = user.profile.hasImage
+        obj["id"] = user.userID
+
+        obj["image"] = user.profile.imageURL(withDimension: 800)
+        
         nc.post(name: .startAnime, object: nil)
-        print("Succesfully logged into Google", user)
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
@@ -76,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
             def.set(true, forKey: "is_authenticated")
             def.set(userID, forKey: "id")
             def.synchronize()
-            nc.post(name: .endAnime, object: nil)
+            nc.post(name: .endAnime, object: nil, userInfo: obj)
             self.checkAuth()
         }
     }

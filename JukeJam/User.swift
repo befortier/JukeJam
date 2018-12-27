@@ -81,18 +81,14 @@ class User: NSObject, NSCoding{
     var gender: String?
     var name: String
     var location: String?
-    var id: String?
+    var F_id: String?
+    var G_id: String?
+    var username: String?
+
     init(name: String){
         self.name = name
     }
-    subscript(key: String) -> Any {
-        get {
-            return self.value(forKey: key) as Any
-        }
-        set {
-            self.setValue(newValue, forKey: key)
-        }
-    }
+
     required init?(coder aDecoder: NSCoder) {
 
         self.name = (aDecoder.decodeObject(forKey: "name") as? String)!
@@ -104,8 +100,9 @@ class User: NSObject, NSCoding{
         self.gender = (aDecoder.decodeObject(forKey: "gender") as? String)!
         self.location = (aDecoder.decodeObject(forKey: "location") as? String)!
         self.address = (aDecoder.decodeObject(forKey: "address") as? Location)!
-        self.id = (aDecoder.decodeObject(forKey: "id") as? String)!
-
+        self.F_id = (aDecoder.decodeObject(forKey: "F_id") as? String)!
+        self.G_id = (aDecoder.decodeObject(forKey: "G_id") as? String)!
+        self.username = (aDecoder.decodeObject(forKey: "username") as? String)!
     }
     
     func encode(with aCoder: NSCoder) {
@@ -117,8 +114,9 @@ class User: NSObject, NSCoding{
         aCoder.encode(email, forKey: "email")
         aCoder.encode(address, forKey: "address")
         aCoder.encode(location, forKey: "location")
-        aCoder.encode(id, forKey: "id")
-
+        aCoder.encode(G_id, forKey: "G_id")
+        aCoder.encode(F_id, forKey: "F_id")
+        aCoder.encode(username, forKey: "username")
     }
 
     

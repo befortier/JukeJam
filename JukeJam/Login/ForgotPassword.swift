@@ -12,22 +12,22 @@ import Firebase
 
 
 class ForgotPassword: UIViewController {
-
     @IBOutlet weak var logo: UIImageView!
-    
-    
     @IBOutlet weak var email: SkyFloatingLabelTextFieldWithIcon!
-    
     @IBOutlet weak var button: loginButton!
-    
     @IBOutlet weak var whiteView: UIView!
-    
     @IBOutlet weak var label: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.customizeTextInput()
         self.customizeView()
     }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     func customizeView(){
         self.view.backgroundColor = UIColor.black
         whiteView.backgroundColor = UIColor.white
@@ -43,12 +43,8 @@ class ForgotPassword: UIViewController {
     }
 
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
- 
-    
+  
+//   Calls Firebase's password recovery and brings users back to login page
     @IBAction func recoverMe(_ sender: UIButton) {
         var email: String = "";
         
