@@ -278,7 +278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOU-Ei-XGt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="81" y="797"/>
+            <point key="canvasLocation" x="1556" y="134"/>
         </scene>
         <!--Sign Up Controller-->
         <scene sceneID="srH-sS-CTC">
@@ -461,7 +461,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5xj-SF-f2w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="716" y="792.95352323838085"/>
+            <point key="canvasLocation" x="-671" y="865"/>
         </scene>
         <!--Forgot Password-->
         <scene sceneID="mRf-7J-BSc">
@@ -582,7 +582,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dy0-zR-gXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1965.5999999999999" y="466.41679160419795"/>
+            <point key="canvasLocation" x="780" y="865"/>
         </scene>
         <!--Home Controller-->
         <scene sceneID="Ek1-Rd-wjK">
@@ -617,7 +617,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g7Q-1h-AeB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="767" y="134"/>
+            <point key="canvasLocation" x="2854" y="134"/>
         </scene>
     </scenes>
     <resources>
@@ -628,6 +628,6 @@
         <image name="registerLogo" width="225" height="225"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1nd-74-Ibd"/>
+        <segue reference="nBZ-As-Edc"/>
     </inferredMetricsTieBreakers>
 </document>

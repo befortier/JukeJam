@@ -64,7 +64,7 @@ class SignUpController: UIViewController, NVActivityIndicatorViewable {
        
             self.startAnimate(wholeView: self.whiteView, frame: self, message: "Creating Account")
             self.saveLoggedState()
-            self.saveDatabase()
+            self.saveDatabase(Data: [:])
             self.endAnimate(wholeView: self.whiteView, frame: self)
             self.showMessage("Account registered", type: .success)
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {

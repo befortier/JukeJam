@@ -47,6 +47,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
         self.customizeTextInput()
         self.customizeView()
         self.addEvents()
+
         NotificationCenter.default.addObserver(self, selector: #selector(trigger(_:)), name: .startAnime, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(stop(_:)), name: .endAnime, object: nil)
     }
@@ -55,7 +56,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
         startAnimate(wholeView: wholeView, frame: self, message: "Loading your Account")
     }
     @objc func stop(_ sender: Notification) {
-        self.saveDatabase()
+        self.saveDatabase(Data: [:])
         endAnimate(wholeView: wholeView, frame: self)
     }
     //Allows UIView's to be touched and function called
@@ -151,7 +152,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
             }
             self.startAnimate(wholeView: self.wholeView, frame: self, message: "Loading your Account")
             self.saveLoggedState()
-            self.saveDatabase()
             self.endAnimate(wholeView: self.wholeView, frame: self)
             self.switchControllers()
         }
@@ -166,15 +166,14 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
     //Handles facebook authentication
     @objc func loginFacebook(_ sender: UITapGestureRecognizer) {
         let loginManager = LoginManager()
-        loginManager.logIn(readPermissions: [.publicProfile,.email], viewController: self) { (result) in
+        loginManager.logIn(readPermissions: [.publicProfile,.email, .userBirthday, .userGender, .userLocation], viewController: self) { (result) in
             switch result {
             case .success(grantedPermissions: _, declinedPermissions: _, token: _):
                 self.startAnimate(wholeView: self.wholeView, frame: self, message: "Loading your Account")
-                self.fetchUserProfile()
                 self.signIntoFirebase()
                 break
 
-            case .failed(let err):
+            case .failed( _):
                   self.alertUser(title: "Failed to Authenticate", message: "Sorry, but we could not authenticate your facebook account, please try again.")
                 break
                 
@@ -189,45 +188,76 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
         guard let accessTokenString = AccessToken.current?.authenticationToken else {return}
         let credential = FacebookAuthProvider.credential(withAccessToken: accessTokenString)
         Auth.auth().signIn(with: credential){ (user,err) in
-            if let error = err{
+            if err != nil{
                self.alertUser(title: "Failed to Authenticate", message: "Sorry, but we could not authenticate your account in our database, we are working to fix this")
 
                 return
             }
+            self.fillFBProfile()
             self.saveLoggedState()
-            self.saveDatabase()
             self.endAnimate(wholeView: self.wholeView, frame: self)
             self.switchControllers()
         }
         
     }
-    
-    func fetchUserProfile()
-    {
-        let graphPath = "me"
-        print("Here")
-//        let parameters = ["fields": "id, profile_pic, name, first_name, last_name, birthday, address"]
-        let parameters = ["fields" : "name, email"]
-        let graphRequest:FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: parameters)
-        
-        graphRequest.start(completionHandler: { (connection, result, error) -> Void in
-            
-            if ((error) != nil)
-            {
-                print("Error: \(error)")
-            }
-            else
-            {
-                let data:[String:AnyObject] = result as! [String : AnyObject]
-                print(data["first_name"]!)
-                print(data["last_name"]!)
-                print(data["email"]!)
-                print(data["id"]!)
-                print(data["gender"]!)
-            }
-        })
-
+    func fillUserData(Dict: [String:Any]){
+        let user: User = User(name: Dict["name"] as! String)
+        user.location = Dict["location"] as? String
+        user.birthday = Dict["birthday"] as? String
+        user.email = Dict["email"] as? String
+        user.first_name = Dict["first_name"] as? String
+        user.last_name = Dict["last_name"] as? String
+        user.gender = Dict["gender"] as? String
+        user.id = Dict["id"] as? String
+        let userData = NSKeyedArchiver.archivedData(withRootObject: user)
+        UserDefaults.standard.set(userData, forKey: "user")
+        self.saveDatabase(Data: Dict)
     }
+
+    func fillFBProfile(){
+        let semaphore = DispatchSemaphore(value: 1)
+        var temp: [String:Any] = [:]
+        var counter: Int = 0
+        let length = 8
+        let params = ["name","first_name","last_name","location","gender","birthday","email", "id"]
+        let handler: ([String:AnyObject], String?) -> Void = { data, field in
+            semaphore.wait()
+            temp[field!] = data[field!]
+            if field == "location"{
+                temp[field!] = (data["location"]?["name"])!
+            }
+            if field == "id"{
+                temp[field!] = "F_\((data[field!])!)"
+            }
+            counter += 1
+            if counter == length{
+                self.fillUserData(Dict: temp)
+            }
+            semaphore.signal()
+        }
+        for i in 0..<length {
+            self.fetchFBInfo(field: params[i], dict: temp, completionHandler: handler)
+        }
+    }
+    func fetchFBInfo(field: String, dict: [String: Any], completionHandler: @escaping ([String:AnyObject], String?) -> Void)
+    {
+        let task = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": field]).start {connection,result,error in
+         
+                if error != nil
+                {
+                    print("Error: \(error)")
+                }
+                else
+                {
+                    let data:[String:AnyObject] = result as! [String : AnyObject]
+                    completionHandler(data, field)
+                }
+            }
+        }
+        
+
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -41,9 +41,9 @@ extension UIViewController  {
     }
     
     //Checks to see if info is stored in DB, else saves it.
-     func saveDatabase(){
+    func saveDatabase(Data: [String: Any]){
         
-        let data: [String: String] = ["username": "Tset"]
+    
         let userID = Auth.auth().currentUser?.uid
         print("UID \(userID)")
         var ref: DatabaseReference!
@@ -51,7 +51,7 @@ extension UIViewController  {
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             if snapshot.exists(){
             }else{
-                ref.child("users").child(userID!).setValue(data)
+                ref.child("users").child(userID!).setValue(Data)
             }
         })
     }
