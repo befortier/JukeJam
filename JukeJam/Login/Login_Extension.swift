@@ -7,7 +7,7 @@ import SkyFloatingLabelTextField
 import FontAwesome_swift
 var blurEffectView: UIVisualEffectView?
 
-extension UIViewController  {
+extension UIViewController {
     
     //Switches from current controller to HomeController
     func switchControllers(home: Bool){
@@ -28,14 +28,6 @@ extension UIViewController  {
         
     }
     
-    //Stores UserDefault data (is_authenticated,id)
-    func saveLoggedState() {
-        let userID = Auth.auth().currentUser!.uid
-        let def = UserDefaults.standard
-        def.set(true, forKey: "is_authenticated")
-        def.set(userID, forKey: "id")
-        def.synchronize()
-    }
     
     //Checks to see if info is stored in DB, else saves it.
     func saveDatabase(Data: [String: Any]){
@@ -45,8 +37,10 @@ extension UIViewController  {
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             if snapshot.exists(){
                 ref.child("users").child(userID!).updateChildValues(Data)
+                self.switchControllers(home: true)
             }else{
                 ref.child("users").child(userID!).setValue(Data)
+                self.switchControllers(home: false)
             }
         })
     }

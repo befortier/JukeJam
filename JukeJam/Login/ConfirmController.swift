@@ -24,12 +24,16 @@ class ConfirmController: UIViewController {
         super.viewDidLoad()
         self.customizeView()
         self.customizeTextInput()
+        loadInfo()
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    func loadInfo(){
+        
     }
     func customizeView(){
         scrollView.backgroundColor = UIColor.white
@@ -51,7 +55,6 @@ class ConfirmController: UIViewController {
         name.intializeInfo(title: "Name", placeholder: "Name", color: overcastBlueColor, size: 15, type: .addressCard, password: false)
         name.addTarget(self, action: #selector(checkReset(sender:)), for: .editingChanged)
     }
-
     
     @IBAction func dp(_ sender: UITextField) {
         print("test")
@@ -66,6 +69,7 @@ class ConfirmController: UIViewController {
         dateFormatter.dateFormat = "MM/dd/yyyy"
         birthday.text = dateFormatter.string(from: sender.date)
     }
+    
     func localSwitch(){
                     let vc = WelcomeController()
                     present(vc, animated: true, completion: nil)

@@ -72,7 +72,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
         Dict["email"] = obj?["email"]
         fillUserData(Dict: Dict)
         endAnimate(wholeView: wholeView, frame: self)
-        self.switchControllers()
+        
     }
     //Allows UIView's to be touched and function called
     func addEvents(){
@@ -166,9 +166,8 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
                 return
             }
             self.startAnimate(wholeView: self.wholeView, frame: self, message: "Loading your Account")
-            self.saveLoggedState()
             self.endAnimate(wholeView: self.wholeView, frame: self)
-            self.switchControllers()
+            self.switchControllers(home: true)
         }
       
     }

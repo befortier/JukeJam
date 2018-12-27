@@ -46,13 +46,10 @@ extension ViewController{
         Auth.auth().signInAndRetrieveData(with: credential){ (user,err) in
             if err != nil{
                 self.alertUser(title: "Failed to Authenticate", message: "Sorry, but we could not authenticate your account in our database, we are working to fix this")
-                
                 return
             }
             self.fillFBProfile()
-            self.saveLoggedState()
             self.endAnimate(wholeView: self.wholeView, frame: self)
-            self.switchControllers()
         }
         
     }
@@ -76,8 +73,6 @@ extension ViewController{
                     temp[field!] = (data["location"]?["name"])!
                 }
             }
-           
-            
             counter += 1
             if counter == length{
                 self.fillUserData(Dict: temp)

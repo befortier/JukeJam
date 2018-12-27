@@ -30,18 +30,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
     
     //Checks if UserDefault has any saved log in from user
     func checkAuth(){
-        
-        let def = UserDefaults.standard
-        let is_authenticated = def.bool(forKey: "is_authenticated")
-        if is_authenticated{
+        let is_authenticated = Auth.auth().currentUser
+        if is_authenticated != nil{
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeController") as? HomeController
             {
-
                 window?.rootViewController = vc
                 window?.makeKeyAndVisible()
             }
-         
-    }
+        }
     }
     
     //Deals with googleSign in, if succesful sets UserDefault info and switches page.
@@ -50,13 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
             let alert = UIAlertController(title: "Failed to authenticate", message: "Sorry, but we could not authenticate your google account, please try again.", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "OK",
                                              style: .cancel, handler: nil)
-            
             alert.addAction(cancelAction)
             window?.rootViewController?.present(alert, animated: true, completion: nil)
             return
         }
-        
-
         let nc = NotificationCenter.default
         var obj: [String:Any] = [:]
         obj["name"] = user.profile.name
@@ -82,13 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
                 self.window?.rootViewController?.present(alert, animated: true, completion: nil)
                 return
             }
-            let userID = Auth.auth().currentUser!.uid
-            let def = UserDefaults.standard
-            def.set(true, forKey: "is_authenticated")
-            def.set(userID, forKey: "id")
-            def.synchronize()
             nc.post(name: .endAnime, object: nil, userInfo: obj)
-//            self.checkAuth()
         }
     }
     
