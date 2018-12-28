@@ -47,8 +47,8 @@ import UIKit
             let currentAttributes = titleTextAttributes(for: state) ?? [:]
             var attributes = [NSAttributedStringKey: Any]()
             currentAttributes.enumerated().forEach {
-                let currentAttribute = $0.element.key as! NSAttributedStringKey
-                attributes[currentAttribute] = $0.element.value
+                let currentAttribute = $0.element.key as? NSAttributedStringKey
+                attributes[currentAttribute!] = $0.element.value
             }
             attributes[NSAttributedStringKey.font] = font
             setTitleTextAttributes(attributes, for: state)

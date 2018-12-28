@@ -125,14 +125,13 @@ class User: NSObject, NSCoding{
 }
 
 extension UIViewController {
- 
-    func loadInfo(){
+    func loadInfo() -> User{
         let def = UserDefaults.standard
         var curUser: User?
         let userData = def.object(forKey: "user") as? NSData
         if let user = userData {
             curUser = (NSKeyedUnarchiver.unarchiveObject(with: user as Data) as? User)!
         }
-        print("Current User \(curUser?.name)")
+        return curUser!
     }
 }

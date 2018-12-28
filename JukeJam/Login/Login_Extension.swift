@@ -28,6 +28,23 @@ extension UIViewController {
         
     }
     
+    //    Takes in a Dict and creates a UserDefault user, calls saveDatabase(dict)
+    func fillUserData(Dict: [String:Any]){
+        let user: User = User(name: "")
+        user.name = Dict["name"] as? String ?? ""
+        user.location = Dict["location"] as? String ?? ""
+        user.birthday = Dict["birthday"] as? String ?? ""
+        user.email = Dict["email"] as? String ?? ""
+        user.first_name = Dict["first_name"] as? String ?? ""
+        user.last_name = Dict["last_name"] as? String ?? ""
+        user.gender = Dict["gender"] as? String ?? ""
+        user.F_id = Dict["F_id"] as? String ?? ""
+        user.G_id = Dict["G_id"] as? String ?? ""
+        user.username = Dict["username"] as? String ?? ""
+        let userData = NSKeyedArchiver.archivedData(withRootObject: user)
+        UserDefaults.standard.set(userData, forKey: "user")
+        self.saveDatabase(Data: Dict)
+    }
     
     //Checks to see if info is stored in DB, else saves it.
     func saveDatabase(Data: [String: Any]){

@@ -64,7 +64,7 @@ class SignUpController: UIViewController, NVActivityIndicatorViewable {
             var obj: [String:Any] = [:]
             obj["email"] = self.curEmail
             obj["username"] = self.curUsername
-            self.saveDatabase(Data: obj)
+            self.fillUserData(Dict: obj)
             self.endAnimate(wholeView: self.whiteView, frame: self)
             self.showMessage("Account registered", type: .success)
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
