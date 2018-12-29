@@ -190,9 +190,9 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
         let imageViewBackground = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
         imageViewBackground.image = UIImage(named: "loginBackground")
         imageViewBackground.alpha = 0.3
-        imageViewBackground.contentMode = UIViewContentMode.scaleAspectFill
+        imageViewBackground.contentMode = UIView.ContentMode.scaleAspectFill
         self.view.addSubview(imageViewBackground)
-        self.view.sendSubview(toBack: imageViewBackground)
+        self.view.sendSubviewToBack(imageViewBackground)
     }
 }
 

@@ -5,6 +5,7 @@
 //  Created by Alaeddine M. on 11/1/15.
 //  Copyright (c) 2015 Alaeddine M. All rights reserved.
 //
+
 import UIKit
 
 
@@ -18,7 +19,7 @@ class SpinerLayer: CAShapeLayer {
     
     init(frame: CGRect) {
         super.init() 
-        
+
         self.setToFrame(frame)
         
         self.fillColor = nil
@@ -27,15 +28,15 @@ class SpinerLayer: CAShapeLayer {
         
         self.strokeEnd = 0.4
         self.isHidden = true
-    }
-    
+     }
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override init(layer: Any) {
         super.init(layer: layer)
-        
+
     }
     
     func animation() {
@@ -44,13 +45,13 @@ class SpinerLayer: CAShapeLayer {
         rotate.fromValue = 0
         rotate.toValue = Double.pi * 2
         rotate.duration = 0.4
-        rotate.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        rotate.timingFunction = CAMediaTimingFunction(name: .linear)
         
         rotate.repeatCount = HUGE
-        rotate.fillMode = kCAMediaTimingFunctionEaseIn
+        rotate.fillMode = .forwards
         rotate.isRemovedOnCompletion = false
         self.add(rotate, forKey: rotate.keyPath)
-        
+
     }
     
     func setToFrame(_ frame: CGRect) {
