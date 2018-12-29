@@ -10,10 +10,15 @@ import UIKit
 import FirebaseAuth
 import FacebookCore
 import FacebookLogin
+import StoreKit
+import MediaPlayer
 
-class HomeController: UIViewController {
+class HomeController: UIViewController, MPMediaPickerControllerDelegate {
 
+    @IBOutlet weak var testing: UIButton!
     @IBOutlet weak var temp: UILabel!
+    var myMediaPlayer = MPMusicPlayerController.systemMusicPlayer
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let def = UserDefaults.standard
@@ -26,6 +31,40 @@ class HomeController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    @IBAction func testFunc(_ sender: UIButton) {
+        appleMusicCheckIfDeviceCanPlayback()
+        let myMediaPickerVC = MPMediaPickerController(mediaTypes: MPMediaType.music)
+        myMediaPickerVC.allowsPickingMultipleItems = true
+        myMediaPickerVC.popoverPresentationController?.sourceView = sender
+        myMediaPickerVC.delegate = self
+        self.present(myMediaPickerVC, animated: true, completion: nil)
+    }
+    // Check if the device is capable of playback
+    func appleMusicCheckIfDeviceCanPlayback() {
+        let serviceController = SKCloudServiceController()
+        serviceController.requestCapabilities { (capability:SKCloudServiceCapability, err:Error?) in
+            
+            switch capability {
+                
+            case []:
+
+                self.alertUser(title: "Error", message: "The user doesn't have an Apple Music subscription available. Now would be a good time to prompt them to buy one?")
+                
+            case SKCloudServiceCapability.musicCatalogPlayback:
+                
+                print("The user has an Apple Music subscription and can playback music!")
+                
+            case SKCloudServiceCapability.addToCloudMusicLibrary:
+                
+                print("The user has an Apple Music subscription, can playback music AND can add to the Cloud Music Library")
+                
+            default:
+                print("Defualt")
+                break
+                
+            }
+        }
     }
     //Logs people out of their account
     @IBAction func logOut(_ sender: UIButton) {
