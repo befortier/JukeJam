@@ -6,13 +6,12 @@
 //  Copyright © 2017 Sedat Gökbek ÇİFTÇİ. All rights reserved.
 //
 
-
 import UIKit
 
 public extension UIBarButtonItem {
     func icon(from font: Fonts, code: String, ofSize size: CGFloat){
-        var textAttributes: [NSAttributedStringKey: Any] = [.font: UIFont.icon(from: font, ofSize: size)]
-        let currentTextAttributes: [NSAttributedStringKey: Any]? = self.titleTextAttributes(for: UIControlState())as! [NSAttributedStringKey: Any]
+        var textAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.icon(from: font, ofSize: size)]
+        let currentTextAttributes: [NSAttributedString.Key: Any]? = self.titleTextAttributes(for: UIControl.State()) as! [NSAttributedString.Key: Any]?
         
         if currentTextAttributes != nil {
             for (key, value) in currentTextAttributes! where key != .font {

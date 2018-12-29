@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import FacebookCore
+//import FacebookCore
 import FacebookLogin
 import Firebase
 import FirebaseDatabase
@@ -41,7 +41,7 @@ extension ViewController{
     
     //Signs into Firebase
     fileprivate func signIntoFirebase(){
-        guard let accessTokenString = AccessToken.current?.authenticationToken else {return}
+        guard let accessTokenString = FBSDKAccessToken.current()?.tokenString else {return}
         let credential = FacebookAuthProvider.credential(withAccessToken: accessTokenString)
         Auth.auth().signInAndRetrieveData(with: credential){ (user,err) in
             if err != nil{

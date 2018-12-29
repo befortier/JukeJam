@@ -7,11 +7,12 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FacebookCore
+import FBSDKLoginKit
+//import FacebookCore
 import FacebookLogin
 import StoreKit
 import MediaPlayer
+import FirebaseAuth
 
 class HomeController: UIViewController, MPMediaPickerControllerDelegate {
 
@@ -74,7 +75,13 @@ class HomeController: UIViewController, MPMediaPickerControllerDelegate {
         
         do {
             try Auth.auth().signOut()
-            AccessToken.refreshCurrentToken()
+            let fbLoginManager = FBSDKLoginManager()
+            fbLoginManager.logOut()
+            let cookies = HTTPCookieStorage.shared
+            let facebookCookies = cookies.cookies(for: URL(string: "https://facebook.com/")!)
+            for cookie in facebookCookies! {
+                cookies.deleteCookie(cookie )
+            }
             let def = UserDefaults.standard
             def.set(false, forKey: "is_authenticated")
             def.set(nil, forKey: "id")

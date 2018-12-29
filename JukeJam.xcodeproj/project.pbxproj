@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BFF6E97F4A5393A3A2945F0 /* Pods_JukeJamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95A77D0D4CEDB29C875589B8 /* Pods_JukeJamUITests.framework */; };
 		5705940221D2D31500F4F5CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570593F721D2D31300F4F5CB /* AppDelegate.swift */; };
 		5705940321D2D31500F4F5CB /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570593F821D2D31300F4F5CB /* HomeController.swift */; };
 		5705940421D2D31500F4F5CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 570593F921D2D31300F4F5CB /* Assets.xcassets */; };
@@ -25,9 +26,8 @@
 		5705943121D5B2CA00F4F5CB /* profileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705943021D5B2CA00F4F5CB /* profileImage.swift */; };
 		572BA0C521D2CF06008B9611 /* JukeJamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0C421D2CF06008B9611 /* JukeJamTests.swift */; };
 		572BA0D021D2CF06008B9611 /* JukeJamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0CF21D2CF06008B9611 /* JukeJamUITests.swift */; };
-		6C0B1E09361F58906D84A2F3 /* Pods_JukeJamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FD3CC97D5A614AF90DEEF07 /* Pods_JukeJamTests.framework */; };
-		A1F0F08000C2292DD772E676 /* Pods_JukeJam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD56AA57DC2B552A72801F06 /* Pods_JukeJam.framework */; };
-		D969C5B6AAE018FCFAC6BBFF /* Pods_JukeJamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C93CC1E41993409B02F900F /* Pods_JukeJamUITests.framework */; };
+		967122FCEAB2B13CCA05E9C4 /* Pods_JukeJamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7486DFC6847D21B257CC53DE /* Pods_JukeJamTests.framework */; };
+		B3C568FEE99515C9F9F4C18B /* Pods_JukeJam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 681BF83BD9BB94DDF0BB41A4 /* Pods_JukeJam.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,10 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0D583E12588DEB0E9F00A2BD /* Pods-JukeJamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamUITests/Pods-JukeJamUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		18DF8330E1C444000D0320B0 /* Pods-JukeJamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamUITests/Pods-JukeJamUITests.release.xcconfig"; sourceTree = "<group>"; };
-		2C93CC1E41993409B02F900F /* Pods_JukeJamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B2250F7DA03EDBAF36FD879 /* Pods-JukeJamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamTests/Pods-JukeJamTests.release.xcconfig"; sourceTree = "<group>"; };
+		21CD1EF8D4DA2A19CECAB702 /* Pods-JukeJamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamTests/Pods-JukeJamTests.debug.xcconfig"; sourceTree = "<group>"; };
 		570593F721D2D31300F4F5CB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		570593F821D2D31300F4F5CB /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		570593F921D2D31300F4F5CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -76,11 +73,14 @@
 		572BA0CB21D2CF06008B9611 /* JukeJamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JukeJamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		572BA0CF21D2CF06008B9611 /* JukeJamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JukeJamUITests.swift; sourceTree = "<group>"; };
 		572BA0D121D2CF06008B9611 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6E30250E2C1DC638FB3F7486 /* Pods-JukeJam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJam.release.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam.release.xcconfig"; sourceTree = "<group>"; };
-		9FD3CC97D5A614AF90DEEF07 /* Pods_JukeJamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B2FF16CA1354CC94ED668744 /* Pods-JukeJam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam.debug.xcconfig"; sourceTree = "<group>"; };
-		DBAF9F272C09C8411ED536E5 /* Pods-JukeJamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamTests/Pods-JukeJamTests.debug.xcconfig"; sourceTree = "<group>"; };
-		DD56AA57DC2B552A72801F06 /* Pods_JukeJam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		681BF83BD9BB94DDF0BB41A4 /* Pods_JukeJam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DF21EFBA09D77D6EC381D75 /* Pods-JukeJam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam.debug.xcconfig"; sourceTree = "<group>"; };
+		7486DFC6847D21B257CC53DE /* Pods_JukeJamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		85F7A095A0C5270EBC2E60F9 /* Pods-JukeJam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJam.release.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam.release.xcconfig"; sourceTree = "<group>"; };
+		95A77D0D4CEDB29C875589B8 /* Pods_JukeJamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE784E524A740294F2792200 /* Pods-JukeJamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamTests/Pods-JukeJamTests.release.xcconfig"; sourceTree = "<group>"; };
+		E88F5BE488294E49CFBCD7E2 /* Pods-JukeJamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamUITests/Pods-JukeJamUITests.release.xcconfig"; sourceTree = "<group>"; };
+		EBB7804B660E349467DC88A9 /* Pods-JukeJamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamUITests/Pods-JukeJamUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1F0F08000C2292DD772E676 /* Pods_JukeJam.framework in Frameworks */,
+				B3C568FEE99515C9F9F4C18B /* Pods_JukeJam.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C0B1E09361F58906D84A2F3 /* Pods_JukeJamTests.framework in Frameworks */,
+				967122FCEAB2B13CCA05E9C4 /* Pods_JukeJamTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,23 +104,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D969C5B6AAE018FCFAC6BBFF /* Pods_JukeJamUITests.framework in Frameworks */,
+				1BFF6E97F4A5393A3A2945F0 /* Pods_JukeJamUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4628A16CA0FE9FC06747B923 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				DD56AA57DC2B552A72801F06 /* Pods_JukeJam.framework */,
-				9FD3CC97D5A614AF90DEEF07 /* Pods_JukeJamTests.framework */,
-				2C93CC1E41993409B02F900F /* Pods_JukeJamUITests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		5705942D21D541D100F4F5CB /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,8 +133,8 @@
 				572BA0C321D2CF06008B9611 /* JukeJamTests */,
 				572BA0CE21D2CF06008B9611 /* JukeJamUITests */,
 				572BA0AD21D2CF05008B9611 /* Products */,
-				6E4DEBE39D4F9C51BF127063 /* Pods */,
-				4628A16CA0FE9FC06747B923 /* Frameworks */,
+				64E9C79A96424A99CE512B31 /* Pods */,
+				FE95278B1809F89CA6A61C24 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -193,17 +183,27 @@
 			path = JukeJamUITests;
 			sourceTree = "<group>";
 		};
-		6E4DEBE39D4F9C51BF127063 /* Pods */ = {
+		64E9C79A96424A99CE512B31 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B2FF16CA1354CC94ED668744 /* Pods-JukeJam.debug.xcconfig */,
-				6E30250E2C1DC638FB3F7486 /* Pods-JukeJam.release.xcconfig */,
-				DBAF9F272C09C8411ED536E5 /* Pods-JukeJamTests.debug.xcconfig */,
-				3B2250F7DA03EDBAF36FD879 /* Pods-JukeJamTests.release.xcconfig */,
-				0D583E12588DEB0E9F00A2BD /* Pods-JukeJamUITests.debug.xcconfig */,
-				18DF8330E1C444000D0320B0 /* Pods-JukeJamUITests.release.xcconfig */,
+				6DF21EFBA09D77D6EC381D75 /* Pods-JukeJam.debug.xcconfig */,
+				85F7A095A0C5270EBC2E60F9 /* Pods-JukeJam.release.xcconfig */,
+				21CD1EF8D4DA2A19CECAB702 /* Pods-JukeJamTests.debug.xcconfig */,
+				DE784E524A740294F2792200 /* Pods-JukeJamTests.release.xcconfig */,
+				EBB7804B660E349467DC88A9 /* Pods-JukeJamUITests.debug.xcconfig */,
+				E88F5BE488294E49CFBCD7E2 /* Pods-JukeJamUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		FE95278B1809F89CA6A61C24 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				681BF83BD9BB94DDF0BB41A4 /* Pods_JukeJam.framework */,
+				7486DFC6847D21B257CC53DE /* Pods_JukeJamTests.framework */,
+				95A77D0D4CEDB29C875589B8 /* Pods_JukeJamUITests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,12 +213,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 572BA0D421D2CF06008B9611 /* Build configuration list for PBXNativeTarget "JukeJam" */;
 			buildPhases = (
-				E40F7E2EA4928A7F9A8DB83F /* [CP] Check Pods Manifest.lock */,
+				247ADA7947F5BF91D9A6B0EA /* [CP] Check Pods Manifest.lock */,
 				572BA0A821D2CF05008B9611 /* Sources */,
 				572BA0A921D2CF05008B9611 /* Frameworks */,
 				572BA0AA21D2CF05008B9611 /* Resources */,
-				F303A3EEBC6319F0649F3B4A /* [CP] Embed Pods Frameworks */,
-				39AA7E6402C01F363B8D1412 /* [CP] Copy Pods Resources */,
+				67EC61C9ACB306867DD10074 /* [CP] Embed Pods Frameworks */,
+				9CA124AC31E9D599F88A4E61 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -233,7 +233,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 572BA0D721D2CF06008B9611 /* Build configuration list for PBXNativeTarget "JukeJamTests" */;
 			buildPhases = (
-				757DCE7E2352FABEE3680968 /* [CP] Check Pods Manifest.lock */,
+				374EDA19BFEEC3FC1AC49CC1 /* [CP] Check Pods Manifest.lock */,
 				572BA0BC21D2CF06008B9611 /* Sources */,
 				572BA0BD21D2CF06008B9611 /* Frameworks */,
 				572BA0BE21D2CF06008B9611 /* Resources */,
@@ -252,7 +252,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 572BA0DA21D2CF06008B9611 /* Build configuration list for PBXNativeTarget "JukeJamUITests" */;
 			buildPhases = (
-				E5191E475E8DE4097CE92B40 /* [CP] Check Pods Manifest.lock */,
+				2991BB5A686D1A14C4D94C6F /* [CP] Check Pods Manifest.lock */,
 				572BA0C721D2CF06008B9611 /* Sources */,
 				572BA0C821D2CF06008B9611 /* Frameworks */,
 				572BA0C921D2CF06008B9611 /* Resources */,
@@ -340,52 +340,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		39AA7E6402C01F363B8D1412 /* [CP] Copy Pods Resources */ = {
+		247ADA7947F5BF91D9A6B0EA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam-resources.sh",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		757DCE7E2352FABEE3680968 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-JukeJamTests-checkManifestLockResult.txt",
+			outputFileListPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E40F7E2EA4928A7F9A8DB83F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-JukeJam-checkManifestLockResult.txt",
 			);
@@ -394,16 +362,20 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E5191E475E8DE4097CE92B40 /* [CP] Check Pods Manifest.lock */ = {
+		2991BB5A686D1A14C4D94C6F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-JukeJamUITests-checkManifestLockResult.txt",
 			);
@@ -412,10 +384,34 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F303A3EEBC6319F0649F3B4A /* [CP] Embed Pods Frameworks */ = {
+		374EDA19BFEEC3FC1AC49CC1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JukeJamTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		67EC61C9ACB306867DD10074 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam-frameworks.sh",
@@ -439,6 +435,8 @@
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
@@ -462,6 +460,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9CA124AC31E9D599F88A4E61 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -634,7 +654,7 @@
 		};
 		572BA0D521D2CF06008B9611 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B2FF16CA1354CC94ED668744 /* Pods-JukeJam.debug.xcconfig */;
+			baseConfigurationReference = 6DF21EFBA09D77D6EC381D75 /* Pods-JukeJam.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -656,7 +676,7 @@
 		};
 		572BA0D621D2CF06008B9611 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E30250E2C1DC638FB3F7486 /* Pods-JukeJam.release.xcconfig */;
+			baseConfigurationReference = 85F7A095A0C5270EBC2E60F9 /* Pods-JukeJam.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -677,7 +697,7 @@
 		};
 		572BA0D821D2CF06008B9611 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DBAF9F272C09C8411ED536E5 /* Pods-JukeJamTests.debug.xcconfig */;
+			baseConfigurationReference = 21CD1EF8D4DA2A19CECAB702 /* Pods-JukeJamTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -699,7 +719,7 @@
 		};
 		572BA0D921D2CF06008B9611 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B2250F7DA03EDBAF36FD879 /* Pods-JukeJamTests.release.xcconfig */;
+			baseConfigurationReference = DE784E524A740294F2792200 /* Pods-JukeJamTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -721,7 +741,7 @@
 		};
 		572BA0DB21D2CF06008B9611 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D583E12588DEB0E9F00A2BD /* Pods-JukeJamUITests.debug.xcconfig */;
+			baseConfigurationReference = EBB7804B660E349467DC88A9 /* Pods-JukeJamUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -742,7 +762,7 @@
 		};
 		572BA0DC21D2CF06008B9611 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18DF8330E1C444000D0320B0 /* Pods-JukeJamUITests.release.xcconfig */;
+			baseConfigurationReference = E88F5BE488294E49CFBCD7E2 /* Pods-JukeJamUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

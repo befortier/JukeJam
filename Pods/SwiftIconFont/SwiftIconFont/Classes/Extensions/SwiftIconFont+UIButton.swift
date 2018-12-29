@@ -15,6 +15,6 @@ public extension UIButton {
         let attrTitle = getAttributedString(text, ofSize: (self.titleLabel?.font!.pointSize)!)
         let all = NSRange(location: 0, length: attrTitle.length)
         attrTitle.addAttribute(.foregroundColor, value: self.currentTitleColor, range: all)
-        self.setAttributedTitle(attrTitle, for: UIControlState())
+        self.setAttributedTitle(attrTitle, for: UIControl.State())
     }
 }

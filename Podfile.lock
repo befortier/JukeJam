@@ -90,7 +90,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.3.6):
     - GoogleUtilities/Logger
-  - GSMessages (1.6.1)
+  - GSMessages (1.7.1)
   - GTMSessionFetcher/Core (1.2.1)
   - leveldb-library (1.20)
   - LGButton (1.1.1)
@@ -99,9 +99,9 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - NVActivityIndicatorView (4.5.0):
-    - NVActivityIndicatorView/Presenter (= 4.5.0)
-  - NVActivityIndicatorView/Presenter (4.5.0)
+  - NVActivityIndicatorView (4.5.1):
+    - NVActivityIndicatorView/Presenter (= 4.5.1)
+  - NVActivityIndicatorView/Presenter (4.5.1)
   - SkyFloatingLabelTextField (3.6.0)
   - SwiftIconFont (3.0.0)
   - SwiftyOnboard (1.3.8)
@@ -161,7 +161,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FBSDKCoreKit:
-    :commit: 075e6368ec6d0f4902056ebcc3b625f25225ba40
+    :commit: 9c5fc38f8f12efb3917699c5befcc10305fcabda
     :git: https://github.com/facebook/facebook-objc-sdk.git
 
 SPEC CHECKSUMS:
@@ -182,12 +182,12 @@ SPEC CHECKSUMS:
   GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
-  GSMessages: 870aa0fc8cf39bea0026535ea195376d4040313e
+  GSMessages: 561f35bac97ae35e6252252a4259fb2c9badea1a
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   LGButton: e6ce060e89ffbf9c72fd30139c14865b205f836c
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  NVActivityIndicatorView: 1e4e3ed79248cf1666af182593c3a2acf0fcf193
+  NVActivityIndicatorView: ec34a7b88c51fab270004a1a1f32116e711010cd
   SkyFloatingLabelTextField: 38164979b79512f9ff9288ad8acfc4bbf5d843e3
   SwiftIconFont: 2ba18554a77c44948dc35b561b344e3c23834a84
   SwiftyOnboard: de60e90c2af23dd61b01ec0c6a8d0be3370f857b
