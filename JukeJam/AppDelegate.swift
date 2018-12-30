@@ -31,7 +31,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
     //Checks if UserDefault has any saved log in from user
     func checkAuth(){
         let is_authenticated = Auth.auth().currentUser
-        if is_authenticated != nil{
+        let def = UserDefaults.standard
+        var curUser: User?
+        let userData = def.object(forKey: "user") as? NSData
+        if let user = userData {
+            curUser = (NSKeyedUnarchiver.unarchiveObject(with: user as Data) as? User)!
+        }
+        if is_authenticated != nil && curUser != nil{
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeController") as? HomeController
             {
                 window?.rootViewController = vc

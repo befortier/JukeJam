@@ -8,17 +8,15 @@
 
 import UIKit
 import FBSDKLoginKit
-//import FacebookCore
 import FacebookLogin
-import StoreKit
 import MediaPlayer
 import FirebaseAuth
+import SCLAlertView
 
-class HomeController: UIViewController, MPMediaPickerControllerDelegate {
+class HomeController: UIViewController {
 
     @IBOutlet weak var testing: UIButton!
     @IBOutlet weak var temp: UILabel!
-    var myMediaPlayer = MPMusicPlayerController.systemMusicPlayer
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +24,6 @@ class HomeController: UIViewController, MPMediaPickerControllerDelegate {
         let userID = def.string(forKey: "id")
         self.navigationItem.title = "Home"
         loadInfo()
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,39 +31,45 @@ class HomeController: UIViewController, MPMediaPickerControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func testFunc(_ sender: UIButton) {
-        appleMusicCheckIfDeviceCanPlayback()
-        let myMediaPickerVC = MPMediaPickerController(mediaTypes: MPMediaType.music)
-        myMediaPickerVC.allowsPickingMultipleItems = true
-        myMediaPickerVC.popoverPresentationController?.sourceView = sender
-        myMediaPickerVC.delegate = self
-        self.present(myMediaPickerVC, animated: true, completion: nil)
-    }
-    // Check if the device is capable of playback
-    func appleMusicCheckIfDeviceCanPlayback() {
-        let serviceController = SKCloudServiceController()
-        serviceController.requestCapabilities { (capability:SKCloudServiceCapability, err:Error?) in
-            
-            switch capability {
-                
-            case []:
+        let handler: AppleHandler = AppleHandler()
+        //Checks to see if User has authorized
+        //Put below in AppleHandler.play([ID]'s) function
+        handler.appleMusicFetchStorefrontRegion()
+        if handler.checkAuthorization() != .authorized {return}
+     
 
-                self.alertUser(title: "Error", message: "The user doesn't have an Apple Music subscription available. Now would be a good time to prompt them to buy one?")
-                
-            case SKCloudServiceCapability.musicCatalogPlayback:
-                
-                print("The user has an Apple Music subscription and can playback music!")
-                
-            case SKCloudServiceCapability.addToCloudMusicLibrary:
-                
-                print("The user has an Apple Music subscription, can playback music AND can add to the Cloud Music Library")
-                
-            default:
-                print("Defualt")
-                break
-                
+//        var url = "https://api.music.apple.com/v1/catalog/\(handler.storeID)/search?term=My+Chemical+Romance&limit=2&types=song"
+        var url = "https://api.music.apple.com/v1/catalog/us/search?term=khalid"
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            do {
+                //here dataResponse received from a network request
+                print(data!)
+                print(response!)
+
+                let jsonResponse = try JSONSerialization.jsonObject(with:
+                    data!, options: [])
+                print(jsonResponse) //Response result
+//                self.appleMusicPlayTrackId(ids: )
+
+            } catch {
+                print("JSON Serialization error")
             }
-        }
+        }).resume()
+
     }
+    
+    func appleMusicPlayTrackId(ids:[String]) {
+    let applicationMusicPlayer = MPMusicPlayerController.applicationMusicPlayer
+    applicationMusicPlayer.setQueue(with: ids)
+    applicationMusicPlayer.play()
+    
+    }
+    
+
+ 
     //Logs people out of their account
     @IBAction func logOut(_ sender: UIButton) {
         guard Auth.auth().currentUser != nil else {

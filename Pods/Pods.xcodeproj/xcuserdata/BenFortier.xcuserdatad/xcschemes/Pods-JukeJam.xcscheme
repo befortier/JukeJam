@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B16590D478368C77A7F56E3DE2ED533A"
+               BlueprintIdentifier = "00B9DAC3BE60F5BAEE2CDC9D73E3453A"
                BuildableName = "Pods_JukeJam.framework"
                BlueprintName = "Pods-JukeJam"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B16590D478368C77A7F56E3DE2ED533A"
+            BlueprintIdentifier = "00B9DAC3BE60F5BAEE2CDC9D73E3453A"
             BuildableName = "Pods_JukeJam.framework"
             BlueprintName = "Pods-JukeJam"
             ReferencedContainer = "container:Pods.xcodeproj">

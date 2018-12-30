@@ -126,6 +126,7 @@ class User: NSObject, NSCoding{
 
 extension UIViewController {
     func loadInfo() -> User{
+        
         let def = UserDefaults.standard
         var curUser: User?
         let userData = def.object(forKey: "user") as? NSData
