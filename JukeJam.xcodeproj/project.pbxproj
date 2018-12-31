@@ -29,6 +29,7 @@
 		57A71B7B21D823DE0004FEDA /* AppleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B7A21D823DE0004FEDA /* AppleHandler.swift */; };
 		57A71B7D21D96A680004FEDA /* ScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B7C21D96A680004FEDA /* ScreenController.swift */; };
 		57A71B8121D971140004FEDA /* HomeNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B8021D971140004FEDA /* HomeNavController.swift */; };
+		57A71B8321DAC35E0004FEDA /* Home_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B8221DAC35E0004FEDA /* Home_Extensions.swift */; };
 		967122FCEAB2B13CCA05E9C4 /* Pods_JukeJamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7486DFC6847D21B257CC53DE /* Pods_JukeJamTests.framework */; };
 		B3C568FEE99515C9F9F4C18B /* Pods_JukeJam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 681BF83BD9BB94DDF0BB41A4 /* Pods_JukeJam.framework */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		57A71B7A21D823DE0004FEDA /* AppleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleHandler.swift; sourceTree = "<group>"; };
 		57A71B7C21D96A680004FEDA /* ScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenController.swift; sourceTree = "<group>"; };
 		57A71B8021D971140004FEDA /* HomeNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavController.swift; sourceTree = "<group>"; };
+		57A71B8221DAC35E0004FEDA /* Home_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_Extensions.swift; sourceTree = "<group>"; };
 		681BF83BD9BB94DDF0BB41A4 /* Pods_JukeJam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DF21EFBA09D77D6EC381D75 /* Pods-JukeJam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam.debug.xcconfig"; sourceTree = "<group>"; };
 		7486DFC6847D21B257CC53DE /* Pods_JukeJamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,12 +159,11 @@
 		572BA0AE21D2CF05008B9611 /* JukeJam */ = {
 			isa = PBXGroup;
 			children = (
-				5705942B21D5416A00F4F5CB /* Main.storyboard */,
 				5705942D21D541D100F4F5CB /* Login */,
 				570593F721D2D31300F4F5CB /* AppDelegate.swift */,
+				5705942B21D5416A00F4F5CB /* Main.storyboard */,
 				570593F921D2D31300F4F5CB /* Assets.xcassets */,
 				5705940D21D2D3D300F4F5CB /* Base.lproj */,
-				570593F821D2D31300F4F5CB /* HomeController.swift */,
 				5705942421D4631000F4F5CB /* User.swift */,
 				572BA0BB21D2CF06008B9611 /* Info.plist */,
 				5705942221D319E300F4F5CB /* GoogleService-Info.plist */,
@@ -170,6 +171,8 @@
 				57A71B7A21D823DE0004FEDA /* AppleHandler.swift */,
 				57A71B7C21D96A680004FEDA /* ScreenController.swift */,
 				57A71B8021D971140004FEDA /* HomeNavController.swift */,
+				570593F821D2D31300F4F5CB /* HomeController.swift */,
+				57A71B8221DAC35E0004FEDA /* Home_Extensions.swift */,
 			);
 			path = JukeJam;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				5705940821D2D31500F4F5CB /* Login_Extension.swift in Sources */,
 				5705940C21D2D31500F4F5CB /* SignUpController.swift in Sources */,
 				5705940521D2D31500F4F5CB /* LoginController.swift in Sources */,
+				57A71B8321DAC35E0004FEDA /* Home_Extensions.swift in Sources */,
 				5705940621D2D31500F4F5CB /* WelcomeController.swift in Sources */,
 				5705942521D4631000F4F5CB /* User.swift in Sources */,
 				5705940A21D2D31500F4F5CB /* loginButton.swift in Sources */,

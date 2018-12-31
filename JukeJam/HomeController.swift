@@ -15,24 +15,31 @@ import SCLAlertView
 
 class HomeController: UIViewController {
 
+    @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var testing: UIButton!
     @IBOutlet weak var temp: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         loadInfo()
+        customizeButtons()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBAction func seeSettings(_ sender: Any) {
-        print("Settings")
+    func customizeButtons(){
+        self.navigationItem.leftBarButtonItem = getTabBarButton(type: .user, selector:#selector(showProfile))
+        self.navigationItem.rightBarButtonItem = getTabBarButton(type: .cog, selector:#selector(showSettings))
     }
-    @IBAction func seeProfile(_ sender: Any) {
+    @objc func showProfile(){
         print("Profile")
     }
+    @objc func showSettings(){
+        print("Settings")
+    }
+
     @IBAction func testFunc(_ sender: UIButton) {
         let handler: AppleHandler = AppleHandler()
         //Checks to see if User has authorized
@@ -40,14 +47,11 @@ class HomeController: UIViewController {
         
     }
     
-
- 
     //Logs people out of their account
     @IBAction func logOut(_ sender: UIButton) {
         guard Auth.auth().currentUser != nil else {
             return
         }
-        
         do {
             try Auth.auth().signOut()
             let fbLoginManager = FBSDKLoginManager()
@@ -57,10 +61,6 @@ class HomeController: UIViewController {
             for cookie in facebookCookies! {
                 cookies.deleteCookie(cookie )
             }
-            let def = UserDefaults.standard
-            def.set(false, forKey: "is_authenticated")
-            def.set(nil, forKey: "id")
-            def.synchronize()
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginController") as? ViewController
             {
                 present(vc, animated: true, completion: nil)

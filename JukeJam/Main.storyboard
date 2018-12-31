@@ -835,28 +835,22 @@
                         <viewLayoutGuide key="safeArea" id="p9G-cy-cJg"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="i2U-2D-hME">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="qkq-aj-HTT">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="j5H-2x-nUt">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="fnB-zn-iUj" customClass="SwiftIconBarButtonItem" customModule="SwiftIconFont">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nY9-nb-WPD">
                                 <rect key="frame" x="16" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="seeProfile:" destination="IqP-OI-I54" eventType="touchDown" id="Ddn-iY-fGt"/>
-                                </connections>
                             </button>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="wv9-Un-oSo">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iWI-MK-WSo">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="seeSettings:" destination="IqP-OI-I54" eventType="touchUpInside" id="9O9-kq-RA8"/>
-                                </connections>
-                            </button>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="icon" value=".user"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                    <real key="value" value="15"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="navBar" destination="i2U-2D-hME" id="IfW-qu-ZFU"/>
                         <outlet property="temp" destination="XWF-kb-zJ1" id="ux8-no-nCU"/>
                         <outlet property="testing" destination="WdC-yZ-BGX" id="slN-s4-6ET"/>
                     </connections>
@@ -865,7 +859,7 @@
             </objects>
             <point key="canvasLocation" x="2623.1999999999998" y="2050.5247376311845"/>
         </scene>
-        <!--Search2-->
+        <!--View Controller-->
         <scene sceneID="W9Q-Kr-2tK">
             <objects>
                 <viewController id="Cn6-wL-YG0" sceneMemberID="viewController">
@@ -886,7 +880,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VRR-HP-U1U"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search2" id="EKI-nn-oJe"/>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="EKI-nn-oJe"/>
                     <navigationItem key="navigationItem" id="byL-lh-xYp"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oqo-3Z-qPV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -905,6 +899,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
+                        <outlet property="navBar" destination="VpY-CX-hG0" id="o2Z-fD-aPQ"/>
                         <segue destination="IqP-OI-I54" kind="relationship" relationship="rootViewController" id="MV8-FN-QvB"/>
                     </connections>
                 </navigationController>

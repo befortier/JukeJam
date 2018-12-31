@@ -8,20 +8,32 @@
 
 import UIKit
 import MaterialComponents.MaterialAppBar
+import FontAwesome_swift
 
-class HomeNavController: MDCAppBarNavigationController, MDCAppBarNavigationControllerDelegate {
+class HomeNavController: UINavigationController {
 
+    @IBOutlet weak var navBar: UINavigationBar!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Initialize HomeController?")
         self.title = "Home"
         initalizeHomeController()
         // Do any additional setup after loading the view.
     }
    
     func initalizeHomeController(){
-
+//      let attributes = [
+//        NSAttributedString.Key.font: UIFont.fontAwesome(ofSize: 15, style: .solid)
+//        ]
+//        let button = self.navigationItem.leftBarButtonItem
+//        button?.setTitleTextAttributes(attributes, for: .normal)
+//        button?.title = String.fontAwesomeIcon(name: .user)
+//        self.navBar.
         
+     
+    }
+    
+    @objc func test(){
+        print("okay")
     }
     /*
     // MARK: - Navigation
