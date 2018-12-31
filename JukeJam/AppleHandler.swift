@@ -117,6 +117,42 @@ class AppleHandler: UIViewController {
         }
     }
     
+    //UNTESTED
+    func appleMusicPlayTrackId(ids:[String]) {
+        let applicationMusicPlayer = MPMusicPlayerController.applicationMusicPlayer
+        applicationMusicPlayer.setQueue(with: ids)
+        applicationMusicPlayer.play()
+        
+    }
+    
+
+    //UNTESTED
+    func playSong(){
+        //Potentiall make a general Play function and then paramter of type .song, album etc.
+        appleMusicFetchStorefrontRegion()
+        if checkAuthorization() != .authorized {return}
+        //        var url = "https://api.music.apple.com/v1/catalog/\(handler.storeID)/search?term=My+Chemical+Romance&limit=2&types=song"
+        let url = "https://api.music.apple.com/v1/catalog/us/search?term=khalid"
+        var request = URLRequest(url: URL(string: url)!)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request, completionHandler: { data, response, error -> Void in
+            do {
+                //here dataResponse received from a network request
+                print(data!)
+                print(response!)
+                
+                let jsonResponse = try JSONSerialization.jsonObject(with:
+                    data!, options: [])
+                print(jsonResponse) //Response result
+                //                self.appleMusicPlayTrackId(ids: )
+                
+            } catch {
+                print("JSON Serialization error")
+            }
+        }).resume()
+    }
+    
     func appleMusicFetchStorefrontRegion() {
         let serviceController = SKCloudServiceController()
         serviceController.requestStorefrontIdentifier { (storefrontId:String?, err:Error?) in

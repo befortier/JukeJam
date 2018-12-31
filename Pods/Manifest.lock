@@ -5,6 +5,7 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
+  - ESTabBarController-swift (2.6.4)
   - FacebookCore (0.5.0):
     - Bolts (~> 1.9)
     - FBSDKCoreKit (~> 4.37)
@@ -94,6 +95,70 @@ PODS:
   - GTMSessionFetcher/Core (1.2.1)
   - leveldb-library (1.20)
   - LGButton (1.1.1)
+  - MaterialComponents/AnimationTiming (73.0.0)
+  - MaterialComponents/AppBar (73.0.0):
+    - MaterialComponents/FlexibleHeader
+    - MaterialComponents/HeaderStackView
+    - MaterialComponents/NavigationBar
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/Icons/ic_arrow_back
+    - MaterialComponents/private/UIMetrics
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+    - MDFInternationalization
+  - MaterialComponents/ButtonBar (73.0.0):
+    - MaterialComponents/Buttons
+    - MaterialComponents/private/Application
+    - MDFInternationalization
+  - MaterialComponents/Buttons (73.0.0):
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Math
+    - MaterialComponents/private/Shapes
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+    - MDFInternationalization
+    - MDFTextAccessibility
+  - MaterialComponents/FlexibleHeader (73.0.0):
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/UIMetrics
+    - MDFTextAccessibility
+  - MaterialComponents/HeaderStackView (73.0.0)
+  - MaterialComponents/Ink (73.0.0):
+    - MaterialComponents/private/Math
+  - MaterialComponents/NavigationBar (73.0.0):
+    - MaterialComponents/ButtonBar
+    - MaterialComponents/private/Math
+    - MaterialComponents/Typography
+    - MDFInternationalization
+    - MDFTextAccessibility
+  - MaterialComponents/private/Application (73.0.0)
+  - MaterialComponents/private/Icons/Base (73.0.0)
+  - MaterialComponents/private/Icons/ic_arrow_back (73.0.0):
+    - MaterialComponents/private/Icons/Base
+  - MaterialComponents/private/Math (73.0.0)
+  - MaterialComponents/private/Shapes (73.0.0):
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowLayer
+  - MaterialComponents/private/UIMetrics (73.0.0):
+    - MaterialComponents/private/Application
+  - MaterialComponents/ShadowElevations (73.0.0)
+  - MaterialComponents/ShadowLayer (73.0.0):
+    - MaterialComponents/ShadowElevations
+  - MaterialComponents/Tabs (73.0.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Ink
+    - MaterialComponents/private/Math
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
+    - MaterialComponents/Typography
+    - MDFInternationalization
+  - MaterialComponents/Typography (73.0.0):
+    - MaterialComponents/private/Application
+    - MaterialComponents/private/Math
+  - MDFInternationalization (2.0.0)
+  - MDFTextAccessibility (2.0.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -109,6 +174,7 @@ PODS:
   - TransitionButton (0.5.2)
 
 DEPENDENCIES:
+  - ESTabBarController-swift
   - FacebookCore
   - FacebookLogin
   - FBSDKCoreKit (from `https://github.com/facebook/facebook-objc-sdk.git`, branch `master`)
@@ -120,6 +186,8 @@ DEPENDENCIES:
   - GoogleSignIn
   - GSMessages
   - LGButton
+  - MaterialComponents/AppBar
+  - MaterialComponents/Tabs
   - NVActivityIndicatorView
   - SCLAlertView
   - SkyFloatingLabelTextField (~> 3.0)
@@ -130,6 +198,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Bolts
+    - ESTabBarController-swift
     - FacebookCore
     - FacebookLogin
     - FBSDKLoginKit
@@ -149,6 +218,9 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - LGButton
+    - MaterialComponents
+    - MDFInternationalization
+    - MDFTextAccessibility
     - nanopb
     - NVActivityIndicatorView
     - SCLAlertView
@@ -169,6 +241,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  ESTabBarController-swift: 58cca4ab7de980657d99a02181c1ff310983e975
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
   FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
   FBSDKCoreKit: 5aa4a666fe80c12621fb8d6214bfdbd18d3b5a88
@@ -189,6 +262,9 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   LGButton: e6ce060e89ffbf9c72fd30139c14865b205f836c
+  MaterialComponents: 5ee94fadd206902ffa318ba5adfd3c9c8c799000
+  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
+  MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NVActivityIndicatorView: ec34a7b88c51fab270004a1a1f32116e711010cd
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
@@ -197,6 +273,6 @@ SPEC CHECKSUMS:
   SwiftyOnboard: de60e90c2af23dd61b01ec0c6a8d0be3370f857b
   TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
 
-PODFILE CHECKSUM: b05f55dc2c1da78822f8b6f0cfdee7c8d583c6c2
+PODFILE CHECKSUM: 719b2c44a03b2d5c51f7531830921e5a177fae3c
 
 COCOAPODS: 1.5.3

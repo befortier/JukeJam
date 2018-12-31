@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
             curUser = (NSKeyedUnarchiver.unarchiveObject(with: user as Data) as? User)!
         }
         if is_authenticated != nil && curUser != nil{
-            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeController") as? HomeController
+            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ScreenController") as? ScreenController
             {
                 window?.rootViewController = vc
                 window?.makeKeyAndVisible()

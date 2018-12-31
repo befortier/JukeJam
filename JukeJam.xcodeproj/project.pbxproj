@@ -26,8 +26,9 @@
 		5705943121D5B2CA00F4F5CB /* profileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705943021D5B2CA00F4F5CB /* profileImage.swift */; };
 		572BA0C521D2CF06008B9611 /* JukeJamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0C421D2CF06008B9611 /* JukeJamTests.swift */; };
 		572BA0D021D2CF06008B9611 /* JukeJamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0CF21D2CF06008B9611 /* JukeJamUITests.swift */; };
-		57A71B7721D8146C0004FEDA /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B7621D8146C0004FEDA /* Popup.swift */; };
 		57A71B7B21D823DE0004FEDA /* AppleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B7A21D823DE0004FEDA /* AppleHandler.swift */; };
+		57A71B7D21D96A680004FEDA /* ScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B7C21D96A680004FEDA /* ScreenController.swift */; };
+		57A71B8121D971140004FEDA /* HomeNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B8021D971140004FEDA /* HomeNavController.swift */; };
 		967122FCEAB2B13CCA05E9C4 /* Pods_JukeJamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7486DFC6847D21B257CC53DE /* Pods_JukeJamTests.framework */; };
 		B3C568FEE99515C9F9F4C18B /* Pods_JukeJam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 681BF83BD9BB94DDF0BB41A4 /* Pods_JukeJam.framework */; };
 /* End PBXBuildFile section */
@@ -75,8 +76,9 @@
 		572BA0CB21D2CF06008B9611 /* JukeJamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JukeJamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		572BA0CF21D2CF06008B9611 /* JukeJamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JukeJamUITests.swift; sourceTree = "<group>"; };
 		572BA0D121D2CF06008B9611 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		57A71B7621D8146C0004FEDA /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
 		57A71B7A21D823DE0004FEDA /* AppleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleHandler.swift; sourceTree = "<group>"; };
+		57A71B7C21D96A680004FEDA /* ScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenController.swift; sourceTree = "<group>"; };
+		57A71B8021D971140004FEDA /* HomeNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavController.swift; sourceTree = "<group>"; };
 		681BF83BD9BB94DDF0BB41A4 /* Pods_JukeJam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DF21EFBA09D77D6EC381D75 /* Pods-JukeJam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam.debug.xcconfig"; sourceTree = "<group>"; };
 		7486DFC6847D21B257CC53DE /* Pods_JukeJamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,8 +167,9 @@
 				572BA0BB21D2CF06008B9611 /* Info.plist */,
 				5705942221D319E300F4F5CB /* GoogleService-Info.plist */,
 				5705943021D5B2CA00F4F5CB /* profileImage.swift */,
-				57A71B7621D8146C0004FEDA /* Popup.swift */,
 				57A71B7A21D823DE0004FEDA /* AppleHandler.swift */,
+				57A71B7C21D96A680004FEDA /* ScreenController.swift */,
+				57A71B8021D971140004FEDA /* HomeNavController.swift */,
 			);
 			path = JukeJam;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
@@ -439,6 +443,9 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/LGButton/LGButton.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
@@ -453,6 +460,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
@@ -463,6 +471,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
@@ -507,7 +518,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5705940321D2D31500F4F5CB /* HomeController.swift in Sources */,
-				57A71B7721D8146C0004FEDA /* Popup.swift in Sources */,
 				5705943121D5B2CA00F4F5CB /* profileImage.swift in Sources */,
 				5705940821D2D31500F4F5CB /* Login_Extension.swift in Sources */,
 				5705940C21D2D31500F4F5CB /* SignUpController.swift in Sources */,
@@ -517,7 +527,9 @@
 				5705940A21D2D31500F4F5CB /* loginButton.swift in Sources */,
 				57A71B7B21D823DE0004FEDA /* AppleHandler.swift in Sources */,
 				5705940221D2D31500F4F5CB /* AppDelegate.swift in Sources */,
+				57A71B7D21D96A680004FEDA /* ScreenController.swift in Sources */,
 				5705942721D53DE000F4F5CB /* FbLoginHandler.swift in Sources */,
+				57A71B8121D971140004FEDA /* HomeNavController.swift in Sources */,
 				5705940921D2D31500F4F5CB /* ForgotPassword.swift in Sources */,
 				5705942F21D571A500F4F5CB /* ConfirmController.swift in Sources */,
 			);

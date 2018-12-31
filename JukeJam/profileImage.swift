@@ -16,9 +16,5 @@ class profileImage: UIImageView {
         self.layer.borderColor = UIColor.black.cgColor
         self.layer.cornerRadius = self.frame.height/2
         self.clipsToBounds = true
-//        self.backgroundColor = UIColor.white
-//        self.layer.borderWidth = 5.0
-//        self.layer.cornerRadius = 20.0
-//        self.layer.borderColor = ourYellow.cgColor
     }
 }

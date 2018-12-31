@@ -11,11 +11,11 @@ extension UIViewController {
     
     //Switches from current controller to HomeController
     func switchControllers(home: Bool){
-        let def = UserDefaults.standard
         if home{
-            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeController") as? HomeController
-            {
-                present(vc, animated: true, completion: nil)
+            if let TabBar: ScreenController? = storyboard?.instantiateViewController(withIdentifier: "ScreenController") as? ScreenController {
+                print("navigationController = \(self)")
+                print("tabbar = \(TabBar)")
+                self.show((TabBar)!, sender: nil)
             }
         }
         else{
