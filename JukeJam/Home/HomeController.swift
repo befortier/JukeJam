@@ -22,13 +22,7 @@ class HomeController: UIViewController, UICollectionViewDelegate{
         loadInfo()
         customizeButtons()
         myJamsCarousal.dataSource = self
-        self.myJamsCarousal.delegate = self;
-        self.automaticallyAdjustsScrollViewInsets = false;
-
         establishCells()
-        
-     
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,21 +35,12 @@ class HomeController: UIViewController, UICollectionViewDelegate{
           myJamsArt.append(coverArt(title: "Astroworld", author: "Travis Scott", image: UIImage(named: "album3")!))
           myJamsArt.append(coverArt(title: "Kulture II", author: "Migos", image: UIImage(named: "album4")!))
           myJamsArt.append(coverArt(title: "The Life of Pablo", author: "Kanye West", image: UIImage(named: "album5")!))
-        
-        let cellScaling: CGFloat = 0.6
-        
-
-        let screenSize = myJamsCarousal.bounds.size
-
         let insetX:CGFloat = 8
         let insetY: CGFloat = 8
-        print(insetY)
         let layout = myJamsCarousal.collectionViewLayout as! UICollectionViewFlowLayout
-
-   
-        
         myJamsCarousal?.setCollectionViewLayout(layout, animated: false)
         myJamsCarousal.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
+        
     }
     func customizeButtons(){
         self.navigationItem.leftBarButtonItem = getTabBarButton(type: .user, selector:#selector(showProfile))
@@ -74,7 +59,13 @@ class HomeController: UIViewController, UICollectionViewDelegate{
         //Put below in AppleHandler.play([ID]'s) function
         
     }
-    
+    @IBAction func seeMoreMyJams(_ sender: Any) {
+        print("Here")
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let DestViewController: SeeMoreController = segue.destination as! SeeMoreController
+        DestViewController.myTitle = "My Jams"
+    }
     //Logs people out of their account
     @IBAction func logOut(_ sender: UIButton) {
         guard Auth.auth().currentUser != nil else {

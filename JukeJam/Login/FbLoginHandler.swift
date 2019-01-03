@@ -19,7 +19,17 @@ extension ViewController{
     
    //Handles preliary FB login methods. 
     func loginFB(){
-        let loginManager = LoginManager()
+         var _fbLoginManager: LoginManager?
+        
+        var fbLoginManager: LoginManager {
+            get {
+                if _fbLoginManager == nil {
+                    _fbLoginManager = LoginManager()
+                }
+                return _fbLoginManager!
+            }
+        }
+        let loginManager = fbLoginManager
         loginManager.logIn(readPermissions: [.publicProfile,.email, .userBirthday, .userGender, .userLocation], viewController: self) { (result) in
             switch result {
             case .success(grantedPermissions: _, declinedPermissions: _, token: _):
@@ -27,8 +37,11 @@ extension ViewController{
                 self.signIntoFirebase()
                 break
                 
-            case .failed( _):
+            case .failed(let error):
                 self.alertUser(title: "Failed to Authenticate", message: "Sorry, but we could not authenticate your facebook account, please try again.")
+                print("Login FB Error: \(error)")
+
+                
                 break
                 
             case .cancelled:
@@ -45,6 +58,7 @@ extension ViewController{
         Auth.auth().signInAndRetrieveData(with: credential){ (user,err) in
             if err != nil{
                 self.alertUser(title: "Failed to Authenticate", message: "Sorry, but we could not authenticate your account in our database, we are working to fix this")
+                print("Login Error: \(err)")
                 return
             }
             self.fillFBProfile()

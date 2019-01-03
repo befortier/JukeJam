@@ -6,7 +6,6 @@ target 'JukeJam' do
   use_frameworks!
 
   # Pods for JukeJam
-pod 'expanding-collection'
 pod 'SCLAlertView'
 pod 'NVActivityIndicatorView'
 pod 'Firebase/Auth'

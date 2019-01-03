@@ -12,7 +12,7 @@ class FocalCell: UICollectionViewCell {
     @IBOutlet weak var overView: UIView!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var author: UILabel!
-    @IBOutlet weak var title: UITextView!
+    @IBOutlet weak var title: UILabel!
     var coverArt: coverArt? {
         didSet {
             self.updateUI()
@@ -20,32 +20,26 @@ class FocalCell: UICollectionViewCell {
     }
     
     private func updateUI(){
-        overView.layer.cornerRadius = 3.0
-        overView.clipsToBounds = false
-        overView.layer.shadowRadius = 2
-        overView.layer.shadowOpacity = 0.8
-        overView.layer.shadowOffset = CGSize(width: 5, height: 10)
-      
-
         if let cover = coverArt{
-            image.image = coverArt?.image
-            author.text = coverArt?.author
-            title.text = coverArt?.title
+            image.image =  cover.image
+            author.text = cover.author
+            title.text = cover.title
         }
         else{
             image.image = nil
             author.text = nil
             title.text = nil
         }
-        
     }
     
-    override func layoutSubviews(){
+    override func layoutSubviews() {
         super.layoutSubviews()
-        print("HERE")
-        title.sizeToFit()
+        self.image.layer.cornerRadius = 8.0
+        self.image.clipsToBounds = true
+        self.contentView.layoutIfNeeded()
+        self.title.numberOfLines = 3;
+        self.title.sizeToFit()
     }
-    
 }
 
 class coverArt: NSObject{
@@ -53,8 +47,6 @@ class coverArt: NSObject{
     var author: String?
     var image: UIImage?
 
-
-    
     init(title: String, author: String, image: UIImage){
         self.title = title
         self.author = author

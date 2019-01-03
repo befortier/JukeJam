@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1688947E2E87D6FDF2AE7142 /* Pods_JukeJamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D455D8334F10A47F6CD5ED26 /* Pods_JukeJamUITests.framework */; };
+		211E5696B0C0A25EFDC520DF /* Pods_JukeJamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 781C6AA10FAB97A52E3D460E /* Pods_JukeJamTests.framework */; };
 		5705940221D2D31500F4F5CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570593F721D2D31300F4F5CB /* AppDelegate.swift */; };
 		5705940321D2D31500F4F5CB /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570593F821D2D31300F4F5CB /* HomeController.swift */; };
 		5705940421D2D31500F4F5CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 570593F921D2D31300F4F5CB /* Assets.xcassets */; };
@@ -25,12 +27,11 @@
 		5705943121D5B2CA00F4F5CB /* profileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705943021D5B2CA00F4F5CB /* profileImage.swift */; };
 		572BA0C521D2CF06008B9611 /* JukeJamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0C421D2CF06008B9611 /* JukeJamTests.swift */; };
 		572BA0D021D2CF06008B9611 /* JukeJamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0CF21D2CF06008B9611 /* JukeJamUITests.swift */; };
+		576410F721DE644C0009525B /* SeeMoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576410F621DE644C0009525B /* SeeMoreController.swift */; };
 		57A71B7B21D823DE0004FEDA /* AppleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B7A21D823DE0004FEDA /* AppleHandler.swift */; };
 		57A71B7D21D96A680004FEDA /* ScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B7C21D96A680004FEDA /* ScreenController.swift */; };
-		57A71B8121D971140004FEDA /* HomeNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B8021D971140004FEDA /* HomeNavController.swift */; };
 		57A71B8321DAC35E0004FEDA /* Home_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B8221DAC35E0004FEDA /* Home_Extensions.swift */; };
 		57A71B8521DAE7C20004FEDA /* FocalDiv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B8421DAE7C20004FEDA /* FocalDiv.swift */; };
-		57A71BCA21DD46FC0004FEDA /* ExpandingCollection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A71BC921DD46FB0004FEDA /* ExpandingCollection.framework */; };
 		57A71BCC21DD79A10004FEDA /* FocalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71BCB21DD79A10004FEDA /* FocalCell.swift */; };
 		F7B0BBAC294ECBB93D3B7F45 /* Pods_JukeJam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B060749A428D9D055ADB77FD /* Pods_JukeJam.framework */; };
 /* End PBXBuildFile section */
@@ -78,19 +79,20 @@
 		572BA0CB21D2CF06008B9611 /* JukeJamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JukeJamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		572BA0CF21D2CF06008B9611 /* JukeJamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JukeJamUITests.swift; sourceTree = "<group>"; };
 		572BA0D121D2CF06008B9611 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		576410F621DE644C0009525B /* SeeMoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeMoreController.swift; sourceTree = "<group>"; };
 		57A71B7A21D823DE0004FEDA /* AppleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleHandler.swift; sourceTree = "<group>"; };
 		57A71B7C21D96A680004FEDA /* ScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenController.swift; sourceTree = "<group>"; };
-		57A71B8021D971140004FEDA /* HomeNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavController.swift; sourceTree = "<group>"; };
 		57A71B8221DAC35E0004FEDA /* Home_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_Extensions.swift; sourceTree = "<group>"; };
 		57A71B8421DAE7C20004FEDA /* FocalDiv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocalDiv.swift; sourceTree = "<group>"; };
-		57A71BC921DD46FB0004FEDA /* ExpandingCollection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExpandingCollection.framework; path = Carthage/Build/iOS/ExpandingCollection.framework; sourceTree = "<group>"; };
 		57A71BCB21DD79A10004FEDA /* FocalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocalCell.swift; sourceTree = "<group>"; };
 		6AA4891781EEC7A5ABCDACAE /* Pods-JukeJam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam.debug.xcconfig"; sourceTree = "<group>"; };
 		720E288E7C916F27E8411B60 /* Pods-JukeJamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamUITests/Pods-JukeJamUITests.release.xcconfig"; sourceTree = "<group>"; };
+		781C6AA10FAB97A52E3D460E /* Pods_JukeJamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7990CA6EE099295B82C918CD /* Pods-JukeJamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamTests/Pods-JukeJamTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A8E9BE7F3137EB7E617FAC5C /* Pods-JukeJamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamUITests/Pods-JukeJamUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B060749A428D9D055ADB77FD /* Pods_JukeJam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5EABF6042FC9CC6A7C21E0A /* Pods-JukeJamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamTests/Pods-JukeJamTests.release.xcconfig"; sourceTree = "<group>"; };
+		D455D8334F10A47F6CD5ED26 /* Pods_JukeJamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +100,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57A71BCA21DD46FC0004FEDA /* ExpandingCollection.framework in Frameworks */,
 				F7B0BBAC294ECBB93D3B7F45 /* Pods_JukeJam.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -107,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				211E5696B0C0A25EFDC520DF /* Pods_JukeJamTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1688947E2E87D6FDF2AE7142 /* Pods_JukeJamUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,22 +176,19 @@
 		572BA0AE21D2CF05008B9611 /* JukeJam */ = {
 			isa = PBXGroup;
 			children = (
-				5705942D21D541D100F4F5CB /* Login */,
-				570593F721D2D31300F4F5CB /* AppDelegate.swift */,
 				5705942B21D5416A00F4F5CB /* Main.storyboard */,
+				570593F721D2D31300F4F5CB /* AppDelegate.swift */,
+				5705942D21D541D100F4F5CB /* Login */,
 				570593F921D2D31300F4F5CB /* Assets.xcassets */,
 				5705940D21D2D3D300F4F5CB /* Base.lproj */,
 				5705942421D4631000F4F5CB /* User.swift */,
 				572BA0BB21D2CF06008B9611 /* Info.plist */,
 				5705942221D319E300F4F5CB /* GoogleService-Info.plist */,
+				576410F521DE63B70009525B /* Home */,
 				57A71B8421DAE7C20004FEDA /* FocalDiv.swift */,
+				57A71BCB21DD79A10004FEDA /* FocalCell.swift */,
 				5705943021D5B2CA00F4F5CB /* profileImage.swift */,
 				57A71B7A21D823DE0004FEDA /* AppleHandler.swift */,
-				57A71B7C21D96A680004FEDA /* ScreenController.swift */,
-				57A71B8021D971140004FEDA /* HomeNavController.swift */,
-				570593F821D2D31300F4F5CB /* HomeController.swift */,
-				57A71B8221DAC35E0004FEDA /* Home_Extensions.swift */,
-				57A71BCB21DD79A10004FEDA /* FocalCell.swift */,
 			);
 			path = JukeJam;
 			sourceTree = "<group>";
@@ -211,11 +211,23 @@
 			path = JukeJamUITests;
 			sourceTree = "<group>";
 		};
+		576410F521DE63B70009525B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				57A71B8221DAC35E0004FEDA /* Home_Extensions.swift */,
+				57A71B7C21D96A680004FEDA /* ScreenController.swift */,
+				570593F821D2D31300F4F5CB /* HomeController.swift */,
+				576410F621DE644C0009525B /* SeeMoreController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		B99786CC9E10750F94305A57 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				57A71BC921DD46FB0004FEDA /* ExpandingCollection.framework */,
 				B060749A428D9D055ADB77FD /* Pods_JukeJam.framework */,
+				781C6AA10FAB97A52E3D460E /* Pods_JukeJamTests.framework */,
+				D455D8334F10A47F6CD5ED26 /* Pods_JukeJamUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -231,7 +243,6 @@
 				572BA0A821D2CF05008B9611 /* Sources */,
 				572BA0A921D2CF05008B9611 /* Frameworks */,
 				572BA0AA21D2CF05008B9611 /* Resources */,
-				57A71BC821DD46BF0004FEDA /* ShellScript */,
 				760063206658C8FD4ECAAE54 /* [CP] Embed Pods Frameworks */,
 				3DBEA8594DD937EE2AB7009A /* [CP] Copy Pods Resources */,
 			);
@@ -428,24 +439,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		57A71BC821DD46BF0004FEDA /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)//Carthage/Build/iOS/ExpandingCollection.framework",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
 		760063206658C8FD4ECAAE54 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -471,7 +464,6 @@
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftIconFont/SwiftIconFont.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyOnboard/SwiftyOnboard.framework",
-				"${BUILT_PRODUCTS_DIR}/expanding-collection/expanding_collection.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -495,7 +487,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftIconFont.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyOnboard.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/expanding_collection.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -535,6 +526,7 @@
 			files = (
 				57A71B8521DAE7C20004FEDA /* FocalDiv.swift in Sources */,
 				5705940321D2D31500F4F5CB /* HomeController.swift in Sources */,
+				576410F721DE644C0009525B /* SeeMoreController.swift in Sources */,
 				5705943121D5B2CA00F4F5CB /* profileImage.swift in Sources */,
 				5705940821D2D31500F4F5CB /* Login_Extension.swift in Sources */,
 				5705940C21D2D31500F4F5CB /* SignUpController.swift in Sources */,
@@ -547,7 +539,6 @@
 				5705940221D2D31500F4F5CB /* AppDelegate.swift in Sources */,
 				57A71B7D21D96A680004FEDA /* ScreenController.swift in Sources */,
 				5705942721D53DE000F4F5CB /* FbLoginHandler.swift in Sources */,
-				57A71B8121D971140004FEDA /* HomeNavController.swift in Sources */,
 				5705940921D2D31500F4F5CB /* ForgotPassword.swift in Sources */,
 				5705942F21D571A500F4F5CB /* ConfirmController.swift in Sources */,
 				57A71BCC21DD79A10004FEDA /* FocalCell.swift in Sources */,
