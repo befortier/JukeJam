@@ -4,9 +4,9 @@
 target 'JukeJam' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-pod "ESTabBarController-swift"
-pod 'MaterialComponents/Tabs'
-pod 'MaterialComponents/AppBar'
+
+  # Pods for JukeJam
+pod 'expanding-collection'
 pod 'SCLAlertView'
 pod 'NVActivityIndicatorView'
 pod 'Firebase/Auth'
@@ -20,12 +20,9 @@ pod 'FacebookLogin'
 pod 'FBSDKLoginKit'  
 pod 'GoogleSignIn'
 pod 'SwiftyOnboard'
-pod 'TransitionButton'
 pod 'FBSDKCoreKit', :git => 'https://github.com/facebook/facebook-objc-sdk.git', :branch => 'master'
 pod 'FontAwesome.swift'
 pod 'SkyFloatingLabelTextField', '~> 3.0'
-  # Pods for JukeJam
-
   target 'JukeJamTests' do
     inherit! :search_paths
     # Pods for testing

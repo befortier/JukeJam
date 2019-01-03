@@ -11,7 +11,7 @@ import UIKit
 public extension UIBarButtonItem {
     func icon(from font: Fonts, code: String, ofSize size: CGFloat){
         var textAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.icon(from: font, ofSize: size)]
-        let currentTextAttributes: [NSAttributedString.Key: Any]? = convertFromOptionalNSAttributedStringKeyDictionary(self.titleTextAttributes(for: UIControl.State())) as! [NSAttributedString.Key: Any]?
+        let currentTextAttributes: [NSAttributedString.Key: Any]? = self.titleTextAttributes(for: UIControl.State())
         
         if currentTextAttributes != nil {
             for (key, value) in currentTextAttributes! where key != .font {
@@ -24,10 +24,4 @@ public extension UIBarButtonItem {
         
         self.title = String.getIcon(from: font, code: code)
     }
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromOptionalNSAttributedStringKeyDictionary(_ input: [NSAttributedString.Key: Any]?) -> [String: Any]? {
-	guard let input = input else { return nil }
-	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
 }

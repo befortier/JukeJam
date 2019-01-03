@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-//import FacebookCore
 import FacebookLogin
 import Firebase
 import FirebaseDatabase

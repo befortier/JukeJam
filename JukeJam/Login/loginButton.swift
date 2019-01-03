@@ -1,11 +1,3 @@
-//
-//  loginButton.swift
-//  iVote
-//
-//  Created by Rena fortier on 12/24/18.
-//  Copyright © 2018 Ben Fortier. All rights reserved.
-//
-
 import UIKit
 
 class loginButton: UIButton {
