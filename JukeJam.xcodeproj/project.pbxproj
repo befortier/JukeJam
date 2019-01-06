@@ -28,6 +28,7 @@
 		572BA0D021D2CF06008B9611 /* JukeJamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0CF21D2CF06008B9611 /* JukeJamUITests.swift */; };
 		576410F721DE644C0009525B /* SeeMoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576410F621DE644C0009525B /* SeeMoreController.swift */; };
 		576410F921E16FD60009525B /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576410F821E16FD50009525B /* HomeController.swift */; };
+		576410FB21E2A47F0009525B /* FocalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576410FA21E2A47F0009525B /* FocalButton.swift */; };
 		57A71B7B21D823DE0004FEDA /* AppleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B7A21D823DE0004FEDA /* AppleHandler.swift */; };
 		57A71B7D21D96A680004FEDA /* ScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B7C21D96A680004FEDA /* ScreenController.swift */; };
 		57A71B8321DAC35E0004FEDA /* Home_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B8221DAC35E0004FEDA /* Home_Extensions.swift */; };
@@ -80,6 +81,7 @@
 		572BA0D121D2CF06008B9611 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		576410F621DE644C0009525B /* SeeMoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeMoreController.swift; sourceTree = "<group>"; };
 		576410F821E16FD50009525B /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeController.swift; path = ../../../../../../Documents/HomeController.swift; sourceTree = "<group>"; };
+		576410FA21E2A47F0009525B /* FocalButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocalButton.swift; sourceTree = "<group>"; };
 		57A71B7A21D823DE0004FEDA /* AppleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleHandler.swift; sourceTree = "<group>"; };
 		57A71B7C21D96A680004FEDA /* ScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenController.swift; sourceTree = "<group>"; };
 		57A71B8221DAC35E0004FEDA /* Home_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_Extensions.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				57A71BCB21DD79A10004FEDA /* FocalCell.swift */,
 				5705943021D5B2CA00F4F5CB /* profileImage.swift */,
 				57A71B7A21D823DE0004FEDA /* AppleHandler.swift */,
+				576410FA21E2A47F0009525B /* FocalButton.swift */,
 			);
 			path = JukeJam;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				5705942721D53DE000F4F5CB /* FbLoginHandler.swift in Sources */,
 				5705940921D2D31500F4F5CB /* ForgotPassword.swift in Sources */,
 				5705942F21D571A500F4F5CB /* ConfirmController.swift in Sources */,
+				576410FB21E2A47F0009525B /* FocalButton.swift in Sources */,
 				576410F921E16FD60009525B /* HomeController.swift in Sources */,
 				57A71BCC21DD79A10004FEDA /* FocalCell.swift in Sources */,
 			);
