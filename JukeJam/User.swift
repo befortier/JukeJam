@@ -136,3 +136,23 @@ extension UIViewController {
         return curUser!
     }
 }
+
+extension UIColor {
+
+    func petal() -> UIColor{
+        return UIColor(red:0.98, green:0.53, blue:0.40, alpha:1.0)
+    }
+    
+    func poppy() -> UIColor{
+        return UIColor(red:1.00, green:0.26, blue:0.05, alpha:1.0)
+    }
+    
+    func stem() -> UIColor{
+        return UIColor(red:0.50, green:0.74, blue:0.62, alpha:1.0)
+    }
+    
+    func springGreen() -> UIColor{
+        return UIColor(red:0.54, green:0.85, blue:0.35, alpha:1.0)
+    }
+    
+}

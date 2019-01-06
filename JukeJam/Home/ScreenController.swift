@@ -23,10 +23,10 @@ class ScreenController: UITabBarController {
         firstTab.title = "Home"
         firstTab.image = UIImage(named: "home")
         firstTab.selectedImage = UIImage(named: "home_1")
-//        let secondTab : UITabBarItem = self.TabBar.items![1]
-//        secondTab.title = "Search"
-//        secondTab.image = UIImage(named: "find")
-//        secondTab.selectedImage = UIImage(named: "find_1")
+        let secondTab : UITabBarItem = self.TabBar.items![1]
+        secondTab.title = "Search"
+        secondTab.image = UIImage(named: "find")
+        secondTab.selectedImage = UIImage(named: "find_1")
     }
     
 

@@ -10,7 +10,6 @@
 		1688947E2E87D6FDF2AE7142 /* Pods_JukeJamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D455D8334F10A47F6CD5ED26 /* Pods_JukeJamUITests.framework */; };
 		211E5696B0C0A25EFDC520DF /* Pods_JukeJamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 781C6AA10FAB97A52E3D460E /* Pods_JukeJamTests.framework */; };
 		5705940221D2D31500F4F5CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570593F721D2D31300F4F5CB /* AppDelegate.swift */; };
-		5705940321D2D31500F4F5CB /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570593F821D2D31300F4F5CB /* HomeController.swift */; };
 		5705940421D2D31500F4F5CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 570593F921D2D31300F4F5CB /* Assets.xcassets */; };
 		5705940521D2D31500F4F5CB /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570593FA21D2D31300F4F5CB /* LoginController.swift */; };
 		5705940621D2D31500F4F5CB /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570593FB21D2D31400F4F5CB /* WelcomeController.swift */; };
@@ -28,6 +27,7 @@
 		572BA0C521D2CF06008B9611 /* JukeJamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0C421D2CF06008B9611 /* JukeJamTests.swift */; };
 		572BA0D021D2CF06008B9611 /* JukeJamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0CF21D2CF06008B9611 /* JukeJamUITests.swift */; };
 		576410F721DE644C0009525B /* SeeMoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576410F621DE644C0009525B /* SeeMoreController.swift */; };
+		576410F921E16FD60009525B /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576410F821E16FD50009525B /* HomeController.swift */; };
 		57A71B7B21D823DE0004FEDA /* AppleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B7A21D823DE0004FEDA /* AppleHandler.swift */; };
 		57A71B7D21D96A680004FEDA /* ScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B7C21D96A680004FEDA /* ScreenController.swift */; };
 		57A71B8321DAC35E0004FEDA /* Home_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B8221DAC35E0004FEDA /* Home_Extensions.swift */; };
@@ -56,7 +56,6 @@
 /* Begin PBXFileReference section */
 		1F89F9376A6EB4645C9BEA2A /* Pods-JukeJam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJam.release.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam.release.xcconfig"; sourceTree = "<group>"; };
 		570593F721D2D31300F4F5CB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		570593F821D2D31300F4F5CB /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		570593F921D2D31300F4F5CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		570593FA21D2D31300F4F5CB /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		570593FB21D2D31400F4F5CB /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
@@ -80,6 +79,7 @@
 		572BA0CF21D2CF06008B9611 /* JukeJamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JukeJamUITests.swift; sourceTree = "<group>"; };
 		572BA0D121D2CF06008B9611 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		576410F621DE644C0009525B /* SeeMoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeMoreController.swift; sourceTree = "<group>"; };
+		576410F821E16FD50009525B /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeController.swift; path = ../../../../../../Documents/HomeController.swift; sourceTree = "<group>"; };
 		57A71B7A21D823DE0004FEDA /* AppleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleHandler.swift; sourceTree = "<group>"; };
 		57A71B7C21D96A680004FEDA /* ScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenController.swift; sourceTree = "<group>"; };
 		57A71B8221DAC35E0004FEDA /* Home_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_Extensions.swift; sourceTree = "<group>"; };
@@ -216,7 +216,7 @@
 			children = (
 				57A71B8221DAC35E0004FEDA /* Home_Extensions.swift */,
 				57A71B7C21D96A680004FEDA /* ScreenController.swift */,
-				570593F821D2D31300F4F5CB /* HomeController.swift */,
+				576410F821E16FD50009525B /* HomeController.swift */,
 				576410F621DE644C0009525B /* SeeMoreController.swift */,
 			);
 			path = Home;
@@ -525,7 +525,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				57A71B8521DAE7C20004FEDA /* FocalDiv.swift in Sources */,
-				5705940321D2D31500F4F5CB /* HomeController.swift in Sources */,
 				576410F721DE644C0009525B /* SeeMoreController.swift in Sources */,
 				5705943121D5B2CA00F4F5CB /* profileImage.swift in Sources */,
 				5705940821D2D31500F4F5CB /* Login_Extension.swift in Sources */,
@@ -541,6 +540,7 @@
 				5705942721D53DE000F4F5CB /* FbLoginHandler.swift in Sources */,
 				5705940921D2D31500F4F5CB /* ForgotPassword.swift in Sources */,
 				5705942F21D571A500F4F5CB /* ConfirmController.swift in Sources */,
+				576410F921E16FD60009525B /* HomeController.swift in Sources */,
 				57A71BCC21DD79A10004FEDA /* FocalCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

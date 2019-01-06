@@ -25,8 +25,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         checkAuth()
+        var nav = UINavigationBar.appearance()
+        let font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.heavy)
+        let stem = UIColor(red:0.54, green:0.85, blue:0.35, alpha:1.0)
+        let leaf = UIColor(red:0.50, green:0.74, blue:0.62, alpha:1.0)
+        nav.tintColor = UIColor.white
+        nav.barTintColor = leaf
+        nav.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white,  NSAttributedString.Key.font: font]
+//        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+//        statusBar.backgroundColor = leaf
+//        statusBar.tintColor = UIColor.white
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+        UINavigationBar.appearance().barStyle = .blackOpaque
+
+
         return true
     }
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        return .lightContent
+//    }
     
     //Checks if UserDefault has any saved log in from user
     func checkAuth(){
