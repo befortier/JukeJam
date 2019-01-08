@@ -11,7 +11,7 @@ import SkyFloatingLabelTextField
 import Firebase
 
 
-class ForgotPassword: UIViewController {
+class ForgotPassword: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var email: SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var button: loginButton!
@@ -22,10 +22,20 @@ class ForgotPassword: UIViewController {
         super.viewDidLoad()
         self.customizeTextInput()
         self.customizeView()
+        email.delegate = self
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
+        textField.resignFirstResponder()
+        return true
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    @objc func dismissKeyboard (_ sender: Any) {
+        self.email.resignFirstResponder()
     }
     
     func customizeView(){
@@ -46,6 +56,7 @@ class ForgotPassword: UIViewController {
   
 //   Calls Firebase's password recovery and brings users back to login page
     @IBAction func recoverMe(_ sender: UIButton) {
+        self.email.resignFirstResponder()
         var email: String = "";
         
         if self.email.text != nil{

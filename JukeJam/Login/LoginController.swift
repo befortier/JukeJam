@@ -19,7 +19,7 @@ import FBSDKLoginKit
 
 
 
-class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicatorViewable {
+class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicatorViewable, UITextFieldDelegate {
     @IBOutlet var wholeView: UIView!
     @IBOutlet weak var googleLabel: UILabel!
     @IBOutlet weak var facebookLogo: UIImageView!
@@ -39,6 +39,8 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance().uiDelegate = self
+        email.delegate = self
+        password.delegate = self
         self.navigationItem.title = "Sign In"
         self.initActivity(thisSelf: self)
         self.addBackground()
@@ -48,7 +50,13 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
         self.addEvents()
         NotificationCenter.default.addObserver(self, selector: #selector(trigger(_:)), name: .startAnime, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(stop(_:)), name: .endAnime, object: nil)
+        
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
+        textField.resignFirstResponder()
+        return true
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -81,6 +89,12 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
         self.facebookButton.addGestureRecognizer(gesture2)
         let gesture3 = UITapGestureRecognizer(target: self, action:  #selector(self.loginGoogle(_:)))
         self.googleButton.addGestureRecognizer(gesture3)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+   @objc func dismissKeyboard (_ sender: Any) {
+        self.email.resignFirstResponder()
+        self.password.resignFirstResponder()
     }
     //Customizes white view
     func customizeView(){
@@ -122,6 +136,8 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
 
     //Deals with emailAuth/login
     @objc func loginEmail(_ sender: UITapGestureRecognizer) {
+        self.email.resignFirstResponder()
+        self.password.resignFirstResponder()
         var email: String = "";
         var password: String = "";
 

@@ -13,7 +13,7 @@ import FirebaseDatabase
 import GSMessages
 import NVActivityIndicatorView
 
-class SignUpController: UIViewController, NVActivityIndicatorViewable {
+class SignUpController: UIViewController, NVActivityIndicatorViewable, UITextFieldDelegate {
     @IBOutlet weak var whiteView: UIView!
     @IBOutlet weak var confirmPassword: SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var password: SkyFloatingLabelTextFieldWithIcon!
@@ -32,14 +32,36 @@ class SignUpController: UIViewController, NVActivityIndicatorViewable {
         self.navigationItem.title = "Sign Up"
         self.customizeTextInput()
         self.customizeView()
+        email.delegate = self
+        password.delegate = self
+        username.delegate = self
+        confirmPassword.delegate = self
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
     }
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {   
+        textField.resignFirstResponder()
+        return true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @objc func dismissKeyboard (_ sender: Any) {
+        self.email.resignFirstResponder()
+        self.password.resignFirstResponder()
+        self.confirmPassword.resignFirstResponder()
+        self.username.resignFirstResponder()
+    }
+    
 //    Does prelimary checking to make sure info is validated, then calls Firebases createUser
     @IBAction func registerAccount(_ sender: UIButton) {
+        self.email.resignFirstResponder()
+        self.password.resignFirstResponder()
+        self.confirmPassword.resignFirstResponder()
+        self.username.resignFirstResponder()
         if !checkFilled() {
             return
         }
@@ -172,8 +194,6 @@ class SignUpController: UIViewController, NVActivityIndicatorViewable {
 extension String {
 //    Used to check if password is valid with symbols, caps, and number
     func isValidPassword() -> Bool {
-        //let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[ !\"\\\\#$%&'()*+,-./:;<=>?@\\[\\]^_`{|}~])[A-Za-z\\d !\"\\\\#$%&'()*+,-./:;<=>?@\\[\\]^_`{|}~]{8,}"
-        //safe to escape all regex chars
         let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[ !\"\\\\#$%&'\\(\\)\\*+,\\-\\./:;<=>?@\\[\\]^_`\\{|\\}~])[A-Za-z\\d !\"\\\\#$%&'\\(\\)\\*+,\\-\\./:;<=>?@\\[\\]^_`\\{|\\}~]{7,}"
         return NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: self)
     }
