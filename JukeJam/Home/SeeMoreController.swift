@@ -43,7 +43,7 @@ class SeeMoreController: UIViewController {
 extension SeeMoreController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FocalCell", for: indexPath) as! FocalCell
-        cell.coverArt = Info[indexPath.item] as! coverArt
+        cell.coverArt = (Info[indexPath.item] as! coverArt)
         print(cell)
         return cell
     }

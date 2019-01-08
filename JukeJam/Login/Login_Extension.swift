@@ -14,7 +14,7 @@ extension UIViewController {
         if home{
             if let TabBar: ScreenController? = storyboard?.instantiateViewController(withIdentifier: "ScreenController") as? ScreenController {
                 print("navigationController = \(self)")
-                print("tabbar = \(TabBar)")
+                print("tabbar = \(String(describing: TabBar))")
                 self.show((TabBar)!, sender: nil)
             }
         }

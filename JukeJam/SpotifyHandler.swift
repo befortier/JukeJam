@@ -59,24 +59,35 @@ class SpotifyHandler: UIViewController,  SPTSessionManagerDelegate, SPTAppRemote
             sessionManager.initiateSession(with: scope, options: .clientOnly)
         }
     }
-    func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
-        <#code#>
-    }
-    
-    func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
-        <#code#>
-    }
-    
-    func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
-        <#code#>
-    }
-    
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
-        <#code#>
+        print("here")
+        self.appRemote.connectionParameters.accessToken = session.accessToken
+        self.appRemote.connect()
     }
-    
     func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
-        <#code#>
+        print("fail", error)
     }
+    func sessionManager(manager: SPTSessionManager, didRenew session: SPTSession) {
+        print("renewed", session)
+    }
+    func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
+        print("CONNECTED")
+        self.appRemote.playerAPI?.delegate = self
+        self.appRemote.playerAPI?.subscribe(toPlayerState: { (result, error) in
+            if let error = error {
+                debugPrint(error.localizedDescription)
+            }
+        })    }
+    func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
+        print("disconnected")
+    }
+    func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
+        print("failed")
+    }
+    func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
+        debugPrint("Track name: %@", playerState.track.name)
+    }
+
+    
     
 }

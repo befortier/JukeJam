@@ -37,6 +37,8 @@
 		57A71B8321DAC35E0004FEDA /* Home_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B8221DAC35E0004FEDA /* Home_Extensions.swift */; };
 		57A71B8521DAE7C20004FEDA /* FocalDiv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B8421DAE7C20004FEDA /* FocalDiv.swift */; };
 		57A71BCC21DD79A10004FEDA /* FocalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71BCB21DD79A10004FEDA /* FocalCell.swift */; };
+		6B6BCD4516FF3F8FA292E5DB /* Pods_JukeJamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB458E4125379C34B6C95A3 /* Pods_JukeJamTests.framework */; };
+		97F19372944A5903290C67FF /* Pods_JukeJamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0B5904DADC1DF77B26CDA88 /* Pods_JukeJamUITests.framework */; };
 		F7B0BBAC294ECBB93D3B7F45 /* Pods_JukeJam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B060749A428D9D055ADB77FD /* Pods_JukeJam.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		1F89F9376A6EB4645C9BEA2A /* Pods-JukeJam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJam.release.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJam/Pods-JukeJam.release.xcconfig"; sourceTree = "<group>"; };
+		2DB458E4125379C34B6C95A3 /* Pods_JukeJamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		570593F721D2D31300F4F5CB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		570593F921D2D31300F4F5CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		570593FA21D2D31300F4F5CB /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -102,6 +105,7 @@
 		A8E9BE7F3137EB7E617FAC5C /* Pods-JukeJamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamUITests/Pods-JukeJamUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B060749A428D9D055ADB77FD /* Pods_JukeJam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5EABF6042FC9CC6A7C21E0A /* Pods-JukeJamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamTests/Pods-JukeJamTests.release.xcconfig"; sourceTree = "<group>"; };
+		D0B5904DADC1DF77B26CDA88 /* Pods_JukeJamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B6BCD4516FF3F8FA292E5DB /* Pods_JukeJamTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97F19372944A5903290C67FF /* Pods_JukeJamUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +255,8 @@
 			children = (
 				B060749A428D9D055ADB77FD /* Pods_JukeJam.framework */,
 				57061FF921E3CEC8009869BE /* SpotifyiOS.framework */,
+				2DB458E4125379C34B6C95A3 /* Pods_JukeJamTests.framework */,
+				D0B5904DADC1DF77B26CDA88 /* Pods_JukeJamUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -483,6 +491,7 @@
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/SpotifyLogin/SpotifyLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftIconFont/SwiftIconFont.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyOnboard/SwiftyOnboard.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -506,6 +515,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SpotifyLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftIconFont.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyOnboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
