@@ -28,10 +28,10 @@
 		5706200821E66D23009869BE /* MusicPlayingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5706200721E66D23009869BE /* MusicPlayingController.swift */; };
 		5706201721E7B76D009869BE /* MusicBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5706201621E7B76D009869BE /* MusicBar.swift */; };
 		5706201921E7BA8F009869BE /* MusicBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5706201821E7BA8F009869BE /* MusicBar.xib */; };
+		570CB7D821E7DD55009DCA6D /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570CB7D721E7DD55009DCA6D /* HomeController.swift */; };
 		572BA0C521D2CF06008B9611 /* JukeJamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0C421D2CF06008B9611 /* JukeJamTests.swift */; };
 		572BA0D021D2CF06008B9611 /* JukeJamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0CF21D2CF06008B9611 /* JukeJamUITests.swift */; };
 		576410F721DE644C0009525B /* SeeMoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576410F621DE644C0009525B /* SeeMoreController.swift */; };
-		576410F921E16FD60009525B /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576410F821E16FD50009525B /* HomeController.swift */; };
 		576410FB21E2A47F0009525B /* FocalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576410FA21E2A47F0009525B /* FocalButton.swift */; };
 		5764110321E2DF4C0009525B /* MyMusicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764110221E2DF4C0009525B /* MyMusicController.swift */; };
 		5764110521E3C5450009525B /* SpotifyTester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764110421E3C5450009525B /* SpotifyTester.swift */; };
@@ -84,6 +84,7 @@
 		5706200721E66D23009869BE /* MusicPlayingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayingController.swift; sourceTree = "<group>"; };
 		5706201621E7B76D009869BE /* MusicBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicBar.swift; sourceTree = "<group>"; };
 		5706201821E7BA8F009869BE /* MusicBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicBar.xib; sourceTree = "<group>"; };
+		570CB7D721E7DD55009DCA6D /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		572BA0AC21D2CF05008B9611 /* JukeJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JukeJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		572BA0C021D2CF06008B9611 /* JukeJamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JukeJamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		572BA0C421D2CF06008B9611 /* JukeJamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JukeJamTests.swift; sourceTree = "<group>"; };
@@ -92,7 +93,6 @@
 		572BA0CF21D2CF06008B9611 /* JukeJamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JukeJamUITests.swift; sourceTree = "<group>"; };
 		572BA0D121D2CF06008B9611 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		576410F621DE644C0009525B /* SeeMoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeMoreController.swift; sourceTree = "<group>"; };
-		576410F821E16FD50009525B /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeController.swift; path = ../../../../../../Documents/HomeController.swift; sourceTree = "<group>"; };
 		576410FA21E2A47F0009525B /* FocalButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocalButton.swift; sourceTree = "<group>"; };
 		576410FF21E2A7E30009525B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5764110221E2DF4C0009525B /* MyMusicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMusicController.swift; sourceTree = "<group>"; };
@@ -243,7 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				57A71B8221DAC35E0004FEDA /* Home_Extensions.swift */,
-				576410F821E16FD50009525B /* HomeController.swift */,
+				570CB7D721E7DD55009DCA6D /* HomeController.swift */,
 				576410F621DE644C0009525B /* SeeMoreController.swift */,
 				5764110221E2DF4C0009525B /* MyMusicController.swift */,
 			);
@@ -569,6 +569,7 @@
 				5705943121D5B2CA00F4F5CB /* profileImage.swift in Sources */,
 				5705940821D2D31500F4F5CB /* Login_Extension.swift in Sources */,
 				5705940C21D2D31500F4F5CB /* SignUpController.swift in Sources */,
+				570CB7D821E7DD55009DCA6D /* HomeController.swift in Sources */,
 				5705940521D2D31500F4F5CB /* LoginController.swift in Sources */,
 				57A71B8321DAC35E0004FEDA /* Home_Extensions.swift in Sources */,
 				5705940621D2D31500F4F5CB /* WelcomeController.swift in Sources */,
@@ -586,7 +587,6 @@
 				5705940921D2D31500F4F5CB /* ForgotPassword.swift in Sources */,
 				5705942F21D571A500F4F5CB /* ConfirmController.swift in Sources */,
 				576410FB21E2A47F0009525B /* FocalButton.swift in Sources */,
-				576410F921E16FD60009525B /* HomeController.swift in Sources */,
 				57A71BCC21DD79A10004FEDA /* FocalCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
