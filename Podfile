@@ -6,14 +6,13 @@ target 'JukeJam' do
   use_frameworks!
 
   # Pods for JukeJam
-pod 'SpotifyLogin', '~> 0.1'
 pod 'SCLAlertView'
 pod 'NVActivityIndicatorView'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
 pod "GSMessages"
 pod 'SwiftIconFont'
-pod 'LGButton'
+pod 'ShadowView'
 pod 'Firebase/Core'
 pod 'FacebookCore'
 pod 'FacebookLogin'

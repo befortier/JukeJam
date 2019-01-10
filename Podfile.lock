@@ -13,9 +13,9 @@ PODS:
     - FacebookCore (~> 0.5)
     - FBSDKCoreKit (~> 4.37)
     - FBSDKLoginKit (~> 4.37)
-  - FBSDKCoreKit (4.39.0):
+  - FBSDKCoreKit (4.39.1):
     - Bolts (~> 1.9)
-  - FBSDKLoginKit (4.39.0):
+  - FBSDKLoginKit (4.39.1):
     - FBSDKCoreKit
   - Firebase/Auth (5.15.0):
     - Firebase/CoreOnly
@@ -93,7 +93,6 @@ PODS:
   - GSMessages (1.7.1)
   - GTMSessionFetcher/Core (1.2.1)
   - leveldb-library (1.20)
-  - LGButton (1.1.1)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -103,8 +102,8 @@ PODS:
     - NVActivityIndicatorView/Presenter (= 4.5.1)
   - NVActivityIndicatorView/Presenter (4.5.1)
   - SCLAlertView (0.8)
+  - ShadowView (1.3)
   - SkyFloatingLabelTextField (3.6.0)
-  - SpotifyLogin (0.1.6)
   - SwiftIconFont (3.0.0)
   - SwiftyOnboard (1.3.8)
 
@@ -119,11 +118,10 @@ DEPENDENCIES:
   - FontAwesome.swift
   - GoogleSignIn
   - GSMessages
-  - LGButton
   - NVActivityIndicatorView
   - SCLAlertView
+  - ShadowView
   - SkyFloatingLabelTextField (~> 3.0)
-  - SpotifyLogin (~> 0.1)
   - SwiftIconFont
   - SwiftyOnboard
 
@@ -148,12 +146,11 @@ SPEC REPOS:
     - GSMessages
     - GTMSessionFetcher
     - leveldb-library
-    - LGButton
     - nanopb
     - NVActivityIndicatorView
     - SCLAlertView
+    - ShadowView
     - SkyFloatingLabelTextField
-    - SpotifyLogin
     - SwiftIconFont
     - SwiftyOnboard
 
@@ -164,15 +161,15 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FBSDKCoreKit:
-    :commit: d0d279a99258aad849ccd3ad0466ff38ca9175e8
+    :commit: dad3475aff3c21061a77aed20a31f4b7a1885ec0
     :git: https://github.com/facebook/facebook-objc-sdk.git
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
   FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
-  FBSDKCoreKit: 5aa4a666fe80c12621fb8d6214bfdbd18d3b5a88
-  FBSDKLoginKit: 30ba5039a2c53d65a75103889bc2deebdacd5a1f
+  FBSDKCoreKit: f442aa96179cc9b382bb4abeb7e340a47cca8f91
+  FBSDKLoginKit: c3079d9a4db27c492287b1eed7a4272b28cf8a59
   Firebase: 8bb9268bff82374f2cbaaabb143e725743c316ae
   FirebaseAnalytics: c06f9d70577d79074214700a71fd5d39de5550fb
   FirebaseAuth: 02e969ff430e156d99d4cb842d77b806b71ad7bb
@@ -188,15 +185,14 @@ SPEC CHECKSUMS:
   GSMessages: 561f35bac97ae35e6252252a4259fb2c9badea1a
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
-  LGButton: e6ce060e89ffbf9c72fd30139c14865b205f836c
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NVActivityIndicatorView: ec34a7b88c51fab270004a1a1f32116e711010cd
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
+  ShadowView: 80c923f88fe2e6602066aa535f46621f0f6471d1
   SkyFloatingLabelTextField: 38164979b79512f9ff9288ad8acfc4bbf5d843e3
-  SpotifyLogin: 9cdf82ff13e5f37e5ddc7fd07cf9793a9ebd1124
   SwiftIconFont: 2ba18554a77c44948dc35b561b344e3c23834a84
   SwiftyOnboard: de60e90c2af23dd61b01ec0c6a8d0be3370f857b
 
-PODFILE CHECKSUM: 1975e620aa8ec8f8b28cafd99a889b295639dd24
+PODFILE CHECKSUM: c47d123ce6a60a763c511a23d30f69e82b38653b
 
 COCOAPODS: 1.5.3

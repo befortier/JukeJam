@@ -804,16 +804,16 @@
             <objects>
                 <viewController id="Cn6-wL-YG0" customClass="HomeController" customModule="JukeJam" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cHG-Cy-ZPA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1550"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view alpha="0.40000000000000002" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S9v-gX-f2R">
-                                <rect key="frame" x="-4" y="56" width="383" height="1195"/>
+                                <rect key="frame" x="-4" y="56" width="383" height="1445"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.53333333329999999" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMc-sC-tqE">
-                                <rect key="frame" x="0.0" y="64" width="375" height="1187"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="1437"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3C-Gs-AwL" userLabel="Create Jam" customClass="FocalButton" customModule="JukeJam" customModuleProvider="target">
                                         <rect key="frame" x="23" y="21" width="138" height="132"/>
@@ -1284,7 +1284,7 @@
                         <viewLayoutGuide key="safeArea" id="VRR-HP-U1U"/>
                     </view>
                     <navigationItem key="navigationItem" title="Jams" id="byL-lh-xYp"/>
-                    <size key="freeformSize" width="375" height="1300"/>
+                    <size key="freeformSize" width="375" height="1550"/>
                     <connections>
                         <outlet property="featuredJams" destination="ocZ-3i-Po5" id="nWQ-6q-uom"/>
                         <outlet property="friendsJams" destination="KLC-Yc-gv2" id="0LC-kU-Iaz"/>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ShadowView
 
 class MusicBar: UIView {
     @IBOutlet weak var cover: UIImageView!
@@ -14,7 +15,8 @@ class MusicBar: UIView {
     @IBOutlet weak var state: UIImageView!
     @IBOutlet weak var nextSong: UIImageView!
     @IBOutlet var containerView: UIView!
-    
+    let exampleShadowContainerView = ShadowView()
+
     var coverImage: UIImage? {
         didSet {
             cover.image = coverImage
@@ -36,6 +38,7 @@ class MusicBar: UIView {
         }
     }
     
+    
     override init(frame: CGRect){
         super.init(frame:frame)
         commonInit()
@@ -51,13 +54,16 @@ class MusicBar: UIView {
 
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.borderWidth = 0.3
-        self.layer.shadowColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0).cgColor
+        self.layer.shadowColor = UIColor.lightGray.cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: -1.75)
         self.layer.shadowRadius = 1.7
         self.layer.shadowOpacity = 0.45
-//        self.backgroundColor = UIColor.init(red: 241/255, green: 241/255, blue: 241/255, alpha: 1)
-        self.backgroundColor = UIColor.black
         self.nextSongImage = UIImage(named: "nextsong")
+        self.cover.layer.cornerRadius = 8.0
+        self.cover.clipsToBounds = true
+
+
+
     }
     private func commonInit(){
         let name = String(describing: type(of: self))

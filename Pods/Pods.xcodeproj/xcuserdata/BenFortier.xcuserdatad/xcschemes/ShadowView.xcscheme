@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "019E2A1F1E3837DD3BD9DEF8FFF0F37A"
-               BlueprintName = "SkyFloatingLabelTextField"
+               BlueprintIdentifier = "9A6F94B0FDE4F98A242D637A8FD71116"
+               BlueprintName = "ShadowView"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "SkyFloatingLabelTextField.framework">
+               BuildableName = "ShadowView.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
