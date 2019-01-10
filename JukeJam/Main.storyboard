@@ -893,7 +893,7 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D0F-DR-L7D">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="224.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="224"/>
                                                                     <subviews>
                                                                         <view alpha="0.25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S4O-47-PU1">
                                                                             <rect key="frame" x="3" y="147" width="124" height="1"/>
@@ -915,7 +915,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwf-eC-AaE">
-                                                                            <rect key="frame" x="0.0" y="150" width="130" height="74.5"/>
+                                                                            <rect key="frame" x="0.0" y="150" width="130" height="74"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -1437,9 +1437,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFC-9e-nhP">
                                 <rect key="frame" x="164" y="318" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="test:" destination="sGq-3e-u4l" eventType="touchUpInside" id="r7t-oT-9OF"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1457,6 +1454,38 @@
             </objects>
             <point key="canvasLocation" x="1613" y="4018"/>
         </scene>
+        <!--Music Playing Controller-->
+        <scene sceneID="el7-PS-ua3">
+            <objects>
+                <viewController storyboardIdentifier="MusicPlayingController" id="JiW-Ps-FwB" customClass="MusicPlayingController" customModule="JukeJam" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xbe-JU-LDp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vrh-Sm-lr6">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="fRK-bM-JWp" kind="embed" identifier="BeginSegue" id="wup-kD-lXA"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7eE-a9-WiC" firstAttribute="trailing" secondItem="Vrh-Sm-lr6" secondAttribute="trailing" id="0Mj-bj-zyc"/>
+                            <constraint firstItem="Vrh-Sm-lr6" firstAttribute="top" secondItem="Xbe-JU-LDp" secondAttribute="top" id="CHm-mX-PZA"/>
+                            <constraint firstItem="Vrh-Sm-lr6" firstAttribute="leading" secondItem="7eE-a9-WiC" secondAttribute="leading" id="Rjg-jh-hD1"/>
+                            <constraint firstItem="7eE-a9-WiC" firstAttribute="bottom" secondItem="Vrh-Sm-lr6" secondAttribute="bottom" id="vhG-1p-9cg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7eE-a9-WiC"/>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="Vrh-Sm-lr6" id="HFC-gk-S08"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1yh-o6-R6V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1274" y="2518"/>
+        </scene>
         <!--Screen Controller-->
         <scene sceneID="E2N-Ed-Ijq">
             <objects>
@@ -1466,7 +1495,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="selectedImageTintColor" red="0.50196078430000002" green="0.74117647060000003" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>

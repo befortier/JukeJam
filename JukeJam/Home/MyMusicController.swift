@@ -5,7 +5,7 @@ import MediaPlayer
 import FirebaseAuth
 import SCLAlertView
 
-class MyMusicController: UIViewController, UICollectionViewDelegate{
+class MyMusicController: MusicPlayingController, UICollectionViewDelegate{
     
     @IBOutlet weak var playlists: UICollectionView!
     @IBOutlet  var songs: UICollectionView!

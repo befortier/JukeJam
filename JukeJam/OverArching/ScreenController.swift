@@ -11,11 +11,12 @@ import UIKit
 
 class ScreenController: UITabBarController {
     @IBOutlet weak var TabBar: UITabBar!
-    
+    var MusicController: MusicPlayingController?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initBar()
-        // Do any additional setup after loading the view.
+
     }
 
     func initBar(){
@@ -29,7 +30,9 @@ class ScreenController: UITabBarController {
         secondTab.selectedImage = UIImage(named: "find_1")
     }
     
-
+    func test(){
+        print("HERE testing")
+    }
 
 
 }

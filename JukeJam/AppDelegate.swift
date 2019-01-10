@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTSes
   
     var window: UIWindow?
 
-    lazy var rootViewController = SpotifyTester()
+//    lazy var rootViewController = SpotifyTester()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
@@ -55,8 +55,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTSes
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         UINavigationBar.appearance().barStyle = .blackOpaque
         checkAuth()
-        let requestedScopes: SPTScope = [.appRemoteControl]
-        self.sessionManager.initiateSession(with: requestedScopes, options: .default)
+//        let requestedScopes: SPTScope = [.appRemoteControl]
+//        self.sessionManager.initiateSession(with: requestedScopes, options: .default)
         return true
     }
 
@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTSes
             curUser = (NSKeyedUnarchiver.unarchiveObject(with: user as Data) as? User)!
         }
         if is_authenticated != nil && curUser != nil{
-            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ScreenController") as? ScreenController
+            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MusicPlayingController") as? MusicPlayingController
             {
                 window?.rootViewController = vc
                 window?.makeKeyAndVisible()
@@ -146,6 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTSes
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
         if self.appRemote.isConnected {
+            print("HERE disconnecting")
             self.appRemote.disconnect()
         }
     }
@@ -162,6 +163,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTSes
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         if let _ = self.appRemote.connectionParameters.accessToken {
+            print("HERE connecting")
+
             self.appRemote.connect()
         }
     }

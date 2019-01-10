@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SeeMoreController: UIViewController {
+class SeeMoreController: MusicPlayingController {
     @IBOutlet weak var CollectionView: UICollectionView!
     var Info: [Any?] = []
     var myTitle = String()
