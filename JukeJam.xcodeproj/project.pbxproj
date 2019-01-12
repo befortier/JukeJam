@@ -32,7 +32,6 @@
 		570CB7E121E94A24009DCA6D /* ConnectionStatusIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570CB7DB21E94A21009DCA6D /* ConnectionStatusIndicatorView.swift */; };
 		570CB7E221E94A24009DCA6D /* PlaybackButtonGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570CB7DC21E94A21009DCA6D /* PlaybackButtonGraphics.swift */; };
 		570CB7E321E94A24009DCA6D /* SpeedPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570CB7DD21E94A22009DCA6D /* SpeedPickerViewController.swift */; };
-		570CB7E421E94A24009DCA6D /* ContentItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570CB7DE21E94A22009DCA6D /* ContentItemCell.swift */; };
 		570CB7E521E94A24009DCA6D /* My-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570CB7DF21E94A23009DCA6D /* My-Extensions.swift */; };
 		570CB7E621E94A24009DCA6D /* ContentCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570CB7E021E94A23009DCA6D /* ContentCollectionViewController.swift */; };
 		570CB7E821E953B7009DCA6D /* SongController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570CB7E721E953B7009DCA6D /* SongController.swift */; };
@@ -98,7 +97,6 @@
 		570CB7DB21E94A21009DCA6D /* ConnectionStatusIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionStatusIndicatorView.swift; sourceTree = "<group>"; };
 		570CB7DC21E94A21009DCA6D /* PlaybackButtonGraphics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackButtonGraphics.swift; sourceTree = "<group>"; };
 		570CB7DD21E94A22009DCA6D /* SpeedPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedPickerViewController.swift; sourceTree = "<group>"; };
-		570CB7DE21E94A22009DCA6D /* ContentItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentItemCell.swift; sourceTree = "<group>"; };
 		570CB7DF21E94A23009DCA6D /* My-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "My-Extensions.swift"; sourceTree = "<group>"; };
 		570CB7E021E94A23009DCA6D /* ContentCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewController.swift; sourceTree = "<group>"; };
 		570CB7E721E953B7009DCA6D /* SongController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongController.swift; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 				5764110421E3C5450009525B /* SpotifyHandler.swift */,
 				570CB7DB21E94A21009DCA6D /* ConnectionStatusIndicatorView.swift */,
 				570CB7E021E94A23009DCA6D /* ContentCollectionViewController.swift */,
-				570CB7DE21E94A22009DCA6D /* ContentItemCell.swift */,
 				570CB7DF21E94A23009DCA6D /* My-Extensions.swift */,
 			);
 			path = Spotify;
@@ -626,7 +623,6 @@
 				570CB7DA21E91A41009DCA6D /* SpotifyTester.swift in Sources */,
 				5705940221D2D31500F4F5CB /* AppDelegate.swift in Sources */,
 				57A71B7D21D96A680004FEDA /* ScreenController.swift in Sources */,
-				570CB7E421E94A24009DCA6D /* ContentItemCell.swift in Sources */,
 				5764110321E2DF4C0009525B /* MyMusicController.swift in Sources */,
 				5706200421E4107D009869BE /* ConnectButton.swift in Sources */,
 				5764110521E3C5450009525B /* SpotifyHandler.swift in Sources */,

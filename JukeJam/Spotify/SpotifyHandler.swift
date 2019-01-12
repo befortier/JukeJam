@@ -21,7 +21,7 @@ SKStoreProductViewControllerDelegate {
     
     //Change between play/pause
     var playPauseButton: UIButton!
-    func didPressPlayPauseButton(_ sender: AnyObject) {
+    @objc func didPressPlayPauseButton() {
         if !(appRemote.isConnected) {
             if (!appRemote.authorizeAndPlayURI(playURI)) {
                 // The Spotify app is not installed, present the user with an App Store page
@@ -101,13 +101,20 @@ SKStoreProductViewControllerDelegate {
     
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
-    override init(){
-
+    init(playButton: UIButton, cover: UIImageView, label: UILabel){
+        super.init()
+        self.playPauseButton = playButton
+        self.playPauseButton.addTarget(self, action: #selector(didPressPlayPauseButton), for: .touchUpInside)
+        
+        self.albumArtImageView = cover
+        self.trackNameLabel = label
 //        connectionIndicatorView.frame = CGRect(origin: CGPoint(), size: CGSize(width: 20,height: 20))
 //
-//        playPauseButton.setTitle("", for: UIControl.State.normal);
-//        playPauseButton.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.normal)
-//        playPauseButton.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.highlighted)
+        playPauseButton.setTitle("", for: UIControl.State.normal);
+        playPauseButton.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.normal)
+        playPauseButton.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.highlighted)
+        playPauseButton.tintColor = UIColor.black
+//        playPauseButton.colo
 //
 //        nextButton.setTitle("", for: UIControl.State.normal)
 //        nextButton.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.normal)
@@ -121,22 +128,22 @@ SKStoreProductViewControllerDelegate {
 //        skipForward15Button.setImage(skipForward15Button.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
 //        skipBackward15Button.isHidden = true
 //        skipForward15Button.isHidden = true
-        print("initalized")
     }
     
     // MARK: - View
 
     
     fileprivate func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
+        print("HERE updating view")
         updatePlayPauseButtonState(playerState.isPaused)
-        updateRepeatModeLabel(playerState.playbackOptions.repeatMode)
-        updateShuffleLabel(playerState.playbackOptions.isShuffling)
+//        updateRepeatModeLabel(playerState.playbackOptions.repeatMode)
+//        updateShuffleLabel(playerState.playbackOptions.isShuffling)
         trackNameLabel.text = playerState.track.name + " - " + playerState.track.artist.name
         fetchAlbumArtForTrack(playerState.track) { (image) -> Void in
             self.updateAlbumArtWithImage(image)
         }
-        updateViewWithRestrictions(playerState.playbackRestrictions)
-        updateInterfaceForPodcast(playerState: playerState)
+//        updateViewWithRestrictions(playerState.playbackRestrictions)
+//        updateInterfaceForPodcast(playerState: playerState)
     }
     
     fileprivate func updateViewWithRestrictions(_ restrictions: SPTAppRemotePlaybackRestrictions) {

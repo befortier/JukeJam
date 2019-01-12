@@ -12,7 +12,7 @@ import ShadowView
 class MusicBar: UIView {
     @IBOutlet weak var cover: UIImageView!
     @IBOutlet weak var song: UILabel!
-    @IBOutlet weak var state: UIImageView!
+    @IBOutlet weak var state: UIButton!
     @IBOutlet weak var nextSong: UIImageView!
     @IBOutlet var containerView: UIView!
     let exampleShadowContainerView = ShadowView()
@@ -22,11 +22,11 @@ class MusicBar: UIView {
             cover.image = coverImage
         }
     }
-    var stateImage: UIImage? {
-        didSet {
-            state.image = stateImage
-        }
-    }
+//    var stateImage: UIImage? {
+//        didSet {
+//            state.image = stateImage
+//        }
+//    }
     var nextSongImage: UIImage? {
         didSet {
             nextSong.image = nextSongImage

@@ -7,10 +7,9 @@ class MusicPlayingController: UIViewController {
     var TabBar: ScreenController?
     var isPlaying: Bool = false
     weak var musicBar: MusicBar!
-    var spotifyHandler: SpotifyHandler = SpotifyHandler()
+    var spotifyHandler: SpotifyHandler!
     override func loadView() {
         super.loadView()
-        
         let musicBar = MusicBar()
         self.view.addSubview(musicBar)
         NSLayoutConstraint.activate([
@@ -21,15 +20,13 @@ class MusicPlayingController: UIViewController {
             ])
         self.musicBar = musicBar
         self.musicBar.frame = CGRect(x: -2, y: self.view.frame.height - 115, width: self.view.frame.width + 4, height: 66)
-        print("HERE isset?", self.musicBar)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         initMusic()
-        addGestures()
         self.musicBar.songText = "Started From the Bottom Now We're Here"
         self.musicBar.coverImage = UIImage(named: "album2")
-        self.musicBar.stateImage = UIImage(named: "play")
+        spotifyHandler = SpotifyHandler(playButton: musicBar.state, cover: musicBar.cover, label: musicBar.song)
 
 
     }
@@ -51,21 +48,12 @@ class MusicPlayingController: UIViewController {
     func isMusicPlaying() -> Bool{
         return true
     }
-    func addGestures(){
-        let stateChange = UITapGestureRecognizer(target: self, action:  #selector(self.changeState))
-        self.musicBar.state.addGestureRecognizer(stateChange)
-    }
-//
-    @objc func changeState(){
-        print("HERE")
-    }
-
+ 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ScreenController,
             segue.identifier == "BeginSegue" {
             self.TabBar = vc
-            
             vc.MusicController = self
         }
     }

@@ -1,7 +1,6 @@
 import UIKit
 
 class SpotifyTester: UIViewController {
-    var spotHandler: SpotifyHandler = SpotifyHandler()
     override func viewDidLoad() {
         super.viewDidLoad()
 
