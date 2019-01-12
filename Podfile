@@ -6,6 +6,8 @@ target 'JukeJam' do
   use_frameworks!
 
   # Pods for JukeJam
+pod 'SPStorkController'
+pod 'DeckTransition', '~> 2.0'
 pod 'SCLAlertView'
 pod 'NVActivityIndicatorView'
 pod 'Firebase/Auth'

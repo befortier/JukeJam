@@ -22,6 +22,26 @@ extension UIViewController{
         let retButton = UIBarButtonItem(customView: button)
         return retButton
     }
+}
+
+extension UICollectionView{
+    func establishFullScreenCells(){
+        let cellModifier: CGFloat = 0.42
+        let screenSize = UIScreen.main.bounds.size
+        let cellWidth = floor(screenSize.width * cellModifier)
+        let cellHeight = floor(screenSize.height * (cellModifier - 0.07))
+        let insetX:CGFloat = (screenSize.width - 2*cellWidth)/3.0
+        let insetY: CGFloat = 0
+        let layout = self.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
+        self.setCollectionViewLayout(layout, animated: false)
+        self.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
+    }
     
-    
+    func establishDivCells(){
+        let insetX:CGFloat = 8
+        let insetY: CGFloat = 8
+        self.setCollectionViewLayout(self.collectionViewLayout as! UICollectionViewFlowLayout, animated: false)
+        self.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
+    }
 }

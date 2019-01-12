@@ -11,37 +11,40 @@ import Firebase
 import FBSDKCoreKit
 import GoogleSignIn
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTSessionManagerDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTAppRemoteDelegate {
     
-    
-    let SpotifyClientID = "30e40f876c2348c0bf0644d1be184864"
-    let SpotifyRedirectURL = URL(string: "JukeJam://returnAfterLogin")!
+    fileprivate let redirectUri = URL(string: "JukeJam://returnAfterLogin")!
+    fileprivate let clientIdentifier = "30e40f876c2348c0bf0644d1be184864"
+    fileprivate let name = "Now Playing View"
 
+    // keys
+    static fileprivate let kAccessTokenKey = "access-token-key"
     
-    
-    lazy var configuration = SPTConfiguration(
-        clientID: SpotifyClientID,
-        redirectURL: SpotifyRedirectURL
-    )
-    lazy var sessionManager: SPTSessionManager = {
-        if let tokenSwapURL = URL(string: "https://juke-jam.herokuapp.com/api/token"),
-            let tokenRefreshURL = URL(string: "https://juke-jam.herokuapp.com/api/refresh_token") {
-            self.configuration.tokenSwapURL = tokenSwapURL
-            self.configuration.tokenRefreshURL = tokenRefreshURL
-            self.configuration.playURI = ""
+    var accessToken = UserDefaults.standard.string(forKey: kAccessTokenKey) {
+        didSet {
+            let defaults = UserDefaults.standard
+            defaults.set(accessToken, forKey: AppDelegate.kAccessTokenKey)
+            defaults.synchronize()
         }
-        let manager = SPTSessionManager(configuration: self.configuration, delegate: self)
-        return manager
-    }()
+    }
+    
     lazy var appRemote: SPTAppRemote = {
-        let appRemote = SPTAppRemote(configuration: self.configuration, logLevel: .debug)
+        let configuration = SPTConfiguration(clientID: self.clientIdentifier, redirectURL: self.redirectUri)
+        let appRemote = SPTAppRemote(configuration: configuration, logLevel: .debug)
+        appRemote.connectionParameters.accessToken = self.accessToken
         appRemote.delegate = self
         return appRemote
     }()
+    
+    class var sharedInstance: AppDelegate {
+        get {
+            return UIApplication.shared.delegate as! AppDelegate
+        }
+    }
+let homeScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MusicPlayingController") as? MusicPlayingController
+   let playerViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SpotifyHandler") as? SpotifyHandler
   
     var window: UIWindow?
-
-//    lazy var rootViewController = SpotifyTester()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
@@ -55,8 +58,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTSes
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         UINavigationBar.appearance().barStyle = .blackOpaque
         checkAuth()
-//        let requestedScopes: SPTScope = [.appRemoteControl]
-//        self.sessionManager.initiateSession(with: requestedScopes, options: .default)
+ 
+
         return true
     }
 
@@ -71,16 +74,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTSes
             curUser = (NSKeyedUnarchiver.unarchiveObject(with: user as Data) as? User)!
         }
         if is_authenticated != nil && curUser != nil{
-            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MusicPlayingController") as? MusicPlayingController
+            if (homeScreen != nil)
             {
-                window?.rootViewController = vc
+                window?.rootViewController = homeScreen
                 window?.makeKeyAndVisible()
             }
         }
     }
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        self.sessionManager.application(app, open: url, options: options)
+        let parameters = appRemote.authorizationParameters(from: url);
         
+        if let access_token = parameters?[SPTAppRemoteAccessTokenKey] {
+            appRemote.connectionParameters.accessToken = access_token
+            self.accessToken = access_token
+        } else if let error_description = parameters?[SPTAppRemoteErrorDescriptionKey] {
+            playerViewController!.showError(error_description);
+        }
         return true
     }
     //Deals with googleSign in, if succesful sets UserDefault info and switches page.
@@ -126,7 +135,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTSes
     //Deals with prompting users on Facebook/Google URL
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         
-        self.sessionManager.application(application, open: url as URL)
 
         let googleDidHandle = GIDSignIn.sharedInstance().handle(url as URL?,
     sourceApplication: sourceApplication,
@@ -143,12 +151,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTSes
 
 
     func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-        if self.appRemote.isConnected {
-            print("HERE disconnecting")
-            self.appRemote.disconnect()
-        }
+        playerViewController!.appRemoteDisconnect()
+        appRemote.disconnect()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -161,46 +165,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTSes
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        if let _ = self.appRemote.connectionParameters.accessToken {
-            print("HERE connecting")
-
-            self.appRemote.connect()
-        }
+        self.connect();
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-    func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
-        print("HERE init")
-        self.appRemote.connectionParameters.accessToken = session.accessToken
-        self.appRemote.connect()
+    func connect() {
+        playerViewController!.appRemoteConnecting()
+        appRemote.connect()
     }
-    func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
-        print("HERE fail", error)
-    }
-    func sessionManager(manager: SPTSessionManager, didRenew session: SPTSession) {
-        print("HERE renewed", session)
-    }
+    
     func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
-        print("HERE CONNECTED")
-        self.appRemote.playerAPI?.delegate = self
-        self.appRemote.playerAPI?.subscribe(toPlayerState: { (result, error) in
-            if let error = error {
-                debugPrint(error.localizedDescription)
-            }
-        })    }
-    func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
-        print("HERE disconnected")
+        self.appRemote = appRemote
+        playerViewController!.appRemoteConnected()
     }
+    
     func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
-        print("HERE failed", error)
+        print("didFailConnectionAttemptWithError")
+        playerViewController!.appRemoteDisconnect()
     }
-    func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
-        debugPrint("HERE Track name: %@", playerState.track.name)
+    
+    func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
+        print("didDisconnectWithError")
+        playerViewController!.appRemoteDisconnect()
     }
+
+
 
 
     

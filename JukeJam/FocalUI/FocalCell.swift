@@ -13,6 +13,7 @@ class FocalCell: UICollectionViewCell {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var author: UILabel!
     @IBOutlet weak var title: UILabel!
+
     var coverArt: coverArt? {
         didSet {
             self.updateUI()

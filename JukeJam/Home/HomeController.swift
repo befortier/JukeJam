@@ -15,19 +15,15 @@ class HomeController: MusicPlayingController, UICollectionViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadInfo()
         tempLoadData()
         customizeButtons()
-        myJamsCarousal.dataSource = self
-        featuredJams.dataSource = self
-        friendsJams.dataSource = self
         establishCells()
     }
     override func viewWillLayoutSubviews(){
-        super.viewWillLayoutSubviews()
-//      scroll.contentSize = CGSize(width: self.view.frame.width, height: 1300)
-    }
-    override func didReceiveMemoryWarning() {
+            super.viewWillLayoutSubviews()
+          scroll.contentSize = CGSize(width: self.view.frame.width, height: 1300)
+        }
+        override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -41,14 +37,12 @@ class HomeController: MusicPlayingController, UICollectionViewDelegate{
     }
     
     func establishCells(){
-        let insetX:CGFloat = 8
-        let insetY: CGFloat = 8
-        myJamsCarousal?.setCollectionViewLayout(myJamsCarousal.collectionViewLayout as! UICollectionViewFlowLayout, animated: false)
-        myJamsCarousal.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
-        featuredJams?.setCollectionViewLayout(featuredJams.collectionViewLayout as! UICollectionViewFlowLayout, animated: false)
-        featuredJams.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
-        friendsJams?.setCollectionViewLayout(friendsJams.collectionViewLayout as! UICollectionViewFlowLayout, animated: false)
-        friendsJams.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
+        myJamsCarousal.dataSource = self
+        featuredJams.dataSource = self
+        friendsJams.dataSource = self
+        myJamsCarousal.establishDivCells()
+        featuredJams.establishDivCells()
+        friendsJams.establishDivCells()
     }
     
     func customizeButtons(){
@@ -70,19 +64,25 @@ class HomeController: MusicPlayingController, UICollectionViewDelegate{
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "myJams" {
-            let DestViewController: SeeMoreController = segue.destination as! SeeMoreController
+        let DestViewController: SeeMoreController = segue.destination as! SeeMoreController
+        switch segue.identifier {
+        case "myJams":
             DestViewController.myTitle = "My Jams"
-        }
-        else if segue.identifier == "friendsJams" {
-            let DestViewController: SeeMoreController = segue.destination as! SeeMoreController
+            break
+            
+        case "friendsJams":
             DestViewController.myTitle = "Friend's Jams"
-        }else if segue.identifier == "featuredJams" {
-            let DestViewController: SeeMoreController = segue.destination as! SeeMoreController
+            break
+            
+        case "featuredJams":
             DestViewController.myTitle = "Featured Jams"
+            break
+            
+        default:
+            break
         }
-   
     }
+    
     //Logs people out of their account
     @IBAction func logOut(_ sender: UIButton) {
         guard Auth.auth().currentUser != nil else {
@@ -110,21 +110,29 @@ class HomeController: MusicPlayingController, UICollectionViewDelegate{
 
 extension HomeController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == self.myJamsCarousal {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FocalCell", for: indexPath) as! FocalCell
+        
+        var identifier: String = ""
+        switch collectionView {
+            
+        case self.myJamsCarousal:
+            identifier = "MyJamsCell"
+            break
+            
+        case self.friendsJams:
+            identifier = "FriendJams"
+            break
+            
+        case self.featuredJams:
+            identifier = "FeaturedJam"
+            break
+            
+        default:
+            break
+        }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! FocalCell
         cell.coverArt = myJamsArt[indexPath.item]
         return cell
-        }
-        else if collectionView == self.friendsJams{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendJams", for: indexPath) as! FocalCell
-            cell.coverArt = myJamsArt[myJamsArt.count - 1 - indexPath.item]
-            return cell
-        }
-     else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedJam", for: indexPath) as! FocalCell
-            cell.coverArt = myJamsArt[myJamsArt.count - 1 - indexPath.item]
-            return cell
-        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

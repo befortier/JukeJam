@@ -4,6 +4,7 @@ import FacebookLogin
 import MediaPlayer
 import FirebaseAuth
 import SCLAlertView
+import SPStorkController
 
 class MyMusicController: MusicPlayingController, UICollectionViewDelegate{
     
@@ -15,13 +16,10 @@ class MyMusicController: MusicPlayingController, UICollectionViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadInfo()
         tempLoadData()
         customizeButtons()
-        playlists.dataSource = self
-        songs.dataSource = self
-        artists.dataSource = self
         establishCells()
+
     }
     override func viewWillLayoutSubviews(){
         super.viewWillLayoutSubviews()
@@ -41,16 +39,18 @@ class MyMusicController: MusicPlayingController, UICollectionViewDelegate{
     }
     
     func establishCells(){
-        let insetX:CGFloat = 8
-        let insetY: CGFloat = 8
-        playlists?.setCollectionViewLayout(playlists.collectionViewLayout as! UICollectionViewFlowLayout, animated: false)
-        playlists.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
-        songs?.setCollectionViewLayout(songs.collectionViewLayout as! UICollectionViewFlowLayout, animated: false)
-        songs.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
-        artists?.setCollectionViewLayout(artists.collectionViewLayout as! UICollectionViewFlowLayout, animated: false)
-        artists.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
+        playlists.dataSource = self
+        songs.dataSource = self
+        artists.dataSource = self
+        playlists.delegate = self
+        songs.delegate = self
+        artists.delegate = self
+        playlists.establishDivCells()
+        songs.establishDivCells()
+        artists.establishDivCells()
     }
     
+
     func customizeButtons(){
         self.navigationItem.leftBarButtonItem = getTabBarButton(type: .user, selector:#selector(showProfile))
         self.navigationItem.rightBarButtonItem = getTabBarButton(type: .cog, selector:#selector(showSettings))
@@ -70,61 +70,53 @@ class MyMusicController: MusicPlayingController, UICollectionViewDelegate{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "myJams" {
-            let DestViewController: SeeMoreController = segue.destination as! SeeMoreController
-            DestViewController.myTitle = "My Jams"
-        }
-        else if segue.identifier == "friendsJams" {
-            let DestViewController: SeeMoreController = segue.destination as! SeeMoreController
-            DestViewController.myTitle = "Friend's Jams"
-        }else if segue.identifier == "featuredJams" {
-            let DestViewController: SeeMoreController = segue.destination as! SeeMoreController
-            DestViewController.myTitle = "Featured Jams"
-        }
+           let DestViewController: SeeMoreController = segue.destination as! SeeMoreController
         
-    }
-    //Logs people out of their account
-    @IBAction func logOut(_ sender: UIButton) {
-        guard Auth.auth().currentUser != nil else {
-            return
-        }
-        do {
-            try Auth.auth().signOut()
-            let fbLoginManager = FBSDKLoginManager()
-            fbLoginManager.logOut()
-            let cookies = HTTPCookieStorage.shared
-            let facebookCookies = cookies.cookies(for: URL(string: "https://facebook.com/")!)
-            for cookie in facebookCookies! {
-                cookies.deleteCookie(cookie )
-            }
-            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginController") as? ViewController
-            {
-                present(vc, animated: true, completion: nil)
-            }
-        } catch let error as NSError {
-            print(error.localizedDescription)
+        switch segue.identifier {
+        
+        case "Playlists":
+            DestViewController.myTitle = "My Playlists"
+            break
+            
+        case "friendsJams":
+            DestViewController.myTitle = "Friend's Jams"
+            break
+            
+        case "featuredJams":
+            DestViewController.myTitle = "Featured Jams"
+            break
+            
+        default:
+            break
         }
     }
-    
 }
 
 extension MyMusicController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == self.playlists {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlaylistCell", for: indexPath) as! FocalCell
+            var identifier: String = ""
+            switch collectionView {
+                
+            case self.playlists:
+                identifier = "PlaylistCell"
+                break
+                
+            case self.songs:
+                identifier = "SongCell"
+                break
+                
+            case self.artists:
+                identifier = "ArtistCell"
+                break
+                
+            default:
+                break
+            }
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! FocalCell
             cell.coverArt = myJamsArt[indexPath.item]
             return cell
-        }
-        else if collectionView == self.songs{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SongCell", for: indexPath) as! FocalCell
-            cell.coverArt = myJamsArt[myJamsArt.count - 1 - indexPath.item]
-            return cell
-        }
-        else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArtistCell", for: indexPath) as! FocalCell
-            cell.coverArt = myJamsArt[myJamsArt.count - 1 - indexPath.item]
-            return cell
-        }
+
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -133,5 +125,25 @@ extension MyMusicController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return myJamsArt.count
     }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch collectionView {
+
+
+        case self.songs:
+            if let modal: SongController = storyboard?.instantiateViewController(withIdentifier: "SongController") as? SongController {
+                let transitionDelegate = SPStorkTransitioningDelegate()
+                modal.transitioningDelegate = transitionDelegate
+                modal.modalPresentationStyle = .custom
+                present(modal, animated: true, completion: nil)
+            }
+            
+            break
+
+        default:
+            break
+        }
+    }
+
     
 }

@@ -1,4 +1,5 @@
 import UIKit
+import SPStorkController
 
 class MusicPlayingController: UIViewController {
     
@@ -6,6 +7,7 @@ class MusicPlayingController: UIViewController {
     var TabBar: ScreenController?
     var isPlaying: Bool = false
     weak var musicBar: MusicBar!
+    var spotifyHandler: SpotifyHandler = SpotifyHandler()
     override func loadView() {
         super.loadView()
         
