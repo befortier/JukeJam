@@ -7,7 +7,7 @@ class MusicPlayingController: UIViewController {
     var TabBar: ScreenController?
     var isPlaying: Bool = false
     weak var musicBar: MusicBar!
-    var spotifyHandler: SpotifyHandler!
+    var musicHandler: MusicHandler!
     override func loadView() {
         super.loadView()
         let musicBar = MusicBar()
@@ -26,7 +26,7 @@ class MusicPlayingController: UIViewController {
         initMusic()
         self.musicBar.songText = "Started From the Bottom Now We're Here"
         self.musicBar.coverImage = UIImage(named: "album2")
-        spotifyHandler = SpotifyHandler(playButton: musicBar.state, cover: musicBar.cover, label: musicBar.song)
+        musicHandler = MusicHandler(playButton: musicBar.state, cover: musicBar.cover, label: musicBar.song, nextSong: musicBar.nextSong)
 
 
     }

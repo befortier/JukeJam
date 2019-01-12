@@ -36,13 +36,13 @@ SKStoreProductViewControllerDelegate {
     
     //Prev Song
     var prevButton: UIButton!
-    func didPressPreviousButton(_ sender: AnyObject) {
+    @objc func didPressPreviousButton(_ sender: AnyObject) {
         skipPrevious()
     }
     
     //Next Song
     var nextButton: UIButton!
-    func didPressNextButton(_ sender: AnyObject) {
+    @objc func didPressNextButton(_ sender: AnyObject) {
         skipNext()
     }
     
@@ -101,7 +101,7 @@ SKStoreProductViewControllerDelegate {
     
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
-    init(playButton: UIButton, cover: UIImageView, label: UILabel){
+    init(playButton: UIButton, cover: UIImageView, label: UILabel, nextSong: UIButton){
         super.init()
         self.playPauseButton = playButton
         self.playPauseButton.addTarget(self, action: #selector(didPressPlayPauseButton), for: .touchUpInside)
@@ -116,9 +116,14 @@ SKStoreProductViewControllerDelegate {
         playPauseButton.tintColor = UIColor.black
 //        playPauseButton.colo
 //
-//        nextButton.setTitle("", for: UIControl.State.normal)
-//        nextButton.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.normal)
-//        nextButton.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.highlighted)
+        nextButton = nextSong
+        nextButton.tintColor = UIColor.black
+
+        nextButton.setTitle("", for: UIControl.State.normal)
+        nextButton.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.normal)
+        nextButton.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.highlighted)
+        self.nextButton.addTarget(self, action: #selector(didPressNextButton), for: .touchUpInside)
+        
 //
 //        prevButton.setTitle("", for: UIControl.State.normal)
 //        prevButton.setImage(PlaybackButtonGraphics.previousButtonImage(), for: UIControl.State.normal)

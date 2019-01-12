@@ -13,7 +13,7 @@ class MusicBar: UIView {
     @IBOutlet weak var cover: UIImageView!
     @IBOutlet weak var song: UILabel!
     @IBOutlet weak var state: UIButton!
-    @IBOutlet weak var nextSong: UIImageView!
+    @IBOutlet weak var nextSong: UIButton!
     @IBOutlet var containerView: UIView!
     let exampleShadowContainerView = ShadowView()
 
@@ -27,11 +27,11 @@ class MusicBar: UIView {
 //            state.image = stateImage
 //        }
 //    }
-    var nextSongImage: UIImage? {
-        didSet {
-            nextSong.image = nextSongImage
-        }
-    }
+//    var nextSongImage: UIImage? {
+//        didSet {
+//            nextSong.image = nextSongImage
+//        }
+//    }
     var songText: String? {
         didSet {
             song.text = songText
@@ -58,7 +58,7 @@ class MusicBar: UIView {
         self.layer.shadowOffset = CGSize(width: 0, height: -1.75)
         self.layer.shadowRadius = 1.7
         self.layer.shadowOpacity = 0.45
-        self.nextSongImage = UIImage(named: "nextsong")
+//        self.nextSongImage = UIImage(named: "nextsong")
         self.cover.layer.cornerRadius = 8.0
         self.cover.clipsToBounds = true
 

@@ -24,6 +24,7 @@ extension UIViewController{
     }
 }
 
+
 extension UICollectionView{
     func establishFullScreenCells(){
         let cellModifier: CGFloat = 0.42

@@ -33,8 +33,8 @@
 		570CB7E221E94A24009DCA6D /* PlaybackButtonGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570CB7DC21E94A21009DCA6D /* PlaybackButtonGraphics.swift */; };
 		570CB7E321E94A24009DCA6D /* SpeedPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570CB7DD21E94A22009DCA6D /* SpeedPickerViewController.swift */; };
 		570CB7E521E94A24009DCA6D /* My-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570CB7DF21E94A23009DCA6D /* My-Extensions.swift */; };
-		570CB7E621E94A24009DCA6D /* ContentCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570CB7E021E94A23009DCA6D /* ContentCollectionViewController.swift */; };
 		570CB7E821E953B7009DCA6D /* SongController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570CB7E721E953B7009DCA6D /* SongController.swift */; };
+		570CB7EB21EA8951009DCA6D /* MusicHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570CB7EA21EA8951009DCA6D /* MusicHandler.swift */; };
 		572BA0C521D2CF06008B9611 /* JukeJamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0C421D2CF06008B9611 /* JukeJamTests.swift */; };
 		572BA0D021D2CF06008B9611 /* JukeJamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0CF21D2CF06008B9611 /* JukeJamUITests.swift */; };
 		576410F721DE644C0009525B /* SeeMoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576410F621DE644C0009525B /* SeeMoreController.swift */; };
@@ -98,8 +98,8 @@
 		570CB7DC21E94A21009DCA6D /* PlaybackButtonGraphics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackButtonGraphics.swift; sourceTree = "<group>"; };
 		570CB7DD21E94A22009DCA6D /* SpeedPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedPickerViewController.swift; sourceTree = "<group>"; };
 		570CB7DF21E94A23009DCA6D /* My-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "My-Extensions.swift"; sourceTree = "<group>"; };
-		570CB7E021E94A23009DCA6D /* ContentCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewController.swift; sourceTree = "<group>"; };
 		570CB7E721E953B7009DCA6D /* SongController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongController.swift; sourceTree = "<group>"; };
+		570CB7EA21EA8951009DCA6D /* MusicHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicHandler.swift; sourceTree = "<group>"; };
 		572BA0AC21D2CF05008B9611 /* JukeJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JukeJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		572BA0C021D2CF06008B9611 /* JukeJamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JukeJamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		572BA0C421D2CF06008B9611 /* JukeJamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JukeJamTests.swift; sourceTree = "<group>"; };
@@ -201,7 +201,6 @@
 				570CB7DD21E94A22009DCA6D /* SpeedPickerViewController.swift */,
 				5764110421E3C5450009525B /* SpotifyHandler.swift */,
 				570CB7DB21E94A21009DCA6D /* ConnectionStatusIndicatorView.swift */,
-				570CB7E021E94A23009DCA6D /* ContentCollectionViewController.swift */,
 				570CB7DF21E94A23009DCA6D /* My-Extensions.swift */,
 			);
 			path = Spotify;
@@ -249,6 +248,7 @@
 				5705943021D5B2CA00F4F5CB /* profileImage.swift */,
 				570CB7D921E91A41009DCA6D /* SpotifyTester.swift */,
 				570CB7E721E953B7009DCA6D /* SongController.swift */,
+				570CB7EA21EA8951009DCA6D /* MusicHandler.swift */,
 			);
 			path = JukeJam;
 			sourceTree = "<group>";
@@ -605,6 +605,7 @@
 				57A71B8521DAE7C20004FEDA /* FocalDiv.swift in Sources */,
 				5706201721E7B76D009869BE /* MusicBar.swift in Sources */,
 				576410F721DE644C0009525B /* SeeMoreController.swift in Sources */,
+				570CB7EB21EA8951009DCA6D /* MusicHandler.swift in Sources */,
 				570CB7E321E94A24009DCA6D /* SpeedPickerViewController.swift in Sources */,
 				5705943121D5B2CA00F4F5CB /* profileImage.swift in Sources */,
 				570CB7E121E94A24009DCA6D /* ConnectionStatusIndicatorView.swift in Sources */,
@@ -618,7 +619,6 @@
 				5706200821E66D23009869BE /* MusicPlayingController.swift in Sources */,
 				5705942521D4631000F4F5CB /* User.swift in Sources */,
 				5705940A21D2D31500F4F5CB /* loginButton.swift in Sources */,
-				570CB7E621E94A24009DCA6D /* ContentCollectionViewController.swift in Sources */,
 				57A71B7B21D823DE0004FEDA /* AppleHandler.swift in Sources */,
 				570CB7DA21E91A41009DCA6D /* SpotifyTester.swift in Sources */,
 				5705940221D2D31500F4F5CB /* AppDelegate.swift in Sources */,

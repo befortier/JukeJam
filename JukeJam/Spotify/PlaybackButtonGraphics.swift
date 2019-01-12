@@ -24,11 +24,6 @@ class PlaybackButtonGraphics {
     }
     
     class func playButtonImage() -> UIImage {
-//        return imageWithFilledPolygons([[
-//            CGPoint(x: 64, y: 32),
-//            CGPoint(x: 0, y: 64),
-//            CGPoint(x: 0, y: 0),
-//            ]])
         return UIImage(named: "play")!
     }
     
@@ -59,18 +54,6 @@ class PlaybackButtonGraphics {
     }
     
     class func pauseButtonImage() -> UIImage {
-//        let context = CGContext(data: nil,
-//                                            width: 64, height: 64,
-//                                            bitsPerComponent: 8, bytesPerRow: 8*64*4,
-//                                            space: CGColorSpaceCreateDeviceRGB(),
-//                                            bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue);
-//
-//        context?.fill(CGRect(x: 0, y: 0, width: 20, height: 64));
-//        context?.fill(CGRect(x: 44, y: 0, width: 20, height: 64));
-//        if let image = context?.makeImage() {
-//            return UIImage(cgImage: image, scale: UIScreen.main.scale, orientation: .up)
-//        }
-        
         return UIImage(named: "pause")!
     }
 }
