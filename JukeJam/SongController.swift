@@ -15,7 +15,6 @@ class SongController: UIViewController {
         super.viewDidLoad()
         self.modalPresentationCapturesStatusBarAppearance = true
 
-
     }
     
 

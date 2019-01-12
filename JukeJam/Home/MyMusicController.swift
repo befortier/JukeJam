@@ -133,6 +133,8 @@ extension MyMusicController: UICollectionViewDataSource{
         case self.songs:
             if let modal: SongController = storyboard?.instantiateViewController(withIdentifier: "SongController") as? SongController {
                 let transitionDelegate = SPStorkTransitioningDelegate()
+                transitionDelegate.isSwipeToDismissEnabled = true
+                transitionDelegate.isTapAroundToDismissEnabled = true
                 modal.transitioningDelegate = transitionDelegate
                 modal.modalPresentationStyle = .custom
                 present(modal, animated: true, completion: nil)

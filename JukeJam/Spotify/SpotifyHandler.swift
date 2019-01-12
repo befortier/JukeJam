@@ -1,11 +1,93 @@
 import UIKit
 import StoreKit
 
-class SpotifyHandler: UIViewController,
+class SpotifyHandler: NSObject,
     SPTAppRemotePlayerStateDelegate,
     SPTAppRemoteUserAPIDelegate,
     SpeedPickerViewControllerDelegate,
 SKStoreProductViewControllerDelegate {
+    
+    var controller: UIViewController?
+    var albumArtImageView: UIImageView!
+    var trackNameLabel: UILabel!
+    var buttons: [UIButton]!
+    
+    //Call upon toggling shuffle or not
+    var toggleShuffleButton: UIButton!
+    var shuffleModeLabel: UILabel!
+    func didPressToggleShuffleButton(_ sender: AnyObject) {
+        toggleShuffle()
+    }
+    
+    //Change between play/pause
+    var playPauseButton: UIButton!
+    func didPressPlayPauseButton(_ sender: AnyObject) {
+        if !(appRemote.isConnected) {
+            if (!appRemote.authorizeAndPlayURI(playURI)) {
+                // The Spotify app is not installed, present the user with an App Store page
+                showAppStoreInstall()
+            }
+        } else if playerState == nil || playerState!.isPaused {
+            startPlayback()
+        } else {
+            pausePlayback()
+        }
+    }
+    
+    //Prev Song
+    var prevButton: UIButton!
+    func didPressPreviousButton(_ sender: AnyObject) {
+        skipPrevious()
+    }
+    
+    //Next Song
+    var nextButton: UIButton!
+    func didPressNextButton(_ sender: AnyObject) {
+        skipNext()
+    }
+    
+    //Unsure PREMIUM
+    var playSpecificTrack: UIButton!
+    func didPressPlayTrackButton(_ sender: AnyObject) {
+        playTrack()
+    }
+    
+    //Only for "epsidoes" PREMIUM
+    var skipForward15Button: UIButton!
+    func didPressSkipForward15Button(_ sender: UIButton) {
+        seekForward15Seconds()
+    }
+    
+    //Only for "epsidoes" PREMIUM
+    var skipBackward15Button: UIButton!
+    func didPressSkipBackward15Button(_ sender: UIButton) {
+        seekBackward15Seconds()
+    }
+    
+    //PREMIUM
+    var podcastSpeedButton: UIButton!
+    func didPressChangePodcastPlaybackSpeedButton(_ sender: UIButton) {
+        pickPodcastSpeed()
+    }
+    
+    //PREMIUM
+    var queueTrackButton: UIButton!
+    func didPressEnqueueTrackButton(_ sender: AnyObject) {
+        enqueueTrack()
+    }
+    
+    //
+    func didPressGetPlayerStateButton(_ sender: AnyObject) {
+        getPlayerState()
+    }
+    
+    var repeatModeLabel: UILabel!
+    var toggleRepeatModeButton: UIButton!
+    func didPressToggleRepeatModeButton(_ sender: AnyObject) {
+        toggleRepeatMode()
+    }
+    
+
     
     fileprivate let playURI = "spotify:album:5uMfshtC2Jwqui0NUyUYIL"
     fileprivate let trackIdentifier = "spotify:track:32ftxJzxMPgUFCM6Km9WTS"
@@ -17,41 +99,33 @@ SKStoreProductViewControllerDelegate {
     
     fileprivate var connectionIndicatorView = ConnectionStatusIndicatorView()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: connectionIndicatorView)
-        connectionIndicatorView.frame = CGRect(origin: CGPoint(), size: CGSize(width: 20,height: 20))
-        
-        playPauseButton.setTitle("", for: UIControl.State.normal);
-        playPauseButton.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.normal)
-        playPauseButton.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.highlighted)
-        
-        nextButton.setTitle("", for: UIControl.State.normal)
-        nextButton.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.normal)
-        nextButton.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.highlighted)
-        
-        prevButton.setTitle("", for: UIControl.State.normal)
-        prevButton.setImage(PlaybackButtonGraphics.previousButtonImage(), for: UIControl.State.normal)
-        prevButton.setImage(PlaybackButtonGraphics.previousButtonImage(), for: UIControl.State.highlighted)
-        
-        skipBackward15Button.setImage(skipBackward15Button.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
-        skipForward15Button.setImage(skipForward15Button.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
-        skipBackward15Button.isHidden = true
-        skipForward15Button.isHidden = true
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+    override init(){
+
+//        connectionIndicatorView.frame = CGRect(origin: CGPoint(), size: CGSize(width: 20,height: 20))
+//
+//        playPauseButton.setTitle("", for: UIControl.State.normal);
+//        playPauseButton.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.normal)
+//        playPauseButton.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.highlighted)
+//
+//        nextButton.setTitle("", for: UIControl.State.normal)
+//        nextButton.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.normal)
+//        nextButton.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.highlighted)
+//
+//        prevButton.setTitle("", for: UIControl.State.normal)
+//        prevButton.setImage(PlaybackButtonGraphics.previousButtonImage(), for: UIControl.State.normal)
+//        prevButton.setImage(PlaybackButtonGraphics.previousButtonImage(), for: UIControl.State.highlighted)
+//
+//        skipBackward15Button.setImage(skipBackward15Button.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
+//        skipForward15Button.setImage(skipForward15Button.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
+//        skipBackward15Button.isHidden = true
+//        skipForward15Button.isHidden = true
+        print("initalized")
     }
     
     // MARK: - View
-    
-    @IBOutlet weak var trackNameLabel: UILabel!
-    @IBOutlet var buttons: [UIButton]!
-    
-    @IBOutlet var nextButton: UIButton!
-    @IBOutlet var prevButton: UIButton!
-    
-    @IBOutlet var skipForward15Button: UIButton!
-    @IBOutlet var skipBackward15Button: UIButton!
-    @IBOutlet var podcastSpeedButton: UIButton!
+
     
     fileprivate func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
         updatePlayPauseButtonState(playerState.isPaused)
@@ -106,120 +180,18 @@ SKStoreProductViewControllerDelegate {
     
     // MARK: Player Control
     
-    @IBOutlet weak var playPauseButton: UIButton!
     
-    @IBAction func didPressPlayPauseButton(_ sender: AnyObject) {
-        if !(appRemote.isConnected) {
-            if (!appRemote.authorizeAndPlayURI(playURI)) {
-                // The Spotify app is not installed, present the user with an App Store page
-                showAppStoreInstall()
-            }
-        } else if playerState == nil || playerState!.isPaused {
-            startPlayback()
-        } else {
-            pausePlayback()
-        }
-    }
-    
-    @IBAction func didPressPreviousButton(_ sender: AnyObject) {
-        skipPrevious()
-    }
-    
-    @IBAction func didPressNextButton(_ sender: AnyObject) {
-        skipNext()
-    }
-    
-    @IBAction func didPressPlayTrackButton(_ sender: AnyObject) {
-        playTrack()
-    }
-    
-    @IBAction func didPressSkipForward15Button(_ sender: UIButton) {
-        seekForward15Seconds()
-    }
-    
-    @IBAction func didPressSkipBackward15Button(_ sender: UIButton) {
-        seekBackward15Seconds()
-    }
-    
-    @IBAction func didPressChangePodcastPlaybackSpeedButton(_ sender: UIButton) {
-        pickPodcastSpeed()
-    }
-    
-    @IBAction func didPressEnqueueTrackButton(_ sender: AnyObject) {
-        enqueueTrack()
-    }
-    
+
     fileprivate func updatePlayPauseButtonState(_ paused: Bool) {
         let playPauseButtonImage = paused ? PlaybackButtonGraphics.playButtonImage() : PlaybackButtonGraphics.pauseButtonImage()
         playPauseButton.setImage(playPauseButtonImage, for: UIControl.State())
         playPauseButton.setImage(playPauseButtonImage, for: .highlighted)
     }
     
-    // MARK: Player State
-    
-    @IBOutlet weak var playerStateSubscriptionButton: UIButton!
-    
-    @IBAction func didPressGetPlayerStateButton(_ sender: AnyObject) {
-        getPlayerState()
-    }
-    
-    @IBAction func didPressPlayerStateSubscriptionButton(_ sender: AnyObject) {
-        if (subscribedToPlayerState) {
-            unsubscribeFromPlayerState()
-        } else {
-            subscribeToPlayerState()
-        }
-    }
-    
-    fileprivate func updatePlayerStateSubscriptionButtonState() {
-        let playerStateSubscriptionButtonTitle = subscribedToPlayerState ? "Unsubscribe" : "Subscribe"
-        playerStateSubscriptionButton.setTitle(playerStateSubscriptionButtonTitle, for: UIControl.State())
-    }
-    
-    // MARK: Capabilities
-    
-    @IBOutlet weak var onDemandCapabilitiesLabel: UILabel!
-    @IBOutlet weak var capabilitiesSubscriptionButton: UIButton!
-    
-    @IBAction func didPressGetCapabilitiesButton(_ sender: AnyObject) {
-        fetchUserCapabilities()
-    }
-    
-    @IBAction func didPressCapabilitiesSubscriptionButton(_ sender: AnyObject) {
-        if (subscribedToCapabilities) {
-            unsubscribeFromCapailityChanges()
-        } else {
-            subscribeToCapabilityChanges()
-        }
-    }
-    
-    fileprivate func updateViewWithCapabilities(_ capabilities: SPTAppRemoteUserCapabilities) {
-        onDemandCapabilitiesLabel.text = "Can play on demand: " + (capabilities.canPlayOnDemand ? "Yes" : "No")
-    }
-    
-    fileprivate func updateCapabilitiesSubscriptionButtonState() {
-        let capabilitiesSubscriptionButtonTitle = subscribedToCapabilities ? "Unsubscribe" : "Subscribe"
-        capabilitiesSubscriptionButton.setTitle(capabilitiesSubscriptionButtonTitle, for: UIControl.State())
-    }
-    
-    // MARK: Shuffle Button
-    
-    @IBOutlet weak var toggleShuffleButton: UIButton!
-    @IBOutlet weak var shuffleModeLabel: UILabel!
-    
-    @IBAction func didPressToggleShuffleButton(_ sender: AnyObject) {
-        toggleShuffle()
-    }
+
+
     fileprivate func updateShuffleLabel(_ isShuffling: Bool) {
         shuffleModeLabel.text = "Shuffle mode: " + (isShuffling ? "On" : "Off")
-    }
-    
-    // MARK: Repeat Mode Button
-    
-    @IBOutlet weak var toggleRepeatModeButton: UIButton!
-    @IBOutlet weak var repeatModeLabel: UILabel!
-    @IBAction func didPressToggleRepeatModeButton(_ sender: AnyObject) {
-        toggleRepeatMode()
     }
     
     fileprivate func updateRepeatModeLabel(_ repeatMode: SPTAppRemotePlaybackOptionsRepeatMode) {
@@ -232,10 +204,6 @@ SKStoreProductViewControllerDelegate {
             }()
     }
     
-    // MARK: Album Art
-    
-    @IBOutlet weak var albumArtImageView: UIImageView!
-    
     fileprivate func updateAlbumArtWithImage(_ image: UIImage) {
         self.albumArtImageView.image = image
         let transition = CATransition()
@@ -243,8 +211,6 @@ SKStoreProductViewControllerDelegate {
         transition.type = CATransitionType.fade
         self.albumArtImageView.layer.add(transition, forKey: "transition")
     }
-    
-    
     
     fileprivate var playerState: SPTAppRemotePlayerState?
     fileprivate var subscribedToPlayerState: Bool = false
@@ -269,7 +235,7 @@ SKStoreProductViewControllerDelegate {
     fileprivate func presentAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        self.controller?.present(alert, animated: true, completion: nil)
     }
     
     // MARK: StoreKit
@@ -278,8 +244,8 @@ SKStoreProductViewControllerDelegate {
         if TARGET_OS_SIMULATOR != 0 {
             presentAlert(title: "Simulator In Use", message: "The App Store is not available in the iOS simulator, please test this feature on a physical device.")
         } else {
-            let loadingView = UIActivityIndicatorView(frame: view.bounds)
-            view.addSubview(loadingView)
+            let loadingView = UIActivityIndicatorView(frame: (self.controller?.view.bounds)!)
+            self.controller?.view.addSubview(loadingView)
             loadingView.startAnimating()
             loadingView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
             let storeProductViewController = SKStoreProductViewController()
@@ -291,7 +257,7 @@ SKStoreProductViewControllerDelegate {
                         title: "Error accessing App Store",
                         message: error.localizedDescription)
                 } else {
-                    self.present(storeProductViewController, animated: true, completion: nil)
+                    self.controller?.present(storeProductViewController, animated: true, completion: nil)
                 }
             })
         }
@@ -321,7 +287,7 @@ SKStoreProductViewControllerDelegate {
                 let vc = SpeedPickerViewController(podcastSpeeds: speeds, selectedSpeed: current)
                 vc.delegate = self
                 let nav = UINavigationController(rootViewController: vc)
-                self.present(nav, animated: true, completion: nil)
+                self.controller?.present(nav, animated: true, completion: nil)
             }
         })
     }
@@ -381,18 +347,10 @@ SKStoreProductViewControllerDelegate {
         appRemote.playerAPI?.subscribe { (_, error) -> Void in
             guard error == nil else { return }
             self.subscribedToPlayerState = true
-            self.updatePlayerStateSubscriptionButtonState()
         }
     }
     
-    fileprivate func unsubscribeFromPlayerState() {
-        guard (subscribedToPlayerState) else { return }
-        appRemote.playerAPI?.unsubscribe { (_, error) -> Void in
-            guard error == nil else { return }
-            self.subscribedToPlayerState = false
-            self.updatePlayerStateSubscriptionButtonState()
-        }
-    }
+
     
     fileprivate func toggleRepeatMode() {
         guard let playerState = playerState else { return }
@@ -425,8 +383,6 @@ SKStoreProductViewControllerDelegate {
         appRemote.userAPI?.fetchCapabilities(callback: { (capabilities, error) in
             guard error == nil else { return }
             
-            let capabilities = capabilities as! SPTAppRemoteUserCapabilities
-            self.updateViewWithCapabilities(capabilities)
         })
     }
     
@@ -437,20 +393,10 @@ SKStoreProductViewControllerDelegate {
             guard error == nil else { return }
             
             self.subscribedToCapabilities = true
-            self.updateCapabilitiesSubscriptionButtonState()
         })
     }
     
-    fileprivate func unsubscribeFromCapailityChanges() {
-        guard (subscribedToCapabilities) else { return }
-        AppDelegate.sharedInstance.appRemote.userAPI?.unsubscribe(toCapabilityChanges: { (success, error) in
-            guard error == nil else { return }
-            
-            self.subscribedToCapabilities = false
-            self.updateCapabilitiesSubscriptionButtonState()
-        })
-    }
-    
+
     // MARK: - <SPTAppRemotePlayerStateDelegate>
     
     func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
@@ -461,13 +407,13 @@ SKStoreProductViewControllerDelegate {
     // MARK: - <SPTAppRemoteUserAPIDelegate>
     
     func userAPI(_ userAPI: SPTAppRemoteUserAPI, didReceive capabilities: SPTAppRemoteUserCapabilities) {
-        updateViewWithCapabilities(capabilities)
+        
     }
     
     func showError(_ errorDescription: String) {
         let alert = UIAlertController(title: "Error!", message: errorDescription, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        self.controller?.present(alert, animated: true, completion: nil)
     }
     
     func appRemoteConnecting() {

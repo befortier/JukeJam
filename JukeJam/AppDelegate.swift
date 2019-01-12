@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
         }
     }
 let homeScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MusicPlayingController") as? MusicPlayingController
-   let playerViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SpotifyHandler") as? SpotifyHandler
+
   
     var window: UIWindow?
 
@@ -88,7 +88,7 @@ let homeScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewControll
             appRemote.connectionParameters.accessToken = access_token
             self.accessToken = access_token
         } else if let error_description = parameters?[SPTAppRemoteErrorDescriptionKey] {
-            playerViewController!.showError(error_description);
+             homeScreen?.spotifyHandler.showError(error_description);
         }
         return true
     }
@@ -151,7 +151,7 @@ let homeScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewControll
 
 
     func applicationWillResignActive(_ application: UIApplication) {
-        playerViewController!.appRemoteDisconnect()
+         homeScreen?.spotifyHandler.appRemoteDisconnect()
         appRemote.disconnect()
     }
 
@@ -172,23 +172,23 @@ let homeScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewControll
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     func connect() {
-        playerViewController!.appRemoteConnecting()
+         homeScreen?.spotifyHandler.appRemoteConnecting()
         appRemote.connect()
     }
     
     func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
         self.appRemote = appRemote
-        playerViewController!.appRemoteConnected()
+         homeScreen?.spotifyHandler.appRemoteConnected()
     }
     
     func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
         print("didFailConnectionAttemptWithError")
-        playerViewController!.appRemoteDisconnect()
+         homeScreen?.spotifyHandler.appRemoteDisconnect()
     }
     
     func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
         print("didDisconnectWithError")
-        playerViewController!.appRemoteDisconnect()
+        homeScreen?.spotifyHandler.appRemoteDisconnect()
     }
 
 
