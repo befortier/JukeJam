@@ -31,7 +31,7 @@ class ScreenController: UITabBarController {
     }
     
     func test(){
-        print("HERE testing")
+//        print("HERE testing")
     }
 
 

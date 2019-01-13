@@ -27,6 +27,9 @@ class MusicPlayingController: UIViewController {
         self.musicBar.songText = "Started From the Bottom Now We're Here"
         self.musicBar.coverImage = UIImage(named: "album2")
         musicHandler = MusicHandler(playButton: musicBar.state, cover: musicBar.cover, label: musicBar.song, nextSong: musicBar.nextSong)
+        print("HERE MusicPlayinController loaded, next should create MusicHandler", self.musicHandler.spotifyHandler)
+
+        
 
 
     }

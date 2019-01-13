@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
             return UIApplication.shared.delegate as! AppDelegate
         }
     }
-let homeScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MusicPlayingController") as? MusicPlayingController
+    let homeScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MusicPlayingController") as? MusicPlayingController
 
   
     var window: UIWindow?
@@ -79,6 +79,9 @@ let homeScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewControll
                 window?.rootViewController = homeScreen
                 window?.makeKeyAndVisible()
             }
+            else {
+                //LOGOUT
+            }
         }
     }
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -90,6 +93,7 @@ let homeScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewControll
         } else if let error_description = parameters?[SPTAppRemoteErrorDescriptionKey] {
              homeScreen?.musicHandler.spotifyHandler.showError(error_description);
         }
+        print("HERE TRIggering appdelegate")
         return true
     }
     //Deals with googleSign in, if succesful sets UserDefault info and switches page.
@@ -151,8 +155,11 @@ let homeScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewControll
 
 
     func applicationWillResignActive(_ application: UIApplication) {
-         homeScreen?.musicHandler.spotifyHandler.appRemoteDisconnect()
-        appRemote.disconnect()
+        if homeScreen?.musicHandler != nil {
+            homeScreen?.musicHandler.spotifyHandler.appRemoteDisconnect()
+            appRemote.disconnect()
+        }
+        
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -172,23 +179,31 @@ let homeScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewControll
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     func connect() {
-         homeScreen?.musicHandler.spotifyHandler.appRemoteConnecting()
-        appRemote.connect()
+        if homeScreen?.musicHandler != nil {
+            homeScreen?.musicHandler.spotifyHandler.appRemoteConnecting()
+            appRemote.connect()
+        }
     }
     
     func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
-        self.appRemote = appRemote
-         homeScreen?.musicHandler.spotifyHandler.appRemoteConnected()
+        if homeScreen?.musicHandler != nil {
+            self.appRemote = appRemote
+            homeScreen?.musicHandler.spotifyHandler.appRemoteConnected()
+        }
     }
     
     func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
         print("didFailConnectionAttemptWithError")
+        if homeScreen?.musicHandler != nil {
          homeScreen?.musicHandler.spotifyHandler.appRemoteDisconnect()
+        }
     }
     
     func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
         print("didDisconnectWithError")
-        homeScreen?.musicHandler.spotifyHandler.appRemoteDisconnect()
+        if homeScreen?.musicHandler != nil {
+            homeScreen?.musicHandler.spotifyHandler.appRemoteDisconnect()
+        }
     }
 
 

@@ -22,6 +22,7 @@ SKStoreProductViewControllerDelegate {
     //Change between play/pause
     var playPauseButton: UIButton!
     @objc func didPressPlayPauseButton() {
+        print("HERE SpotifyHandler:", self.playPauseButton)
         if !(appRemote.isConnected) {
             if (!appRemote.authorizeAndPlayURI(playURI)) {
                 // The Spotify app is not installed, present the user with an App Store page
@@ -123,6 +124,7 @@ SKStoreProductViewControllerDelegate {
         nextButton.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.normal)
         nextButton.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.highlighted)
         self.nextButton.addTarget(self, action: #selector(didPressNextButton), for: .touchUpInside)
+        self.getPlayerState()
         
 //
 //        prevButton.setTitle("", for: UIControl.State.normal)
@@ -135,11 +137,18 @@ SKStoreProductViewControllerDelegate {
 //        skipForward15Button.isHidden = true
     }
     
+    override convenience init(){
+        self.init()
+        
+    }
+    
     // MARK: - View
 
-    
+    func terminate(){
+        pausePlayback()
+        appRemoteDisconnect()
+    }
     fileprivate func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
-        print("HERE updating view")
         updatePlayPauseButtonState(playerState.isPaused)
 //        updateRepeatModeLabel(playerState.playbackOptions.repeatMode)
 //        updateShuffleLabel(playerState.playbackOptions.isShuffling)
@@ -147,6 +156,8 @@ SKStoreProductViewControllerDelegate {
         fetchAlbumArtForTrack(playerState.track) { (image) -> Void in
             self.updateAlbumArtWithImage(image)
         }
+        print("HERE SHOULD CALL THIS", playPauseButton)
+
 //        updateViewWithRestrictions(playerState.playbackRestrictions)
 //        updateInterfaceForPodcast(playerState: playerState)
     }
@@ -336,7 +347,6 @@ SKStoreProductViewControllerDelegate {
     fileprivate func getPlayerState() {
         appRemote.playerAPI?.getPlayerState { (result, error) -> Void in
             guard error == nil else { return }
-            
             let playerState = result as! SPTAppRemotePlayerState
             self.updateViewWithPlayerState(playerState)
         }

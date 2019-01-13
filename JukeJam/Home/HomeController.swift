@@ -5,7 +5,7 @@ import MediaPlayer
 import FirebaseAuth
 import SCLAlertView
 
-class HomeController: MusicPlayingController, UICollectionViewDelegate{
+class HomeController: UIViewController, UICollectionViewDelegate{
 
     @IBOutlet weak var friendsJams: UICollectionView!
     @IBOutlet  var myJamsCarousal: UICollectionView!
@@ -85,26 +85,16 @@ class HomeController: MusicPlayingController, UICollectionViewDelegate{
     
     //Logs people out of their account
     @IBAction func logOut(_ sender: UIButton) {
-        guard Auth.auth().currentUser != nil else {
-            return
-        }
-        do {
-            try Auth.auth().signOut()
-            let fbLoginManager = FBSDKLoginManager()
-            fbLoginManager.logOut()
-            let cookies = HTTPCookieStorage.shared
-            let facebookCookies = cookies.cookies(for: URL(string: "https://facebook.com/")!)
-            for cookie in facebookCookies! {
-                cookies.deleteCookie(cookie )
-            }
-            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginController") as? ViewController
-            {
-                present(vc, animated: true, completion: nil)
-            }
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
+        let tabbar = self.tabBarController as! ScreenController
+        var mc = tabbar.MusicController
+        print("HERE removing spothanlder:", mc?.musicHandler.spotifyHandler)
+        mc?.musicHandler.spotifyHandler = nil
+        mc?.musicHandler = nil
+        mc?.dismiss(animated: true, completion: nil)
+        logout()
+
     }
+    
 
 }
 

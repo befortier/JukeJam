@@ -39,6 +39,18 @@ class MusicBar: UIView {
     }
     
     
+    @IBAction func test(_ sender: UIButton) {
+        sender.tintColor = random()
+    }
+    func random2() -> CGFloat {
+        return CGFloat(arc4random()) / CGFloat(UInt32.max)
+    }
+     func random() -> UIColor {
+        return UIColor(red:   random2(),
+                       green: random2(),
+                       blue:  random2(),
+                       alpha: 1.0)
+    }
     override init(frame: CGRect){
         super.init(frame:frame)
         commonInit()

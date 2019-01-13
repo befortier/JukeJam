@@ -24,10 +24,16 @@ class MusicHandler: NSObject {
      init(playButton: UIButton, cover: UIImageView, label: UILabel, nextSong: UIButton){
         super.init()
         spotifyHandler = SpotifyHandler(playButton: playButton, cover: cover, label: label, nextSong: nextSong)
+        print("HERE MusicHandler spothandler:", playButton)
+        spotifyHandler.playPauseButton.tintColor = UIColor.red
         appleHandler = AppleHandler()
         initalizePreference()
     }
+    convenience override init(){
+        self.init(playButton: UIButton(), cover: UIImageView(), label: UILabel(), nextSong: UIButton())
+    }
     
+     
     //Should set gloabl preference variable to be apple if apple is available + has playback, spotify if apple doesnt have playback, apple if both dont have playback, spotify if doesnt have apple, none if has neither.
     func initalizePreference(){
         preference = Pref.spotify
@@ -75,6 +81,9 @@ class MusicHandler: NSObject {
         }
     }
     
+    func endSession(){
+        spotifyHandler.terminate()
+    }
     
     
 }

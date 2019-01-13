@@ -12,12 +12,12 @@ extension UIViewController {
     //Switches from current controller to HomeController
     func switchControllers(home: Bool){
         if home{
-            if let TabBar: ScreenController? = storyboard?.instantiateViewController(withIdentifier: "ScreenController") as? ScreenController {
-                print("navigationController = \(self)")
-                print("tabbar = \(String(describing: TabBar))")
-                self.show((TabBar)!, sender: nil)
+            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MusicPlayingController") as? MusicPlayingController
+            {
+                present(vc, animated: true, completion: nil)
+                }
             }
-        }
+        
         else{
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConfirmController") as? ConfirmController
             {

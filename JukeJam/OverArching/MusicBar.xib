@@ -42,6 +42,9 @@
                         <constraint firstAttribute="width" secondItem="kcm-hB-nXu" secondAttribute="height" multiplier="1:1" id="S0m-PS-hFg"/>
                     </constraints>
                     <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="test:" destination="-1" eventType="touchUpInside" id="esq-iy-mks"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLK-jh-nO9">
                     <rect key="frame" x="334" y="19" width="35" height="35"/>
