@@ -191,11 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				570CB7EE21EBC66F009DCA6D /* ControllerController.swift */,
-				570CB7EA21EA8951009DCA6D /* MusicHandler.swift */,
 				5706200721E66D23009869BE /* MusicPlayingController.swift */,
 				57A71B7C21D96A680004FEDA /* ScreenController.swift */,
-				5706201621E7B76D009869BE /* MusicBar.swift */,
-				5706201821E7BA8F009869BE /* MusicBar.xib */,
 				570CB7EC21EA902F009DCA6D /* OverArching_Extensions.swift */,
 			);
 			path = OverArching;
@@ -211,6 +208,17 @@
 				570CB7DF21E94A23009DCA6D /* My-Extensions.swift */,
 			);
 			path = Spotify;
+			sourceTree = "<group>";
+		};
+		570CB7F021EBF75E009DCA6D /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				570CB7EA21EA8951009DCA6D /* MusicHandler.swift */,
+				5706201621E7B76D009869BE /* MusicBar.swift */,
+				5706201821E7BA8F009869BE /* MusicBar.xib */,
+				570CB7E921E95BCE009DCA6D /* Spotify */,
+			);
+			path = Music;
 			sourceTree = "<group>";
 		};
 		572BA0A321D2CF05008B9611 = {
@@ -248,13 +256,13 @@
 				5705942D21D541D100F4F5CB /* Login */,
 				5706200B21E68444009869BE /* OverArching */,
 				576410F521DE63B70009525B /* Home */,
-				5764110121E2A8360009525B /* FocalUI */,
-				570CB7E921E95BCE009DCA6D /* Spotify */,
 				57A71B7A21D823DE0004FEDA /* AppleHandler.swift */,
+				570CB7F021EBF75E009DCA6D /* Music */,
 				5706200221E3DC9C009869BE /* JukeJam-Bridging-Header.h */,
 				5705943021D5B2CA00F4F5CB /* profileImage.swift */,
 				570CB7D921E91A41009DCA6D /* SpotifyTester.swift */,
 				570CB7E721E953B7009DCA6D /* SongController.swift */,
+				5764110121E2A8360009525B /* FocalUI */,
 			);
 			path = JukeJam;
 			sourceTree = "<group>";

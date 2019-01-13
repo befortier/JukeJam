@@ -100,8 +100,7 @@ SKStoreProductViewControllerDelegate {
     
     fileprivate var connectionIndicatorView = ConnectionStatusIndicatorView()
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
+
     init(playButton: UIButton, cover: UIImageView, label: UILabel, nextSong: UIButton){
         super.init()
         self.playPauseButton = playButton
@@ -115,8 +114,7 @@ SKStoreProductViewControllerDelegate {
         playPauseButton.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.normal)
         playPauseButton.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.highlighted)
         playPauseButton.tintColor = UIColor.black
-//        playPauseButton.colo
-//
+
         nextButton = nextSong
         nextButton.tintColor = UIColor.black
 
