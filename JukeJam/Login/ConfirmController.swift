@@ -23,6 +23,7 @@ class ConfirmController: UIViewController {
     @IBOutlet weak var last_name: SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var profPic: UIImageView!
     var user: User?
+    var mainController: ControllerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()

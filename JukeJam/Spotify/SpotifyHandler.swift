@@ -90,7 +90,7 @@ SKStoreProductViewControllerDelegate {
     
 
     
-    fileprivate let playURI = "spotify:album:5uMfshtC2Jwqui0NUyUYIL"
+    fileprivate let playURI = "spotify:album:20r762YmB5HeofjMCiPMLv"
     fileprivate let trackIdentifier = "spotify:track:32ftxJzxMPgUFCM6Km9WTS"
     fileprivate let name = "Now Playing View"
     

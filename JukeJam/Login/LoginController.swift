@@ -35,7 +35,8 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
     @IBOutlet weak var googleLogo: UIImageView!
     @IBOutlet weak var facebookButton: UIView!
     var activitiy: NVActivityIndicatorView?
-
+    var mainController: ControllerController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance().uiDelegate = self
@@ -182,7 +183,9 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
             }
             self.startAnimate(wholeView: self.wholeView, frame: self, message: "Loading your Account")
             self.endAnimate(wholeView: self.wholeView, frame: self)
-            self.switchControllers(home: true)
+            self.mainController.state = .app
+            self.mainController.presentController(sender:self)
+            
         }
       
     }

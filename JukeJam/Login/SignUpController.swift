@@ -86,11 +86,14 @@ class SignUpController: UIViewController, NVActivityIndicatorViewable, UITextFie
             var obj: [String:Any] = [:]
             obj["email"] = self.curEmail
             obj["username"] = self.curUsername
-            self.fillUserData(Dict: obj)
+            self.fillUserData2(Dict: obj)
             self.endAnimate(wholeView: self.whiteView, frame: self)
             self.showMessage("Account registered", type: .success)
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-                self.switchControllers(home: false)
+                    if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConfirmController") as? ConfirmController
+                    {
+                       self.present(vc, animated: true, completion: nil)
+                    }
             })
         }
     }

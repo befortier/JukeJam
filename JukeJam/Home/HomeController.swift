@@ -87,11 +87,7 @@ class HomeController: UIViewController, UICollectionViewDelegate{
     @IBAction func logOut(_ sender: UIButton) {
         let tabbar = self.tabBarController as! ScreenController
         var mc = tabbar.MusicController
-        print("HERE removing spothanlder:", mc?.musicHandler.spotifyHandler)
-        mc?.musicHandler.spotifyHandler = nil
-        mc?.musicHandler = nil
-        mc?.dismiss(animated: true, completion: nil)
-        logout()
+        mc!.logout()
 
     }
     

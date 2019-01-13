@@ -3,7 +3,7 @@ import FBSDKLoginKit
 import FacebookLogin
 import FirebaseAuth
 
-extension UIViewController{
+extension MusicPlayingController{
     func logout(){
         guard Auth.auth().currentUser != nil else {
             return
@@ -17,13 +17,10 @@ extension UIViewController{
             for cookie in facebookCookies! {
                 cookies.deleteCookie(cookie )
             }
-            let musicHandler = MusicHandler()
-            musicHandler.endSession()
-            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginController") as? ViewController
-            {
-                present(vc, animated: true, completion: nil)
-            }
-        } catch let error as NSError {
+            self.musicHandler.endSession()
+            self.mainController.state = .login
+            self.mainController.presentController(sender:self)
+            } catch let error as NSError {
             print(error.localizedDescription)
         }
     }

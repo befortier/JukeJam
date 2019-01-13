@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
     fileprivate let redirectUri = URL(string: "JukeJam://returnAfterLogin")!
     fileprivate let clientIdentifier = "30e40f876c2348c0bf0644d1be184864"
     fileprivate let name = "Now Playing View"
+    var window:UIWindow?
 
     // keys
     static fileprivate let kAccessTokenKey = "access-token-key"
@@ -41,10 +42,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
             return UIApplication.shared.delegate as! AppDelegate
         }
     }
-    let homeScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MusicPlayingController") as? MusicPlayingController
-
   
-    var window: UIWindow?
+
+    var homeScreen: ControllerController!
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
@@ -57,33 +58,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
         nav.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white,  NSAttributedString.Key.font: font]
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
         UINavigationBar.appearance().barStyle = .blackOpaque
-        checkAuth()
- 
+        homeScreen = self.window?.rootViewController as! ControllerController
 
         return true
     }
 
     
-    //Checks if UserDefault has any saved log in from user
-    func checkAuth(){
-        let is_authenticated = Auth.auth().currentUser
-        let def = UserDefaults.standard
-        var curUser: User?
-        let userData = def.object(forKey: "user") as? NSData
-        if let user = userData {
-            curUser = (NSKeyedUnarchiver.unarchiveObject(with: user as Data) as? User)!
-        }
-        if is_authenticated != nil && curUser != nil{
-            if (homeScreen != nil)
-            {
-                window?.rootViewController = homeScreen
-                window?.makeKeyAndVisible()
-            }
-            else {
-                //LOGOUT
-            }
-        }
-    }
+//    //Checks if UserDefault has any saved log in from user
+//    func checkAuth(){
+//        let is_authenticated = Auth.auth().currentUser
+//        let def = UserDefaults.standard
+//        var curUser: User?
+//        let userData = def.object(forKey: "user") as? NSData
+//        if let user = userData {
+//            curUser = (NSKeyedUnarchiver.unarchiveObject(with: user as Data) as? User)!
+//        }
+//        if is_authenticated != nil && curUser != nil{
+//            if (homeScreen != nil)
+//            {
+//                window?.rootViewController = homeScreen
+//                window?.makeKeyAndVisible()
+//            }
+//            else {
+//                //LOGOUT
+//            }
+//        }
+//    }
+    
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         let parameters = appRemote.authorizationParameters(from: url);
         
@@ -91,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
             appRemote.connectionParameters.accessToken = access_token
             self.accessToken = access_token
         } else if let error_description = parameters?[SPTAppRemoteErrorDescriptionKey] {
-             homeScreen?.musicHandler.spotifyHandler.showError(error_description);
+             homeScreen?.AppController!.musicHandler.spotifyHandler.showError(error_description);
         }
         print("HERE TRIggering appdelegate")
         return true
@@ -155,8 +156,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
 
 
     func applicationWillResignActive(_ application: UIApplication) {
-        if homeScreen?.musicHandler != nil {
-            homeScreen?.musicHandler.spotifyHandler.appRemoteDisconnect()
+        if homeScreen?.AppController!.musicHandler != nil {
+            homeScreen?.AppController!.musicHandler.spotifyHandler.appRemoteDisconnect()
             appRemote.disconnect()
         }
         
@@ -179,30 +180,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     func connect() {
-        if homeScreen?.musicHandler != nil {
-            homeScreen?.musicHandler.spotifyHandler.appRemoteConnecting()
+        if homeScreen?.AppController!.musicHandler != nil {
+            homeScreen?.AppController!.musicHandler.spotifyHandler.appRemoteConnecting()
             appRemote.connect()
         }
     }
     
     func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
-        if homeScreen?.musicHandler != nil {
+        if homeScreen?.AppController!.musicHandler != nil {
             self.appRemote = appRemote
-            homeScreen?.musicHandler.spotifyHandler.appRemoteConnected()
+            homeScreen?.AppController!.musicHandler.spotifyHandler.appRemoteConnected()
         }
     }
     
     func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
         print("didFailConnectionAttemptWithError")
-        if homeScreen?.musicHandler != nil {
-         homeScreen?.musicHandler.spotifyHandler.appRemoteDisconnect()
+        if homeScreen?.AppController!.musicHandler != nil {
+         homeScreen?.AppController!.musicHandler.spotifyHandler.appRemoteDisconnect()
         }
     }
     
     func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
         print("didDisconnectWithError")
-        if homeScreen?.musicHandler != nil {
-            homeScreen?.musicHandler.spotifyHandler.appRemoteDisconnect()
+        if homeScreen?.AppController!.musicHandler != nil {
+            homeScreen?.AppController!.musicHandler.spotifyHandler.appRemoteDisconnect()
         }
     }
 

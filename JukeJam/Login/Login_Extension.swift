@@ -7,28 +7,20 @@ import SkyFloatingLabelTextField
 import FontAwesome_swift
 var blurEffectView: UIVisualEffectView?
 
-extension UIViewController {
+extension ViewController {
     
-    //Switches from current controller to HomeController
+//    Switches from current controller to HomeController
     func switchControllers(home: Bool){
+        print("HERE Switching to home", home)
         if home{
-            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MusicPlayingController") as? MusicPlayingController
-            {
-                present(vc, animated: true, completion: nil)
-                }
-            }
-        
-        else{
-            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConfirmController") as? ConfirmController
-            {
-                present(vc, animated: true, completion: nil)
-            }
-            
+            self.mainController.state = .app
         }
-        
+        else{
+            self.mainController.state = .newUser
+        }
+        self.mainController.presentController(sender: self)
     }
-    
-    //    Takes in a Dict and creates a UserDefault user, calls saveDatabase(dict)
+
     func fillUserData(Dict: [String:Any]){
         let user: User = User(name: "")
         user.name = Dict["name"] as? String ?? ""
@@ -46,7 +38,6 @@ extension UIViewController {
         self.saveDatabase(Data: Dict)
     }
     
-    //Checks to see if info is stored in DB, else saves it.
     func saveDatabase(Data: [String: Any]){
         let userID = Auth.auth().currentUser?.uid
         var ref: DatabaseReference!
@@ -54,10 +45,56 @@ extension UIViewController {
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             if snapshot.exists(){
                 ref.child("users").child(userID!).updateChildValues(Data)
-                self.switchControllers(home: true)
-            }else{
+                self.switchControllers(home:true)
+            }
+            else{
                 ref.child("users").child(userID!).setValue(Data)
                 self.switchControllers(home: false)
+                
+            }
+        })
+    }
+}
+extension UIViewController {
+
+//        Takes in a Dict and creates a UserDefault user, calls saveDatabase(dict)
+    func fillUserData2(Dict: [String:Any]){
+        let user: User = User(name: "")
+        user.name = Dict["name"] as? String ?? ""
+        user.location = Dict["location"] as? String ?? ""
+        user.birthday = Dict["birthday"] as? String ?? ""
+        user.email = Dict["email"] as? String ?? ""
+        user.first_name = Dict["first_name"] as? String ?? ""
+        user.last_name = Dict["last_name"] as? String ?? ""
+        user.gender = Dict["gender"] as? String ?? ""
+        user.F_id = Dict["F_id"] as? String ?? ""
+        user.G_id = Dict["G_id"] as? String ?? ""
+        user.username = Dict["username"] as? String ?? ""
+        let userData = NSKeyedArchiver.archivedData(withRootObject: user)
+        UserDefaults.standard.set(userData, forKey: "user")
+        self.saveDatabase2(Data: Dict)
+    }
+    
+//    Checks to see if info is stored in DB, else saves it.
+    func saveDatabase2(Data: [String: Any]){
+        let userID = Auth.auth().currentUser?.uid
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.exists(){
+                ref.child("users").child(userID!).updateChildValues(Data)
+                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MusicPlayingController") as? MusicPlayingController
+                {
+                    self.present(vc, animated: true, completion: nil)
+                }
+            }
+            else{
+
+                ref.child("users").child(userID!).setValue(Data)
+                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConfirmController") as? ConfirmController
+                {
+                    self.present(vc, animated: true, completion: nil)
+                }
             }
         })
     }

@@ -36,6 +36,7 @@
 		570CB7E821E953B7009DCA6D /* SongController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570CB7E721E953B7009DCA6D /* SongController.swift */; };
 		570CB7EB21EA8951009DCA6D /* MusicHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570CB7EA21EA8951009DCA6D /* MusicHandler.swift */; };
 		570CB7ED21EA902F009DCA6D /* OverArching_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570CB7EC21EA902F009DCA6D /* OverArching_Extensions.swift */; };
+		570CB7EF21EBC670009DCA6D /* ControllerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570CB7EE21EBC66F009DCA6D /* ControllerController.swift */; };
 		572BA0C521D2CF06008B9611 /* JukeJamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0C421D2CF06008B9611 /* JukeJamTests.swift */; };
 		572BA0D021D2CF06008B9611 /* JukeJamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572BA0CF21D2CF06008B9611 /* JukeJamUITests.swift */; };
 		576410F721DE644C0009525B /* SeeMoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576410F621DE644C0009525B /* SeeMoreController.swift */; };
@@ -102,6 +103,7 @@
 		570CB7E721E953B7009DCA6D /* SongController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongController.swift; sourceTree = "<group>"; };
 		570CB7EA21EA8951009DCA6D /* MusicHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicHandler.swift; sourceTree = "<group>"; };
 		570CB7EC21EA902F009DCA6D /* OverArching_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverArching_Extensions.swift; sourceTree = "<group>"; };
+		570CB7EE21EBC66F009DCA6D /* ControllerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerController.swift; sourceTree = "<group>"; };
 		572BA0AC21D2CF05008B9611 /* JukeJam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JukeJam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		572BA0C021D2CF06008B9611 /* JukeJamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JukeJamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		572BA0C421D2CF06008B9611 /* JukeJamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JukeJamTests.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 		5706200B21E68444009869BE /* OverArching */ = {
 			isa = PBXGroup;
 			children = (
+				570CB7EE21EBC66F009DCA6D /* ControllerController.swift */,
 				570CB7EA21EA8951009DCA6D /* MusicHandler.swift */,
 				5706200721E66D23009869BE /* MusicPlayingController.swift */,
 				57A71B7C21D96A680004FEDA /* ScreenController.swift */,
@@ -628,6 +631,7 @@
 				57A71B7D21D96A680004FEDA /* ScreenController.swift in Sources */,
 				5764110321E2DF4C0009525B /* MyMusicController.swift in Sources */,
 				5706200421E4107D009869BE /* ConnectButton.swift in Sources */,
+				570CB7EF21EBC670009DCA6D /* ControllerController.swift in Sources */,
 				5764110521E3C5450009525B /* SpotifyHandler.swift in Sources */,
 				5705942721D53DE000F4F5CB /* FbLoginHandler.swift in Sources */,
 				570CB7E521E94A24009DCA6D /* My-Extensions.swift in Sources */,

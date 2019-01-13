@@ -6,7 +6,7 @@ import FirebaseAuth
 import SCLAlertView
 import SPStorkController
 
-class MyMusicController: MusicPlayingController, UICollectionViewDelegate{
+class MyMusicController: UIViewController, UICollectionViewDelegate{
     
     @IBOutlet weak var playlists: UICollectionView!
     @IBOutlet  var songs: UICollectionView!

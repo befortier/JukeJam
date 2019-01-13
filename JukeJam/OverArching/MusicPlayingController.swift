@@ -8,29 +8,17 @@ class MusicPlayingController: UIViewController {
     var isPlaying: Bool = false
     weak var musicBar: MusicBar!
     var musicHandler: MusicHandler!
+    var mainController: ControllerController!
+
     override func loadView() {
         super.loadView()
-        let musicBar = MusicBar()
-        self.view.addSubview(musicBar)
-        NSLayoutConstraint.activate([
-            musicBar.topAnchor.constraint(equalTo: self.view.topAnchor),
-            musicBar.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            musicBar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            musicBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            ])
-        self.musicBar = musicBar
-        self.musicBar.frame = CGRect(x: -2, y: self.view.frame.height - 115, width: self.view.frame.width + 4, height: 66)
+
+       
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.musicBar = musicHandler.addBar(frame: self.view)
         initMusic()
-        self.musicBar.songText = "Started From the Bottom Now We're Here"
-        self.musicBar.coverImage = UIImage(named: "album2")
-        musicHandler = MusicHandler(playButton: musicBar.state, cover: musicBar.cover, label: musicBar.song, nextSong: musicBar.nextSong)
-        print("HERE MusicPlayinController loaded, next should create MusicHandler", self.musicHandler.spotifyHandler)
-
-        
-
 
     }
 
@@ -56,6 +44,7 @@ class MusicPlayingController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ScreenController,
             segue.identifier == "BeginSegue" {
+            print("HERE tabbar set?")
             self.TabBar = vc
             vc.MusicController = self
         }
