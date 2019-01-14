@@ -17,16 +17,6 @@
                     <view key="view" contentMode="scaleToFill" id="Deb-Um-esO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZWA-tz-brY">
-                                <rect key="frame" x="164" y="266" width="46" height="153"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="test:" destination="p1h-zh-n0N" eventType="touchUpInside" id="MpT-WI-GEg"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="EWr-6d-WMx"/>
                     </view>
@@ -43,6 +33,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginBackground" translatesAutoresizingMaskIntoConstraints="NO" id="8eo-Rn-tq7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67o-xp-a4D">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.97647058823529409" green="0.53333333333333333" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="wNw-eC-S8f">
                                 <rect key="frame" x="68" y="20" width="239" height="268"/>
                                 <constraints>
@@ -96,7 +93,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                         <state key="normal" title="Forgot Password"/>
                                         <connections>
-                                            <segue destination="4Iw-2K-P5T" kind="show" id="i3J-bM-jUa"/>
+                                            <segue destination="4Iw-2K-P5T" kind="show" identifier="ForgotPassword" id="i3J-bM-jUa"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D43-aV-gJ8">
@@ -217,7 +214,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                         <state key="normal" title="Don't have an account? Create Account"/>
                                         <connections>
-                                            <segue destination="ZRs-gd-3ik" kind="show" id="f5S-Tx-nTO"/>
+                                            <segue destination="ZRs-gd-3ik" kind="show" identifier="Register" id="f5S-Tx-nTO"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -258,13 +255,21 @@
                         <constraints>
                             <constraint firstItem="8Eg-vv-zBI" firstAttribute="top" secondItem="wNw-eC-S8f" secondAttribute="bottom" constant="8" id="1aR-gI-UxZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wNw-eC-S8f" secondAttribute="trailing" constant="68" id="5n1-tu-DJo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8eo-Rn-tq7" secondAttribute="bottom" id="7Wj-7x-cS7"/>
+                            <constraint firstItem="8eo-Rn-tq7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-20" id="A6R-8Q-kub"/>
                             <constraint firstItem="wNw-eC-S8f" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Aie-vy-6Yh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8eo-Rn-tq7" secondAttribute="trailing" id="C7G-b0-GmT"/>
                             <constraint firstItem="wNw-eC-S8f" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="68" id="DvK-Vh-2Qj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QJK-Yy-ahX" secondAttribute="trailing" constant="40" id="IH1-kt-t1p"/>
                             <constraint firstItem="wNw-eC-S8f" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="PbE-Sg-ttm"/>
+                            <constraint firstItem="67o-xp-a4D" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-20" id="QnT-Da-7im"/>
+                            <constraint firstItem="8eo-Rn-tq7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="V4n-52-pOW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8Eg-vv-zBI" secondAttribute="trailing" constant="16" id="c0c-jS-AXd"/>
                             <constraint firstItem="8Eg-vv-zBI" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="gZg-f3-7wl"/>
+                            <constraint firstItem="67o-xp-a4D" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ihV-AU-o3Y"/>
                             <constraint firstItem="gsU-Zd-4bP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="itn-X3-1dG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="67o-xp-a4D" secondAttribute="bottom" id="oCF-5r-cAp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="67o-xp-a4D" secondAttribute="trailing" id="tI3-uZ-jYf"/>
                             <constraint firstItem="8Eg-vv-zBI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="xvp-9W-f3B"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -288,7 +293,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1358" y="256"/>
+            <point key="canvasLocation" x="-1359.2" y="255.92203898050977"/>
         </scene>
         <!--How To Use Controller-->
         <scene sceneID="hxv-GS-UuP">
@@ -303,7 +308,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOU-Ei-XGt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1406" y="-234"/>
+            <point key="canvasLocation" x="1714" y="-519"/>
         </scene>
         <!--Sign Up Controller-->
         <scene sceneID="srH-sS-CTC">
@@ -377,7 +382,7 @@
                                                 <rect key="frame" x="0.0" y="557" width="335" height="30"/>
                                                 <state key="normal" title="Already a member? Log in "/>
                                                 <connections>
-                                                    <segue destination="BYZ-38-t0r" kind="show" id="1nd-74-Ibd"/>
+                                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Login" id="1nd-74-Ibd"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9k-HJ-Tt3" customClass="loginButton" customModule="JukeJam" customModuleProvider="target">
@@ -486,7 +491,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5xj-SF-f2w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="482" y="-234"/>
+            <point key="canvasLocation" x="33" y="-518"/>
         </scene>
         <!--Forgot Password-->
         <scene sceneID="mRf-7J-BSc">
@@ -527,7 +532,7 @@
                                                 <rect key="frame" x="0.0" y="557" width="335" height="30"/>
                                                 <state key="normal" title="I know my password! Log in"/>
                                                 <connections>
-                                                    <segue destination="BYZ-38-t0r" kind="show" id="nBZ-As-Edc"/>
+                                                    <segue destination="BYZ-38-t0r" kind="show" identifier="Login" id="nBZ-As-Edc"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ntW-EM-eUG" customClass="loginButton" customModule="JukeJam" customModuleProvider="target">
@@ -822,7 +827,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zYl-ZL-XRw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1407" y="952"/>
+            <point key="canvasLocation" x="1817" y="952"/>
         </scene>
         <!--Jams-->
         <scene sceneID="W9Q-Kr-2tK">
@@ -835,11 +840,24 @@
                             <view alpha="0.40000000000000002" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S9v-gX-f2R">
                                 <rect key="frame" x="-4" y="56" width="383" height="1445"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.97647058819999999" green="0.53333333329999999" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMc-sC-tqE">
                                 <rect key="frame" x="0.0" y="64" width="375" height="1437"/>
                                 <subviews>
+                                    <view alpha="0.34999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k0Z-pt-ElK">
+                                        <rect key="frame" x="0.0" y="-364" width="375" height="539"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view alpha="0.25" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UaU-il-qAP">
+                                                <rect key="frame" x="8" y="542" width="359" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.97647058819999999" green="0.53333333329999999" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3C-Gs-AwL" userLabel="Create Jam" customClass="FocalButton" customModule="JukeJam" customModuleProvider="target">
                                         <rect key="frame" x="23" y="21" width="138" height="132"/>
                                         <subviews>
@@ -1328,7 +1346,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oqo-3Z-qPV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1929" y="2996"/>
+            <point key="canvasLocation" x="1928.8" y="2995.5022488755626"/>
         </scene>
         <!--See More Controller-->
         <scene sceneID="UIv-K8-HE0">
@@ -2075,14 +2093,14 @@
         <image name="facebookLogo" width="501" height="501"/>
         <image name="forgotPassword" width="1337" height="972"/>
         <image name="googleLogo" width="800" height="600"/>
+        <image name="loginBackground" width="2560" height="1440"/>
         <image name="logo" width="454" height="454"/>
         <image name="nextsong" width="25" height="25"/>
         <image name="play" width="25" height="25"/>
         <image name="registerLogo" width="225" height="225"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="i3J-bM-jUa"/>
-        <segue reference="tsD-IY-Rwb"/>
-        <segue reference="nBZ-As-Edc"/>
+        <segue reference="opU-1W-s1x"/>
+        <segue reference="1nd-74-Ibd"/>
     </inferredMetricsTieBreakers>
 </document>

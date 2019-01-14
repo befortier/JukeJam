@@ -19,7 +19,8 @@ extension MusicPlayingController{
             }
             self.musicHandler.endSession()
             self.mainController.state = .login
-            self.mainController.presentController(sender:self)
+            self.mainController.presentController(sender: self)
+
             } catch let error as NSError {
             print(error.localizedDescription)
         }

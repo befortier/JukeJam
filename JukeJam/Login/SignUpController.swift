@@ -13,7 +13,7 @@ import FirebaseDatabase
 import GSMessages
 import NVActivityIndicatorView
 
-class SignUpController: UIViewController, NVActivityIndicatorViewable, UITextFieldDelegate {
+class SignUpController: BaseLoginController{
     @IBOutlet weak var whiteView: UIView!
     @IBOutlet weak var confirmPassword: SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var password: SkyFloatingLabelTextFieldWithIcon!
@@ -31,44 +31,31 @@ class SignUpController: UIViewController, NVActivityIndicatorViewable, UITextFie
         super.viewDidLoad()
         self.navigationItem.title = "Sign Up"
         self.customizeTextInput()
-        self.customizeView()
-        email.delegate = self
-        password.delegate = self
-        username.delegate = self
-        confirmPassword.delegate = self
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
-        self.view.addGestureRecognizer(tapGesture)
+        self.textFields = [email,password,username,confirmPassword]
     }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {   
-        textField.resignFirstResponder()
-        return true
+  
+    override func awakeFromNib() {
+        let _ = self.view
+        self.baseModal = whiteView
+        self.customizeView()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @objc func dismissKeyboard (_ sender: Any) {
-        self.email.resignFirstResponder()
-        self.password.resignFirstResponder()
-        self.confirmPassword.resignFirstResponder()
-        self.username.resignFirstResponder()
-    }
+
     
 //    Does prelimary checking to make sure info is validated, then calls Firebases createUser
     @IBAction func registerAccount(_ sender: UIButton) {
-        self.email.resignFirstResponder()
-        self.password.resignFirstResponder()
-        self.confirmPassword.resignFirstResponder()
-        self.username.resignFirstResponder()
+        resignResponders()
         if !checkFilled() {
             return
         }
         if !validate(){
             return
         }
-        Auth.auth().createUser(withEmail: curEmail, password: curPassword) { (authResult, error) in
+        Auth.auth().createUser(withEmail: self.email.text!, password: self.password.text!) { (authResult, error) in
             guard let user = authResult?.user else {
                 if let errCode = AuthErrorCode(rawValue: error!._code) {
                     switch errCode {
@@ -86,14 +73,12 @@ class SignUpController: UIViewController, NVActivityIndicatorViewable, UITextFie
             var obj: [String:Any] = [:]
             obj["email"] = self.curEmail
             obj["username"] = self.curUsername
-            self.fillUserData2(Dict: obj)
+            self.fillUserData(Dict: obj)
             self.endAnimate(wholeView: self.whiteView, frame: self)
             self.showMessage("Account registered", type: .success)
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-                    if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConfirmController") as? ConfirmController
-                    {
-                       self.present(vc, animated: true, completion: nil)
-                    }
+                self.switchControllers(home: true)
+
             })
         }
     }
@@ -134,63 +119,34 @@ class SignUpController: UIViewController, NVActivityIndicatorViewable, UITextFie
         return success
     }
     
-//    Checks to make sure all fields are filled out
-    func checkFilled() -> Bool{
-        var success: Bool = true;
-        if self.username.text != nil{
-            curUsername = self.username.text!
-        }
-        if self.email.text != nil{
-            curEmail = self.email.text!
-        }
-        if self.password.text != nil{
-            curPassword = self.password.text!
-        }
-        if self.confirmPassword.text != nil{
-            curConfirmed = self.confirmPassword.text!
-        }
-        if curUsername == ""{
-            self.username.handleError(message: "Username is required")
-            success = false
-        }
-        if curEmail == ""{
-            self.email.handleError(message: "Email is required")
-            success = false
-        }
-        if curPassword == ""{
-            self.password.handleError(message: "Password is required")
-            success = false
-        }
-        if curConfirmed == ""{
-            self.confirmPassword.handleError(message: "Confirmation is required")
-            success = false
-        }
-        return success
-    }
     
     //Customizes white view
     func customizeView(){
-        self.view.backgroundColor = UIColor.black
-        whiteView.backgroundColor = UIColor.white
-        whiteView.clipsToBounds = true
-        whiteView.layer.cornerRadius = 20.0
+        customizeClassView()
         registerLabel.textColor = UIColor(red: 159/255,green: 90/255,blue :253/255, alpha: 1)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        self.dismiss(animated: true)
+        switch segue.identifier {
+        case "Login":
+            let DestViewController: ViewController = segue.destination as! ViewController
+            DestViewController.mainController = self.mainController
+            break
+            
+         default:
+            break
+        }
     }
     
     //Customizes text input boxes to look nice
     func customizeTextInput(){
-        let overcastBlueColor = UIColor(red: 0, green: 187/255, blue: 204/255, alpha: 1.0)
-        let orange = UIColor.orange
-        let green = UIColor(red: 60/255, green: 179/255, blue: 113/255, alpha: 1.0)
-        let red = UIColor(red: 255/255, green: 105/255, blue: 180/255, alpha: 1.0)
-        email.intializeInfo(title: "Email", placeholder: "Email", color: overcastBlueColor, size: 15, type: .envelope, password: false)
-        username.intializeInfo(title: "Username", placeholder: "Username", color: green, size: 15, type: .user, password: false)
-        password.intializeInfo(title: "Password", placeholder: "Password", color: orange, size: 15, type: .lock, password: true)
-        confirmPassword.intializeInfo(title: "Confirm Password", placeholder: "Confirm Password", color: red, size: 15, type: .lock, password: true)
-        email.addTarget(self, action: #selector(checkReset(sender:)), for: .editingChanged)
-        password.addTarget(self, action: #selector(checkReset(sender:)), for: .editingChanged)
-        username.addTarget(self, action: #selector(checkReset(sender:)), for: .editingChanged)
-        confirmPassword.addTarget(self, action: #selector(checkReset(sender:)), for: .editingChanged)
+        let useColor = UIColor.stem
+        email.intializeInfo(title: "Email", placeholder: "Email", color: useColor, size: 15, type: .envelope, password: false)
+        username.intializeInfo(title: "Username", placeholder: "Username", color: useColor, size: 15, type: .user, password: false)
+        password.intializeInfo(title: "Password", placeholder: "Password", color: useColor, size: 15, type: .lock, password: true)
+        confirmPassword.intializeInfo(title: "Confirm Password", placeholder: "Confirm Password", color: useColor, size: 15, type: .lock, password: true)
+       
     }
     
 }

@@ -23,13 +23,7 @@ class ControllerController: UIViewController {
         case newUser
     }
     
-    @IBAction func test(_ sender: Any) {
-        if let controller = curController() {
-            print("HERE good")
-            self.present(controller, animated: true, completion: nil)
-        }
-    }
-    var state: controllerType = controllerType.login
+    var state: controllerType = controllerType.login 
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeControllers()
@@ -43,7 +37,7 @@ class ControllerController: UIViewController {
     }
     func presentController(sender: UIViewController){
         if let controller = curController() {
-            sender.dismiss(animated: true)
+            sender.dismiss(animated: false)
             sender.present(controller, animated: true, completion: nil)
         }
         else{
@@ -78,6 +72,7 @@ class ControllerController: UIViewController {
         }
         return LoginController!
     }
+
     
     //Checks if UserDefault has any saved log in from user
     func checkAuth(){

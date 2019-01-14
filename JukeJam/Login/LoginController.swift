@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  iVote
-//
-//  Created by Rena fortier on 11/19/18.
-//  Copyright © 2018 Ben Fortier. All rights reserved.
-//
-
 import UIKit
 import FBSDKLoginKit
 import GoogleSignIn
@@ -19,7 +11,7 @@ import FBSDKLoginKit
 
 
 
-class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicatorViewable, UITextFieldDelegate {
+class ViewController: BaseLoginController, GIDSignInUIDelegate{
     @IBOutlet var wholeView: UIView!
     @IBOutlet weak var googleLabel: UILabel!
     @IBOutlet weak var facebookLogo: UIImageView!
@@ -35,28 +27,27 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
     @IBOutlet weak var googleLogo: UIImageView!
     @IBOutlet weak var facebookButton: UIView!
     var activitiy: NVActivityIndicatorView?
-    var mainController: ControllerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance().uiDelegate = self
-        email.delegate = self
-        password.delegate = self
+        self.textFields = [email,password]
         self.navigationItem.title = "Sign In"
         self.initActivity(thisSelf: self)
-        self.addBackground()
         self.customizeButtons()
         self.customizeTextInput()
-        self.customizeView()
         self.addEvents()
         NotificationCenter.default.addObserver(self, selector: #selector(trigger(_:)), name: .startAnime, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(stop(_:)), name: .endAnime, object: nil)
+       
         
     }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
-        textField.resignFirstResponder()
-        return true
+    override func awakeFromNib() {
+        let _ = self.view
+        self.baseModal = whiteView
+        self.customizeView()
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -68,7 +59,21 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
         startAnimate(wholeView: wholeView, frame: self, message: "Loading your Account")
     
     }
-    
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    switch segue.identifier {
+    case "ForgotPassword":
+          let DestViewController: ForgotPassword = segue.destination as! ForgotPassword
+          DestViewController.mainController = self.mainController
+        break
+    case "Register":
+        let DestViewController: SignUpController = segue.destination as! SignUpController
+        DestViewController.mainController = self.mainController
+        break
+        
+    default:
+        break
+    }
+    }
     //After google and firebase has succesfully authenticated
     @objc func stop(_ sender: Notification) {
         let obj = sender.userInfo
@@ -78,9 +83,7 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
         Dict["last_name"] = obj?["last_name"]
         Dict["G_id"] = obj?["id"]
         Dict["email"] = obj?["email"]
-        fillUserData(Dict: Dict)
-        endAnimate(wholeView: wholeView, frame: self)
-        
+        fillUserData(Dict: Dict)        
     }
     //Allows UIView's to be touched and function called
     func addEvents(){
@@ -90,29 +93,23 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
         self.facebookButton.addGestureRecognizer(gesture2)
         let gesture3 = UITapGestureRecognizer(target: self, action:  #selector(self.loginGoogle(_:)))
         self.googleButton.addGestureRecognizer(gesture3)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
-        self.view.addGestureRecognizer(tapGesture)
+       
     }
-   @objc func dismissKeyboard (_ sender: Any) {
-        self.email.resignFirstResponder()
-        self.password.resignFirstResponder()
-    }
+    
+ 
+    
     //Customizes white view
     func customizeView(){
-        whiteView.backgroundColor = UIColor.white
-        whiteView.clipsToBounds = true
-        whiteView.layer.cornerRadius = 20.0
+        customizeClassView()
         whiteView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         whiteView.layer.masksToBounds = true
     }
+    
     //Customizes text input boxes to look nice
     func customizeTextInput(){
-        let overcastBlueColor = UIColor(red: 0, green: 187/255, blue: 204/255, alpha: 1.0)
-        let orange = UIColor.orange
-        email.intializeInfo(title: "Email", placeholder: "Email", color: overcastBlueColor, size: 15, type: .envelope, password: false)
-        password.intializeInfo(title: "Password", placeholder: "Password", color: orange, size: 15, type: .lock, password: true)
-        email.addTarget(self, action: #selector(checkReset(sender:)), for: .editingChanged)
-        password.addTarget(self, action: #selector(checkReset(sender:)), for: .editingChanged)
+        let useColor = UIColor.stem
+        email.intializeInfo(title: "Email", placeholder: "Email", color: useColor, size: 15, type: .envelope, password: false)
+        password.intializeInfo(title: "Password", placeholder: "Password", color: useColor, size: 15, type: .lock, password: true)
     }
     
     //Customizes buttons to look nice
@@ -137,29 +134,11 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
 
     //Deals with emailAuth/login
     @objc func loginEmail(_ sender: UITapGestureRecognizer) {
-        self.email.resignFirstResponder()
-        self.password.resignFirstResponder()
-        var email: String = "";
-        var password: String = "";
-
-        if self.email.text != nil{
-            email = self.email.text!
-        }
-        if self.password.text != nil{
-            password = self.password.text!
-        }
-        
-        if email == "" || password == "" {
-            if email == "" {
-                self.email.handleError(message: "Email is required")
-            }
-            if password == "" {
-                self.password.handleError(message: "Password is required")
-            }
+        resignResponders()
+        if !checkFilled(){
             return
         }
-        
-        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+        Auth.auth().signIn(withEmail: self.email.text!, password: self.password.text!) { (user, error) in
             if error != nil {
             if let errCode = AuthErrorCode(rawValue: error!._code) {
                 switch errCode {
@@ -183,9 +162,8 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
             }
             self.startAnimate(wholeView: self.wholeView, frame: self, message: "Loading your Account")
             self.endAnimate(wholeView: self.wholeView, frame: self)
-            self.mainController.state = .app
-            self.mainController.presentController(sender:self)
-            
+            self.switchControllers(home: true)
+
         }
       
     }
@@ -200,17 +178,6 @@ class ViewController: UIViewController, GIDSignInUIDelegate, NVActivityIndicator
        loginFB()
     }
 
-    
-    func addBackground() {
-        let width = UIScreen.main.bounds.size.width
-        let height = UIScreen.main.bounds.size.height
-        let imageViewBackground = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
-        imageViewBackground.image = UIImage(named: "loginBackground")
-        imageViewBackground.alpha = 0.3
-        imageViewBackground.contentMode = UIView.ContentMode.scaleAspectFill
-        self.view.addSubview(imageViewBackground)
-        self.view.sendSubviewToBack(imageViewBackground)
-    }
 }
 
 

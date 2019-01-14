@@ -62,7 +62,6 @@ extension ViewController{
                 return
             }
             self.fillFBProfile()
-            self.endAnimate(wholeView: self.wholeView, frame: self)
         }
         
     }

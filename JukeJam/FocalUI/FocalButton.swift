@@ -24,7 +24,7 @@ class FocalButton: UIView {
         self.layer.shadowOpacity = 0.45
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor(red:0.50, green:0.74, blue:0.62, alpha:1.0).cgColor
-
+        self.backgroundColor = UIColor.white
     }
     
     

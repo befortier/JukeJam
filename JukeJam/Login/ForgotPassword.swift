@@ -11,7 +11,7 @@ import SkyFloatingLabelTextField
 import Firebase
 
 
-class ForgotPassword: UIViewController, UITextFieldDelegate {
+class ForgotPassword: BaseLoginController{
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var email: SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var button: loginButton!
@@ -21,52 +21,53 @@ class ForgotPassword: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.customizeTextInput()
+        self.textFields = [email]
+    }
+    
+    override func awakeFromNib() {
+        let _ = self.view
+        self.baseModal = whiteView
         self.customizeView()
-        email.delegate = self
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
-        self.view.addGestureRecognizer(tapGesture)
     }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
-        textField.resignFirstResponder()
-        return true
-    }
+ 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @objc func dismissKeyboard (_ sender: Any) {
-        self.email.resignFirstResponder()
-    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        self.dismiss(animated: true)
+        switch segue.identifier {
+        case "Login":
+            let DestViewController: ViewController = segue.destination as! ViewController
+            DestViewController.mainController = self.mainController
+            break
+            
+         default:
+            break
+        }
+    }
+   
     func customizeView(){
         self.view.backgroundColor = UIColor.black
-        whiteView.backgroundColor = UIColor.white
-        whiteView.clipsToBounds = true
-        whiteView.layer.cornerRadius = 20.0
+        self.customizeClassView()
         label.textColor = UIColor(red: 159/255,green: 90/255,blue :253/255, alpha: 1)
     }
     //Customizes text input boxes to look nice
     func customizeTextInput(){
-        let overcastBlueColor = UIColor(red: 0, green: 187/255, blue: 204/255, alpha: 1.0)
-        email.intializeInfo(title: "Email", placeholder: "Email", color: overcastBlueColor, size: 15, type: .envelope, password: false)
-        email.addTarget(self, action: #selector(checkReset(sender:)), for: .editingChanged)
+        let useColor = UIColor.stem
+        email.intializeInfo(title: "Email", placeholder: "Email", color: useColor, size: 15, type: .envelope, password: false)
     }
 
 
   
 //   Calls Firebase's password recovery and brings users back to login page
     @IBAction func recoverMe(_ sender: UIButton) {
-        self.email.resignFirstResponder()
-        var email: String = "";
-        
-        if self.email.text != nil{
-            email = self.email.text!
-        }
-        if email == ""{
-            self.email.handleError(message: "Email is required")
+        resignResponders()
+        if !checkFilled(){
             return
         }
-        Auth.auth().sendPasswordReset(withEmail: email) { error in
+        Auth.auth().sendPasswordReset(withEmail: self.email.text!) { error in
             if error != nil {
                 if let errCode = AuthErrorCode(rawValue: error!._code) {
                     switch errCode {
@@ -86,11 +87,11 @@ class ForgotPassword: UIViewController, UITextFieldDelegate {
                 return
             }
             self.showMessage("Email sent", type: .success)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginController") as? ViewController
-                {
-                    self.present(vc, animated: true, completion: nil)
-                }            })
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.3, execute: {
+                self.mainController.state = .login
+                self.mainController.presentController(sender: self)
+
+            })
         }
     }
 

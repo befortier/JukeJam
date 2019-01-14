@@ -22,16 +22,6 @@ class MusicBar: UIView {
             cover.image = coverImage
         }
     }
-//    var stateImage: UIImage? {
-//        didSet {
-//            state.image = stateImage
-//        }
-//    }
-//    var nextSongImage: UIImage? {
-//        didSet {
-//            nextSong.image = nextSongImage
-//        }
-//    }
     var songText: String? {
         didSet {
             song.text = songText
@@ -58,7 +48,6 @@ class MusicBar: UIView {
         self.layer.shadowOffset = CGSize(width: 0, height: -1.75)
         self.layer.shadowRadius = 1.7
         self.layer.shadowOpacity = 0.45
-//        self.nextSongImage = UIImage(named: "nextsong")
         self.cover.layer.cornerRadius = 8.0
         self.cover.clipsToBounds = true
 
@@ -69,8 +58,6 @@ class MusicBar: UIView {
         let name = String(describing: type(of: self))
         let nib = UINib(nibName: name, bundle: .main)
         nib.instantiate(withOwner: self, options: nil)
-        
-        // next: append the container to our view
         self.addSubview(self.containerView)
         self.containerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

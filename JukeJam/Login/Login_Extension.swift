@@ -7,105 +7,8 @@ import SkyFloatingLabelTextField
 import FontAwesome_swift
 var blurEffectView: UIVisualEffectView?
 
-extension ViewController {
-    
-//    Switches from current controller to HomeController
-    func switchControllers(home: Bool){
-        print("HERE Switching to home", home)
-        if home{
-            self.mainController.state = .app
-        }
-        else{
-            self.mainController.state = .newUser
-        }
-        self.mainController.presentController(sender: self)
-    }
-
-    func fillUserData(Dict: [String:Any]){
-        let user: User = User(name: "")
-        user.name = Dict["name"] as? String ?? ""
-        user.location = Dict["location"] as? String ?? ""
-        user.birthday = Dict["birthday"] as? String ?? ""
-        user.email = Dict["email"] as? String ?? ""
-        user.first_name = Dict["first_name"] as? String ?? ""
-        user.last_name = Dict["last_name"] as? String ?? ""
-        user.gender = Dict["gender"] as? String ?? ""
-        user.F_id = Dict["F_id"] as? String ?? ""
-        user.G_id = Dict["G_id"] as? String ?? ""
-        user.username = Dict["username"] as? String ?? ""
-        let userData = NSKeyedArchiver.archivedData(withRootObject: user)
-        UserDefaults.standard.set(userData, forKey: "user")
-        self.saveDatabase(Data: Dict)
-    }
-    
-    func saveDatabase(Data: [String: Any]){
-        let userID = Auth.auth().currentUser?.uid
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            if snapshot.exists(){
-                ref.child("users").child(userID!).updateChildValues(Data)
-                self.switchControllers(home:true)
-            }
-            else{
-                ref.child("users").child(userID!).setValue(Data)
-                self.switchControllers(home: false)
-                
-            }
-        })
-    }
-}
 extension UIViewController {
-
-//        Takes in a Dict and creates a UserDefault user, calls saveDatabase(dict)
-    func fillUserData2(Dict: [String:Any]){
-        let user: User = User(name: "")
-        user.name = Dict["name"] as? String ?? ""
-        user.location = Dict["location"] as? String ?? ""
-        user.birthday = Dict["birthday"] as? String ?? ""
-        user.email = Dict["email"] as? String ?? ""
-        user.first_name = Dict["first_name"] as? String ?? ""
-        user.last_name = Dict["last_name"] as? String ?? ""
-        user.gender = Dict["gender"] as? String ?? ""
-        user.F_id = Dict["F_id"] as? String ?? ""
-        user.G_id = Dict["G_id"] as? String ?? ""
-        user.username = Dict["username"] as? String ?? ""
-        let userData = NSKeyedArchiver.archivedData(withRootObject: user)
-        UserDefaults.standard.set(userData, forKey: "user")
-        self.saveDatabase2(Data: Dict)
-    }
-    
-//    Checks to see if info is stored in DB, else saves it.
-    func saveDatabase2(Data: [String: Any]){
-        let userID = Auth.auth().currentUser?.uid
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            if snapshot.exists(){
-                ref.child("users").child(userID!).updateChildValues(Data)
-                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MusicPlayingController") as? MusicPlayingController
-                {
-                    self.present(vc, animated: true, completion: nil)
-                }
-            }
-            else{
-
-                ref.child("users").child(userID!).setValue(Data)
-                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConfirmController") as? ConfirmController
-                {
-                    self.present(vc, animated: true, completion: nil)
-                }
-            }
-        })
-    }
-    
-    //Function that checks to see if a skyfloatinglabeltext field has changed values, if the value changes to have something remove error message
-    @objc func checkReset(sender: SkyFloatingLabelTextFieldWithIcon){
-        if sender.text != ""{
-            sender.errorMessage = ""
-        }
-    }
-// Used to alert users of a message usually error
+//Used to alert users of a message usually error
     func alertUser(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "OK",
@@ -114,10 +17,8 @@ extension UIViewController {
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
-
- 
-    
 }
+
 extension SkyFloatingLabelTextFieldWithIcon{
 //    Animates a skyfloatingtextfield to shake
     func animateField(){

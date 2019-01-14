@@ -10,7 +10,7 @@ import UIKit
 import SkyFloatingLabelTextField
 import Firebase
 
-class ConfirmController: UIViewController {
+class ConfirmController: BaseLoginController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var topLabel: UILabel!
@@ -23,10 +23,10 @@ class ConfirmController: UIViewController {
     @IBOutlet weak var last_name: SkyFloatingLabelTextFieldWithIcon!
     @IBOutlet weak var profPic: UIImageView!
     var user: User?
-    var mainController: ControllerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.textFields = [hometown,birthday,email,username,first_name,last_name]
         self.customizeView()
         self.customizeTextInput()
         updateText(user: loadInfo())
@@ -54,19 +54,13 @@ class ConfirmController: UIViewController {
     }
     //Customizes text input boxes to look nice
     func customizeTextInput(){
-        let overcastBlueColor = UIColor(red: 0, green: 187/255, blue: 204/255, alpha: 1.0)
-        email.intializeInfo(title: "Email", placeholder: "Email", color: overcastBlueColor, size: 15, type: .envelope, password: false)
-        email.addTarget(self, action: #selector(checkReset(sender:)), for: .editingChanged)
-        hometown.intializeInfo(title: "Hometown", placeholder: "Hometown", color: overcastBlueColor, size: 15, type: .locationArrow, password: false)
-        hometown.addTarget(self, action: #selector(checkReset(sender:)), for: .editingChanged)
-        birthday.intializeInfo(title: "Birthday", placeholder: "Birthday", color: overcastBlueColor, size: 15, type: .birthdayCake, password: false)
-        birthday.addTarget(self, action: #selector(checkReset(sender:)), for: .editingChanged)
-        username.intializeInfo(title: "Username", placeholder: "Username", color: overcastBlueColor, size: 15, type: .userTag, password: false)
-        username.addTarget(self, action: #selector(checkReset(sender:)), for: .editingChanged)
-        first_name.intializeInfo(title: "First Name", placeholder: "First Name", color: overcastBlueColor, size: 15, type: .addressCard, password: false)
-        first_name.addTarget(self, action: #selector(checkReset(sender:)), for: .editingChanged)
-        last_name.intializeInfo(title: "Last Name", placeholder: "Last Name", color: overcastBlueColor, size: 15, type: .addressCard, password: false)
-        last_name.addTarget(self, action: #selector(checkReset(sender:)), for: .editingChanged)
+        let useColor = UIColor.stem
+        email.intializeInfo(title: "Email", placeholder: "Email", color: useColor, size: 15, type: .envelope, password: false)
+        hometown.intializeInfo(title: "Hometown", placeholder: "Hometown", color: useColor, size: 15, type: .locationArrow, password: false)
+        birthday.intializeInfo(title: "Birthday", placeholder: "Birthday", color: useColor, size: 15, type: .birthdayCake, password: false)
+        username.intializeInfo(title: "Username", placeholder: "Username", color: useColor, size: 15, type: .userTag, password: false)
+        first_name.intializeInfo(title: "First Name", placeholder: "First Name", color: useColor, size: 15, type: .addressCard, password: false)
+        last_name.intializeInfo(title: "Last Name", placeholder: "Last Name", color: useColor, size: 15, type: .addressCard, password: false)
     }
     
     @IBAction func dp(_ sender: UITextField) {

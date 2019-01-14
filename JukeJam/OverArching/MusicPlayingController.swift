@@ -44,7 +44,6 @@ class MusicPlayingController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ScreenController,
             segue.identifier == "BeginSegue" {
-            print("HERE tabbar set?")
             self.TabBar = vc
             vc.MusicController = self
         }
