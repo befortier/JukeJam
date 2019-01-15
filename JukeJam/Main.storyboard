@@ -1486,82 +1486,77 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nMH-db-m1u">
-                                <rect key="frame" x="67" y="40" width="240" height="240"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkY-4d-7Z2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="383"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="album2" translatesAutoresizingMaskIntoConstraints="NO" id="nMH-db-m1u">
+                                        <rect key="frame" x="67" y="43" width="240" height="240"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="nMH-db-m1u" secondAttribute="height" multiplier="1:1" id="WZE-T7-lln"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="nMH-db-m1u" secondAttribute="height" multiplier="1:1" id="WZE-T7-lln"/>
+                                    <constraint firstAttribute="bottom" secondItem="nMH-db-m1u" secondAttribute="bottom" constant="100" id="RgU-kr-och"/>
+                                    <constraint firstItem="nMH-db-m1u" firstAttribute="leading" secondItem="jkY-4d-7Z2" secondAttribute="leading" constant="67" id="Six-9v-IY3"/>
+                                    <constraint firstAttribute="trailing" secondItem="nMH-db-m1u" secondAttribute="trailing" constant="68" id="k1Q-CJ-7fI"/>
+                                    <constraint firstItem="nMH-db-m1u" firstAttribute="top" secondItem="jkY-4d-7Z2" secondAttribute="top" constant="43" id="zvq-f6-Nom"/>
                                 </constraints>
-                            </imageView>
+                            </view>
+                            <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="NJP-Ob-yic">
+                                <rect key="frame" x="41" y="602" width="294" height="31"/>
+                            </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photographs and Memories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZ0-ef-GOb">
-                                <rect key="frame" x="0.0" y="310" width="375" height="24"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <rect key="frame" x="1" y="426" width="375" height="27.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photographs and Memories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mva-01-B6E">
-                                <rect key="frame" x="0.0" y="342" width="375" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photographs and Memories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mva-01-B6E" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                <rect key="frame" x="1" y="461.5" width="375" height="23"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                 <color key="textColor" red="0.50196078430000002" green="0.74117647060000003" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="scrollDuration">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="scrollRate">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="animationDelay">
+                                        <real key="value" value="2.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play" translatesAutoresizingMaskIntoConstraints="NO" id="Itl-CL-b13">
-                                <rect key="frame" x="153" y="407" width="70" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Itl-CL-b13" secondAttribute="height" multiplier="1:1" id="66x-03-eas"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nextsong" translatesAutoresizingMaskIntoConstraints="NO" id="Ity-GS-8Qr">
-                                <rect key="frame" x="278" y="414" width="55" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="5bW-M4-Qam"/>
-                                    <constraint firstAttribute="width" constant="55" id="vso-eN-0zW"/>
-                                </constraints>
-                            </imageView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="NJP-Ob-yic">
-                                <rect key="frame" x="41" y="509" width="294" height="124"/>
-                            </slider>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backsong" translatesAutoresizingMaskIntoConstraints="NO" id="0PN-6f-i8B">
-                                <rect key="frame" x="43" y="414" width="55" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="03p-Br-4Yh"/>
-                                    <constraint firstAttribute="height" constant="55" id="TCU-vT-nnP"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Mva-01-B6E" firstAttribute="top" secondItem="AZ0-ef-GOb" secondAttribute="bottom" constant="8" id="1iZ-5k-jHC"/>
-                            <constraint firstItem="Mva-01-B6E" firstAttribute="leading" secondItem="ARr-TD-B0s" secondAttribute="leading" id="4Ru-Ga-Lks"/>
+                            <constraint firstItem="Mva-01-B6E" firstAttribute="leading" secondItem="ARr-TD-B0s" secondAttribute="leading" constant="1" id="4Ru-Ga-Lks"/>
                             <constraint firstItem="ARr-TD-B0s" firstAttribute="trailing" secondItem="NJP-Ob-yic" secondAttribute="trailing" constant="42" id="7jz-Yr-9ea"/>
-                            <constraint firstItem="NJP-Ob-yic" firstAttribute="top" secondItem="Ity-GS-8Qr" secondAttribute="bottom" constant="40" id="8cU-wO-7In"/>
                             <constraint firstItem="NJP-Ob-yic" firstAttribute="leading" secondItem="ARr-TD-B0s" secondAttribute="leading" constant="43" id="ALc-ww-3uC"/>
-                            <constraint firstItem="nMH-db-m1u" firstAttribute="leading" secondItem="ARr-TD-B0s" secondAttribute="leading" constant="67" id="Lj3-Ds-mkq"/>
                             <constraint firstItem="ARr-TD-B0s" firstAttribute="bottom" secondItem="NJP-Ob-yic" secondAttribute="bottom" constant="35" id="Pqi-Sg-l2a"/>
-                            <constraint firstItem="Ity-GS-8Qr" firstAttribute="top" secondItem="Mva-01-B6E" secondAttribute="bottom" constant="51.5" id="Vdm-yd-FYh"/>
-                            <constraint firstItem="Itl-CL-b13" firstAttribute="top" secondItem="Mva-01-B6E" secondAttribute="bottom" constant="44.5" id="Vf9-zv-mxZ"/>
-                            <constraint firstItem="Ity-GS-8Qr" firstAttribute="leading" secondItem="Itl-CL-b13" secondAttribute="trailing" constant="55" id="XBd-uA-Rr0"/>
-                            <constraint firstAttribute="trailing" secondItem="AZ0-ef-GOb" secondAttribute="trailing" id="aiV-3r-ixE"/>
-                            <constraint firstItem="ARr-TD-B0s" firstAttribute="trailing" secondItem="Ity-GS-8Qr" secondAttribute="trailing" constant="42" id="bVN-so-EeB"/>
-                            <constraint firstItem="AZ0-ef-GOb" firstAttribute="leading" secondItem="ARr-TD-B0s" secondAttribute="leading" id="iPU-IM-ear"/>
-                            <constraint firstItem="NJP-Ob-yic" firstAttribute="top" secondItem="0PN-6f-i8B" secondAttribute="bottom" constant="40" id="kZD-Hh-mog"/>
-                            <constraint firstItem="0PN-6f-i8B" firstAttribute="leading" secondItem="ARr-TD-B0s" secondAttribute="leading" constant="43" id="oa1-7H-oli"/>
-                            <constraint firstItem="nMH-db-m1u" firstAttribute="top" secondItem="ARr-TD-B0s" secondAttribute="top" constant="20" id="ovR-r7-Ng7"/>
-                            <constraint firstItem="Mva-01-B6E" firstAttribute="trailing" secondItem="ARr-TD-B0s" secondAttribute="trailing" id="vIs-3a-0jv"/>
-                            <constraint firstItem="ARr-TD-B0s" firstAttribute="trailing" secondItem="nMH-db-m1u" secondAttribute="trailing" constant="68" id="vcS-ZX-Wav"/>
-                            <constraint firstItem="Itl-CL-b13" firstAttribute="leading" secondItem="0PN-6f-i8B" secondAttribute="trailing" constant="55" id="wuL-nd-NpQ"/>
-                            <constraint firstItem="0PN-6f-i8B" firstAttribute="top" secondItem="Mva-01-B6E" secondAttribute="bottom" constant="51.5" id="wwB-gC-LL9"/>
-                            <constraint firstItem="AZ0-ef-GOb" firstAttribute="top" secondItem="nMH-db-m1u" secondAttribute="bottom" constant="30" id="xqy-3N-gmp"/>
+                            <constraint firstItem="jkY-4d-7Z2" firstAttribute="leading" secondItem="ARr-TD-B0s" secondAttribute="leading" id="WfH-SI-set"/>
+                            <constraint firstAttribute="trailing" secondItem="AZ0-ef-GOb" secondAttribute="trailing" constant="-1" id="aiV-3r-ixE"/>
+                            <constraint firstItem="jkY-4d-7Z2" firstAttribute="trailing" secondItem="ARr-TD-B0s" secondAttribute="trailing" id="h9p-Na-cwm"/>
+                            <constraint firstItem="AZ0-ef-GOb" firstAttribute="leading" secondItem="ARr-TD-B0s" secondAttribute="leading" constant="1" id="iPU-IM-ear"/>
+                            <constraint firstItem="AZ0-ef-GOb" firstAttribute="top" secondItem="jkY-4d-7Z2" secondAttribute="bottom" constant="43" id="uva-ry-wuD"/>
+                            <constraint firstItem="Mva-01-B6E" firstAttribute="trailing" secondItem="ARr-TD-B0s" secondAttribute="trailing" constant="1" id="vIs-3a-0jv"/>
+                            <constraint firstItem="jkY-4d-7Z2" firstAttribute="top" secondItem="bnx-jS-pqC" secondAttribute="top" id="yQZ-hV-djA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ARr-TD-B0s"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="bAT-kw-MuV"/>
                     <connections>
                         <outlet property="cover" destination="nMH-db-m1u" id="6ut-zr-1AW"/>
+                        <outlet property="gradientBackground" destination="jkY-4d-7Z2" id="uUY-h2-0dF"/>
                         <outlet property="more" destination="Mva-01-B6E" id="dmL-Iu-5nv"/>
-                        <outlet property="nextSong" destination="Ity-GS-8Qr" id="8yf-wZ-V1e"/>
-                        <outlet property="prevSong" destination="0PN-6f-i8B" id="QoR-85-oT5"/>
                         <outlet property="song" destination="AZ0-ef-GOb" id="zUS-kA-Gbk"/>
-                        <outlet property="state" destination="Itl-CL-b13" id="FZC-da-Vyy"/>
                         <outlet property="volume" destination="NJP-Ob-yic" id="7Zz-Zj-kgP"/>
                     </connections>
                 </viewController>
@@ -2089,14 +2084,11 @@
     </scenes>
     <resources>
         <image name="album2" width="224" height="224"/>
-        <image name="backsong" width="25" height="25"/>
         <image name="facebookLogo" width="501" height="501"/>
         <image name="forgotPassword" width="1337" height="972"/>
         <image name="googleLogo" width="800" height="600"/>
         <image name="loginBackground" width="2560" height="1440"/>
         <image name="logo" width="454" height="454"/>
-        <image name="nextsong" width="25" height="25"/>
-        <image name="play" width="25" height="25"/>
         <image name="registerLogo" width="225" height="225"/>
     </resources>
     <inferredMetricsTieBreakers>

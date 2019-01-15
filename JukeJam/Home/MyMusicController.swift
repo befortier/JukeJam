@@ -137,6 +137,11 @@ extension MyMusicController: UICollectionViewDataSource{
                 transitionDelegate.isTapAroundToDismissEnabled = true
                 modal.transitioningDelegate = transitionDelegate
                 modal.modalPresentationStyle = .custom
+                modal.coverImage = myJamsArt[indexPath.item].image
+                modal.songText = myJamsArt[indexPath.item].title
+                modal.moreText = "\(myJamsArt[indexPath.item].title!) - \(myJamsArt[indexPath.item].author!)"
+                print("HERE why taking so long")
+
                 present(modal, animated: true, completion: nil)
             }
             

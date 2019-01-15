@@ -33,15 +33,26 @@ class MusicBar: UIView {
         super.init(frame:frame)
         commonInit()
         setupView()
+        initSongController()
     }
     required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
         commonInit()
         setupView()
+        initSongController()
     }
     
+    private func initSongController(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showSongController))
+        self.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func showSongController(){
+        print("HERE")
+        
+        
+    }
     private func setupView() {
-
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.borderWidth = 0.3
         self.layer.shadowColor = UIColor.lightGray.cgColor
