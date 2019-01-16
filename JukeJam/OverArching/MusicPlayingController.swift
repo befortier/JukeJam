@@ -53,7 +53,6 @@ class MusicPlayingController: UIViewController {
             vc.MusicController = self
         }
         if let destination = segue.destination as? MusicBar {
-            print("HERE")
             musicBar = destination
             
         }

@@ -1,6 +1,7 @@
 
 import UIKit
 import ChameleonFramework
+
 class Song: NSObject {
 
   // MARK: - Properties
@@ -9,8 +10,8 @@ class Song: NSObject {
     var artist: String?
     var cover: UIImage?
     var imageColors: [UIColor] = []
-    var imageAvColor: UIColor!
-    
+    var imageAvColor: UIColor! 
+
      init(title: String, duration: TimeInterval, artist: String, cover: UIImage){
         super.init()
         self.cover = cover
@@ -25,12 +26,9 @@ class Song: NSObject {
     func initColors(){
         imageAvColor = AverageColorFromImage(self.cover!)
         imageColors = [imageAvColor]
-        print("HERE SONG Half SET", imageColors.count)
-
         var colors = ColorsFromImage(self.cover!, withFlatScheme: true)
         imageColors = [colors[0],colors[1]]
         imageColors.sort(by: {$0.hue < $1.hue})
-        print("HERE SONG FULL SET")
     }
     
    

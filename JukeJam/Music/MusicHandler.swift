@@ -25,18 +25,20 @@ class MusicHandler: NSObject {
     case none
 
     }
-
+    
     override init(){
         super.init()
         appleHandler = AppleHandler()
         spotifyHandler = SpotifyHandler(playButton: musicBar.state, cover: musicBar.cover, label: musicBar.song, nextSong: musicBar.nextSong)
+        spotifyHandler.delegate = musicBar
+        musicBar.MusicHandler = self
         initalizePreference()
         currentSong = Song(title: "Started From the Bottom Now Were Here", duration: 100, artist: "Drake", cover: UIImage(named: "album3")!)
         musicBar.currentSong = self.currentSong
+        
+        
     }
-//    convenience override init(){
-//        self.init(playButton: UIButton(), cover: UIImageView(), label: UILabel(), nextSong: UIButton())
-//    }
+
     
     //Should set gloabl preference variable to be apple if apple is available + has playback, spotify if apple doesnt have playback, apple if both dont have playback, spotify if doesnt have apple, none if has neither.
     func initalizePreference(){
@@ -102,5 +104,6 @@ class MusicHandler: NSObject {
         return musicBar
     }
 }
+
 
 

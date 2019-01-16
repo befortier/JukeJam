@@ -7,50 +7,30 @@
 //
 
 import UIKit
-import ShadowView
+import ChameleonFramework
 
 protocol MusicBarDelegate: class {
     func expandSong(song: Song)
 }
 
 class MusicBar: UIView, SongSubscriber {
-   
     weak var delegate: MusicBarDelegate?
-
-    
-    
+    var MusicHandler: MusicHandler?
     @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var cover: UIImageView! {
-        didSet{
-            //LEFT OFF HERE NO SONG EXISTING REALLY
-            //            self.backgroundView.backgroundColor = song.imageColors[0]
-            wrapperCaller()
-        }
-    }
-    @IBOutlet weak var song: UILabel! {
-        didSet{
-            wrapperCaller()
-        }
-    }
-    @IBOutlet weak var state: UIButton! {
-        didSet{
-            wrapperCaller()
-        }
-    }
     @IBOutlet weak var nextSong: UIButton!
     @IBOutlet var containerView: UIView!
-    let exampleShadowContainerView = ShadowView()
+    @IBOutlet weak var cover: UIImageView! {
+        didSet{
+            if currentSong != nil{
+                configure(song: self.currentSong)
 
-    var coverImage: UIImage? {
-        didSet {
-            cover.image = coverImage
+            }
         }
     }
-    var songText: String? {
-        didSet {
-            song.text = songText
-        }
-    }
+    @IBOutlet weak var song: UILabel!
+    @IBOutlet weak var state: UIButton!
+    var coverImage: UIImage?
+    var songText: String?
     var currentSong: Song? {
         didSet{
            wrapperCaller()
@@ -84,6 +64,7 @@ class MusicBar: UIView, SongSubscriber {
     }
     
     @objc private func showSongController(){
+        print(currentSong)
         guard let song = currentSong else {
             print("HERE ERROR")
             return
@@ -106,10 +87,8 @@ class MusicBar: UIView, SongSubscriber {
         self.layer.shadowOpacity = 0.45
         self.cover.layer.cornerRadius = 8.0
         self.cover.clipsToBounds = true
-
-
-
     }
+    
     private func commonInit(){
         let name = String(describing: type(of: self))
         let nib = UINib(nibName: name, bundle: .main)
@@ -132,12 +111,9 @@ extension MusicBar {
                 self.song.text = song.title
                 //            song.loadSongImage { [weak self] image in
                 self.cover.image = song.cover
+            
+            //Also need to update MaxiDelegate controls
         }
-        else {
-            self.song.text = nil
-            self.cover.image = nil
-        }
-//        currentSong = song
     }
 }
 
@@ -150,3 +126,68 @@ extension MusicBar: MaxiPlayerSourceProtocol {
         return cover
     }
 }
+
+extension MusicBar: SpotifyHandlerDelegate {
+    func updateView(playerState: SPTAppRemotePlayerState) {
+        updateViewWithPlayerState(playerState)
+        
+    }
+}
+
+extension MusicBar{
+    fileprivate func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
+        updatePlayPauseButtonState(playerState.isPaused)
+        //        updateRepeatModeLabel(playerState.playbackOptions.repeatMode)
+        //        updateShuffleLabel(playerState.playbackOptions.isShuffling)
+        self.song.text = playerState.track.name + " - " + playerState.track.artist.name
+        fetchAlbumArtForTrack(playerState.track) { (image) -> Void in
+            self.updateAlbumArtWithImage(image)
+            self.updateCurrentSong(playerState: playerState)
+
+            //        updateViewWithRestrictions(playerState.playbackRestrictions)
+            //        updateInterfaceForPodcast(playerState: playerState)
+        }
+
+        
+    }
+    fileprivate func updatePlayPauseButtonState(_ paused: Bool) {
+        let playPauseButtonImage = paused ? PlaybackButtonGraphics.playButtonImage() : PlaybackButtonGraphics.pauseButtonImage()
+        self.state.setImage(playPauseButtonImage, for: UIControl.State())
+        self.state.setImage(playPauseButtonImage, for: .highlighted)
+    }
+    fileprivate func updateShuffleLabel(_ isShuffling: Bool) {
+        //        shuffleModeLabel.text = "Shuffle mode: " + (isShuffling ? "On" : "Off")
+    }
+    
+    fileprivate func updateRepeatModeLabel(_ repeatMode: SPTAppRemotePlaybackOptionsRepeatMode) {
+        //        repeatModeLabel.text = "Repeat mode: " + {
+        //            switch repeatMode {
+        //            case .off: return "Off"
+        //            case .track: return "Track"
+        //            case .context: return "Context"
+        //            }
+        //            }()
+    }
+    fileprivate func updateAlbumArtWithImage(_ image: UIImage) {
+        self.cover.image = image
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.type = CATransitionType.fade
+        self.cover.layer.add(transition, forKey: "transition")
+    }
+    fileprivate func fetchAlbumArtForTrack(_ track: SPTAppRemoteTrack, callback: @escaping (UIImage) -> Void ) {
+        MusicHandler?.spotifyHandler.appRemote.imageAPI?.fetchImage(forItem: track, with:CGSize(width: 1000, height: 1000), callback: { (image, error) -> Void in
+            guard error == nil else { return }
+            
+            let image = image as! UIImage
+            callback(image)
+        })
+    }
+    
+    func updateCurrentSong(playerState: SPTAppRemotePlayerState){
+        let newSong = Song(title: playerState.track.name , duration: TimeInterval(playerState.track.duration), artist: playerState.track.artist.name, cover: cover.image!)
+        MusicHandler?.currentSong = newSong
+    }
+}
+
+

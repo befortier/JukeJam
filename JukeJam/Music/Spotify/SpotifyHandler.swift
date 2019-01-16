@@ -1,12 +1,17 @@
 import UIKit
 import StoreKit
 //Make a delegate between this and MusicHandler, like MaxiAnimation has. This will allow you to send the playerstate through so you can update info on bar or songcontroller if needed
+protocol SpotifyHandlerDelegate: class {
+    func updateView(playerState: SPTAppRemotePlayerState)
+}
+
 class SpotifyHandler: NSObject,
     SPTAppRemotePlayerStateDelegate,
     SPTAppRemoteUserAPIDelegate,
     SpeedPickerViewControllerDelegate,
 SKStoreProductViewControllerDelegate {
-    
+    weak var delegate: SpotifyHandlerDelegate?
+
     var controller: UIViewController?
     var albumArtImageView: UIImageView!
     var trackNameLabel: UILabel!
@@ -34,6 +39,8 @@ SKStoreProductViewControllerDelegate {
             pausePlayback()
         }
     }
+    
+    
     
     //Prev Song
     var prevButton: UIButton!
@@ -144,20 +151,7 @@ SKStoreProductViewControllerDelegate {
         pausePlayback()
         appRemoteDisconnect()
     }
-    fileprivate func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
-        updatePlayPauseButtonState(playerState.isPaused)
-//        updateRepeatModeLabel(playerState.playbackOptions.repeatMode)
-//        updateShuffleLabel(playerState.playbackOptions.isShuffling)
-        trackNameLabel.text = playerState.track.name + " - " + playerState.track.artist.name
-        fetchAlbumArtForTrack(playerState.track) { (image) -> Void in
-            self.updateAlbumArtWithImage(image)
-        }
-        print("HERE SHOULD CALL THIS", playPauseButton)
 
-//        updateViewWithRestrictions(playerState.playbackRestrictions)
-//        updateInterfaceForPodcast(playerState: playerState)
-    }
-    
     fileprivate func updateViewWithRestrictions(_ restrictions: SPTAppRemotePlaybackRestrictions) {
         nextButton.isEnabled = restrictions.canSkipNext
         prevButton.isEnabled = restrictions.canSkipPrevious
@@ -171,14 +165,14 @@ SKStoreProductViewControllerDelegate {
     }
     
     fileprivate func enableInterface(_ enabled: Bool = true) {
-        buttons.forEach { (button) -> () in
-            button.isEnabled = enabled
-        }
-        
-        if (!enabled) {
-            albumArtImageView.image = nil
-            updatePlayPauseButtonState(true);
-        }
+//        buttons.forEach { (button) -> () in
+//            button.isEnabled = enabled
+//        }
+//
+//        if (!enabled) {
+//            albumArtImageView.image = nil
+//            updatePlayPauseButtonState(true);
+//        }
     }
     
     // MARK: Podcast Support
@@ -199,37 +193,7 @@ SKStoreProductViewControllerDelegate {
     
     // MARK: Player Control
     
-    
 
-    fileprivate func updatePlayPauseButtonState(_ paused: Bool) {
-        let playPauseButtonImage = paused ? PlaybackButtonGraphics.playButtonImage() : PlaybackButtonGraphics.pauseButtonImage()
-        playPauseButton.setImage(playPauseButtonImage, for: UIControl.State())
-        playPauseButton.setImage(playPauseButtonImage, for: .highlighted)
-    }
-    
-
-
-    fileprivate func updateShuffleLabel(_ isShuffling: Bool) {
-        shuffleModeLabel.text = "Shuffle mode: " + (isShuffling ? "On" : "Off")
-    }
-    
-    fileprivate func updateRepeatModeLabel(_ repeatMode: SPTAppRemotePlaybackOptionsRepeatMode) {
-        repeatModeLabel.text = "Repeat mode: " + {
-            switch repeatMode {
-            case .off: return "Off"
-            case .track: return "Track"
-            case .context: return "Context"
-            }
-            }()
-    }
-    
-    fileprivate func updateAlbumArtWithImage(_ image: UIImage) {
-        self.albumArtImageView.image = image
-        let transition = CATransition()
-        transition.duration = 0.3
-        transition.type = CATransitionType.fade
-        self.albumArtImageView.layer.add(transition, forKey: "transition")
-    }
     
     fileprivate var playerState: SPTAppRemotePlayerState?
     fileprivate var subscribedToPlayerState: Bool = false
@@ -344,7 +308,7 @@ SKStoreProductViewControllerDelegate {
         appRemote.playerAPI?.getPlayerState { (result, error) -> Void in
             guard error == nil else { return }
             let playerState = result as! SPTAppRemotePlayerState
-            self.updateViewWithPlayerState(playerState)
+            self.delegate?.updateView(playerState: playerState)
         }
     }
     
@@ -385,14 +349,7 @@ SKStoreProductViewControllerDelegate {
     
     // MARK: - Image API
     
-    fileprivate func fetchAlbumArtForTrack(_ track: SPTAppRemoteTrack, callback: @escaping (UIImage) -> Void ) {
-        appRemote.imageAPI?.fetchImage(forItem: track, with:CGSize(width: 1000, height: 1000), callback: { (image, error) -> Void in
-            guard error == nil else { return }
-            
-            let image = image as! UIImage
-            callback(image)
-        })
-    }
+   
     
     // MARK: - User API
     fileprivate var subscribedToCapabilities: Bool = false
@@ -419,7 +376,7 @@ SKStoreProductViewControllerDelegate {
     
     func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
         self.playerState = playerState
-        updateViewWithPlayerState(playerState)
+        delegate?.updateView(playerState: playerState)
     }
     
     // MARK: - <SPTAppRemoteUserAPIDelegate>

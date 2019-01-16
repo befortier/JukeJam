@@ -106,7 +106,6 @@ extension MaxiSongCardViewController {
         dismissChevron.alpha = 0
         coverImageContainer.layer.cornerRadius = 0
         coverImageContainerTopInset.constant = startInset
-        print("HERE inset is ", startInset)
         view.layoutIfNeeded()
     }
     
