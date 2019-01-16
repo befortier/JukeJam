@@ -1504,11 +1504,53 @@
                                     <constraint firstItem="nMH-db-m1u" firstAttribute="top" secondItem="jkY-4d-7Z2" secondAttribute="top" constant="43" id="zvq-f6-Nom"/>
                                 </constraints>
                             </view>
+                            <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="VFe-dg-Ahf">
+                                <rect key="frame" x="38" y="433" width="299" height="31"/>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photographs and Memories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdN-jS-9VU">
+                                <rect key="frame" x="6" y="468" width="363" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Photographs and Memories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3b8-Dl-3eA" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                <rect key="frame" x="3" y="500" width="369" height="23"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                <color key="textColor" red="0.50196078430000002" green="0.74117647060000003" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="scrollDuration">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="scrollRate">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="animationDelay">
+                                        <real key="value" value="2.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="3b8-Dl-3eA" firstAttribute="top" secondItem="VdN-jS-9VU" secondAttribute="bottom" constant="8" id="19n-HR-b5U"/>
+                            <constraint firstItem="VdN-jS-9VU" firstAttribute="top" secondItem="VFe-dg-Ahf" secondAttribute="bottom" constant="5" id="4GM-Ln-VST"/>
+                            <constraint firstItem="ARr-TD-B0s" firstAttribute="trailing" secondItem="VFe-dg-Ahf" secondAttribute="trailing" constant="40" id="5Q1-aN-ShL"/>
+                            <constraint firstItem="VFe-dg-Ahf" firstAttribute="top" secondItem="jkY-4d-7Z2" secondAttribute="bottom" constant="50" id="GQk-pG-9WE"/>
+                            <constraint firstItem="VFe-dg-Ahf" firstAttribute="leading" secondItem="ARr-TD-B0s" secondAttribute="leading" constant="40" id="HYg-5m-cho"/>
+                            <constraint firstItem="3b8-Dl-3eA" firstAttribute="top" secondItem="VdN-jS-9VU" secondAttribute="bottom" constant="8" id="Mfw-3R-i64"/>
                             <constraint firstItem="jkY-4d-7Z2" firstAttribute="leading" secondItem="ARr-TD-B0s" secondAttribute="leading" id="WfH-SI-set"/>
+                            <constraint firstAttribute="trailing" secondItem="3b8-Dl-3eA" secondAttribute="trailing" constant="3" id="YoB-w8-v3c"/>
+                            <constraint firstItem="3b8-Dl-3eA" firstAttribute="leading" secondItem="bnx-jS-pqC" secondAttribute="leading" constant="3" id="YqQ-U6-3fd"/>
+                            <constraint firstItem="VdN-jS-9VU" firstAttribute="leading" secondItem="bnx-jS-pqC" secondAttribute="leading" constant="6" id="dRy-xT-9VV"/>
+                            <constraint firstItem="3b8-Dl-3eA" firstAttribute="top" secondItem="VdN-jS-9VU" secondAttribute="bottom" constant="8" id="h9g-2B-tED"/>
                             <constraint firstItem="jkY-4d-7Z2" firstAttribute="trailing" secondItem="ARr-TD-B0s" secondAttribute="trailing" id="h9p-Na-cwm"/>
+                            <constraint firstItem="3b8-Dl-3eA" firstAttribute="top" secondItem="VdN-jS-9VU" secondAttribute="bottom" constant="8" id="lQn-ma-TYH"/>
+                            <constraint firstAttribute="trailing" secondItem="VdN-jS-9VU" secondAttribute="trailing" constant="6" id="nSw-sE-Orh"/>
+                            <constraint firstItem="VFe-dg-Ahf" firstAttribute="top" secondItem="3b8-Dl-3eA" secondAttribute="bottom" constant="-90" id="utb-mY-IkD"/>
                             <constraint firstItem="jkY-4d-7Z2" firstAttribute="top" secondItem="bnx-jS-pqC" secondAttribute="top" id="yQZ-hV-djA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ARr-TD-B0s"/>
@@ -1517,9 +1559,9 @@
                     <connections>
                         <outlet property="cover" destination="nMH-db-m1u" id="6ut-zr-1AW"/>
                         <outlet property="gradientBackground" destination="jkY-4d-7Z2" id="uUY-h2-0dF"/>
-                        <outlet property="more" destination="Mva-01-B6E" id="dmL-Iu-5nv"/>
-                        <outlet property="song" destination="AZ0-ef-GOb" id="zUS-kA-Gbk"/>
-                        <outlet property="volume" destination="NJP-Ob-yic" id="7Zz-Zj-kgP"/>
+                        <outlet property="more" destination="3b8-Dl-3eA" id="8IW-lB-Eyb"/>
+                        <outlet property="song" destination="VdN-jS-9VU" id="95c-Z9-YzL"/>
+                        <outlet property="volume" destination="VFe-dg-Ahf" id="sgs-Ea-NvV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dUB-nX-aI0" userLabel="First Responder" sceneMemberID="firstResponder"/>

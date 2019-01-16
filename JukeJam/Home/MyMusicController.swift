@@ -140,7 +140,7 @@ extension MyMusicController: UICollectionViewDataSource{
                 modal.coverImage = myJamsArt[indexPath.item].image
                 modal.songText = myJamsArt[indexPath.item].title
                 modal.moreText = "\(myJamsArt[indexPath.item].title!) - \(myJamsArt[indexPath.item].author!)"
-                print("HERE why taking so long")
+                print("HERE why taking so long", modal.songText)
 
                 present(modal, animated: true, completion: nil)
             }

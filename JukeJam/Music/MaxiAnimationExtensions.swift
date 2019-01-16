@@ -5,15 +5,14 @@ protocol MaxiPlayerSourceProtocol: class {
     var originatingFrameInWindow: CGRect { get }
     var originatingCoverImageView: UIImageView { get }
 }
-
 // MARK: - IBActions
 extension MaxiSongCardViewController {
    
     func  initAnimations(){
+        animateLowerModuleIn()
         animateBackingImageIn()
         animateImageLayerIn()
         animateCoverImageIn()
-        animateLowerModuleIn()
         animateBottomSectionOut()
     }
     func configureAnimations(){
@@ -35,8 +34,8 @@ extension MaxiSongCardViewController {
 
     @IBAction func dismissAction(_ sender: Any) {
         animateBackingImageOut()
-        animateCoverImageOut()
         animateLowerModuleOut()
+        animateCoverImageOut()
         animateImageLayerOut() { _ in
             self.dismiss(animated: false)
         }
@@ -132,7 +131,7 @@ extension MaxiSongCardViewController {
         let endInset = imageLayerInsetForOutPosition
         
         UIView.animate(withDuration: primaryDuration,
-                       delay: primaryDuration,
+                       delay: primaryDuration - 0.15,
                        options: [.curveEaseOut], animations: {
                         self.coverImageContainer.backgroundColor = self.startColor
         }, completion: { finished in

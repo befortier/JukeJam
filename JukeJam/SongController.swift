@@ -14,15 +14,16 @@ class SongController: UIViewController {
     @IBOutlet weak var nextSong: UIImageView!
     @IBOutlet weak var state: UIImageView!
     var coverImage: UIImage!
-    var songText: String!
+    var songText: String?
     var moreText: String!
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.modalPresentationCapturesStatusBarAppearance = true
+        print("HERE",self.songText)
         cover.image = coverImage
-        song.text = songText
+        song.text = self.songText
         more.text = "This is a giant test - to see if the text will eventualy wrap around"
 
 
