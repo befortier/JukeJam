@@ -1,6 +1,6 @@
 import UIKit
 import StoreKit
-
+//Make a delegate between this and MusicHandler, like MaxiAnimation has. This will allow you to send the playerstate through so you can update info on bar or songcontroller if needed
 class SpotifyHandler: NSObject,
     SPTAppRemotePlayerStateDelegate,
     SPTAppRemoteUserAPIDelegate,
@@ -113,10 +113,10 @@ SKStoreProductViewControllerDelegate {
         playPauseButton.setTitle("", for: UIControl.State.normal);
         playPauseButton.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.normal)
         playPauseButton.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.highlighted)
-        playPauseButton.tintColor = UIColor.black
+        playPauseButton.tintColor = UIColor.white
 
         nextButton = nextSong
-        nextButton.tintColor = UIColor.black
+//        nextButton.tintColor = UIColor.white
 
         nextButton.setTitle("", for: UIControl.State.normal)
         nextButton.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.normal)

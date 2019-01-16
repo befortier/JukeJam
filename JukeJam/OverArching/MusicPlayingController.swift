@@ -9,7 +9,11 @@ class MusicPlayingController: UIViewController {
     weak var musicBar: MusicBar!
     var musicHandler: MusicHandler!
     var mainController: ControllerController!
-
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func loadView() {
         super.loadView()
 

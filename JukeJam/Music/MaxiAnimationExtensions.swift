@@ -131,7 +131,7 @@ extension MaxiSongCardViewController {
         let endInset = imageLayerInsetForOutPosition
         
         UIView.animate(withDuration: primaryDuration,
-                       delay: primaryDuration - 0.15,
+                       delay: primaryDuration - 0.2,
                        options: [.curveEaseOut], animations: {
                         self.coverImageContainer.backgroundColor = self.startColor
         }, completion: { finished in
@@ -236,7 +236,7 @@ extension MaxiSongCardViewController {
     //2.
     func animateBottomSectionOut() {
         if let image = tabBarImage {
-            UIView.animate(withDuration: primaryDuration / 2.0) {
+            UIView.animate(withDuration: primaryDuration / 4.0) {
                 self.bottomSectionLowerConstraint.constant = -image.size.height
                 self.view.layoutIfNeeded()
             }

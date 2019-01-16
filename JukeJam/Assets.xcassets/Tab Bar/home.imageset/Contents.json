@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "clearHouse.png",
+      "filename" : "icons8-home-page-25.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "clearHouse copy.png",
+      "filename" : "icons8-home-page-50.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "clearHouse copy 2.png",
+      "filename" : "icons8-home-page-75.png",
       "scale" : "3x"
     }
   ],

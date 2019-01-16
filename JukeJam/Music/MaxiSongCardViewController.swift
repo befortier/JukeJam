@@ -5,7 +5,7 @@ class MaxiSongCardViewController: UIViewController, SongSubscriber {
   weak var sourceView: MaxiPlayerSourceProtocol!
   let cardCornerRadius: CGFloat = 10
   var currentSong: Song?
-  let primaryDuration = 0.25 //set to 0.5 when ready
+  let primaryDuration = 0.20 //set to 0.5 when ready
   let offset = 0.05
   let backingImageEdgeInset: CGFloat = 15.0
   var tabBarImage: UIImage?

@@ -18,21 +18,31 @@ class ScreenController: UITabBarController {
         initBar()
 
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     func initBar(){
+        UITabBar.appearance().shadowImage = nil
+        TabBar.shadowImage = nil
+
+        self.tabBarController?.tabBar.clipsToBounds = true
         let firstTab : UITabBarItem = self.TabBar.items![0]
         firstTab.title = "Home"
         firstTab.image = UIImage(named: "home")
-        firstTab.selectedImage = UIImage(named: "home_1")
+        firstTab.selectedImage = UIImage(named: "home_filled")
         let secondTab : UITabBarItem = self.TabBar.items![1]
-        secondTab.title = "Search"
-        secondTab.image = UIImage(named: "find")
-        secondTab.selectedImage = UIImage(named: "find_1")
+        secondTab.title = "Library"
+        secondTab.image = UIImage(named: "music")
+        secondTab.selectedImage = UIImage(named: "music_filled")
     }
     
     func test(){
 //        print("HERE testing")
     }
+  
+   
 
 
 }

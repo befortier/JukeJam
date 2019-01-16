@@ -57,12 +57,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
         nav.barTintColor = UIColor.stem
         nav.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white,  NSAttributedString.Key.font: font]
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
-        UINavigationBar.appearance().barStyle = .blackOpaque
+//        UINavigationBar.appearance().barStyle = .blackOpaque
         homeScreen = self.window?.rootViewController as! ControllerController
-
+        UITabBar.appearance().shadowImage = UIImage()
         return true
     }
-
+    
+   
     
 //    //Checks if UserDefault has any saved log in from user
 //    func checkAuth(){

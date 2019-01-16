@@ -95,7 +95,7 @@ class MusicHandler: NSObject {
             musicBar.leadingAnchor.constraint(equalTo: frame.leadingAnchor),
             musicBar.trailingAnchor.constraint(equalTo: frame.trailingAnchor),
             ])
-        self.musicBar.frame = CGRect(x: -2, y: frame.frame.height - 115, width: frame.frame.width + 4, height: 66)
+        self.musicBar.frame = CGRect(x: -2, y: frame.frame.height - 115, width: frame.frame.width + 4, height: 68)
         print(musicBar)
         return musicBar
     }
