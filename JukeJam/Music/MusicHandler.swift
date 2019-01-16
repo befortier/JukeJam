@@ -24,8 +24,8 @@ class MusicHandler: NSObject {
     override init(){
         super.init()
         musicBar = MusicBar()
-        self.musicBar.songText = "Started From the Bottom Now We're Here"
-        self.musicBar.coverImage = UIImage(named: "album2")
+//        self.musicBar.songText = "Started From the Bottom Now We're Here"
+//        self.musicBar.coverImage = UIImage(named: "album2")
         spotifyHandler = SpotifyHandler(playButton: musicBar.state, cover: musicBar.cover, label: musicBar.song, nextSong: musicBar.nextSong)
         appleHandler = AppleHandler()
         initalizePreference()

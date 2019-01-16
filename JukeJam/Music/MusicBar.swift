@@ -9,7 +9,20 @@
 import UIKit
 import ShadowView
 
-class MusicBar: UIView {
+protocol MusicBarDelegate: class {
+    func expandSong(song: Song)
+}
+
+class MusicBar: UIView, SongSubscriber {
+    var currentSong: Song? {
+        didSet{
+//            coverImage
+        }
+    }
+    weak var delegate: MusicBarDelegate?
+
+    
+    
     @IBOutlet weak var cover: UIImageView!
     @IBOutlet weak var song: UILabel!
     @IBOutlet weak var state: UIButton!
@@ -34,21 +47,32 @@ class MusicBar: UIView {
         commonInit()
         setupView()
         initSongController()
+        currentSong = Song(title: "Started From the Bottom Now Were Here", duration: 100, artist: "Drake", cover: UIImage(named: "album2")!)
+        
+        configure(song: currentSong)
+
     }
     required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
         commonInit()
         setupView()
         initSongController()
+        configure(song: nil)
     }
     
     private func initSongController(){
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showSongController))
-        self.addGestureRecognizer(tapGesture)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showSongController))
+        self.addGestureRecognizer(tap)
     }
     
     @objc private func showSongController(){
-        print("HERE")
+        print("HERE ",currentSong)
+        guard let song = currentSong else {
+            print("HERE ERROR")
+            return
+        }
+        
+        delegate?.expandSong(song: song)
         
         
     }
@@ -77,5 +101,31 @@ class MusicBar: UIView {
             self.containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             ])
+    }
+}
+// MARK: - Internal
+extension MusicBar {
+    
+    func configure(song: Song?) {
+        if let song = song {
+            self.song.text = song.title
+//            song.loadSongImage { [weak self] image in
+                self.cover.image = song.cover
+//            }
+        } else {
+            self.song.text = nil
+            self.cover.image = nil
+        }
+        currentSong = song
+    }
+}
+
+extension MusicBar: MaxiPlayerSourceProtocol {
+    var originatingFrameInWindow: CGRect {
+        return (self.frame)
+    }
+    
+    var originatingCoverImageView: UIImageView {
+        return cover
     }
 }

@@ -43,6 +43,14 @@
 		576410FB21E2A47F0009525B /* FocalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576410FA21E2A47F0009525B /* FocalButton.swift */; };
 		5764110321E2DF4C0009525B /* MyMusicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764110221E2DF4C0009525B /* MyMusicController.swift */; };
 		5764110521E3C5450009525B /* SpotifyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5764110421E3C5450009525B /* SpotifyHandler.swift */; };
+		5791020F21EE604400343569 /* MaxiSongCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791020C21EE604300343569 /* MaxiSongCardViewController.swift */; };
+		5791021021EE604400343569 /* SongPlayControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791020D21EE604300343569 /* SongPlayControlViewController.swift */; };
+		5791021721EE612500343569 /* SongSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791021521EE612500343569 /* SongSubscriber.swift */; };
+		5791021821EE612500343569 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791021621EE612500343569 /* Song.swift */; };
+		5791022021EE62A200343569 /* UIView+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791021E21EE62A100343569 /* UIView+Snapshot.swift */; };
+		5791022121EE62A200343569 /* Song+ImageLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791021F21EE62A100343569 /* Song+ImageLoad.swift */; };
+		5791022621EE98CA00343569 /* MaxiAnimationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791022521EE98CA00343569 /* MaxiAnimationExtensions.swift */; };
+		5791022821EEA14E00343569 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791022721EEA14E00343569 /* Extensions.swift */; };
 		57A71B7B21D823DE0004FEDA /* AppleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B7A21D823DE0004FEDA /* AppleHandler.swift */; };
 		57A71B7D21D96A680004FEDA /* ScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B7C21D96A680004FEDA /* ScreenController.swift */; };
 		57A71B8321DAC35E0004FEDA /* Home_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B8221DAC35E0004FEDA /* Home_Extensions.swift */; };
@@ -116,6 +124,14 @@
 		576410FF21E2A7E30009525B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5764110221E2DF4C0009525B /* MyMusicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMusicController.swift; sourceTree = "<group>"; };
 		5764110421E3C5450009525B /* SpotifyHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyHandler.swift; sourceTree = "<group>"; };
+		5791020C21EE604300343569 /* MaxiSongCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaxiSongCardViewController.swift; sourceTree = "<group>"; };
+		5791020D21EE604300343569 /* SongPlayControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongPlayControlViewController.swift; sourceTree = "<group>"; };
+		5791021521EE612500343569 /* SongSubscriber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SongSubscriber.swift; sourceTree = "<group>"; };
+		5791021621EE612500343569 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		5791021E21EE62A100343569 /* UIView+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Snapshot.swift"; sourceTree = "<group>"; };
+		5791021F21EE62A100343569 /* Song+ImageLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Song+ImageLoad.swift"; sourceTree = "<group>"; };
+		5791022521EE98CA00343569 /* MaxiAnimationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxiAnimationExtensions.swift; sourceTree = "<group>"; };
+		5791022721EEA14E00343569 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		57A71B7A21D823DE0004FEDA /* AppleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleHandler.swift; sourceTree = "<group>"; };
 		57A71B7C21D96A680004FEDA /* ScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenController.swift; sourceTree = "<group>"; };
 		57A71B8221DAC35E0004FEDA /* Home_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_Extensions.swift; sourceTree = "<group>"; };
@@ -213,8 +229,12 @@
 		570CB7F021EBF75E009DCA6D /* Music */ = {
 			isa = PBXGroup;
 			children = (
+				5791020C21EE604300343569 /* MaxiSongCardViewController.swift */,
+				5791022521EE98CA00343569 /* MaxiAnimationExtensions.swift */,
+				5791020D21EE604300343569 /* SongPlayControlViewController.swift */,
 				570CB7EA21EA8951009DCA6D /* MusicHandler.swift */,
 				5706201621E7B76D009869BE /* MusicBar.swift */,
+				5791022721EEA14E00343569 /* Extensions.swift */,
 				5706201821E7BA8F009869BE /* MusicBar.xib */,
 				570CB7E921E95BCE009DCA6D /* Spotify */,
 			);
@@ -253,6 +273,7 @@
 				5705942421D4631000F4F5CB /* User.swift */,
 				576410FF21E2A7E30009525B /* Info.plist */,
 				5705942221D319E300F4F5CB /* GoogleService-Info.plist */,
+				5791021421EE611D00343569 /* Model */,
 				5705942D21D541D100F4F5CB /* Login */,
 				5706200B21E68444009869BE /* OverArching */,
 				576410F521DE63B70009525B /* Home */,
@@ -305,6 +326,25 @@
 				576410FA21E2A47F0009525B /* FocalButton.swift */,
 			);
 			path = FocalUI;
+			sourceTree = "<group>";
+		};
+		5791021421EE611D00343569 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5791022221EE62A600343569 /* Helpers */,
+				5791021621EE612500343569 /* Song.swift */,
+				5791021521EE612500343569 /* SongSubscriber.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5791022221EE62A600343569 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5791021F21EE62A100343569 /* Song+ImageLoad.swift */,
+				5791021E21EE62A100343569 /* UIView+Snapshot.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		B99786CC9E10750F94305A57 /* Frameworks */ = {
@@ -627,20 +667,27 @@
 				570CB7E121E94A24009DCA6D /* ConnectionStatusIndicatorView.swift in Sources */,
 				5705940821D2D31500F4F5CB /* Login_Extension.swift in Sources */,
 				5705940C21D2D31500F4F5CB /* SignUpController.swift in Sources */,
+				5791020F21EE604400343569 /* MaxiSongCardViewController.swift in Sources */,
 				570CB7D821E7DD55009DCA6D /* HomeController.swift in Sources */,
 				570CB7E821E953B7009DCA6D /* SongController.swift in Sources */,
+				5791022821EEA14E00343569 /* Extensions.swift in Sources */,
 				5705940521D2D31500F4F5CB /* LoginController.swift in Sources */,
+				5791021821EE612500343569 /* Song.swift in Sources */,
 				57A71B8321DAC35E0004FEDA /* Home_Extensions.swift in Sources */,
 				570CB7F221ECFDE2009DCA6D /* BaseLoginController.swift in Sources */,
+				5791022021EE62A200343569 /* UIView+Snapshot.swift in Sources */,
 				5705940621D2D31500F4F5CB /* WelcomeController.swift in Sources */,
 				5706200821E66D23009869BE /* MusicPlayingController.swift in Sources */,
+				5791022621EE98CA00343569 /* MaxiAnimationExtensions.swift in Sources */,
 				5705942521D4631000F4F5CB /* User.swift in Sources */,
+				5791021721EE612500343569 /* SongSubscriber.swift in Sources */,
 				5705940A21D2D31500F4F5CB /* loginButton.swift in Sources */,
 				57A71B7B21D823DE0004FEDA /* AppleHandler.swift in Sources */,
 				5705940221D2D31500F4F5CB /* AppDelegate.swift in Sources */,
 				57A71B7D21D96A680004FEDA /* ScreenController.swift in Sources */,
 				5764110321E2DF4C0009525B /* MyMusicController.swift in Sources */,
 				5706200421E4107D009869BE /* ConnectButton.swift in Sources */,
+				5791022121EE62A200343569 /* Song+ImageLoad.swift in Sources */,
 				570CB7EF21EBC670009DCA6D /* ControllerController.swift in Sources */,
 				5764110521E3C5450009525B /* SpotifyHandler.swift in Sources */,
 				5705942721D53DE000F4F5CB /* FbLoginHandler.swift in Sources */,
@@ -648,6 +695,7 @@
 				5705940921D2D31500F4F5CB /* ForgotPassword.swift in Sources */,
 				5705942F21D571A500F4F5CB /* ConfirmController.swift in Sources */,
 				576410FB21E2A47F0009525B /* FocalButton.swift in Sources */,
+				5791021021EE604400343569 /* SongPlayControlViewController.swift in Sources */,
 				570CB7ED21EA902F009DCA6D /* OverArching_Extensions.swift in Sources */,
 				57A71BCC21DD79A10004FEDA /* FocalCell.swift in Sources */,
 			);

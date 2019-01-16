@@ -18,6 +18,7 @@ class MusicPlayingController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.musicBar = musicHandler.addBar(frame: self.view)
+        musicBar?.delegate = self
         initMusic()
 
     }
@@ -47,8 +48,14 @@ class MusicPlayingController: UIViewController {
             self.TabBar = vc
             vc.MusicController = self
         }
+        if let destination = segue.destination as? MusicBar {
+            print("HERE")
+            musicBar = destination
+            
+        }
     }
     
+
 
     override func viewDidAppear(_ animated: Bool) {
         self.TabBar?.test()
@@ -58,4 +65,28 @@ class MusicPlayingController: UIViewController {
 
  
 
+}
+extension MusicPlayingController: MusicBarDelegate {
+    func expandSong(song: Song) {
+        print("HERE whats good")
+        //1.
+        guard let maxiCard = storyboard?.instantiateViewController(
+            withIdentifier: "MaxiSongCardViewController")
+            as? MaxiSongCardViewController else {
+                assertionFailure("No view controller ID MaxiSongCardViewController in storyboard")
+                return
+        }
+        
+        //2.
+        maxiCard.backingImage = view.makeSnapshot()
+        //3.
+        maxiCard.currentSong = song
+        //4.
+        maxiCard.sourceView = musicBar
+        if let tabBar = tabBarController?.tabBar {
+            maxiCard.tabBarImage = tabBar.makeSnapshot()
+        }
+        
+        present(maxiCard, animated: false)
+    }
 }
