@@ -86,7 +86,7 @@ extension MaxiSongCardViewController {
 extension MaxiSongCardViewController {
     
     private var startColor: UIColor {
-        return UIColor.white.withAlphaComponent(0.3)
+        return UIColor(red: 241/255, green: 241/255, blue: 241/255, alpha: 1.0)
     }
     
     private var endColor: UIColor {
@@ -114,7 +114,7 @@ extension MaxiSongCardViewController {
     //3.
     func animateImageLayerIn() {
         //    //4.
-        UIView.animate(withDuration: primaryDuration / 4.0) {
+        UIView.animate(withDuration: primaryDuration ) {
             self.coverImageContainer.backgroundColor = self.endColor
         }
         
@@ -131,7 +131,7 @@ extension MaxiSongCardViewController {
     func animateImageLayerOut(completion: @escaping ((Bool) -> Void)) {
         let endInset = imageLayerInsetForOutPosition
         
-        UIView.animate(withDuration: primaryDuration / 4.0,
+        UIView.animate(withDuration: primaryDuration,
                        delay: primaryDuration,
                        options: [.curveEaseOut], animations: {
                         self.coverImageContainer.backgroundColor = self.startColor

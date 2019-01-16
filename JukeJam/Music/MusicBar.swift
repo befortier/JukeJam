@@ -16,7 +16,7 @@ protocol MusicBarDelegate: class {
 class MusicBar: UIView, SongSubscriber {
     var currentSong: Song? {
         didSet{
-            configure(song: self.currentSong)
+//            configure(song: self.currentSong)
             
         }
     }
@@ -28,7 +28,7 @@ class MusicBar: UIView, SongSubscriber {
     @IBOutlet weak var cover: UIImageView!{
         didSet{
             //LEFT OFF HERE NO SONG EXISTING REALLY
-            self.backgroundView.backgroundColor = song.imageColors[0]
+//            self.backgroundView.backgroundColor = song.imageColors[0]
         }
     }
     @IBOutlet weak var song: UILabel!
