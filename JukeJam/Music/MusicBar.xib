@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MusicBar" customModule="JukeJam" customModuleProvider="target">
             <connections>
+                <outlet property="backgroundView" destination="3Pu-fw-wA6" id="MUJ-MF-9yT"/>
                 <outlet property="containerView" destination="iN0-l3-epB" id="lLW-Wr-5UP"/>
                 <outlet property="cover" destination="21F-mG-OiP" id="ndQ-OH-vMe"/>
                 <outlet property="nextSong" destination="XvD-wA-kKz" id="AWG-n5-776"/>
@@ -24,6 +25,10 @@
             <rect key="frame" x="0.0" y="0.0" width="379" height="72"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Pu-fw-wA6">
+                    <rect key="frame" x="0.0" y="0.0" width="379" height="72"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gb6-ZY-S46">
                     <rect key="frame" x="0.0" y="0.0" width="379" height="72"/>
                     <subviews>
@@ -87,9 +92,13 @@
             </subviews>
             <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="3Pu-fw-wA6" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Dmz-48-CeD"/>
+                <constraint firstItem="3Pu-fw-wA6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="J7I-bm-gjO"/>
                 <constraint firstItem="Gb6-ZY-S46" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="LUS-XW-79m"/>
+                <constraint firstItem="3Pu-fw-wA6" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Sv6-2V-lLv"/>
                 <constraint firstItem="Gb6-ZY-S46" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="T6Y-nP-8rp"/>
                 <constraint firstItem="Gb6-ZY-S46" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="mcB-JL-ecW"/>
+                <constraint firstItem="3Pu-fw-wA6" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="qHN-pG-FFS"/>
                 <constraint firstItem="Gb6-ZY-S46" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="xAu-an-Jxe"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

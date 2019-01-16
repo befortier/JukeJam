@@ -85,7 +85,14 @@ class MaxiSongCardViewController: UIViewController, SongSubscriber {
     super.viewDidAppear(animated)
     initAnimations()
     self.coverImageContainer.assignImageGradientColor(colors: (self.currentSong?.imageColors)!)
-  
+    coverArtImage.layer.borderColor = currentSong?.imageAvColor.inverse().cgColor
+    coverArtImage.layer.borderWidth = 0.1
+    coverArtImage.layer.cornerRadius = 7
+    coverArtImage.layer.shadowColor = currentSong?.imageAvColor.inverse().cgColor
+    coverArtImage.layer.shadowOffset = CGSize(width: 0, height: 1.75)
+    coverArtImage.layer.shadowRadius = 1.7
+    coverArtImage.layer.shadowOpacity = 0.45
+
   }
 
 

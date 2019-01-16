@@ -2192,14 +2192,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Ab-NJ-PSp">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="NJP-Ob-yic">
-                                <rect key="frame" x="60" y="199" width="294" height="31"/>
-                            </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photographs and Memories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZ0-ef-GOb">
                                 <rect key="frame" x="8" y="105" width="397" height="28"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
@@ -2226,19 +2218,32 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Ab-NJ-PSp">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ue-YT-iB5">
+                                <rect key="frame" x="20" y="237" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="NJP-Ob-yic">
+                                <rect key="frame" x="59" y="74" width="294" height="31"/>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Mva-01-B6E" firstAttribute="leading" secondItem="7Cq-i3-exJ" secondAttribute="leading" constant="8" id="A04-bt-7wn"/>
-                            <constraint firstItem="NJP-Ob-yic" firstAttribute="top" secondItem="Mva-01-B6E" secondAttribute="bottom" constant="35" id="EEA-JZ-9Gh"/>
-                            <constraint firstItem="NJP-Ob-yic" firstAttribute="leading" secondItem="7Cq-i3-exJ" secondAttribute="leading" constant="62" id="FZh-Mk-hYi"/>
+                            <constraint firstItem="NJP-Ob-yic" firstAttribute="top" secondItem="Mva-01-B6E" secondAttribute="bottom" constant="-90" id="EEA-JZ-9Gh"/>
+                            <constraint firstItem="NJP-Ob-yic" firstAttribute="leading" secondItem="7Cq-i3-exJ" secondAttribute="leading" constant="61" id="FZh-Mk-hYi"/>
                             <constraint firstItem="AZ0-ef-GOb" firstAttribute="leading" secondItem="7Cq-i3-exJ" secondAttribute="leading" constant="8" id="GqG-p5-rsM"/>
                             <constraint firstItem="Mva-01-B6E" firstAttribute="top" secondItem="AZ0-ef-GOb" secondAttribute="bottom" constant="8" id="YFD-c8-jZ6"/>
                             <constraint firstItem="AZ0-ef-GOb" firstAttribute="top" secondItem="7Cq-i3-exJ" secondAttribute="top" constant="85" id="dXz-WQ-l3z"/>
                             <constraint firstItem="7Cq-i3-exJ" firstAttribute="trailing" secondItem="Mva-01-B6E" secondAttribute="trailing" constant="9" id="ej8-ff-TUM"/>
                             <constraint firstItem="7Cq-i3-exJ" firstAttribute="trailing" secondItem="AZ0-ef-GOb" secondAttribute="trailing" constant="9" id="j0k-zL-fzS"/>
                             <constraint firstItem="Mva-01-B6E" firstAttribute="top" secondItem="AZ0-ef-GOb" secondAttribute="bottom" constant="8" id="m7o-0x-Lbu"/>
-                            <constraint firstItem="7Cq-i3-exJ" firstAttribute="trailing" secondItem="NJP-Ob-yic" secondAttribute="trailing" constant="62" id="qvf-jr-CX9"/>
+                            <constraint firstItem="7Cq-i3-exJ" firstAttribute="trailing" secondItem="NJP-Ob-yic" secondAttribute="trailing" constant="63" id="qvf-jr-CX9"/>
                             <constraint firstItem="Mva-01-B6E" firstAttribute="top" secondItem="AZ0-ef-GOb" secondAttribute="bottom" constant="8" id="ra6-QU-Ep4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7Cq-i3-exJ"/>

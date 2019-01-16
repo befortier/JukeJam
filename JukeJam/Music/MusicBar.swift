@@ -16,14 +16,21 @@ protocol MusicBarDelegate: class {
 class MusicBar: UIView, SongSubscriber {
     var currentSong: Song? {
         didSet{
-//            coverImage
+            configure(song: self.currentSong)
+            
         }
     }
     weak var delegate: MusicBarDelegate?
 
     
     
-    @IBOutlet weak var cover: UIImageView!
+    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var cover: UIImageView!{
+        didSet{
+            //LEFT OFF HERE NO SONG EXISTING REALLY
+            self.backgroundView.backgroundColor = song.imageColors[0]
+        }
+    }
     @IBOutlet weak var song: UILabel!
     @IBOutlet weak var state: UIButton!
     @IBOutlet weak var nextSong: UIButton!
@@ -47,7 +54,7 @@ class MusicBar: UIView, SongSubscriber {
         commonInit()
         setupView()
         initSongController()
-        currentSong = Song(title: "Started From the Bottom Now Were Here", duration: 100, artist: "Drake", cover: UIImage(named: "album2")!)
+        currentSong = Song(title: "Started From the Bottom Now Were Here", duration: 100, artist: "Drake", cover: UIImage(named: "album4")!)
         
         configure(song: currentSong)
 
@@ -73,6 +80,10 @@ class MusicBar: UIView, SongSubscriber {
         }
         
         delegate?.expandSong(song: song)
+        
+        
+    }
+    private func updateInfo(){
         
         
     }
@@ -111,6 +122,8 @@ extension MusicBar {
             self.song.text = song.title
 //            song.loadSongImage { [weak self] image in
                 self.cover.image = song.cover
+ 
+            
 //            }
         } else {
             self.song.text = nil

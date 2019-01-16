@@ -17,15 +17,20 @@ class Song: NSObject {
         self.title = title
         self.duration = duration
         self.artist = artist
-        DispatchQueue.main.async {
+        DispatchQueue.global().async {
             self.initColors()
         }
         }
     
     func initColors(){
+        imageAvColor = AverageColorFromImage(self.cover!)
+        imageColors = [imageAvColor]
+        print("HERE SONG Half SET", imageColors.count)
+
         var colors = ColorsFromImage(self.cover!, withFlatScheme: true)
         imageColors = [colors[0],colors[1]]
-        imageAvColor = AverageColorFromImage(self.cover!)
+        imageColors.sort(by: {$0.hue < $1.hue})
+        print("HERE SONG FULL SET")
     }
     
    

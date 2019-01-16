@@ -8,8 +8,9 @@ class SongPlayControlViewController: UIViewController, SongSubscriber {
   @IBOutlet weak var songTitle: UILabel!
   @IBOutlet weak var songArtist: UILabel!
   @IBOutlet weak var songDuration: UILabel!
-
+    var mainColor: UIColor!
     @IBOutlet weak var gradientFade: UIView!
+    @IBOutlet weak var playbackLocation: UISlider!
     // MARK: - Properties
   var currentSong: Song? {
     didSet {
@@ -20,8 +21,9 @@ class SongPlayControlViewController: UIViewController, SongSubscriber {
   // MARK: - View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
+
     configureFields()
-  self.gradientFade.assignImageGradientColor(colors: (self.currentSong?.imageColors)!)
+    self.gradientFade.backgroundColor = currentSong?.imageColors[((currentSong?.imageColors.count) ?? 1) - 1]
     self.gradientFade.addFadeOut()
   }
 }
@@ -33,9 +35,10 @@ extension SongPlayControlViewController {
     guard songTitle != nil else {
       return
     }
-    
+    mainColor = currentSong?.imageAvColor
     songTitle.text = currentSong?.title
     songArtist.text = currentSong?.artist
+    
 //    songDuration.text = "Duration \(currentSong?.presentationTime ?? "")"
   }
 }
