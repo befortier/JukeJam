@@ -113,10 +113,8 @@ SKStoreProductViewControllerDelegate {
         playPauseButton.setTitle("", for: UIControl.State.normal);
         playPauseButton.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.normal)
         playPauseButton.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.highlighted)
-        playPauseButton.tintColor = UIColor.white
 
         nextButton = nextSong
-//        nextButton.tintColor = UIColor.white
 
         nextButton.setTitle("", for: UIControl.State.normal)
         nextButton.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.normal)

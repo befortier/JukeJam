@@ -23,9 +23,15 @@ class SongPlayControlViewController: UIViewController, SongSubscriber {
     super.viewDidLoad()
 
     configureFields()
-    self.gradientFade.backgroundColor = currentSong?.imageColors[((currentSong?.imageColors.count) ?? 1) - 1]
+    self.gradientFade.alpha = 0
     self.gradientFade.addFadeOut()
-  }
+   self.gradientFade.backgroundColor =
+    self.currentSong?.imageColors[((self.currentSong?.imageColors.count) ?? 1) - 1]
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.18) {
+        self.gradientFade.alpha = 1
+    }
+
+    }
 }
 
 // MARK: - Internal

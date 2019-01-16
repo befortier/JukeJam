@@ -14,25 +14,29 @@ protocol MusicBarDelegate: class {
 }
 
 class MusicBar: UIView, SongSubscriber {
-    var currentSong: Song? {
-        didSet{
-//            configure(song: self.currentSong)
-            
-        }
-    }
+   
     weak var delegate: MusicBarDelegate?
 
     
     
     @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var cover: UIImageView!{
+    @IBOutlet weak var cover: UIImageView! {
         didSet{
             //LEFT OFF HERE NO SONG EXISTING REALLY
-//            self.backgroundView.backgroundColor = song.imageColors[0]
+            //            self.backgroundView.backgroundColor = song.imageColors[0]
+            wrapperCaller()
         }
     }
-    @IBOutlet weak var song: UILabel!
-    @IBOutlet weak var state: UIButton!
+    @IBOutlet weak var song: UILabel! {
+        didSet{
+            wrapperCaller()
+        }
+    }
+    @IBOutlet weak var state: UIButton! {
+        didSet{
+            wrapperCaller()
+        }
+    }
     @IBOutlet weak var nextSong: UIButton!
     @IBOutlet var containerView: UIView!
     let exampleShadowContainerView = ShadowView()
@@ -47,15 +51,22 @@ class MusicBar: UIView, SongSubscriber {
             song.text = songText
         }
     }
-    
+    var currentSong: Song? {
+        didSet{
+           wrapperCaller()
+        }
+    }
   
+    func wrapperCaller(){
+        if cover != nil && song != nil{
+            configure(song: self.currentSong)
+        }
+    }
     override init(frame: CGRect){
         super.init(frame:frame)
         commonInit()
         setupView()
         initSongController()
-        currentSong = Song(title: "Started From the Bottom Now Were Here", duration: 100, artist: "Drake", cover: UIImage(named: "album4")!)
-        
         configure(song: currentSong)
 
     }
@@ -64,7 +75,7 @@ class MusicBar: UIView, SongSubscriber {
         commonInit()
         setupView()
         initSongController()
-        configure(song: nil)
+        configure(song: currentSong)
     }
     
     private func initSongController(){
@@ -73,7 +84,6 @@ class MusicBar: UIView, SongSubscriber {
     }
     
     @objc private func showSongController(){
-        print("HERE ",currentSong)
         guard let song = currentSong else {
             print("HERE ERROR")
             return
@@ -119,17 +129,15 @@ extension MusicBar {
     
     func configure(song: Song?) {
         if let song = song {
-            self.song.text = song.title
-//            song.loadSongImage { [weak self] image in
+                self.song.text = song.title
+                //            song.loadSongImage { [weak self] image in
                 self.cover.image = song.cover
- 
-            
-//            }
-        } else {
+        }
+        else {
             self.song.text = nil
             self.cover.image = nil
         }
-        currentSong = song
+//        currentSong = song
     }
 }
 

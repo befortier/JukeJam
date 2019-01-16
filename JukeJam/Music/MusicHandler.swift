@@ -2,7 +2,8 @@ import UIKit
 import StoreKit
 
 class MusicHandler: NSObject {
-    
+    var preference: Pref!
+    var musicBar: MusicBar = MusicBar()
     var spotifyHandler: SpotifyHandler! {
         didSet {
             checkPreference()
@@ -13,29 +14,30 @@ class MusicHandler: NSObject {
             checkPreference()
         }
     }
+    var currentSong: Song?{
+        didSet{
+            musicBar.currentSong = self.currentSong
+        }
+    }
     enum Pref {
     case apple
     case spotify
     case none
 
     }
-    var preference: Pref!
-    var musicBar: MusicBar!
+
     override init(){
         super.init()
-        musicBar = MusicBar()
-//        self.musicBar.songText = "Started From the Bottom Now We're Here"
-//        self.musicBar.coverImage = UIImage(named: "album2")
-        spotifyHandler = SpotifyHandler(playButton: musicBar.state, cover: musicBar.cover, label: musicBar.song, nextSong: musicBar.nextSong)
         appleHandler = AppleHandler()
+        spotifyHandler = SpotifyHandler(playButton: musicBar.state, cover: musicBar.cover, label: musicBar.song, nextSong: musicBar.nextSong)
         initalizePreference()
-        
+        currentSong = Song(title: "Started From the Bottom Now Were Here", duration: 100, artist: "Drake", cover: UIImage(named: "album3")!)
+        musicBar.currentSong = self.currentSong
     }
 //    convenience override init(){
 //        self.init(playButton: UIButton(), cover: UIImageView(), label: UILabel(), nextSong: UIButton())
 //    }
     
-     
     //Should set gloabl preference variable to be apple if apple is available + has playback, spotify if apple doesnt have playback, apple if both dont have playback, spotify if doesnt have apple, none if has neither.
     func initalizePreference(){
         preference = Pref.spotify
