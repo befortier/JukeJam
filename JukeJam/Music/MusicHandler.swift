@@ -1,9 +1,17 @@
 import UIKit
 import StoreKit
 
-class MusicHandler: NSObject {
+protocol MusicHandlerDelegate: class {
+    func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState)
+}
+
+class MusicHandler: NSObject, SpotifyHandlerDelegate {
+   
+    
     var preference: Pref!
-    var musicBar: MusicBar = MusicBar()
+    weak var delegate: MusicHandlerDelegate?
+
+    var musicBar: MusicBar!
     var spotifyHandler: SpotifyHandler! {
         didSet {
             checkPreference()
@@ -27,10 +35,13 @@ class MusicHandler: NSObject {
     
     override init(){
         super.init()
+        
         appleHandler = AppleHandler()
         spotifyHandler = SpotifyHandler()
-        spotifyHandler.delegate = musicBar
-        musicBar.MusicHandler = self
+        spotifyHandler.delegate = self
+        musicBar = MusicBar(frame: CGRect(x: 0, y: 0, width: 0, height: 0), handler: self)
+        self.delegate = musicBar
+        musicBar.musicHandler = self
         initalizePreference()
         musicBar.currentSong = self.currentSong
     }
@@ -109,6 +120,11 @@ class MusicHandler: NSObject {
             ])
         self.musicBar.frame = CGRect(x: -2, y: frame.frame.height - 115, width: frame.frame.width + 4, height: 66)
         return musicBar
+    }
+    
+    func updateView(playerState: SPTAppRemotePlayerState) {
+        delegate!.updateViewWithPlayerState(playerState)
+        
     }
 }
 

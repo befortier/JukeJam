@@ -78,6 +78,7 @@ extension MusicPlayingController: MusicBarDelegate {
             modal.transitioningDelegate = transitionDelegate
             modal.modalPresentationStyle = .custom
             modal.currentSong = song
+            modal.musicHandler = self.musicHandler
             present(modal, animated: true, completion: nil)
         }
 
