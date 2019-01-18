@@ -50,10 +50,6 @@ class SongController: UIViewController {
         song.text = self.currentSong?.title
         more.text = "\((currentSong?.artist)!) - \((currentSong?.album)!)"
         volume.setThumbImage(UIImage(named: "Small Circle"), for: .normal)
-        volume.setThumbImage(UIImage(named: "Bigger Circle"), for: UIControl.State.selected)
-           volume.setThumbImage(UIImage(named: "Bigger Circle"), for: UIControl.State.highlighted)
-        
-
     }
     @objc func closeViewFunc(){
         self.dismiss(animated: true)
@@ -69,6 +65,7 @@ class SongController: UIViewController {
                 gestures![count].isEnabled = false
                 count += 1
                }
+                   volume.setThumbImage(UIImage(named: "Bigger Circle"), for: UIControl.State.normal)
              
                 view.isUserInteractionEnabled = false
                 volume.tintColor = self.averageColor!
@@ -89,6 +86,7 @@ class SongController: UIViewController {
 
                 volume.tintColor = UIColor.darkGray
                 view.isUserInteractionEnabled = true
+                volume.setThumbImage(UIImage(named: "Small Circle"), for: .normal)
                 view.setNeedsDisplay()
                 view.setNeedsLayout()
             default:
@@ -121,21 +119,5 @@ class SongController: UIViewController {
     }
 
 }
-extension UIColor
-{
-    var hue: CGFloat
-    {
-        var hue: CGFloat = 0
-        var saturation: CGFloat = 0
-        var brightness: CGFloat = 0
-        var alpha: CGFloat = 0
-        
-        self.getHue(&hue,
-                    saturation: &saturation,
-                    brightness: &brightness,
-                    alpha: &alpha)
-        
-        return hue
-    }
-}
+
 

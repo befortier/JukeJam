@@ -33,8 +33,6 @@ class MusicHandler: NSObject {
         musicBar.MusicHandler = self
         initalizePreference()
         musicBar.currentSong = self.currentSong
-        
-        
     }
     
     func terminate(){
@@ -61,9 +59,6 @@ class MusicHandler: NSObject {
         
     }
     
-
-    
-   
     
     //Checks to see which is the current used preference system and calls Spotify.play/ Apple.play
     func PlayPauseMusic(){
@@ -102,10 +97,7 @@ class MusicHandler: NSObject {
             
         }
     }
-    
-    func endSession(){
-        spotifyHandler.terminate()
-    }
+
     
     func addBar(frame: UIView) -> MusicBar{
         frame.addSubview(musicBar)

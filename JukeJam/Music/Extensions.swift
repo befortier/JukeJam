@@ -38,4 +38,19 @@ extension UIColor {
         }
         return .black // Return a default colour
     }
+
+    var hue: CGFloat
+    {
+        var hue: CGFloat = 0
+        var saturation: CGFloat = 0
+        var brightness: CGFloat = 0
+        var alpha: CGFloat = 0
+        
+        self.getHue(&hue,
+                    saturation: &saturation,
+                    brightness: &brightness,
+                    alpha: &alpha)
+        
+        return hue
+    }
 }

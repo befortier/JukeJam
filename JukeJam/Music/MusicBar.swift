@@ -139,7 +139,7 @@ extension MusicBar: SpotifyHandlerDelegate {
 
 extension MusicBar{
     fileprivate func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
-        print("HERE")
+        print("HERE update view")
         updatePlayPauseButtonState(playerState.isPaused)
         //        updateRepeatModeLabel(playerState.playbackOptions.repeatMode)
         //        updateShuffleLabel(playerState.playbackOptions.isShuffling)

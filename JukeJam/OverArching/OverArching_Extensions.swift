@@ -17,7 +17,7 @@ extension MusicPlayingController{
             for cookie in facebookCookies! {
                 cookies.deleteCookie(cookie )
             }
-            self.musicHandler.endSession()
+            self.musicHandler.terminate()
             self.mainController.state = .login
             self.mainController.presentController(sender: self)
 
