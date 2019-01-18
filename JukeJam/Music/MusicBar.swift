@@ -78,12 +78,11 @@ class MusicBar: UIView, SongSubscriber {
     }
     
     @IBAction func stateChange(_ sender: Any) {
-        print("HERE")
-        MusicHandler?.spotifyHandler.didPressPlayPauseButton()
+        MusicHandler?.PlayPauseMusic()
     }
     
     @IBAction func nextSong(_ sender: Any) {
-        MusicHandler?.spotifyHandler.didPressNextButton()
+        MusicHandler?.nextSong()
     }
     
     private func updateInfo(){
@@ -140,6 +139,7 @@ extension MusicBar: SpotifyHandlerDelegate {
 
 extension MusicBar{
     fileprivate func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
+        print("HERE")
         updatePlayPauseButtonState(playerState.isPaused)
         //        updateRepeatModeLabel(playerState.playbackOptions.repeatMode)
         //        updateShuffleLabel(playerState.playbackOptions.isShuffling)
@@ -195,20 +195,25 @@ extension MusicBar{
     
  
     func initButtons(){
-        state.setTitle("", for: UIControl.State.normal);
         state.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.normal)
         state.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.highlighted)
-        
-        nextSong.setTitle("", for: UIControl.State.normal)
         nextSong.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.normal)
         nextSong.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.highlighted)
-        MusicHandler?.spotifyHandler.getPlayerState()
         state.showsTouchWhenHighlighted = true
         state.layer.cornerRadius = state.frame.width/2
         state.setBackgroundColor(color: .lightGray, forState: .highlighted)
         nextSong.showsTouchWhenHighlighted = true
         nextSong.layer.cornerRadius = state.frame.width/2
         nextSong.setBackgroundColor(color: .lightGray, forState: .highlighted)
+        MusicHandler?.spotifyHandler.getPlayerState()
+    }
+    
+    func reset(){
+        let playPauseButtonImage = PlaybackButtonGraphics.playButtonImage()
+        self.state.setImage(playPauseButtonImage, for: UIControl.State())
+        self.state.setImage(playPauseButtonImage, for: .highlighted)
+        cover.image = UIImage(named: "No Music")
+        song.text = "Nothing Playing"
     }
   
     

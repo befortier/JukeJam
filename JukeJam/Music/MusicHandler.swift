@@ -23,7 +23,6 @@ class MusicHandler: NSObject {
     case apple
     case spotify
     case none
-
     }
     
     override init(){
@@ -37,6 +36,19 @@ class MusicHandler: NSObject {
         
         
     }
+    
+    func terminate(){
+        if preference == Pref.spotify {
+            spotifyHandler.terminate()
+        }
+        else if preference == Pref.apple {
+            
+        }
+        else if preference == Pref.none{
+            
+        }
+        musicBar.reset()
+    }
 
     
     //Should set gloabl preference variable to be apple if apple is available + has playback, spotify if apple doesnt have playback, apple if both dont have playback, spotify if doesnt have apple, none if has neither.
@@ -49,10 +61,15 @@ class MusicHandler: NSObject {
         
     }
     
+
+    
+   
+    
     //Checks to see which is the current used preference system and calls Spotify.play/ Apple.play
     func PlayPauseMusic(){
+
         if preference == Pref.spotify {
-            
+            spotifyHandler.didPressPlayPauseButton()
         }
         else if preference == Pref.apple {
             
@@ -64,7 +81,7 @@ class MusicHandler: NSObject {
     
     func nextSong(){
         if preference == Pref.spotify {
-            
+            spotifyHandler.didPressNextButton()
         }
         else if preference == Pref.apple {
             
@@ -76,7 +93,7 @@ class MusicHandler: NSObject {
     
     func prevSong(){
         if preference == Pref.spotify {
-            
+//            spotifyHandler.didPressPreviousButton()
         }
         else if preference == Pref.apple {
             
@@ -99,7 +116,6 @@ class MusicHandler: NSObject {
             musicBar.trailingAnchor.constraint(equalTo: frame.trailingAnchor),
             ])
         self.musicBar.frame = CGRect(x: -2, y: frame.frame.height - 115, width: frame.frame.width + 4, height: 66)
-        print(musicBar)
         return musicBar
     }
 }

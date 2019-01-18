@@ -14,6 +14,7 @@ class SongController: UIViewController {
     @IBOutlet weak var prevSong: UIImageView!
     @IBOutlet weak var nextSong: UIImageView!
     @IBOutlet weak var state: UIImageView!
+    var musicHandler: MusicHandler?
     var currentSong: Song?
     var averageColor: UIColor?{
         didSet{
@@ -26,6 +27,17 @@ class SongController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initWaitingGame()
+        initUI()
+        closingGesture()
+    }
+    
+    func closingGesture(){
+        let tap = UITapGestureRecognizer(target: self, action: #selector(closeViewFunc))
+        self.closeView.addGestureRecognizer(tap)
+        volume.addTarget(self, action: #selector(onSliderValChanged(slider:event:)), for: .valueChanged)
+
+    }
+    func initUI(){
         self.modalPresentationCapturesStatusBarAppearance = true
         self.gradientBackground.assignImageGradientColor(colors: (self.currentSong?.imageColors)!)
         self.gradientBackground.addFadeOut()
@@ -37,23 +49,66 @@ class SongController: UIViewController {
         cover.image = currentSong?.cover
         song.text = self.currentSong?.title
         more.text = "\((currentSong?.artist)!) - \((currentSong?.album)!)"
-        let tap = UITapGestureRecognizer(target: self, action: #selector(closeViewFunc))
-        self.closeView.addGestureRecognizer(tap)
+        volume.setThumbImage(UIImage(named: "Small Circle"), for: .normal)
+        volume.setThumbImage(UIImage(named: "Bigger Circle"), for: UIControl.State.selected)
+           volume.setThumbImage(UIImage(named: "Bigger Circle"), for: UIControl.State.highlighted)
+        
+
     }
-    
     @objc func closeViewFunc(){
-        print("HERE testing")
         self.dismiss(animated: true)
-        let delegate = self.transitioningDelegate as! SPStorkTransitioningDelegate
-//        delegate.
     }
+    @objc func onSliderValChanged(slider: UISlider, event: UIEvent) {
+        if let touchEvent = event.allTouches?.first {
+            switch touchEvent.phase {
+            case .began:
+            // handle drag began
+               let gestures = view.gestureRecognizers
+               var count = 0
+               while(count < (gestures?.count)!){
+                gestures![count].isEnabled = false
+                count += 1
+               }
+             
+                view.isUserInteractionEnabled = false
+                volume.tintColor = self.averageColor!
+                view.setNeedsDisplay()
+                view.setNeedsLayout()
+            case .moved:
+            // handle drag moved
+                view.setNeedsDisplay()
+                view.setNeedsLayout()
+            case .ended:
+            // handle drag ended
+                let gestures = view.gestureRecognizers
+                var count = 0
+                while(count < (gestures?.count)!){
+                    gestures![count].isEnabled = true
+                    count += 1
+                }
+
+                volume.tintColor = UIColor.darkGray
+                view.isUserInteractionEnabled = true
+                view.setNeedsDisplay()
+                view.setNeedsLayout()
+            default:
+                break
+            }
+        }
+    }
+
     
-    
+    @IBAction func sliderReleased(_ sender: Any) {
+       
+    }
     func updateColorUI(){
+        if averageColor == UIColor.clear{
+            return
+        }
         cover.layer.borderColor = averageColor!.inverse().cgColor
         cover.layer.shadowColor = averageColor!.inverse().cgColor
-        more.textColor = averageColor!.inverse()
-        volume.tintColor = averageColor!.inverse()
+        more.textColor = averageColor
+        volume.tintColor = UIColor.darkGray
         view.setNeedsDisplay()
         view.setNeedsLayout()
     }

@@ -94,7 +94,7 @@ SKStoreProductViewControllerDelegate {
     
 
     
-    fileprivate let playURI = "spotify:album:20r762YmB5HeofjMCiPMLv"
+    fileprivate let playURI = "spotify:artist:5K4W6rqBFWDnAN6FQUkS6x"
     fileprivate let trackIdentifier = "spotify:track:32ftxJzxMPgUFCM6Km9WTS"
     fileprivate let name = "Now Playing View"
     
@@ -369,6 +369,7 @@ SKStoreProductViewControllerDelegate {
     }
     
     func appRemoteConnected() {
+        print("HERE connect?"  )
         connectionIndicatorView.state = .connected
         subscribeToPlayerState()
         subscribeToCapabilityChanges()

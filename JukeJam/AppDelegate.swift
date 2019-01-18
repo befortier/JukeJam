@@ -95,7 +95,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
         } else if let error_description = parameters?[SPTAppRemoteErrorDescriptionKey] {
              homeScreen?.AppController!.musicHandler.spotifyHandler.showError(error_description);
         }
-        print("HERE TRIggering appdelegate")
         return true
     }
     //Deals with googleSign in, if succesful sets UserDefault info and switches page.
@@ -157,10 +156,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
 
 
     func applicationWillResignActive(_ application: UIApplication) {
-        if homeScreen?.AppController!.musicHandler != nil {
-            homeScreen?.AppController!.musicHandler.spotifyHandler.appRemoteDisconnect()
-            appRemote.disconnect()
-        }
+
         
     }
 
@@ -179,6 +175,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        terminateMusic()
+
+        
     }
     func connect() {
         if homeScreen?.AppController!.musicHandler != nil {
@@ -188,24 +187,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
     }
     
     func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
+
         if homeScreen?.AppController!.musicHandler != nil {
             self.appRemote = appRemote
+
             homeScreen?.AppController!.musicHandler.spotifyHandler.appRemoteConnected()
         }
     }
     
-    func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
-        print("didFailConnectionAttemptWithError")
+    func terminateMusic(){
         if homeScreen?.AppController!.musicHandler != nil {
-         homeScreen?.AppController!.musicHandler.spotifyHandler.appRemoteDisconnect()
+            homeScreen?.AppController!.musicHandler.terminate()
+        }
+    }
+    
+    func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
+        print("HERE didFailConnectionAttemptWithError", error)
+        if homeScreen?.AppController!.musicHandler != nil {
+            homeScreen?.AppController!.musicHandler.terminate()
         }
     }
     
     func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
-        print("didDisconnectWithError")
-        if homeScreen?.AppController!.musicHandler != nil {
-            homeScreen?.AppController!.musicHandler.spotifyHandler.appRemoteDisconnect()
-        }
+        print("HERE didDisconnectWithError", error)
+        terminateMusic()
     }
 
 
