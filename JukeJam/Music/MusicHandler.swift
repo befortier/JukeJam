@@ -29,11 +29,10 @@ class MusicHandler: NSObject {
     override init(){
         super.init()
         appleHandler = AppleHandler()
-        spotifyHandler = SpotifyHandler(playButton: musicBar.state, cover: musicBar.cover, label: musicBar.song, nextSong: musicBar.nextSong)
+        spotifyHandler = SpotifyHandler()
         spotifyHandler.delegate = musicBar
         musicBar.MusicHandler = self
         initalizePreference()
-        currentSong = Song(title: "Started From the Bottom Now Were Here", duration: 100, artist: "Drake", cover: UIImage(named: "album3")!)
         musicBar.currentSong = self.currentSong
         
         
@@ -99,7 +98,7 @@ class MusicHandler: NSObject {
             musicBar.leadingAnchor.constraint(equalTo: frame.leadingAnchor),
             musicBar.trailingAnchor.constraint(equalTo: frame.trailingAnchor),
             ])
-        self.musicBar.frame = CGRect(x: -2, y: frame.frame.height - 115, width: frame.frame.width + 4, height: 68)
+        self.musicBar.frame = CGRect(x: -2, y: frame.frame.height - 115, width: frame.frame.width + 4, height: 66)
         print(musicBar)
         return musicBar
     }

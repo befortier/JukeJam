@@ -25,7 +25,7 @@ public final class SPStorkTransitioningDelegate: NSObject, UIViewControllerTrans
     
     public var isSwipeToDismissEnabled: Bool = true
     public var isTapAroundToDismissEnabled: Bool = true
-    public var showIndicator: Bool = true
+    public var showIndicator: Bool = false
     public var customHeight: CGFloat? = nil
     
     public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {

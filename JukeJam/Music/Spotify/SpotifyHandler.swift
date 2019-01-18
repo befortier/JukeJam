@@ -25,9 +25,7 @@ SKStoreProductViewControllerDelegate {
     }
     
     //Change between play/pause
-    var playPauseButton: UIButton!
-    @objc func didPressPlayPauseButton() {
-        print("HERE SpotifyHandler:", self.playPauseButton)
+     func didPressPlayPauseButton() {
         if !(appRemote.isConnected) {
             if (!appRemote.authorizeAndPlayURI(playURI)) {
                 // The Spotify app is not installed, present the user with an App Store page
@@ -49,8 +47,7 @@ SKStoreProductViewControllerDelegate {
     }
     
     //Next Song
-    var nextButton: UIButton!
-    @objc func didPressNextButton(_ sender: AnyObject) {
+     func didPressNextButton() {
         skipNext()
     }
     
@@ -108,25 +105,16 @@ SKStoreProductViewControllerDelegate {
     fileprivate var connectionIndicatorView = ConnectionStatusIndicatorView()
     
 
-    init(playButton: UIButton, cover: UIImageView, label: UILabel, nextSong: UIButton){
+    override init(){
         super.init()
-        self.playPauseButton = playButton
-        self.playPauseButton.addTarget(self, action: #selector(didPressPlayPauseButton), for: .touchUpInside)
+  
         
-        self.albumArtImageView = cover
-        self.trackNameLabel = label
+ 
 //        connectionIndicatorView.frame = CGRect(origin: CGPoint(), size: CGSize(width: 20,height: 20))
 //
-        playPauseButton.setTitle("", for: UIControl.State.normal);
-        playPauseButton.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.normal)
-        playPauseButton.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.highlighted)
+      
 
-        nextButton = nextSong
 
-        nextButton.setTitle("", for: UIControl.State.normal)
-        nextButton.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.normal)
-        nextButton.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.highlighted)
-        self.nextButton.addTarget(self, action: #selector(didPressNextButton), for: .touchUpInside)
         self.getPlayerState()
         
 //
@@ -140,10 +128,7 @@ SKStoreProductViewControllerDelegate {
 //        skipForward15Button.isHidden = true
     }
     
-    override convenience init(){
-        self.init()
-        
-    }
+  
     
     // MARK: - View
 
@@ -152,12 +137,7 @@ SKStoreProductViewControllerDelegate {
         appRemoteDisconnect()
     }
 
-    fileprivate func updateViewWithRestrictions(_ restrictions: SPTAppRemotePlaybackRestrictions) {
-        nextButton.isEnabled = restrictions.canSkipNext
-        prevButton.isEnabled = restrictions.canSkipPrevious
-        toggleShuffleButton.isEnabled = restrictions.canToggleShuffle
-        toggleRepeatModeButton.isEnabled = restrictions.canRepeatContext || restrictions.canRepeatTrack
-    }
+ 
     
     fileprivate func encodeStringAsUrlParameter(_ value: String) -> String {
         let escapedString = value.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
@@ -177,14 +157,7 @@ SKStoreProductViewControllerDelegate {
     
     // MARK: Podcast Support
     
-    fileprivate func updateInterfaceForPodcast(playerState: SPTAppRemotePlayerState) {
-        skipForward15Button.isHidden = !playerState.track.isEpisode
-        skipBackward15Button.isHidden = !playerState.track.isEpisode
-        podcastSpeedButton.isHidden = !playerState.track.isPodcast
-        nextButton.isHidden = !skipForward15Button.isHidden
-        prevButton.isHidden = !skipBackward15Button.isHidden
-        getCurrentPodcastSpeed()
-    }
+   
     
     fileprivate func updatePodcastSpeed(speed: SPTAppRemotePodcastPlaybackSpeed) {
         currentPodcastSpeed = speed
@@ -304,7 +277,7 @@ SKStoreProductViewControllerDelegate {
         appRemote.playerAPI?.setShuffle(!playerState.playbackOptions.isShuffling, callback: defaultCallback)
     }
     
-    fileprivate func getPlayerState() {
+     func getPlayerState() {
         appRemote.playerAPI?.getPlayerState { (result, error) -> Void in
             guard error == nil else { return }
             let playerState = result as! SPTAppRemotePlayerState

@@ -127,29 +127,29 @@ extension MyMusicController: UICollectionViewDataSource{
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch collectionView {
-
-
-        case self.songs:
-            if let modal: SongController = storyboard?.instantiateViewController(withIdentifier: "SongController") as? SongController {
-                let transitionDelegate = SPStorkTransitioningDelegate()
-                transitionDelegate.isSwipeToDismissEnabled = true
-                transitionDelegate.isTapAroundToDismissEnabled = true
-                modal.transitioningDelegate = transitionDelegate
-                modal.modalPresentationStyle = .custom
-                modal.coverImage = myJamsArt[indexPath.item].image
-                modal.songText = myJamsArt[indexPath.item].title
-                modal.moreText = "\(myJamsArt[indexPath.item].title!) - \(myJamsArt[indexPath.item].author!)"
-                print("HERE why taking so long", modal.songText)
-
-                present(modal, animated: true, completion: nil)
-            }
-            
-            break
-
-        default:
-            break
-        }
+//        switch collectionView {
+//
+//
+//        case self.songs:
+//            if let modal: SongController = storyboard?.instantiateViewController(withIdentifier: "SongController") as? SongController {
+//                let transitionDelegate = SPStorkTransitioningDelegate()
+//                transitionDelegate.isSwipeToDismissEnabled = true
+//                transitionDelegate.isTapAroundToDismissEnabled = true
+//                modal.transitioningDelegate = transitionDelegate
+//                modal.modalPresentationStyle = .custom
+//                modal.coverImage = myJamsArt[indexPath.item].image
+//                modal.songText = myJamsArt[indexPath.item].title
+//                modal.moreText = "\(myJamsArt[indexPath.item].title!) - \(myJamsArt[indexPath.item].author!)"
+//                print("HERE why taking so long", modal.songText)
+//
+//                present(modal, animated: true, completion: nil)
+//            }
+//            
+//            break
+//
+//        default:
+//            break
+//        }
     }
 
     

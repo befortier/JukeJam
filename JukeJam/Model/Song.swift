@@ -10,14 +10,16 @@ class Song: NSObject {
     var artist: String?
     var cover: UIImage?
     var imageColors: [UIColor] = []
-    var imageAvColor: UIColor! 
+    var imageAvColor: UIColor!
+    var album: String?
 
-     init(title: String, duration: TimeInterval, artist: String, cover: UIImage){
+    init(title: String, duration: TimeInterval, artist: String, cover: UIImage, album: String){
         super.init()
         self.cover = cover
         self.title = title
         self.duration = duration
         self.artist = artist
+        self.album = album
         DispatchQueue.global().async {
             self.initColors()
         }

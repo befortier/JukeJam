@@ -5,6 +5,7 @@ import ChameleonFramework
 
 class SongController: UIViewController {
 
+    @IBOutlet weak var closeView: UIView!
     @IBOutlet weak var gradientBackground: UIView!
     @IBOutlet weak var cover: UIImageView!
     @IBOutlet weak var song: UILabel!
@@ -13,51 +14,55 @@ class SongController: UIViewController {
     @IBOutlet weak var prevSong: UIImageView!
     @IBOutlet weak var nextSong: UIImageView!
     @IBOutlet weak var state: UIImageView!
-    var coverImage: UIImage!
-    var songText: String?
-    var moreText: String!
+    var currentSong: Song?
+    var averageColor: UIColor?{
+        didSet{
+            updateColorUI()
+        }
+    }
+    
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initWaitingGame()
         self.modalPresentationCapturesStatusBarAppearance = true
-        print("HERE",self.songText)
-        cover.image = coverImage
-        song.text = self.songText
-        more.text = "This is a giant test - to see if the text will eventualy wrap around"
-
-
-        assignGradient()
+        self.gradientBackground.assignImageGradientColor(colors: (self.currentSong?.imageColors)!)
+        self.gradientBackground.addFadeOut()
+        cover.layer.borderWidth = 0.1
+        cover.layer.cornerRadius = 7
+        cover.layer.shadowOffset = CGSize(width: 0, height: 1.75)
+        cover.layer.shadowRadius = 1.7
+        cover.layer.shadowOpacity = 0.45
+        cover.image = currentSong?.cover
+        song.text = self.currentSong?.title
+        more.text = "\((currentSong?.artist)!) - \((currentSong?.album)!)"
+        let tap = UITapGestureRecognizer(target: self, action: #selector(closeViewFunc))
+        self.closeView.addGestureRecognizer(tap)
     }
     
-  
+    @objc func closeViewFunc(){
+        print("HERE testing")
+        self.dismiss(animated: true)
+        let delegate = self.transitioningDelegate as! SPStorkTransitioningDelegate
+//        delegate.
+    }
     
-    func assignGradient(){
-        print("HERE why taking so long2")
-        var colors = ColorsFromImage(cover.image!, withFlatScheme: true)
-//        colors.sort(by: {$0.hue < $1.hue})
-        
-        print("HERE why taking so long13")
-
-        let averageColor = AverageColorFromImage(cover.image!)
-        print("HERE why taking so long23")
-
-        let gradientColor = GradientColor(.diagonal, frame: gradientBackground.frame, colors: [colors[1],colors[0]])
-        print("HERE why taking so long33")
-
-        gradientBackground.backgroundColor = gradientColor
-        cover.layer.borderColor = averageColor.cgColor
-        cover.layer.borderWidth = 5.0
-
-        let gradientMaskLayer = CAGradientLayer()
-        gradientMaskLayer.frame = gradientBackground.bounds
-        gradientMaskLayer.colors = [UIColor.clear.cgColor, UIColor.white.cgColor, UIColor.white.cgColor, UIColor.clear.cgColor]
-        gradientMaskLayer.locations = [0, 0, 0.9, 1]
-        gradientBackground.layer.mask = gradientMaskLayer
-        more.textColor = averageColor
-        volume.tintColor = averageColor
-        print("HERE why taking so long4")
-
+    
+    func updateColorUI(){
+        cover.layer.borderColor = averageColor!.inverse().cgColor
+        cover.layer.shadowColor = averageColor!.inverse().cgColor
+        more.textColor = averageColor!.inverse()
+        volume.tintColor = averageColor!.inverse()
+        view.setNeedsDisplay()
+        view.setNeedsLayout()
+    }
+    
+    func initWaitingGame(){
+            self.averageColor = UIColor.clear
+            if self.currentSong?.imageAvColor != nil{
+                self.averageColor = self.currentSong?.imageAvColor
+            }
     }
 
 }

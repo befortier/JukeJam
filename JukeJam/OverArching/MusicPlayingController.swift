@@ -71,25 +71,15 @@ class MusicPlayingController: UIViewController {
 }
 extension MusicPlayingController: MusicBarDelegate {
     func expandSong(song: Song) {
-        print("HERE whats good")
-        //1.
-        guard let maxiCard = storyboard?.instantiateViewController(
-            withIdentifier: "MaxiSongCardViewController")
-            as? MaxiSongCardViewController else {
-                assertionFailure("No view controller ID MaxiSongCardViewController in storyboard")
-                return
+        if let modal: SongController = storyboard?.instantiateViewController(withIdentifier: "SongController") as? SongController {
+            let transitionDelegate = SPStorkTransitioningDelegate()
+            transitionDelegate.isSwipeToDismissEnabled = true
+            transitionDelegate.isTapAroundToDismissEnabled = true
+            modal.transitioningDelegate = transitionDelegate
+            modal.modalPresentationStyle = .custom
+            modal.currentSong = song
+            present(modal, animated: true, completion: nil)
         }
-        
-        //2.
-        maxiCard.backingImage = view.makeSnapshot()
-        //3.
-        maxiCard.currentSong = song
-        //4.
-        maxiCard.sourceView = musicBar
-        if let tabBar = tabBarController?.tabBar {
-            maxiCard.tabBarImage = tabBar.makeSnapshot()
-        }
-        
-        present(maxiCard, animated: false)
-    }
+
+}
 }

@@ -2,25 +2,31 @@ import Foundation
 import ChameleonFramework
 extension UIView{
     func assignImageGradientColor(colors: [UIColor]){
+        if colors.count == 0{
+            return
+        }
         if colors.count == 1{
              self.backgroundColor = colors[0]
             return
         }
-        let gradientColor = GradientColor(.topToBottom, frame: self.frame, colors: colors)
+        let gradientColor = GradientColor(.diagonal, frame: self.frame, colors: colors)
         self.backgroundColor = gradientColor
     }
     func getImageGradientColor(colors: [UIColor]) -> UIColor{
+        if colors.count == 0{
+            return UIColor.clear
+        }
         if colors.count == 1{
             return colors[0]
         }
-        let gradientColor = GradientColor(.topToBottom, frame: self.frame, colors: colors)
+        let gradientColor = GradientColor(.diagonal, frame: self.frame, colors: colors)
         return gradientColor
     }
     func addFadeOut(){
         let gradientMaskLayer = CAGradientLayer()
         gradientMaskLayer.frame = self.bounds
-        gradientMaskLayer.colors = [UIColor.white.cgColor, UIColor.clear.cgColor]
-        gradientMaskLayer.locations = [0, 1]
+        gradientMaskLayer.colors = [UIColor.clear.cgColor, UIColor.white.cgColor, UIColor.white.cgColor, UIColor.clear.cgColor]
+        gradientMaskLayer.locations = [0, 0, 0.9, 1]
         self.layer.mask = gradientMaskLayer
     }
 }

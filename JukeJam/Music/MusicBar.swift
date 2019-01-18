@@ -16,7 +16,6 @@ protocol MusicBarDelegate: class {
 class MusicBar: UIView, SongSubscriber {
     weak var delegate: MusicBarDelegate?
     var MusicHandler: MusicHandler?
-    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var nextSong: UIButton!
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var cover: UIImageView! {
@@ -44,18 +43,21 @@ class MusicBar: UIView, SongSubscriber {
     }
     override init(frame: CGRect){
         super.init(frame:frame)
-        commonInit()
-        setupView()
-        initSongController()
-        configure(song: currentSong)
+        overAllInit()
+
 
     }
     required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
+        overAllInit()
+    }
+    
+    func overAllInit(){
         commonInit()
         setupView()
         initSongController()
         configure(song: currentSong)
+        initButtons()
     }
     
     private func initSongController(){
@@ -74,6 +76,16 @@ class MusicBar: UIView, SongSubscriber {
         
         
     }
+    
+    @IBAction func stateChange(_ sender: Any) {
+        print("HERE")
+        MusicHandler?.spotifyHandler.didPressPlayPauseButton()
+    }
+    
+    @IBAction func nextSong(_ sender: Any) {
+        MusicHandler?.spotifyHandler.didPressNextButton()
+    }
+    
     private func updateInfo(){
         
         
@@ -108,24 +120,16 @@ extension MusicBar {
     
     func configure(song: Song?) {
         if let song = song {
-                self.song.text = song.title
+//                self.song.text = song.title
                 //            song.loadSongImage { [weak self] image in
-                self.cover.image = song.cover
+//                self.cover.image = song.cover
             
             //Also need to update MaxiDelegate controls
         }
     }
 }
 
-extension MusicBar: MaxiPlayerSourceProtocol {
-    var originatingFrameInWindow: CGRect {
-        return (self.frame)
-    }
-    
-    var originatingCoverImageView: UIImageView {
-        return cover
-    }
-}
+
 
 extension MusicBar: SpotifyHandlerDelegate {
     func updateView(playerState: SPTAppRemotePlayerState) {
@@ -139,7 +143,7 @@ extension MusicBar{
         updatePlayPauseButtonState(playerState.isPaused)
         //        updateRepeatModeLabel(playerState.playbackOptions.repeatMode)
         //        updateShuffleLabel(playerState.playbackOptions.isShuffling)
-        self.song.text = playerState.track.name + " - " + playerState.track.artist.name
+        self.song.text = playerState.track.name //+ " - " + playerState.track.artist.name
         fetchAlbumArtForTrack(playerState.track) { (image) -> Void in
             self.updateAlbumArtWithImage(image)
             self.updateCurrentSong(playerState: playerState)
@@ -185,8 +189,42 @@ extension MusicBar{
     }
     
     func updateCurrentSong(playerState: SPTAppRemotePlayerState){
-        let newSong = Song(title: playerState.track.name , duration: TimeInterval(playerState.track.duration), artist: playerState.track.artist.name, cover: cover.image!)
+        let newSong = Song(title: playerState.track.name , duration: TimeInterval(playerState.track.duration), artist: playerState.track.artist.name, cover: cover.image!, album: playerState.track.album.name)
         MusicHandler?.currentSong = newSong
+    }
+    
+ 
+    func initButtons(){
+        state.setTitle("", for: UIControl.State.normal);
+        state.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.normal)
+        state.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.highlighted)
+        
+        nextSong.setTitle("", for: UIControl.State.normal)
+        nextSong.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.normal)
+        nextSong.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.highlighted)
+        MusicHandler?.spotifyHandler.getPlayerState()
+        state.showsTouchWhenHighlighted = true
+        state.layer.cornerRadius = state.frame.width/2
+        state.setBackgroundColor(color: .lightGray, forState: .highlighted)
+        nextSong.showsTouchWhenHighlighted = true
+        nextSong.layer.cornerRadius = state.frame.width/2
+        nextSong.setBackgroundColor(color: .lightGray, forState: .highlighted)
+    }
+  
+    
+    fileprivate func updateViewWithRestrictions(_ restrictions: SPTAppRemotePlaybackRestrictions) {
+        nextSong.isEnabled = restrictions.canSkipNext
+//        prevButton.isEnabled = restrictions.canSkipPrevious
+//        toggleShuffleButton.isEnabled = restrictions.canToggleShuffle
+//        toggleRepeatModeButton.isEnabled = restrictions.canRepeatContext || restrictions.canRepeatTrack
+    }
+    fileprivate func updateInterfaceForPodcast(playerState: SPTAppRemotePlayerState) {
+//        skipForward15Button.isHidden = !playerState.track.isEpisode
+//        skipBackward15Button.isHidden = !playerState.track.isEpisode
+//        podcastSpeedButton.isHidden = !playerState.track.isPodcast
+//        nextButton.isHidden = !skipForward15Button.isHidden
+//        prevButton.isHidden = !skipBackward15Button.isHidden
+//        getCurrentPodcastSpeed()
     }
 }
 
