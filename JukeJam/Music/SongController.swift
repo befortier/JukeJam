@@ -16,19 +16,15 @@ class SongController: UIViewController {
     @IBOutlet weak var state: UIImageView!
     var musicHandler: MusicHandler?
     var currentSong: Song?
-    var averageColor: UIColor?{
-        didSet{
-            updateColorUI()
-        }
-    }
+    var averageColor: UIColor?
     
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initWaitingGame()
         initUI()
+        waitForColors()
         closingGesture()
+        
     }
     
     func closingGesture(){
@@ -51,56 +47,45 @@ class SongController: UIViewController {
         more.text = "\((currentSong?.artist)!) - \((currentSong?.album)!)"
         volume.setThumbImage(UIImage(named: "Small Circle"), for: .normal)
     }
+    
     @objc func closeViewFunc(){
         self.dismiss(animated: true)
     }
+    
     @objc func onSliderValChanged(slider: UISlider, event: UIEvent) {
         if let touchEvent = event.allTouches?.first {
             switch touchEvent.phase {
             case .began:
-            // handle drag began
-               let gestures = view.gestureRecognizers
-               var count = 0
-               while(count < (gestures?.count)!){
-                gestures![count].isEnabled = false
-                count += 1
-               }
-                   volume.setThumbImage(UIImage(named: "Bigger Circle"), for: UIControl.State.normal)
-             
-                view.isUserInteractionEnabled = false
-                volume.tintColor = self.averageColor!
-                view.setNeedsDisplay()
-                view.setNeedsLayout()
-            case .moved:
-            // handle drag moved
-                view.setNeedsDisplay()
-                view.setNeedsLayout()
-            case .ended:
-            // handle drag ended
-                let gestures = view.gestureRecognizers
-                var count = 0
-                while(count < (gestures?.count)!){
-                    gestures![count].isEnabled = true
-                    count += 1
-                }
+                toggleGestures(allow:false)
+                volume.setThumbImage(UIImage(named: "Bigger Circle"), for: UIControl.State.normal)
+                volume.tintColor = self.averageColor ?? UIColor.darkGray
 
+
+            case .ended:
+                toggleGestures(allow: true)
                 volume.tintColor = UIColor.darkGray
-                view.isUserInteractionEnabled = true
                 volume.setThumbImage(UIImage(named: "Small Circle"), for: .normal)
-                view.setNeedsDisplay()
-                view.setNeedsLayout()
+
             default:
                 break
             }
         }
     }
+    
+    func toggleGestures(allow: Bool){
+        let gestures = view.gestureRecognizers
+        var count = 0
+        while(count < (gestures?.count)!){
+            gestures![count].isEnabled = allow
+            count += 1
+        }
+    }
 
     
-    @IBAction func sliderReleased(_ sender: Any) {
-       
-    }
+
     func updateColorUI(){
-        if averageColor == UIColor.clear{
+        self.averageColor = self.currentSong?.imageAvColor ?? UIColor.clear
+        if self.currentSong?.imageAvColor == nil{
             return
         }
         cover.layer.borderColor = averageColor!.inverse().cgColor
@@ -111,12 +96,15 @@ class SongController: UIViewController {
         view.setNeedsLayout()
     }
     
-    func initWaitingGame(){
-            self.averageColor = UIColor.clear
-            if self.currentSong?.imageAvColor != nil{
-                self.averageColor = self.currentSong?.imageAvColor
-            }
+    func waitForColors(){
+        updateColorUI()
+        while self.currentSong?.imageAvColor == nil{
+            
+        }
+        updateColorUI()
     }
+    
+
 
 }
 

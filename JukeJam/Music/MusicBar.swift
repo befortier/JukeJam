@@ -15,11 +15,8 @@ protocol MusicBarDelegate: class {
 
 class MusicBar: UIView, SongSubscriber, MusicHandlerDelegate {
     weak var delegate: MusicBarDelegate?
-    var musicHandler: MusicHandler?//{
-//        didSet{
-//            musicUIController = MusicUIController(state: state, next: nextSong, cover: cover, song: song, handler: musicHandler)
-//        }
-//    }
+    var musicHandler: MusicHandler?
+
     @IBOutlet weak var nextSong: UIButton!
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var cover: UIImageView!
@@ -109,6 +106,7 @@ class MusicBar: UIView, SongSubscriber, MusicHandlerDelegate {
             self.containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             ])
     }
+    
     func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
         musicUIController?.updateViewWithPlayerState(playerState)
     }
