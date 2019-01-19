@@ -3,7 +3,9 @@ import UIKit
 import SPStorkController
 import ChameleonFramework
 
-class SongController: UIViewController {
+class SongController: UIViewController, MusicHandlerDelegate {
+    
+    
 
     @IBOutlet weak var closeView: UIView!
     @IBOutlet weak var gradientBackground: UIView!
@@ -11,12 +13,13 @@ class SongController: UIViewController {
     @IBOutlet weak var song: UILabel!
     @IBOutlet weak var more: UILabel!
     @IBOutlet weak var volume: UISlider!
-    @IBOutlet weak var prevSong: UIImageView!
-    @IBOutlet weak var nextSong: UIImageView!
-    @IBOutlet weak var state: UIImageView!
+    @IBOutlet weak var prevSong: UIButton!
+    @IBOutlet weak var nextSong: UIButton!
+    @IBOutlet weak var state: UIButton!
     var musicHandler: MusicHandler?
     var currentSong: Song?
     var averageColor: UIColor?
+    var musicUIController: MusicUIController!
     
 
     override func viewDidLoad() {
@@ -24,6 +27,7 @@ class SongController: UIViewController {
         initUI()
         waitForColors()
         closingGesture()
+//         musicUIController = MusicUIController(state: state, next: nextSong, cover: cover, song: song, handler: musicHandler!)
         
     }
     
@@ -49,6 +53,7 @@ class SongController: UIViewController {
     }
     
     @objc func closeViewFunc(){
+        musicHandler?.delegate = musicHandler?.musicBar
         self.dismiss(animated: true)
     }
     
@@ -104,6 +109,14 @@ class SongController: UIViewController {
         updateColorUI()
     }
     
+    func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
+        musicUIController?.updateViewWithPlayerState(playerState)
+    }
+    
+    func reset(){
+        musicUIController?.reset()
+        
+    }
 
 
 }
