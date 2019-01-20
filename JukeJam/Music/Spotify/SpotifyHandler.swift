@@ -32,6 +32,7 @@ SKStoreProductViewControllerDelegate {
                 showAppStoreInstall()
             }
         } else if playerState == nil || playerState!.isPaused {
+            print("SPOTIFY playState changed")
             startPlayback()
         } else {
             pausePlayback()
@@ -349,6 +350,8 @@ SKStoreProductViewControllerDelegate {
     
     func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
         self.playerState = playerState
+        print("SPOTIFY playState changed2")
+
         delegate?.updateView(playerState: playerState)
     }
     

@@ -35,17 +35,22 @@ class MusicUIController: NSObject {
         updatePlayPauseButtonState(playerState.isPaused)
         //        updateRepeatModeLabel(playerState.playbackOptions.repeatMode)
         //        updateShuffleLabel(playerState.playbackOptions.isShuffling)
-        self.songLabel.text = playerState.track.name //+ " - " + playerState.track.artist.name
+//        self.songLabel.text = handler.currentSong?.title
         fetchAlbumArtForTrack(playerState.track) { (image) -> Void in
+            let newSong = Song(title: playerState.track.name , duration: TimeInterval(playerState.track.duration), artist: playerState.track.artist.name, cover: image, album: playerState.track.album.name)
             self.updateAlbumArtWithImage(image)
-            self.updateCurrentSong(playerState: playerState)
+            self.handler?.currentSong = newSong
+            self.fillInfo(song: newSong)
             
             //        updateViewWithRestrictions(playerState.playbackRestrictions)
             //        updateInterfaceForPodcast(playerState: playerState)
         }
-        
-        
     }
+    fileprivate func fillInfo(song: Song){
+        songLabel.text = song.title
+        coverImageView.image = song.cover
+    }
+    
     fileprivate func updatePlayPauseButtonState(_ paused: Bool) {
         let playPauseButtonImage = paused ? PlaybackButtonGraphics.playButtonImage() : PlaybackButtonGraphics.pauseButtonImage()
         self.stateButton.setImage(playPauseButtonImage, for: UIControl.State())
@@ -65,7 +70,6 @@ class MusicUIController: NSObject {
         //            }()
     }
     fileprivate func updateAlbumArtWithImage(_ image: UIImage) {
-        self.coverImageView.image = image
         let transition = CATransition()
         transition.duration = 0.3
         transition.type = CATransitionType.fade
@@ -81,8 +85,19 @@ class MusicUIController: NSObject {
     }
     
     func updateCurrentSong(playerState: SPTAppRemotePlayerState){
-        let newSong = Song(title: playerState.track.name , duration: TimeInterval(playerState.track.duration), artist: playerState.track.artist.name, cover: coverImageView.image!, album: playerState.track.album.name)
-        handler?.currentSong = newSong
+        
+        //If song is not the same
+        print("HERE testing:", handler.currentSong?.title)
+        if playerState.track.name != handler.currentSong?.title{
+            updateViewWithPlayerState(playerState)
+        }
+        else if handler.currentSong?.title != songLabel.text{
+            fillInfo(song: handler.currentSong!)
+        }
+        else{
+            updatePlayPauseButtonState(playerState.isPaused)
+        }
+      
     }
     
     

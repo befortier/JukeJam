@@ -93,28 +93,34 @@ class SongController: UIViewController, MusicHandlerDelegate {
     
 
     func updateColorUI(){
-        self.averageColor = self.currentSong?.imageAvColor ?? UIColor.clear
-        if self.currentSong?.imageAvColor == nil{
-            return
+        if self.currentSong?.imageAvColor != nil{
+            averageColor = self.currentSong?.imageAvColor
+            cover.layer.borderColor = averageColor!.inverse().cgColor
+            cover.layer.shadowColor = averageColor!.inverse().cgColor
+            more.textColor = averageColor
+            volume.tintColor = UIColor.darkGray
+            view.setNeedsDisplay()
+            view.setNeedsLayout()
+            
         }
-        cover.layer.borderColor = averageColor!.inverse().cgColor
-        cover.layer.shadowColor = averageColor!.inverse().cgColor
-        more.textColor = averageColor
-        volume.tintColor = UIColor.darkGray
-        view.setNeedsDisplay()
-        view.setNeedsLayout()
+       
+        
     }
     
     func waitForColors(){
         updateColorUI()
-        while self.currentSong?.imageAvColor == nil{
-            
-        }
-        updateColorUI()
+        DispatchQueue.global(qos: .background).async {
+            while self.currentSong?.imageAvColor == nil{
+                
+            }
+            DispatchQueue.main.async {
+                self.updateColorUI()
+                  }
+                }       
     }
     
     func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
-        musicUIController?.updateViewWithPlayerState(playerState)
+        musicUIController?.updateCurrentSong(playerState: playerState)
     }
     
     func reset(){

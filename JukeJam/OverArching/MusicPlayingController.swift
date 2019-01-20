@@ -75,12 +75,10 @@ extension MusicPlayingController: MusicBarDelegate {
             let transitionDelegate = SPStorkTransitioningDelegate()
             transitionDelegate.isSwipeToDismissEnabled = true
             transitionDelegate.isTapAroundToDismissEnabled = true
-            print("HERE should present1")
             modal.transitioningDelegate = transitionDelegate
             modal.modalPresentationStyle = .custom
             modal.currentSong = song
             modal.musicHandler = self.musicHandler
-            print("HERE should present2")
             present(modal, animated: true, completion: nil)
         }
 

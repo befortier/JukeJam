@@ -24,7 +24,7 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
     }
     var currentSong: Song?{
         didSet{
-            musicBar.currentSong = self.currentSong
+            spotifyHandler.getPlayerState()
         }
     }
     enum Pref {
@@ -43,7 +43,6 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
         self.delegate = musicBar
         musicBar.musicHandler = self
         initalizePreference()
-        musicBar.currentSong = self.currentSong
     }
     
     func terminate(){
@@ -69,6 +68,8 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
     func checkPreference(){
         
     }
+    
+
     
     
     //Checks to see which is the current used preference system and calls Spotify.play/ Apple.play
@@ -124,8 +125,8 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
     
     func updateView(playerState: SPTAppRemotePlayerState) {
         delegate!.updateViewWithPlayerState(playerState)
-        
     }
+    
     func updateUI(){
         if preference == Pref.spotify {
             spotifyHandler.getPlayerState()
