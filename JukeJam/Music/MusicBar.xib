@@ -31,7 +31,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="379" height="66"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tc-tE-CJx">
-                                    <rect key="frame" x="303" y="18" width="30" height="30"/>
+                                    <rect key="frame" x="289" y="13" width="40" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="7tc-tE-CJx" secondAttribute="height" multiplier="1:1" id="14z-RV-GZ6"/>
                                     </constraints>
@@ -62,7 +62,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1H-qj-ZN2">
-                                    <rect key="frame" x="337" y="18" width="30" height="30"/>
+                                    <rect key="frame" x="337" y="13" width="40" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="T1H-qj-ZN2" secondAttribute="height" multiplier="1:1" id="R0V-PV-qNz"/>
                                     </constraints>
@@ -76,15 +76,15 @@
                             <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                             <gestureRecognizers/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="T1H-qj-ZN2" secondAttribute="bottom" constant="18" id="Dmg-1x-gX0"/>
+                                <constraint firstAttribute="bottom" secondItem="T1H-qj-ZN2" secondAttribute="bottom" constant="13" id="Dmg-1x-gX0"/>
                                 <constraint firstItem="21F-mG-OiP" firstAttribute="leading" secondItem="BND-UJ-wSu" secondAttribute="leading" constant="8" id="JoY-oe-LGG"/>
                                 <constraint firstAttribute="bottom" secondItem="21F-mG-OiP" secondAttribute="bottom" constant="8" id="Kzc-2a-xca"/>
-                                <constraint firstAttribute="bottom" secondItem="7tc-tE-CJx" secondAttribute="bottom" constant="18" id="LdT-2z-Uwi"/>
-                                <constraint firstAttribute="trailing" secondItem="T1H-qj-ZN2" secondAttribute="trailing" constant="12" id="OeW-6j-yC3"/>
-                                <constraint firstItem="7tc-tE-CJx" firstAttribute="top" secondItem="BND-UJ-wSu" secondAttribute="top" constant="18" id="WT5-gR-Vpx"/>
-                                <constraint firstItem="T1H-qj-ZN2" firstAttribute="leading" secondItem="7tc-tE-CJx" secondAttribute="trailing" constant="4" id="frg-MJ-YnM"/>
+                                <constraint firstAttribute="bottom" secondItem="7tc-tE-CJx" secondAttribute="bottom" constant="13" id="LdT-2z-Uwi"/>
+                                <constraint firstAttribute="trailing" secondItem="T1H-qj-ZN2" secondAttribute="trailing" constant="2" id="OeW-6j-yC3"/>
+                                <constraint firstItem="7tc-tE-CJx" firstAttribute="top" secondItem="BND-UJ-wSu" secondAttribute="top" constant="13" id="WT5-gR-Vpx"/>
+                                <constraint firstItem="T1H-qj-ZN2" firstAttribute="leading" secondItem="7tc-tE-CJx" secondAttribute="trailing" constant="8" id="frg-MJ-YnM"/>
                                 <constraint firstItem="21F-mG-OiP" firstAttribute="top" secondItem="BND-UJ-wSu" secondAttribute="top" constant="8" id="gaH-Bq-MdH"/>
-                                <constraint firstItem="T1H-qj-ZN2" firstAttribute="top" secondItem="BND-UJ-wSu" secondAttribute="top" constant="18" id="v9s-zk-lnO"/>
+                                <constraint firstItem="T1H-qj-ZN2" firstAttribute="top" secondItem="BND-UJ-wSu" secondAttribute="top" constant="13" id="v9s-zk-lnO"/>
                             </constraints>
                         </view>
                     </subviews>

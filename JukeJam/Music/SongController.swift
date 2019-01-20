@@ -3,10 +3,13 @@ import UIKit
 import SPStorkController
 import ChameleonFramework
 
-class SongController: UIViewController, MusicHandlerDelegate {
+class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelegate {
     
     
-
+    @IBOutlet weak var smallerCoverView: UIView!
+    
+    @IBOutlet weak var smallerCover: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var coverView: UIView!
     @IBOutlet weak var closeView: UIView!
     @IBOutlet weak var gradientBackground: UIView!
@@ -25,17 +28,72 @@ class SongController: UIViewController, MusicHandlerDelegate {
     }
     var averageColor: UIColor?
     var musicUIController: MusicUIController!
-    
+    private var lastContentOffset: CGFloat = 0
+    private var originalCoverViewFrame: CGRect!
+    var viewBigger: Bool!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         waitForColors()
         initUI()
         closingGesture()
+        scrollView.delegate = self
+        viewBigger = false
+        originalCoverViewFrame = coverView.frame
+//        print("HERE frame1," , state.frame)
+//        print("HERE big frame1", scrollView.frame)
+
 //         musicUIController = MusicUIController(state: state, next: nextSong, cover: cover, song: song, handler: musicHandler!)
         
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        var const: CGFloat = 220
+        var scrollOffset: CGFloat = 250
+        var photoOffsetX: CGFloat = 30
+//        var photoOffsetY: CGFloat
+        if scrollView.contentOffset.y >= scrollOffset && !viewBigger {
+            print("HERE offsett," , scrollView.contentOffset.y)
+            gradientBackground.frame = CGRect(x: gradientBackground.frame.minX, y: gradientBackground.frame.minY, width: view.frame.width, height: gradientBackground.frame.height - const)
+            coverView.frame = CGRect(x: gradientBackground.frame.minX + photoOffsetX, y: gradientBackground.frame.minY + gradientBackground.frame.height, width: view.frame.width, height: gradientBackground.frame.height - const)
+            scrollView.frame = CGRect(x: scrollView.frame.minX, y: scrollView.frame.minY - const, width: view.frame.width, height: scrollView.frame.height + const)
+            gradientBackground.setNeedsDisplay()
+            gradientBackground.setNeedsLayout()
+            coverView.isHidden = true
+            smallerCoverView.isHidden = false
+
+            viewBigger = true
+            scrollView.contentOffset.y = -10
+//            scrollView.contentOffset.y =
+            volume.isHidden = true
+
+
+
+        }
+       else if scrollView.contentOffset.y < (-50) && viewBigger {
+            print("HERE offsett2," , scrollView.contentOffset.y)
+            gradientBackground.frame = CGRect(x: gradientBackground.frame.minX, y: gradientBackground.frame.minY, width: view.frame.width, height: gradientBackground.frame.height + const)
+            scrollView.frame = CGRect(x: scrollView.frame.minX, y: scrollView.frame.minY + const, width: view.frame.width, height: scrollView.frame.height - const)
+            coverView.frame = originalCoverViewFrame
+            gradientBackground.setNeedsDisplay()
+            gradientBackground.setNeedsLayout()
+            viewBigger = false
+            coverView.isHidden = false
+            smallerCoverView.isHidden = true
+//            scrollView.contentOffset.y = 0
+            volume.isHidden = false
+
+            
+        }
+        
+        
+     
+        
+        // update the new position acquired
+        print(" offset",  scrollView.contentOffset.y)
+        self.lastContentOffset = scrollView.contentOffset.y
+    }
     func closingGesture(){
         let tap = UITapGestureRecognizer(target: self, action: #selector(closeViewFunc))
         self.closeView.addGestureRecognizer(tap)
@@ -48,7 +106,7 @@ class SongController: UIViewController, MusicHandlerDelegate {
         self.modalPresentationCapturesStatusBarAppearance = true
         self.gradientBackground.assignImageGradientColor(colors: (self.currentSong?.imageColors)!)
         self.gradientBackground.addFadeOut()
- 
+        smallerCoverView.isHidden = true
       
         
         
@@ -60,7 +118,18 @@ class SongController: UIViewController, MusicHandlerDelegate {
         coverView.layer.shadowRadius = 4.0
         coverView.layer.shadowOpacity = 0.7
         coverView.layer.masksToBounds = false
+        
+        smallerCover.layer.cornerRadius = 10
+        smallerCover.clipsToBounds = true
+        smallerCover.layer.borderWidth = 0.1
+        
+        smallerCoverView.layer.shadowOffset = CGSize(width: 3, height: 3)
+        smallerCoverView.layer.shadowRadius = 4.0
+        smallerCoverView.layer.shadowOpacity = 0.7
+        smallerCoverView.layer.masksToBounds = false
         cover.image = currentSong?.cover
+        smallerCover.image = cover.image
+
         song.text = self.currentSong?.title
         more.text = "\((currentSong?.artist)!) - \((currentSong?.album)!)"
         volume.setThumbImage(UIImage(named: "Small Circle"), for: .normal)
@@ -77,9 +146,10 @@ class SongController: UIViewController, MusicHandlerDelegate {
             case .began:
                 toggleGestures(allow:false)
                 volume.setThumbImage(UIImage(named: "Bigger Circle"), for: UIControl.State.normal)
-                volume.tintColor = self.averageColor ?? UIColor.darkGray
+                volume.tintColor = (self.averageColor ?? UIColor.darkGray).inverse()
+                viewBigger = false
 
-
+                
             case .ended:
                 toggleGestures(allow: true)
                 volume.tintColor = UIColor.darkGray
