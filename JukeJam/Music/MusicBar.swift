@@ -24,7 +24,11 @@ class MusicBar: UIView, SongSubscriber, MusicHandlerDelegate {
     @IBOutlet weak var state: UIButton!
     var coverImage: UIImage?
     var songText: String?
-    var currentSong: Song?
+    var currentSong: Song?{
+        didSet{
+            musicHandler?.spotifyHandler.getPlayerState()
+        }
+    }
     var musicUIController: MusicUIController?
   
      init(frame: CGRect, handler: MusicHandler){
@@ -59,13 +63,18 @@ class MusicBar: UIView, SongSubscriber, MusicHandlerDelegate {
     }
     
     @objc private func showSongController(){
-        print(currentSong)
         guard let song = currentSong else {
             print("HERE ERROR")
             return
         }
-        
-        delegate?.expandSong(song: song)
+        if (musicHandler?.spotifyHandler.appRemote.isConnected)!{
+            print("HERE expanding")
+            delegate?.expandSong(song: song)
+        }
+        else{
+            print("NOT connected")
+        }
+     
         
         
     }
@@ -108,7 +117,9 @@ class MusicBar: UIView, SongSubscriber, MusicHandlerDelegate {
     }
     
     func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
+        if (musicHandler?.spotifyHandler.appRemote.isConnected)!{
         musicUIController?.updateViewWithPlayerState(playerState)
+        }
     }
     
     func reset(){

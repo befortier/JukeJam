@@ -113,6 +113,6 @@
     <resources>
         <image name="No Music" width="250" height="250"/>
         <image name="nextsong" width="25" height="25"/>
-        <image name="play" width="25" height="25"/>
+        <image name="play" width="37" height="37"/>
     </resources>
 </document>

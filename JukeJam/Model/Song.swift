@@ -16,13 +16,13 @@ class Song: NSObject {
     init(title: String, duration: TimeInterval, artist: String, cover: UIImage, album: String){
         super.init()
         self.cover = cover
+        DispatchQueue.global().async {
+            self.initColors()
+        }
         self.title = title
         self.duration = duration
         self.artist = artist
         self.album = album
-        DispatchQueue.global().async {
-            self.initColors()
-        }
         }
     
     func initColors(){

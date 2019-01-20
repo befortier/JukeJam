@@ -1483,7 +1483,7 @@
             <objects>
                 <viewController storyboardIdentifier="SongController" id="sGq-3e-u4l" customClass="SongController" customModule="JukeJam" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bnx-jS-pqC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkY-4d-7Z2">
@@ -1509,18 +1509,34 @@
                                     <constraint firstItem="nMH-db-m1u" firstAttribute="top" secondItem="jkY-4d-7Z2" secondAttribute="top" constant="43" id="zvq-f6-Nom"/>
                                 </constraints>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r0z-Mm-beu">
+                                <rect key="frame" x="0.0" y="383" width="375" height="1284"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Pt-W8-b8C">
+                                        <rect key="frame" x="164" y="1212" width="47" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="5Pt-W8-b8C" firstAttribute="top" secondItem="r0z-Mm-beu" secondAttribute="top" constant="1212" id="8Fe-xe-25D"/>
+                                    <constraint firstAttribute="bottom" secondItem="5Pt-W8-b8C" secondAttribute="bottom" constant="42" id="M3g-SR-vA1"/>
+                                    <constraint firstAttribute="trailing" secondItem="5Pt-W8-b8C" secondAttribute="trailing" constant="165" id="g2d-G2-73N"/>
+                                    <constraint firstItem="5Pt-W8-b8C" firstAttribute="leading" secondItem="r0z-Mm-beu" secondAttribute="leading" constant="164" id="hsk-Tl-Hr6"/>
+                                    <constraint firstItem="5Pt-W8-b8C" firstAttribute="centerX" secondItem="r0z-Mm-beu" secondAttribute="centerX" id="vWN-fz-9al"/>
+                                </constraints>
+                            </scrollView>
                             <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="VFe-dg-Ahf">
-                                <rect key="frame" x="38" y="433" width="299" height="31"/>
+                                <rect key="frame" x="41" y="377" width="299" height="31"/>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photographs and Memories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdN-jS-9VU">
-                                <rect key="frame" x="6" y="468" width="363" height="24"/>
+                                <rect key="frame" x="9" y="412" width="363" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Photographs and Memories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3b8-Dl-3eA" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                <rect key="frame" x="3" y="500" width="369" height="23"/>
+                                <rect key="frame" x="6" y="444" width="369" height="23"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1540,7 +1556,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYU-6O-R4K">
-                                <rect key="frame" x="150" y="556" width="74" height="60"/>
+                                <rect key="frame" x="153" y="500" width="74" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="play"/>
                             </button>
@@ -1549,24 +1565,29 @@
                         <constraints>
                             <constraint firstItem="3b8-Dl-3eA" firstAttribute="top" secondItem="VdN-jS-9VU" secondAttribute="bottom" constant="8" id="19n-HR-b5U"/>
                             <constraint firstItem="VdN-jS-9VU" firstAttribute="top" secondItem="VFe-dg-Ahf" secondAttribute="bottom" constant="5" id="4GM-Ln-VST"/>
-                            <constraint firstItem="ARr-TD-B0s" firstAttribute="trailing" secondItem="VFe-dg-Ahf" secondAttribute="trailing" constant="40" id="5Q1-aN-ShL"/>
-                            <constraint firstItem="VFe-dg-Ahf" firstAttribute="top" secondItem="jkY-4d-7Z2" secondAttribute="bottom" constant="50" id="GQk-pG-9WE"/>
-                            <constraint firstItem="VFe-dg-Ahf" firstAttribute="leading" secondItem="ARr-TD-B0s" secondAttribute="leading" constant="40" id="HYg-5m-cho"/>
+                            <constraint firstItem="ARr-TD-B0s" firstAttribute="trailing" secondItem="VFe-dg-Ahf" secondAttribute="trailing" constant="37" id="5Q1-aN-ShL"/>
+                            <constraint firstItem="r0z-Mm-beu" firstAttribute="bottom" secondItem="ARr-TD-B0s" secondAttribute="bottom" id="E6h-8E-fbQ"/>
+                            <constraint firstItem="VFe-dg-Ahf" firstAttribute="top" secondItem="jkY-4d-7Z2" secondAttribute="bottom" constant="-6" id="GQk-pG-9WE"/>
+                            <constraint firstItem="VFe-dg-Ahf" firstAttribute="leading" secondItem="ARr-TD-B0s" secondAttribute="leading" constant="43" id="HYg-5m-cho"/>
                             <constraint firstItem="3b8-Dl-3eA" firstAttribute="top" secondItem="VdN-jS-9VU" secondAttribute="bottom" constant="8" id="Mfw-3R-i64"/>
+                            <constraint firstItem="r0z-Mm-beu" firstAttribute="leading" secondItem="jkY-4d-7Z2" secondAttribute="leading" id="REZ-Is-Zlj"/>
+                            <constraint firstItem="r0z-Mm-beu" firstAttribute="trailing" secondItem="3b8-Dl-3eA" secondAttribute="trailing" id="SgC-LZ-zTH"/>
                             <constraint firstItem="jkY-4d-7Z2" firstAttribute="leading" secondItem="ARr-TD-B0s" secondAttribute="leading" id="WfH-SI-set"/>
-                            <constraint firstAttribute="trailing" secondItem="3b8-Dl-3eA" secondAttribute="trailing" constant="3" id="YoB-w8-v3c"/>
-                            <constraint firstItem="3b8-Dl-3eA" firstAttribute="leading" secondItem="bnx-jS-pqC" secondAttribute="leading" constant="3" id="YqQ-U6-3fd"/>
-                            <constraint firstItem="VdN-jS-9VU" firstAttribute="leading" secondItem="bnx-jS-pqC" secondAttribute="leading" constant="6" id="dRy-xT-9VV"/>
+                            <constraint firstItem="r0z-Mm-beu" firstAttribute="top" secondItem="jkY-4d-7Z2" secondAttribute="bottom" id="XM8-7y-6DA"/>
+                            <constraint firstAttribute="trailing" secondItem="3b8-Dl-3eA" secondAttribute="trailing" id="YoB-w8-v3c"/>
+                            <constraint firstItem="3b8-Dl-3eA" firstAttribute="leading" secondItem="bnx-jS-pqC" secondAttribute="leading" constant="6" id="YqQ-U6-3fd"/>
+                            <constraint firstItem="VdN-jS-9VU" firstAttribute="leading" secondItem="bnx-jS-pqC" secondAttribute="leading" constant="9" id="dRy-xT-9VV"/>
                             <constraint firstItem="3b8-Dl-3eA" firstAttribute="top" secondItem="VdN-jS-9VU" secondAttribute="bottom" constant="8" id="h9g-2B-tED"/>
                             <constraint firstItem="jkY-4d-7Z2" firstAttribute="trailing" secondItem="ARr-TD-B0s" secondAttribute="trailing" id="h9p-Na-cwm"/>
                             <constraint firstItem="3b8-Dl-3eA" firstAttribute="top" secondItem="VdN-jS-9VU" secondAttribute="bottom" constant="8" id="lQn-ma-TYH"/>
-                            <constraint firstAttribute="trailing" secondItem="VdN-jS-9VU" secondAttribute="trailing" constant="6" id="nSw-sE-Orh"/>
+                            <constraint firstAttribute="trailing" secondItem="VdN-jS-9VU" secondAttribute="trailing" constant="3" id="nSw-sE-Orh"/>
                             <constraint firstItem="VFe-dg-Ahf" firstAttribute="top" secondItem="3b8-Dl-3eA" secondAttribute="bottom" constant="-90" id="utb-mY-IkD"/>
                             <constraint firstItem="jkY-4d-7Z2" firstAttribute="top" secondItem="bnx-jS-pqC" secondAttribute="top" id="yQZ-hV-djA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ARr-TD-B0s"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="bAT-kw-MuV"/>
+                    <size key="freeformSize" width="375" height="1667"/>
                     <connections>
                         <outlet property="closeView" destination="oLJ-Mr-6Xn" id="PUM-Yy-IUR"/>
                         <outlet property="cover" destination="nMH-db-m1u" id="6ut-zr-1AW"/>

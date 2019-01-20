@@ -183,6 +183,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
         if homeScreen?.AppController!.musicHandler != nil {
             homeScreen?.AppController!.musicHandler.spotifyHandler.appRemoteConnecting()
             appRemote.connect()
+            homeScreen?.AppController!.musicHandler.updateUI()
         }
     }
     

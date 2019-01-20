@@ -57,7 +57,6 @@ class SPStorkPresentationController: UIPresentationController, UIGestureRecogniz
         guard let containerView = self.containerView, let presentedView = self.presentedView, let window = containerView.window  else { return }
         
         if self.showIndicator {
-            print("HERE indicatorshowing")
             presentedView.addSubview(self.indicatorView)
             let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
             self.indicatorView.addGestureRecognizer(tap)

@@ -17,7 +17,11 @@ class SongController: UIViewController, MusicHandlerDelegate {
     @IBOutlet weak var nextSong: UIButton!
     @IBOutlet weak var state: UIButton!
     var musicHandler: MusicHandler?
-    var currentSong: Song?
+    var currentSong: Song?{
+        didSet{
+            musicHandler?.spotifyHandler.getPlayerState()
+        }
+    }
     var averageColor: UIColor?
     var musicUIController: MusicUIController!
     
