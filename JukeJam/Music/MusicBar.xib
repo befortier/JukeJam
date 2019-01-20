@@ -30,19 +30,21 @@
                         <view opaque="NO" clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BND-UJ-wSu">
                             <rect key="frame" x="0.0" y="0.0" width="379" height="66"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1H-qj-ZN2">
-                                    <rect key="frame" x="338" y="15.5" width="35" height="35"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tc-tE-CJx">
+                                    <rect key="frame" x="303" y="18" width="30" height="30"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="T1H-qj-ZN2" secondAttribute="height" multiplier="1:1" id="R0V-PV-qNz"/>
+                                        <constraint firstAttribute="width" secondItem="7tc-tE-CJx" secondAttribute="height" multiplier="1:1" id="14z-RV-GZ6"/>
                                     </constraints>
-                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <state key="normal" image="nextsong"/>
+                                    <state key="normal" image="play">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
                                     <connections>
-                                        <action selector="nextSong:" destination="-1" eventType="touchUpInside" id="F6D-s3-ax3"/>
+                                        <action selector="stateChange:" destination="-1" eventType="touchUpInside" id="MWC-t7-mK7"/>
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nothing Playing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULp-qI-R7d">
-                                    <rect key="frame" x="66" y="0.0" width="227" height="66"/>
+                                    <rect key="frame" x="66" y="0.0" width="215" height="66"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -59,32 +61,30 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tc-tE-CJx">
-                                    <rect key="frame" x="291" y="15.5" width="35" height="35"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1H-qj-ZN2">
+                                    <rect key="frame" x="337" y="18" width="30" height="30"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="7tc-tE-CJx" secondAttribute="height" multiplier="1:1" id="14z-RV-GZ6"/>
+                                        <constraint firstAttribute="width" secondItem="T1H-qj-ZN2" secondAttribute="height" multiplier="1:1" id="R0V-PV-qNz"/>
                                     </constraints>
-                                    <state key="normal" image="play">
-                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </state>
+                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" image="nextsong"/>
                                     <connections>
-                                        <action selector="stateChange:" destination="-1" eventType="touchUpInside" id="MWC-t7-mK7"/>
+                                        <action selector="nextSong:" destination="-1" eventType="touchUpInside" id="F6D-s3-ax3"/>
                                     </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                             <gestureRecognizers/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="T1H-qj-ZN2" secondAttribute="bottom" constant="15.5" id="Dmg-1x-gX0"/>
+                                <constraint firstAttribute="bottom" secondItem="T1H-qj-ZN2" secondAttribute="bottom" constant="18" id="Dmg-1x-gX0"/>
                                 <constraint firstItem="21F-mG-OiP" firstAttribute="leading" secondItem="BND-UJ-wSu" secondAttribute="leading" constant="8" id="JoY-oe-LGG"/>
                                 <constraint firstAttribute="bottom" secondItem="21F-mG-OiP" secondAttribute="bottom" constant="8" id="Kzc-2a-xca"/>
-                                <constraint firstAttribute="bottom" secondItem="7tc-tE-CJx" secondAttribute="bottom" constant="15.5" id="LdT-2z-Uwi"/>
-                                <constraint firstAttribute="trailing" secondItem="T1H-qj-ZN2" secondAttribute="trailing" constant="6" id="OeW-6j-yC3"/>
-                                <constraint firstItem="7tc-tE-CJx" firstAttribute="top" secondItem="BND-UJ-wSu" secondAttribute="top" constant="15.5" id="WT5-gR-Vpx"/>
-                                <constraint firstItem="T1H-qj-ZN2" firstAttribute="leading" secondItem="7tc-tE-CJx" secondAttribute="trailing" constant="12" id="frg-MJ-YnM"/>
+                                <constraint firstAttribute="bottom" secondItem="7tc-tE-CJx" secondAttribute="bottom" constant="18" id="LdT-2z-Uwi"/>
+                                <constraint firstAttribute="trailing" secondItem="T1H-qj-ZN2" secondAttribute="trailing" constant="12" id="OeW-6j-yC3"/>
+                                <constraint firstItem="7tc-tE-CJx" firstAttribute="top" secondItem="BND-UJ-wSu" secondAttribute="top" constant="18" id="WT5-gR-Vpx"/>
+                                <constraint firstItem="T1H-qj-ZN2" firstAttribute="leading" secondItem="7tc-tE-CJx" secondAttribute="trailing" constant="4" id="frg-MJ-YnM"/>
                                 <constraint firstItem="21F-mG-OiP" firstAttribute="top" secondItem="BND-UJ-wSu" secondAttribute="top" constant="8" id="gaH-Bq-MdH"/>
-                                <constraint firstItem="T1H-qj-ZN2" firstAttribute="top" secondItem="BND-UJ-wSu" secondAttribute="top" constant="15.5" id="v9s-zk-lnO"/>
+                                <constraint firstItem="T1H-qj-ZN2" firstAttribute="top" secondItem="BND-UJ-wSu" secondAttribute="top" constant="18" id="v9s-zk-lnO"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -112,7 +112,7 @@
     </objects>
     <resources>
         <image name="No Music" width="250" height="250"/>
-        <image name="nextsong" width="25" height="25"/>
+        <image name="nextsong" width="37" height="37"/>
         <image name="play" width="37" height="37"/>
     </resources>
 </document>

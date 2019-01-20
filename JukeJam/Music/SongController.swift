@@ -7,6 +7,7 @@ class SongController: UIViewController, MusicHandlerDelegate {
     
     
 
+    @IBOutlet weak var coverView: UIView!
     @IBOutlet weak var closeView: UIView!
     @IBOutlet weak var gradientBackground: UIView!
     @IBOutlet weak var cover: UIImageView!
@@ -28,8 +29,8 @@ class SongController: UIViewController, MusicHandlerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initUI()
         waitForColors()
+        initUI()
         closingGesture()
 //         musicUIController = MusicUIController(state: state, next: nextSong, cover: cover, song: song, handler: musicHandler!)
         
@@ -41,15 +42,24 @@ class SongController: UIViewController, MusicHandlerDelegate {
         volume.addTarget(self, action: #selector(onSliderValChanged(slider:event:)), for: .valueChanged)
 
     }
+    
+    
     func initUI(){
         self.modalPresentationCapturesStatusBarAppearance = true
         self.gradientBackground.assignImageGradientColor(colors: (self.currentSong?.imageColors)!)
         self.gradientBackground.addFadeOut()
+ 
+      
+        
+        
+        cover.layer.cornerRadius = 10
+        cover.clipsToBounds = true
         cover.layer.borderWidth = 0.1
-        cover.layer.cornerRadius = 7
-        cover.layer.shadowOffset = CGSize(width: 0, height: 1.75)
-        cover.layer.shadowRadius = 1.7
-        cover.layer.shadowOpacity = 0.45
+        
+        coverView.layer.shadowOffset = CGSize(width: 3, height: 3)
+        coverView.layer.shadowRadius = 4.0
+        coverView.layer.shadowOpacity = 0.7
+        coverView.layer.masksToBounds = false
         cover.image = currentSong?.cover
         song.text = self.currentSong?.title
         more.text = "\((currentSong?.artist)!) - \((currentSong?.album)!)"
@@ -96,8 +106,7 @@ class SongController: UIViewController, MusicHandlerDelegate {
         if self.currentSong?.imageAvColor != nil{
             averageColor = self.currentSong?.imageAvColor
             cover.layer.borderColor = averageColor!.inverse().cgColor
-            cover.layer.shadowColor = averageColor!.inverse().cgColor
-            more.textColor = averageColor
+            coverView.layer.shadowColor = averageColor!.inverse().cgColor
             volume.tintColor = UIColor.darkGray
             view.setNeedsDisplay()
             view.setNeedsLayout()

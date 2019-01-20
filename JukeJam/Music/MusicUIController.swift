@@ -7,6 +7,8 @@ class MusicUIController: NSObject {
     var coverImageView: UIImageView!
     var songLabel: UILabel!
     var handler: MusicHandler!
+    var playImage: UIImage = UIImage(named: "play")!
+    var pauseImage: UIImage = UIImage(named: "pause")!
     
     init(state: UIButton, next: UIButton, cover: UIImageView, song: UILabel, handler: MusicHandler){
         super.init()
@@ -19,10 +21,10 @@ class MusicUIController: NSObject {
     }
     
     func initButtons(){
-        stateButton.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.normal)
-        stateButton.setImage(PlaybackButtonGraphics.playButtonImage(), for: UIControl.State.highlighted)
-        nextButton.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.normal)
-        nextButton.setImage(PlaybackButtonGraphics.nextButtonImage(), for: UIControl.State.highlighted)
+        stateButton.setImage(playImage, for: UIControl.State.normal)
+        stateButton.setImage(playImage, for: UIControl.State.highlighted)
+//        nextButton.setImage(pauseImage, for: UIControl.State.normal)
+//        nextButton.setImage(pauseImage, for: UIControl.State.highlighted)
         stateButton.showsTouchWhenHighlighted = true
         stateButton.layer.cornerRadius = stateButton.frame.width/2
         stateButton.setBackgroundColor(color: .lightGray, forState: .highlighted)
@@ -52,7 +54,7 @@ class MusicUIController: NSObject {
     }
     
     fileprivate func updatePlayPauseButtonState(_ paused: Bool) {
-        let playPauseButtonImage = paused ? PlaybackButtonGraphics.playButtonImage() : PlaybackButtonGraphics.pauseButtonImage()
+        let playPauseButtonImage = paused ? playImage : pauseImage
         self.stateButton.setImage(playPauseButtonImage, for: UIControl.State())
         self.stateButton.setImage(playPauseButtonImage, for: .highlighted)
     }
@@ -86,14 +88,15 @@ class MusicUIController: NSObject {
     
     func updateCurrentSong(playerState: SPTAppRemotePlayerState){
         
-        //If song is not the same
-        print("HERE testing:", handler.currentSong?.title)
+        //If what is playing is not the same as the handler's current song update
         if playerState.track.name != handler.currentSong?.title{
             updateViewWithPlayerState(playerState)
         }
+        //If the current musicDisplayer isnt showing the same as the handler's current song
         else if handler.currentSong?.title != songLabel.text{
             fillInfo(song: handler.currentSong!)
         }
+        //
         else{
             updatePlayPauseButtonState(playerState.isPaused)
         }
@@ -104,7 +107,7 @@ class MusicUIController: NSObject {
 
     
     func reset(){
-        let playPauseButtonImage = PlaybackButtonGraphics.playButtonImage()
+        let playPauseButtonImage = playImage
         self.stateButton.setImage(playPauseButtonImage, for: UIControl.State())
         self.stateButton.setImage(playPauseButtonImage, for: .highlighted)
         coverImageView.image = UIImage(named: "No Music")
