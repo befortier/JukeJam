@@ -40,28 +40,32 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initBasics()
+        initMovableImageView()
+        waitForColors()
+//        initUI()
+        closingGesture()
+        musicUIController = MusicUIController(state: state, next: nextSong, cover: cover, song: song, prev: prevSong, handler: musicHandler!)
+        
+    }
+    
+    func initBasics(){
         scrollOffset = view.frame.height * 0.15
         const = view.frame.height * 0.33
         seeLessButton.isHidden = true
-        print("This should reload each time no?", self.view.frame)
         coverView.isHidden = true
         allowChange = true
-        waitForColors()
-        initUI()
-        closingGesture()
         scrollView.delegate = self
         viewBigger = false
         musicHandler?.delegate = self
-        musicUIController = MusicUIController(state: state, next: nextSong, cover: cover, song: song, prev: prevSong, handler: musicHandler!)
+    }
+    
+    func initMovableImageView(){
         newCoverFrame.frame = coverView.frame
         newCover.frame = cover.frame
         newCoverFrame.addSubview(newCover)
         self.gradientBackground.addSubview(newCoverFrame)
         self.gradientBackground.bringSubviewToFront(newCoverFrame)
-
-
-        
-        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -189,6 +193,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
             view.setNeedsLayout()
             
         }
+        initUI()
        
         
     }
@@ -201,6 +206,8 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
             }
             DispatchQueue.main.async {
                 self.updateColorUI()
+                self.gradientBackground.setNeedsDisplay()
+                self.gradientBackground.setNeedsLayout()
                   }
                 }       
     }
