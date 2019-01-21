@@ -18,19 +18,27 @@ class MusicUIController: NSObject {
         self.songLabel = song
         self.handler = handler
         self.initButtons()
+        handler.updateUI()
+    }
+    
+    convenience init(state: UIButton, next: UIButton, cover: UIImageView, song: UILabel, prev: UIButton, handler: MusicHandler){
+        self.init(state: state, next: next, cover: cover, song: song, handler: handler)
+        self.prevButton = prev
+        prevButton.showsTouchWhenHighlighted = true
+        prevButton.layer.cornerRadius = nextButton.frame.width/2
+        prevButton.setBackgroundColor(color: .lightGray, forState: .highlighted)
+
+        
     }
     
     func initButtons(){
-        stateButton.setImage(playImage, for: UIControl.State.normal)
-        stateButton.setImage(playImage, for: UIControl.State.highlighted)
-//        nextButton.setImage(pauseImage, for: UIControl.State.normal)
-//        nextButton.setImage(pauseImage, for: UIControl.State.highlighted)
         stateButton.showsTouchWhenHighlighted = true
         stateButton.layer.cornerRadius = stateButton.frame.width/2
         stateButton.setBackgroundColor(color: .lightGray, forState: .highlighted)
         nextButton.showsTouchWhenHighlighted = true
         nextButton.layer.cornerRadius = nextButton.frame.width/2
         nextButton.setBackgroundColor(color: .lightGray, forState: .highlighted)
+        
     }
     
      func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
@@ -87,17 +95,20 @@ class MusicUIController: NSObject {
     }
     
     func updateCurrentSong(playerState: SPTAppRemotePlayerState){
-        
         //If what is playing is not the same as the handler's current song update
+//        print("HERE changing song", playerState.track.name)
         if playerState.track.name != handler.currentSong?.title{
+
             updateViewWithPlayerState(playerState)
         }
         //If the current musicDisplayer isnt showing the same as the handler's current song
         else if handler.currentSong?.title != songLabel.text{
+
             fillInfo(song: handler.currentSong!)
         }
         //
         else{
+
             updatePlayPauseButtonState(playerState.isPaused)
         }
       

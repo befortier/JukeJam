@@ -125,6 +125,8 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
     
     func updateView(playerState: SPTAppRemotePlayerState) {
         delegate!.updateViewWithPlayerState(playerState)
+        musicBar.updateViewWithPlayerState(playerState)
+        
     }
     
     func updateUI(){

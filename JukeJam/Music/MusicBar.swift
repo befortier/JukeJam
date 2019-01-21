@@ -49,7 +49,6 @@ class MusicBar: UIView, MusicHandlerDelegate {
         setupView()
         initSongController()
         musicUIController = MusicUIController(state: state, next: nextSong, cover: cover, song: song, handler: musicHandler!)
-        musicHandler?.spotifyHandler.getPlayerState()
       
 
     }

@@ -6,9 +6,11 @@ import ChameleonFramework
 class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelegate {
     
     
-    @IBOutlet weak var smallerCoverView: UIView!
+    @IBOutlet weak var ImagetoTop: NSLayoutConstraint!
+    @IBOutlet weak var buttonsView: UIView!
     
-    @IBOutlet weak var smallerCover: UIImageView!
+    @IBOutlet weak var seeLessButton: UIButton!
+    @IBOutlet weak var seeMoreButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var coverView: UIView!
     @IBOutlet weak var closeView: UIView!
@@ -16,88 +18,103 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     @IBOutlet weak var cover: UIImageView!
     @IBOutlet weak var song: UILabel!
     @IBOutlet weak var more: UILabel!
-    @IBOutlet weak var volume: UISlider!
+    @IBOutlet weak var playbackLocation: UISlider!
     @IBOutlet weak var prevSong: UIButton!
     @IBOutlet weak var nextSong: UIButton!
     @IBOutlet weak var state: UIButton!
     var musicHandler: MusicHandler?
     var currentSong: Song?{
         didSet{
-            musicHandler?.spotifyHandler.getPlayerState()
+            musicHandler?.updateUI()
         }
     }
+    let newCoverFrame = UIView()
+    let newCover = UIImageView()
+
     var averageColor: UIColor?
     var musicUIController: MusicUIController!
-    private var lastContentOffset: CGFloat = 0
-    private var originalCoverViewFrame: CGRect!
     var viewBigger: Bool!
-
+    var allowChange: Bool!
+    var scrollOffset: CGFloat!
+    var const: CGFloat!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollOffset = view.frame.height * 0.15
+        const = view.frame.height * 0.33
+        seeLessButton.isHidden = true
+        print("This should reload each time no?", self.view.frame)
+        coverView.isHidden = true
+        allowChange = true
         waitForColors()
         initUI()
         closingGesture()
         scrollView.delegate = self
         viewBigger = false
-        originalCoverViewFrame = coverView.frame
-//        print("HERE frame1," , state.frame)
-//        print("HERE big frame1", scrollView.frame)
+        musicHandler?.delegate = self
+        musicUIController = MusicUIController(state: state, next: nextSong, cover: cover, song: song, prev: prevSong, handler: musicHandler!)
+        newCoverFrame.frame = coverView.frame
+        newCover.frame = cover.frame
+        newCoverFrame.addSubview(newCover)
+        self.gradientBackground.addSubview(newCoverFrame)
+        self.gradientBackground.bringSubviewToFront(newCoverFrame)
 
-//         musicUIController = MusicUIController(state: state, next: nextSong, cover: cover, song: song, handler: musicHandler!)
+
+        
         
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        var const: CGFloat = 220
-        var scrollOffset: CGFloat = 250
-        var photoOffsetX: CGFloat = 30
-//        var photoOffsetY: CGFloat
-        if scrollView.contentOffset.y >= scrollOffset && !viewBigger {
-            print("HERE offsett," , scrollView.contentOffset.y)
-            gradientBackground.frame = CGRect(x: gradientBackground.frame.minX, y: gradientBackground.frame.minY, width: view.frame.width, height: gradientBackground.frame.height - const)
-            coverView.frame = CGRect(x: gradientBackground.frame.minX + photoOffsetX, y: gradientBackground.frame.minY + gradientBackground.frame.height, width: view.frame.width, height: gradientBackground.frame.height - const)
-            scrollView.frame = CGRect(x: scrollView.frame.minX, y: scrollView.frame.minY - const, width: view.frame.width, height: scrollView.frame.height + const)
-            gradientBackground.setNeedsDisplay()
-            gradientBackground.setNeedsLayout()
-            coverView.isHidden = true
-            smallerCoverView.isHidden = false
-
-            viewBigger = true
-            scrollView.contentOffset.y = -10
-//            scrollView.contentOffset.y =
-            volume.isHidden = true
-
-
-
+        if allowChange{
+            if scrollView.contentOffset.y >= scrollOffset && !viewBigger {
+                print("HERE 123called from here")
+                
+                toggleScrollUI(adjust: true)
+            }
+            else if scrollView.contentOffset.y < (-50) && viewBigger {
+                print("HERE called from here")
+                toggleScrollUI(adjust: false)
+            }
         }
-       else if scrollView.contentOffset.y < (-50) && viewBigger {
-            print("HERE offsett2," , scrollView.contentOffset.y)
-            gradientBackground.frame = CGRect(x: gradientBackground.frame.minX, y: gradientBackground.frame.minY, width: view.frame.width, height: gradientBackground.frame.height + const)
-            scrollView.frame = CGRect(x: scrollView.frame.minX, y: scrollView.frame.minY + const, width: view.frame.width, height: scrollView.frame.height - const)
-            coverView.frame = originalCoverViewFrame
-            gradientBackground.setNeedsDisplay()
-            gradientBackground.setNeedsLayout()
-            viewBigger = false
-            coverView.isHidden = false
-            smallerCoverView.isHidden = true
-//            scrollView.contentOffset.y = 0
-            volume.isHidden = false
-
-            
-        }
-        
-        
-     
-        
-        // update the new position acquired
-        print(" offset",  scrollView.contentOffset.y)
-        self.lastContentOffset = scrollView.contentOffset.y
     }
+    @IBAction func seeLess(_ sender: Any) {
+        toggleScrollUI(adjust: false)
+
+    }
+    
+    @IBAction func seeMore(_ sender: Any) {
+        toggleScrollUI(adjust: true)
+    }
+    func toggleScrollUI(adjust: Bool){
+        allowChange = false
+        var adjustRate: CGFloat = 0.41
+        if !adjust {
+            adjustRate = 1
+        }
+      
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIView.AnimationOptions.layoutSubviews, animations: {
+            self.gradientBackground.frame = CGRect(x: self.gradientBackground.frame.minX, y: self.gradientBackground.frame.minY, width: self.view.frame.width, height: self.gradientBackground.frame.height - self.const)
+            self.newCoverFrame.center.y = self.gradientBackground.center.y + self.scrollOffset/10
+            self.newCoverFrame.transform = CGAffineTransform(scaleX: adjustRate, y: adjustRate)
+            self.scrollView.frame = CGRect(x: self.scrollView.frame.minX, y: self.scrollView.frame.minY - self.const, width: self.view.frame.width, height: self.scrollView.frame.height + self.const)
+           self.buttonsView.isHidden = adjust
+            self.viewBigger = adjust
+            self.seeMoreButton.isHidden = adjust
+            self.seeLessButton.isHidden = !adjust
+
+//            self.scrollView.setContentOffset(self.scrollView.contentOffset, animated: false)
+            self.playbackLocation.isHidden = adjust
+        }, completion: {
+            (value: Bool) in
+            self.const = -self.const
+            self.allowChange = true
+        })
+    }
+    
     func closingGesture(){
         let tap = UITapGestureRecognizer(target: self, action: #selector(closeViewFunc))
         self.closeView.addGestureRecognizer(tap)
-        volume.addTarget(self, action: #selector(onSliderValChanged(slider:event:)), for: .valueChanged)
+        playbackLocation.addTarget(self, action: #selector(onSliderValChanged(slider:event:)), for: .valueChanged)
 
     }
     
@@ -106,37 +123,27 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
         self.modalPresentationCapturesStatusBarAppearance = true
         self.gradientBackground.assignImageGradientColor(colors: (self.currentSong?.imageColors)!)
         self.gradientBackground.addFadeOut()
-        smallerCoverView.isHidden = true
       
         
         
-        cover.layer.cornerRadius = 10
-        cover.clipsToBounds = true
-        cover.layer.borderWidth = 0.1
+        newCover.layer.cornerRadius = 10
+        newCover.clipsToBounds = true
+        newCover.layer.borderWidth = 0.1
         
-        coverView.layer.shadowOffset = CGSize(width: 3, height: 3)
-        coverView.layer.shadowRadius = 4.0
-        coverView.layer.shadowOpacity = 0.7
-        coverView.layer.masksToBounds = false
+        newCoverFrame.layer.shadowOffset = CGSize(width: 3, height: 3)
+        newCoverFrame.layer.shadowRadius = 4.0
+        newCoverFrame.layer.shadowOpacity = 0.7
+        newCoverFrame.layer.masksToBounds = false
         
-        smallerCover.layer.cornerRadius = 10
-        smallerCover.clipsToBounds = true
-        smallerCover.layer.borderWidth = 0.1
-        
-        smallerCoverView.layer.shadowOffset = CGSize(width: 3, height: 3)
-        smallerCoverView.layer.shadowRadius = 4.0
-        smallerCoverView.layer.shadowOpacity = 0.7
-        smallerCoverView.layer.masksToBounds = false
-        cover.image = currentSong?.cover
-        smallerCover.image = cover.image
+     
+        newCover.image = currentSong?.cover
 
         song.text = self.currentSong?.title
         more.text = "\((currentSong?.artist)!) - \((currentSong?.album)!)"
-        volume.setThumbImage(UIImage(named: "Small Circle"), for: .normal)
+        playbackLocation.setThumbImage(UIImage(named: "Small Circle"), for: .normal)
     }
     
     @objc func closeViewFunc(){
-        musicHandler?.delegate = musicHandler?.musicBar
         self.dismiss(animated: true)
     }
     
@@ -145,15 +152,15 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
             switch touchEvent.phase {
             case .began:
                 toggleGestures(allow:false)
-                volume.setThumbImage(UIImage(named: "Bigger Circle"), for: UIControl.State.normal)
-                volume.tintColor = (self.averageColor ?? UIColor.darkGray).inverse()
+                playbackLocation.setThumbImage(UIImage(named: "Bigger Circle"), for: UIControl.State.normal)
+                playbackLocation.tintColor = (self.averageColor ?? UIColor.darkGray).inverse()
                 viewBigger = false
 
                 
             case .ended:
                 toggleGestures(allow: true)
-                volume.tintColor = UIColor.darkGray
-                volume.setThumbImage(UIImage(named: "Small Circle"), for: .normal)
+                playbackLocation.tintColor = UIColor.darkGray
+                playbackLocation.setThumbImage(UIImage(named: "Small Circle"), for: .normal)
 
             default:
                 break
@@ -175,9 +182,9 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     func updateColorUI(){
         if self.currentSong?.imageAvColor != nil{
             averageColor = self.currentSong?.imageAvColor
-            cover.layer.borderColor = averageColor!.inverse().cgColor
-            coverView.layer.shadowColor = averageColor!.inverse().cgColor
-            volume.tintColor = UIColor.darkGray
+            newCover.layer.borderColor = averageColor!.inverse().cgColor
+            newCoverFrame.layer.shadowColor = averageColor!.inverse().cgColor
+            playbackLocation.tintColor = UIColor.darkGray
             view.setNeedsDisplay()
             view.setNeedsLayout()
             
@@ -199,6 +206,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     }
     
     func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
+//        print("HERE this is the new delegate")
         musicUIController?.updateCurrentSong(playerState: playerState)
     }
     
@@ -207,7 +215,22 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
         
     }
 
+    @IBAction func prevSong(_ sender: Any) {
+        musicHandler?.prevSong()
+    }
+    @IBAction func changeState(_ sender: Any) {
+        musicHandler?.PlayPauseMusic()
+    }
+    @IBAction func nextSong(_ sender: Any) {
+        musicHandler?.nextSong()
 
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+//        print("HERE dismissed")
+        musicHandler?.delegate = musicHandler?.musicBar
+        musicHandler?.updateUI()
+        
+    }
 }
 
 
