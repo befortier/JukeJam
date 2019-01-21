@@ -80,8 +80,8 @@ extension MusicPlayingController: MusicBarDelegate {
             transitionDelegate.isTapAroundToDismissEnabled = true
             modal.transitioningDelegate = transitionDelegate
             modal.modalPresentationStyle = .custom
-            modal.currentSong = song
             modal.musicHandler = self.musicHandler
+            musicHandler.delegate = modal
             present(modal, animated: true, completion: nil)
         }
 

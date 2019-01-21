@@ -14,6 +14,7 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
     var musicBar: MusicBar!
     var spotifyHandler: SpotifyHandler! {
         didSet {
+            spotifyHandler.delegate = self
             checkPreference()
         }
     }
@@ -24,7 +25,7 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
     }
     var currentSong: Song?{
         didSet{
-            spotifyHandler.getPlayerState()
+            self.updateUI()
         }
     }
     enum Pref {
@@ -38,7 +39,6 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
         
         appleHandler = AppleHandler()
         spotifyHandler = SpotifyHandler()
-        spotifyHandler.delegate = self
         musicBar = MusicBar(frame: CGRect(x: 0, y: 0, width: 0, height: 0), handler: self)
         self.delegate = musicBar
         musicBar.musicHandler = self
@@ -57,6 +57,19 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
         }
         musicBar.reset()
     }
+    
+    func resetUponArrival(){
+        if preference == Pref.spotify {
+            spotifyHandler = SpotifyHandler()
+        }
+        else if preference == Pref.apple {
+            
+        }
+        else if preference == Pref.none{
+            
+        }
+        updateUI()
+    }
 
     
     //Should set gloabl preference variable to be apple if apple is available + has playback, spotify if apple doesnt have playback, apple if both dont have playback, spotify if doesnt have apple, none if has neither.
@@ -68,6 +81,7 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
     func checkPreference(){
         
     }
+    
     
 
     
@@ -100,7 +114,7 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
     
     func prevSong(){
         if preference == Pref.spotify {
-//            spotifyHandler.didPressPreviousButton()
+            spotifyHandler.didPressPreviousButton()
         }
         else if preference == Pref.apple {
             
@@ -124,9 +138,8 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
     }
     
     func updateView(playerState: SPTAppRemotePlayerState) {
-        delegate!.updateViewWithPlayerState(playerState)
-        musicBar.updateViewWithPlayerState(playerState)
-        
+        print("HERE update from spotify")
+        delegate!.updateViewWithPlayerState(playerState)        
     }
     
     func updateUI(){

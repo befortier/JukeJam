@@ -11,7 +11,7 @@ import Firebase
 import FBSDKCoreKit
 import GoogleSignIn
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTAppRemoteDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate  {
     
     fileprivate let redirectUri = URL(string: "JukeJam://returnAfterLogin")!
     fileprivate let clientIdentifier = "30e40f876c2348c0bf0644d1be184864"
@@ -156,7 +156,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
 
 
     func applicationWillResignActive(_ application: UIApplication) {
-
+  
         
     }
 
@@ -167,6 +167,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        self.connect();
+
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -181,6 +183,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
     }
     func connect() {
         if homeScreen?.AppController!.musicHandler != nil {
+           homeScreen?.AppController!.musicHandler!.resetUponArrival()
             homeScreen?.AppController!.musicHandler.spotifyHandler.appRemoteConnecting()
             appRemote.connect()
             homeScreen?.AppController!.musicHandler.updateUI()
@@ -214,7 +217,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
         terminateMusic()
     }
 
-
+    func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
+//        self.playerState = playerState
+        print("HERE APPD playState changed2")
+        
+//        delegate?.updateView(playerState: playerState)
+    }
 
 
     

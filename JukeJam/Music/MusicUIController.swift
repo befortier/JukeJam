@@ -9,6 +9,7 @@ class MusicUIController: NSObject {
     var handler: MusicHandler!
     var playImage: UIImage = UIImage(named: "play")!
     var pauseImage: UIImage = UIImage(named: "pause")!
+    var buttons: [UIButton] = []
     
     init(state: UIButton, next: UIButton, cover: UIImageView, song: UILabel, handler: MusicHandler){
         super.init()
@@ -17,6 +18,7 @@ class MusicUIController: NSObject {
         self.coverImageView = cover
         self.songLabel = song
         self.handler = handler
+        buttons = [stateButton, nextButton]
         self.initButtons()
         handler.updateUI()
     }
@@ -24,21 +26,16 @@ class MusicUIController: NSObject {
     convenience init(state: UIButton, next: UIButton, cover: UIImageView, song: UILabel, prev: UIButton, handler: MusicHandler){
         self.init(state: state, next: next, cover: cover, song: song, handler: handler)
         self.prevButton = prev
-        prevButton.showsTouchWhenHighlighted = true
-        prevButton.layer.cornerRadius = nextButton.frame.width/2
+        prevButton.layer.cornerRadius = prevButton.frame.width/2
         prevButton.setBackgroundColor(color: .lightGray, forState: .highlighted)
-
-        
+        buttons.append(prevButton)
     }
     
     func initButtons(){
-        stateButton.showsTouchWhenHighlighted = true
         stateButton.layer.cornerRadius = stateButton.frame.width/2
         stateButton.setBackgroundColor(color: .lightGray, forState: .highlighted)
-        nextButton.showsTouchWhenHighlighted = true
         nextButton.layer.cornerRadius = nextButton.frame.width/2
         nextButton.setBackgroundColor(color: .lightGray, forState: .highlighted)
-        
     }
     
      func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
@@ -48,11 +45,11 @@ class MusicUIController: NSObject {
 //        self.songLabel.text = handler.currentSong?.title
         fetchAlbumArtForTrack(playerState.track) { (image) -> Void in
             let newSong = Song(title: playerState.track.name , duration: TimeInterval(playerState.track.duration), artist: playerState.track.artist.name, cover: image, album: playerState.track.album.name)
-            self.updateAlbumArtWithImage(image)
             self.handler?.currentSong = newSong
+            self.updateAlbumArtWithImage(image)
             self.fillInfo(song: newSong)
+            self.updateViewWithRestrictions(playerState.playbackRestrictions)
             
-            //        updateViewWithRestrictions(playerState.playbackRestrictions)
             //        updateInterfaceForPodcast(playerState: playerState)
         }
     }
@@ -65,6 +62,7 @@ class MusicUIController: NSObject {
         let playPauseButtonImage = paused ? playImage : pauseImage
         self.stateButton.setImage(playPauseButtonImage, for: UIControl.State())
         self.stateButton.setImage(playPauseButtonImage, for: .highlighted)
+        self.stateButton.setNeedsDisplay()
     }
     fileprivate func updateShuffleLabel(_ isShuffling: Bool) {
         //        shuffleModeLabel.text = "Shuffle mode: " + (isShuffling ? "On" : "Off")
@@ -96,26 +94,22 @@ class MusicUIController: NSObject {
     
     func updateCurrentSong(playerState: SPTAppRemotePlayerState){
         //If what is playing is not the same as the handler's current song update
-//        print("HERE changing song", playerState.track.name)
         if playerState.track.name != handler.currentSong?.title{
-
+            print("HERE 1",handler.currentSong?.title )
             updateViewWithPlayerState(playerState)
         }
         //If the current musicDisplayer isnt showing the same as the handler's current song
         else if handler.currentSong?.title != songLabel.text{
-
+            print("HERE 2")
             fillInfo(song: handler.currentSong!)
-        }
-        //
-        else{
-
+            updateViewWithRestrictions(playerState.playbackRestrictions)
             updatePlayPauseButtonState(playerState.isPaused)
         }
-      
+        else{
+            print("HERE 3")
+            updatePlayPauseButtonState(playerState.isPaused)
+        }
     }
-    
-    
-
     
     func reset(){
         let playPauseButtonImage = playImage
@@ -123,12 +117,16 @@ class MusicUIController: NSObject {
         self.stateButton.setImage(playPauseButtonImage, for: .highlighted)
         coverImageView.image = UIImage(named: "No Music")
         songLabel.text = "Nothing Playing"
+        enableInterface(false)
     }
     
     
     fileprivate func updateViewWithRestrictions(_ restrictions: SPTAppRemotePlaybackRestrictions) {
-//        nextSong.isEnabled = restrictions.canSkipNext
-        //        prevButton.isEnabled = restrictions.canSkipPrevious
+        nextButton.isEnabled = restrictions.canSkipNext
+
+        if prevButton != nil{
+            prevButton.isEnabled = restrictions.canSkipPrevious
+        }
         //        toggleShuffleButton.isEnabled = restrictions.canToggleShuffle
         //        toggleRepeatModeButton.isEnabled = restrictions.canRepeatContext || restrictions.canRepeatTrack
     }
@@ -140,6 +138,14 @@ class MusicUIController: NSObject {
         //        prevButton.isHidden = !skipBackward15Button.isHidden
         //        getCurrentPodcastSpeed()
     }
-    
-  
+    fileprivate func enableInterface(_ enabled: Bool = true) {
+//                buttons.forEach { (button) -> () in
+//                    button.isEnabled = enabled
+//                    button.setNeedsLayout()
+//                    button.setNeedsDisplay()
+//                }
+//                if (!enabled) {
+//                    updatePlayPauseButtonState(true);
+//                }
+    }
 }

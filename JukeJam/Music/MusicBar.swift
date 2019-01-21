@@ -120,6 +120,8 @@ class MusicBar: UIView, MusicHandlerDelegate {
         musicUIController?.reset()
 
     }
+ 
+
 }
 
 

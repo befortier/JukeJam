@@ -1517,16 +1517,30 @@
                                         <rect key="frame" x="31" y="74" width="309" height="31"/>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </slider>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photographs and Memories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdN-jS-9VU">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photographs and Memories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdN-jS-9VU" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                         <rect key="frame" x="6" y="122" width="359" height="28"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="scrollDuration">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="scrollRate">
+                                                <real key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="animationDelay">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vxn-t8-iDj">
                                         <rect key="frame" x="0.0" y="188" width="375" height="85"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYU-6O-R4K">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYU-6O-R4K">
                                                 <rect key="frame" x="162.5" y="17.5" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="aYU-6O-R4K" secondAttribute="height" multiplier="1:1" id="Fdt-fQ-vSM"/>
@@ -1537,17 +1551,17 @@
                                                     <action selector="changeState:" destination="sGq-3e-u4l" eventType="touchUpInside" id="ZRD-7r-AdA"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggH-di-Qs3">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggH-di-Qs3">
                                                 <rect key="frame" x="261" y="17.5" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="HzJ-En-7C6"/>
                                                 </constraints>
                                                 <state key="normal" image="nextsong"/>
                                                 <connections>
-                                                    <action selector="nextSong:" destination="sGq-3e-u4l" eventType="touchUpInside" id="Q6V-XY-euD"/>
+                                                    <action selector="nextSong:" destination="sGq-3e-u4l" eventType="touchUpInside" id="922-Ho-VU5"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYa-Ce-nl0">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYa-Ce-nl0">
                                                 <rect key="frame" x="64" y="17.5" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="G2e-qi-ype"/>
@@ -1685,9 +1699,9 @@
                         <outlet property="coverView" destination="PtN-jF-gBq" id="XRF-gg-Vh5"/>
                         <outlet property="gradientBackground" destination="jkY-4d-7Z2" id="uUY-h2-0dF"/>
                         <outlet property="more" destination="3b8-Dl-3eA" id="8IW-lB-Eyb"/>
-                        <outlet property="nextSong" destination="RYa-Ce-nl0" id="Ybm-IU-EqK"/>
+                        <outlet property="nextSong" destination="ggH-di-Qs3" id="MAQ-5h-QUE"/>
                         <outlet property="playbackLocation" destination="VFe-dg-Ahf" id="6bU-le-XXF"/>
-                        <outlet property="prevSong" destination="ggH-di-Qs3" id="hQj-9V-fqC"/>
+                        <outlet property="prevSong" destination="RYa-Ce-nl0" id="L6H-LQ-tEC"/>
                         <outlet property="scrollView" destination="r0z-Mm-beu" id="tcd-YE-E7P"/>
                         <outlet property="seeLessButton" destination="1Hg-5Y-Evz" id="ECR-hS-hHA"/>
                         <outlet property="seeMoreButton" destination="BNb-sG-l0V" id="sSB-0n-6lH"/>

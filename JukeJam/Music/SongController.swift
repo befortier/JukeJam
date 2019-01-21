@@ -23,11 +23,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     @IBOutlet weak var nextSong: UIButton!
     @IBOutlet weak var state: UIButton!
     var musicHandler: MusicHandler?
-    var currentSong: Song?{
-        didSet{
-            musicHandler?.updateUI()
-        }
-    }
+
     let newCoverFrame = UIView()
     let newCover = UIImageView()
 
@@ -43,10 +39,8 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
         initBasics()
         initMovableImageView()
         waitForColors()
-//        initUI()
         closingGesture()
-        musicUIController = MusicUIController(state: state, next: nextSong, cover: cover, song: song, prev: prevSong, handler: musicHandler!)
-        
+        musicUIController = MusicUIController(state: state, next: nextSong, cover: newCover, song: song, prev: prevSong,  handler: musicHandler!)
     }
     
     func initBasics(){
@@ -57,7 +51,6 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
         allowChange = true
         scrollView.delegate = self
         viewBigger = false
-        musicHandler?.delegate = self
     }
     
     func initMovableImageView(){
@@ -71,24 +64,22 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if allowChange{
             if scrollView.contentOffset.y >= scrollOffset && !viewBigger {
-                print("HERE 123called from here")
-                
                 toggleScrollUI(adjust: true)
             }
             else if scrollView.contentOffset.y < (-50) && viewBigger {
-                print("HERE called from here")
                 toggleScrollUI(adjust: false)
             }
         }
     }
+    
     @IBAction func seeLess(_ sender: Any) {
         toggleScrollUI(adjust: false)
-
     }
     
     @IBAction func seeMore(_ sender: Any) {
         toggleScrollUI(adjust: true)
     }
+    
     func toggleScrollUI(adjust: Bool){
         allowChange = false
         var adjustRate: CGFloat = 0.41
@@ -96,7 +87,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
             adjustRate = 1
         }
       
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: UIView.AnimationOptions.layoutSubviews, animations: {
+        UIView.animate(withDuration: 0.4, delay: 0.0, options: UIView.AnimationOptions.layoutSubviews, animations: {
             self.gradientBackground.frame = CGRect(x: self.gradientBackground.frame.minX, y: self.gradientBackground.frame.minY, width: self.view.frame.width, height: self.gradientBackground.frame.height - self.const)
             self.newCoverFrame.center.y = self.gradientBackground.center.y + self.scrollOffset/10
             self.newCoverFrame.transform = CGAffineTransform(scaleX: adjustRate, y: adjustRate)
@@ -125,7 +116,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     
     func initUI(){
         self.modalPresentationCapturesStatusBarAppearance = true
-        self.gradientBackground.assignImageGradientColor(colors: (self.currentSong?.imageColors)!)
+        self.gradientBackground.assignImageGradientColor(colors: (musicHandler!.currentSong?.imageColors)!)
         self.gradientBackground.addFadeOut()
       
         
@@ -139,11 +130,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
         newCoverFrame.layer.shadowOpacity = 0.7
         newCoverFrame.layer.masksToBounds = false
         
-     
-        newCover.image = currentSong?.cover
 
-        song.text = self.currentSong?.title
-        more.text = "\((currentSong?.artist)!) - \((currentSong?.album)!)"
         playbackLocation.setThumbImage(UIImage(named: "Small Circle"), for: .normal)
     }
     
@@ -184,14 +171,11 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     
 
     func updateColorUI(){
-        if self.currentSong?.imageAvColor != nil{
-            averageColor = self.currentSong?.imageAvColor
+        if musicHandler!.currentSong?.imageAvColor != nil{
+            averageColor = musicHandler!.currentSong?.imageAvColor
             newCover.layer.borderColor = averageColor!.inverse().cgColor
             newCoverFrame.layer.shadowColor = averageColor!.inverse().cgColor
             playbackLocation.tintColor = UIColor.darkGray
-            view.setNeedsDisplay()
-            view.setNeedsLayout()
-            
         }
         initUI()
        
@@ -201,7 +185,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     func waitForColors(){
         updateColorUI()
         DispatchQueue.global(qos: .background).async {
-            while self.currentSong?.imageAvColor == nil{
+            while self.musicHandler!.currentSong?.imageAvColor == nil{
                 
             }
             DispatchQueue.main.async {
@@ -209,19 +193,36 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
                 self.gradientBackground.setNeedsDisplay()
                 self.gradientBackground.setNeedsLayout()
                   }
+            while self.musicHandler!.currentSong?.imageColors.count != 2{
+                
+            }
+            DispatchQueue.main.async {
+                self.initUI()
+                self.gradientBackground.setNeedsDisplay()
+                self.gradientBackground.setNeedsLayout()
+            }
                 }       
     }
     
     func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
-//        print("HERE this is the new delegate")
+        allowChange = false
         musicUIController?.updateCurrentSong(playerState: playerState)
+        DispatchQueue.global(qos: .background).async {
+
+        while playerState.track.name != self.musicHandler!.currentSong?.title{
+        }
+            DispatchQueue.main.async {
+                self.waitForColors()
+            }
+
+        }
+        allowChange = true
     }
     
     func reset(){
         musicUIController?.reset()
-        
     }
-
+    
     @IBAction func prevSong(_ sender: Any) {
         musicHandler?.prevSong()
     }
@@ -230,13 +231,10 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     }
     @IBAction func nextSong(_ sender: Any) {
         musicHandler?.nextSong()
-
     }
     override func viewDidDisappear(_ animated: Bool) {
-//        print("HERE dismissed")
         musicHandler?.delegate = musicHandler?.musicBar
         musicHandler?.updateUI()
-        
     }
 }
 

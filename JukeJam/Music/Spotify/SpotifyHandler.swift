@@ -20,6 +20,7 @@ SKStoreProductViewControllerDelegate {
     //Call upon toggling shuffle or not
     var toggleShuffleButton: UIButton!
     var shuffleModeLabel: UILabel!
+    
     func didPressToggleShuffleButton(_ sender: AnyObject) {
         toggleShuffle()
     }
@@ -32,7 +33,6 @@ SKStoreProductViewControllerDelegate {
                 showAppStoreInstall()
             }
         } else if playerState == nil || playerState!.isPaused {
-            print("SPOTIFY playState changed")
             startPlayback()
         } else {
             pausePlayback()
@@ -42,8 +42,7 @@ SKStoreProductViewControllerDelegate {
     
     
     //Prev Song
-    var prevButton: UIButton!
-    @objc func didPressPreviousButton(_ sender: AnyObject) {
+    func didPressPreviousButton() {
         skipPrevious()
     }
     
@@ -95,9 +94,9 @@ SKStoreProductViewControllerDelegate {
     
 
     
-    fileprivate let playURI = "spotify:artist:5K4W6rqBFWDnAN6FQUkS6x"
+    fileprivate let playURI = "spotify:playlist:6tFqMGY6cXdzEWdpoGeJVQ"
     fileprivate let trackIdentifier = "spotify:track:32ftxJzxMPgUFCM6Km9WTS"
-    fileprivate let name = "Now Playing View"
+    
     
     fileprivate var currentPodcastSpeed: SPTAppRemotePodcastPlaybackSpeed?
     
@@ -118,10 +117,7 @@ SKStoreProductViewControllerDelegate {
 
         self.getPlayerState()
         
-//
-//        prevButton.setTitle("", for: UIControl.State.normal)
-//        prevButton.setImage(PlaybackButtonGraphics.previousButtonImage(), for: UIControl.State.normal)
-//        prevButton.setImage(PlaybackButtonGraphics.previousButtonImage(), for: UIControl.State.highlighted)
+        print("SPOTIFY ONCE?")
 //
 //        skipBackward15Button.setImage(skipBackward15Button.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
 //        skipForward15Button.setImage(skipForward15Button.imageView?.image?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -169,7 +165,11 @@ SKStoreProductViewControllerDelegate {
     
 
     
-    fileprivate var playerState: SPTAppRemotePlayerState?
+    fileprivate var playerState: SPTAppRemotePlayerState?{
+        didSet{
+            getPlayerState()
+        }
+    }
     fileprivate var subscribedToPlayerState: Bool = false
     
     
@@ -372,20 +372,16 @@ SKStoreProductViewControllerDelegate {
     }
     
     func appRemoteConnected() {
-        print("HERE connect?"  )
         connectionIndicatorView.state = .connected
         subscribeToPlayerState()
         subscribeToCapabilityChanges()
         getPlayerState()
-        
-//        enableInterface(true)
     }
     
     func appRemoteDisconnect() {
         connectionIndicatorView.state = .disconnected
         self.subscribedToPlayerState = false
         self.subscribedToCapabilities = false
-//        enableInterface(false)
     }
     
     // MARK: - SpeedPickerViewController
