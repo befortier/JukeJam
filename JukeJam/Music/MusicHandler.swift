@@ -146,6 +146,7 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
     func updateUI(){
         if preference == Pref.spotify {
             spotifyHandler.getPlayerState()
+//            loadUser()
         }
         else if preference == Pref.apple {
             
@@ -153,6 +154,19 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
         else if preference == Pref.none{
             
         }
+    }
+    
+    func loadUser() {
+        if preference == Pref.spotify {           
+            
+        }
+        else if preference == Pref.apple {
+            
+        }
+        else if preference == Pref.none{
+            
+        }
+       
     }
 
 }

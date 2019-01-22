@@ -10,14 +10,16 @@ import UIKit
 import Firebase
 import FBSDKCoreKit
 import GoogleSignIn
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate  {
     
     fileprivate let redirectUri = URL(string: "JukeJam://returnAfterLogin")!
     fileprivate let clientIdentifier = "30e40f876c2348c0bf0644d1be184864"
-    fileprivate let name = "Now Playing View"
     var window:UIWindow?
 
+    
     // keys
     static fileprivate let kAccessTokenKey = "access-token-key"
     
@@ -25,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
         didSet {
             let defaults = UserDefaults.standard
             defaults.set(accessToken, forKey: AppDelegate.kAccessTokenKey)
+            print("HERE access", accessToken)
             defaults.synchronize()
         }
     }
@@ -136,7 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
         }
     }
 
-    
+
     //Deals with prompting users on Facebook/Google URL
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         

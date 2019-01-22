@@ -20,7 +20,7 @@
 #import "FIRDatabaseConfig_Private.h"
 #import "FRepoManager.h"
 
-#import <FirebaseAuthInterop/FIRAuthInterop.h>
+//#import <FirebaseAuthInterop/FIRAuthInterop.h>
 #import <FirebaseCore/FIRAppInternal.h>
 #import <FirebaseCore/FIRComponent.h>
 #import <FirebaseCore/FIRComponentContainer.h>

@@ -6,7 +6,8 @@ target 'JukeJam' do
   use_frameworks!
 
   # Pods for JukeJam
-pod 'Alamofire', '~> 5.0.0.beta.1'
+pod 'Spartan'
+pod 'Alamofire'
 pod 'MarqueeLabel/Swift'
 pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 pod 'SPStorkController'
