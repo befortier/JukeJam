@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import JukeJam
+//@testable import JukeJam
 
 class JukeJamTests: XCTestCase {
     

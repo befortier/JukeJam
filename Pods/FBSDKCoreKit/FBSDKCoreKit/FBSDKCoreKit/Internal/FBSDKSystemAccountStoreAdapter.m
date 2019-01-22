@@ -136,12 +136,10 @@ static FBSDKSystemAccountStoreAdapter *_singletonInstance = nil;
     }
   }
 
-  // Construct access options. Constructing this way is tolerant for nil values.
-  NSMutableDictionary<NSString *, id> *optionsMutable = [[NSMutableDictionary alloc] initWithCapacity:3];
-  optionsMutable[fbsdkdfl_ACFacebookAppIdKey()] = appID;
-  optionsMutable[fbsdkdfl_ACFacebookPermissionsKey()] = permissions.allObjects;
-  optionsMutable[fbsdkdfl_ACFacebookAudienceKey()] = defaultAudience;
-  NSDictionary<NSString *, id> *options = [optionsMutable copy];
+  // construct access options
+  NSDictionary<NSString *, id> *options = @{fbsdkdfl_ACFacebookAppIdKey(): appID,
+                                            fbsdkdfl_ACFacebookPermissionsKey(): permissions.allObjects,
+                                            fbsdkdfl_ACFacebookAudienceKey(): defaultAudience};
 
   if (self.forceBlockingRenew
       && [self.accountStore accountsWithAccountType:self.accountType].count > 0) {

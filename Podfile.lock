@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.0.0.beta.1)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
@@ -75,23 +76,23 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.2.0)
     - "GoogleToolboxForMac/NSString+URLArguments (= 2.2.0)"
   - "GoogleToolboxForMac/NSString+URLArguments (2.2.0)"
-  - GoogleUtilities/AppDelegateSwizzler (5.3.6):
+  - GoogleUtilities/AppDelegateSwizzler (5.3.7):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (5.3.6)
-  - GoogleUtilities/Logger (5.3.6):
+  - GoogleUtilities/Environment (5.3.7)
+  - GoogleUtilities/Logger (5.3.7):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (5.3.6):
+  - GoogleUtilities/MethodSwizzler (5.3.7):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (5.3.6):
+  - GoogleUtilities/Network (5.3.7):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (5.3.6)"
-  - GoogleUtilities/Reachability (5.3.6):
+  - "GoogleUtilities/NSData+zlib (5.3.7)"
+  - GoogleUtilities/Reachability (5.3.7):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (5.3.6):
+  - GoogleUtilities/UserDefaults (5.3.7):
     - GoogleUtilities/Logger
   - GSMessages (1.7.1)
   - GTMSessionFetcher/Core (1.2.1)
@@ -102,21 +103,22 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - NVActivityIndicatorView (4.5.1):
-    - NVActivityIndicatorView/Presenter (= 4.5.1)
-  - NVActivityIndicatorView/Presenter (4.5.1)
+  - NVActivityIndicatorView (4.6.0):
+    - NVActivityIndicatorView/Presenter (= 4.6.0)
+  - NVActivityIndicatorView/Presenter (4.6.0)
   - SCLAlertView (0.8)
   - ShadowView (1.3)
   - SkyFloatingLabelTextField (3.6.0)
-  - SPStorkController (1.2)
+  - SPStorkController (1.2.1)
   - SwiftIconFont (3.0.0)
   - SwiftyOnboard (1.3.8)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.0.0.beta.1)
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - FacebookCore
   - FacebookLogin
-  - FBSDKCoreKit (from `https://github.com/facebook/facebook-objc-sdk.git`, branch `master`)
+  - FBSDKCoreKit
   - FBSDKLoginKit
   - Firebase/Auth
   - Firebase/Core
@@ -135,9 +137,11 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - Bolts
     - FacebookCore
     - FacebookLogin
+    - FBSDKCoreKit
     - FBSDKLoginKit
     - Firebase
     - FirebaseAnalytics
@@ -167,19 +171,14 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   ChameleonFramework:
     :git: https://github.com/ViccAlexander/Chameleon.git
-  FBSDKCoreKit:
-    :branch: master
-    :git: https://github.com/facebook/facebook-objc-sdk.git
 
 CHECKOUT OPTIONS:
   ChameleonFramework:
     :commit: 6dd284bde21ea2e7f9fd89bc36f40df16e16369d
     :git: https://github.com/ViccAlexander/Chameleon.git
-  FBSDKCoreKit:
-    :commit: dad3475aff3c21061a77aed20a31f4b7a1885ec0
-    :git: https://github.com/facebook/facebook-objc-sdk.git
 
 SPEC CHECKSUMS:
+  Alamofire: 2ef6d6c984c5d21c366e9b41a9ae7dfee2b67a44
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
@@ -197,20 +196,20 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 98b71f5e04142793729a5ef23e5b96651ff4b70f
   GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
-  GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
+  GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
   GSMessages: 561f35bac97ae35e6252252a4259fb2c9badea1a
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   MarqueeLabel: 440a502b91a9179bd98f9fff00ba1150650a1c0e
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  NVActivityIndicatorView: ec34a7b88c51fab270004a1a1f32116e711010cd
+  NVActivityIndicatorView: 9c3704896798b042315e2a154dc27e48384756f0
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
   ShadowView: 80c923f88fe2e6602066aa535f46621f0f6471d1
   SkyFloatingLabelTextField: 38164979b79512f9ff9288ad8acfc4bbf5d843e3
-  SPStorkController: c7f7480a23e1dd4d2c9440496f9798abf8fe8128
+  SPStorkController: 2af3d81bceda074761092718295577edf8daf99d
   SwiftIconFont: 2ba18554a77c44948dc35b561b344e3c23834a84
   SwiftyOnboard: de60e90c2af23dd61b01ec0c6a8d0be3370f857b
 
-PODFILE CHECKSUM: 7aa2a321b555a951c5b008161c58cb57d837c697
+PODFILE CHECKSUM: afd961c6f26bee983e73ddf7b8fce3c5996316f6
 
 COCOAPODS: 1.5.3

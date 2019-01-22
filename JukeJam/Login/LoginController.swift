@@ -1,13 +1,11 @@
 import UIKit
-import FBSDKLoginKit
 import GoogleSignIn
 import Firebase
 import SkyFloatingLabelTextField
 import FontAwesome_swift
 import FirebaseDatabase
 import NVActivityIndicatorView
-import FBSDKCoreKit
-import FBSDKLoginKit
+
 
 
 

@@ -1,5 +1,7 @@
 
 import Foundation
+import Alamofire
+
 class MusicUIController: NSObject {
     var stateButton: UIButton!
     var nextButton: UIButton!
@@ -39,13 +41,31 @@ class MusicUIController: NSObject {
     }
     
      func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
+        print("HERE 1 ")
         updatePlayPauseButtonState(playerState.isPaused)
+        print("HERE 1b ", playerState.track)
+
         //        updateRepeatModeLabel(playerState.playbackOptions.repeatMode)
         //        updateShuffleLabel(playerState.playbackOptions.isShuffling)
-//        self.songLabel.text = handler.currentSong?.title
+        
+//        Alamofire.request()
+//        let id = playerState.track.album
+//        AF.request("https://api.spotify.com/v1/albums/\(id)").response {
+//            (request, response, data, error) -> Void in
+//
+//            let json = JSONValue(data as? NSData)
+//            let jsonString = json.rawJSONString
+//            print(jsonString)
+//
+//        }
+      
+
+
         fetchAlbumArtForTrack(playerState.track) { (image) -> Void in
+            print("HERE 1c ")
             let newSong = Song(title: playerState.track.name , duration: TimeInterval(playerState.track.duration), artist: playerState.track.artist.name, cover: image, album: playerState.track.album.name)
             self.handler?.currentSong = newSong
+            print("HERE handler is", self.handler)
             self.updateAlbumArtWithImage(image)
             self.fillInfo(song: newSong)
             self.updateViewWithRestrictions(playerState.playbackRestrictions)
@@ -53,6 +73,19 @@ class MusicUIController: NSObject {
             //        updateInterfaceForPodcast(playerState: playerState)
         }
     }
+    fileprivate func fetchAlbumArtForTrack(_ track: SPTAppRemoteTrack, callback: @escaping (UIImage) -> Void ) {
+        print("HERE 1abc")
+        handler?.spotifyHandler.appRemote.imageAPI?.fetchImage(forItem: track, with:CGSize(width: 1000, height: 1000), callback: { (image, error) -> Void in
+            guard error == nil else {
+                print ("HERE ERROR")
+                return }
+            
+            let image = image as! UIImage
+            print("HERE SUCCESS")
+            callback(image)
+        })
+    }
+    
     fileprivate func fillInfo(song: Song){
         songLabel.text = song.title
         coverImageView.image = song.cover
@@ -83,19 +116,10 @@ class MusicUIController: NSObject {
         transition.type = CATransitionType.fade
         self.coverImageView.layer.add(transition, forKey: "transition")
     }
-    fileprivate func fetchAlbumArtForTrack(_ track: SPTAppRemoteTrack, callback: @escaping (UIImage) -> Void ) {
-        handler?.spotifyHandler.appRemote.imageAPI?.fetchImage(forItem: track, with:CGSize(width: 1000, height: 1000), callback: { (image, error) -> Void in
-            guard error == nil else { return }
-            
-            let image = image as! UIImage
-            callback(image)
-        })
-    }
-    
+  
     func updateCurrentSong(playerState: SPTAppRemotePlayerState){
         //If what is playing is not the same as the handler's current song update
         if playerState.track.name != handler.currentSong?.title{
-            print("HERE 1",handler.currentSong?.title )
             updateViewWithPlayerState(playerState)
         }
         //If the current musicDisplayer isnt showing the same as the handler's current song

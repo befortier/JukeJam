@@ -6,6 +6,7 @@ target 'JukeJam' do
   use_frameworks!
 
   # Pods for JukeJam
+pod 'Alamofire', '~> 5.0.0.beta.1'
 pod 'MarqueeLabel/Swift'
 pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
 pod 'SPStorkController'
@@ -18,11 +19,11 @@ pod 'SwiftIconFont'
 pod 'ShadowView'
 pod 'Firebase/Core'
 pod 'FacebookCore'
+pod 'FBSDKLoginKit'
+pod 'FBSDKCoreKit'
 pod 'FacebookLogin'
-pod 'FBSDKLoginKit'  
 pod 'GoogleSignIn'
 pod 'SwiftyOnboard'
-pod 'FBSDKCoreKit', :git => 'https://github.com/facebook/facebook-objc-sdk.git', :branch => 'master'
 pod 'FontAwesome.swift'
 pod 'SkyFloatingLabelTextField', '~> 3.0'
   target 'JukeJamTests' do

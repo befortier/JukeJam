@@ -11,8 +11,11 @@ import UIKit
 import FacebookLogin
 import Firebase
 import FirebaseDatabase
+import FacebookCore
 import FBSDKCoreKit
 import FBSDKLoginKit
+//import FBSDKCoreKit
+//import FBSDKLoginKit
 import SkyFloatingLabelTextField
 
 extension ViewController{

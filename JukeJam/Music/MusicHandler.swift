@@ -138,8 +138,9 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
     }
     
     func updateView(playerState: SPTAppRemotePlayerState) {
-        print("HERE update from spotify")
-        delegate!.updateViewWithPlayerState(playerState)        
+        delegate!.updateViewWithPlayerState(playerState)
+        musicBar!.updateViewWithPlayerState(playerState)
+
     }
     
     func updateUI(){
