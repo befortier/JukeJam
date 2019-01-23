@@ -12,9 +12,12 @@ class HomeController: UIViewController, UICollectionViewDelegate{
     @IBOutlet weak var featuredJams: UICollectionView!
     @IBOutlet weak var scroll: UIScrollView!
     var myJamsArt: [coverArt] = []
+    var musicHandler: MusicHandler!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tabBar = self.tabBarController as! ScreenController
+        musicHandler = tabBar.MusicController?.musicHandler
         tempLoadData()
         customizeButtons()
         establishCells()
@@ -50,7 +53,8 @@ class HomeController: UIViewController, UICollectionViewDelegate{
         self.navigationItem.rightBarButtonItem = getTabBarButton(type: .cog, selector:#selector(showSettings))
     }
     @objc func showProfile(){
-        print("Profile")
+        musicHandler.spotifyFetcher.getPlaylists(userId: musicHandler.spotifyFetcher.currentUserID)
+            print("Profile")
     }
     @objc func showSettings(){
         print("Settings")

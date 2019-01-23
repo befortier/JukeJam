@@ -24,7 +24,6 @@ class MusicPlayingController: UIViewController {
         self.musicBar = musicHandler.addBar(frame: self.view)
         musicBar?.delegate = self
         initMusic()
-        print("HERE loaded again?")
 
     }
 
@@ -62,7 +61,6 @@ class MusicPlayingController: UIViewController {
 
 
     override func viewDidAppear(_ animated: Bool) {
-        print("HERE showing")
         musicHandler.delegate = musicHandler.musicBar
         musicHandler.updateUI()
     }

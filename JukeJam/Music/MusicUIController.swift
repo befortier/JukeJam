@@ -41,47 +41,16 @@ class MusicUIController: NSObject {
         nextButton.setBackgroundColor(color: .lightGray, forState: .highlighted)
     }
     
-    func dataToJSON(data: Data) -> Any? {
-        do {
-            return try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-        } catch let myJSONError {
-            print(myJSONError)
-        }
-        return nil
-    }
-    
+
      func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
         updatePlayPauseButtonState(playerState.isPaused)
-
-        //        updateRepeatModeLabel(playerState.playbackOptions.repeatMode)
-        //        updateShuffleLabel(playerState.playbackOptions.isShuffling)
-        
-        let id = playerState.track.album.uri
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let auth = appDelegate.accessToken
-        Spartan.authorizationToken = auth
-        _ = Spartan.getMyPlaylists(limit: 20, offset: 0, success: { (pagingObject) in
-           print("HERE S1", pagingObject.items[2].name)
-            if pagingObject.canMakeNextRequest {
-                print("HERE S2")
-
-                pagingObject.getNext(success: { (pagingObject) in
-                    // Update the paging object
-                    print("HERE success", pagingObject.items)
-
-                }, failure: { (error) in
-                    print("HERE fail", error)
-                })
-            }
-        }, failure: { (error) in
-            print("HERE fail", error)
-        })
-
-      
-
-
         fetchAlbumArtForTrack(playerState.track) { (image) -> Void in
-            let newSong = Song(title: playerState.track.name , duration: TimeInterval(playerState.track.duration), artist: playerState.track.artist.name, cover: image, album: playerState.track.album.name)
+            let artist = Artist(id: playerState.track.artist.uri)
+            artist.name = playerState.track.artist.name
+            let album = Album(id: playerState.track.album.uri)
+            album.name = playerState.track.album.name
+            album.cover = image
+            let newSong = Song(title: playerState.track.name , duration: Int(playerState.track.duration), artist: [artist], cover: image, album: album)
             self.handler?.currentSong = newSong
             self.updateAlbumArtWithImage(image)
             self.fillInfo(song: newSong)

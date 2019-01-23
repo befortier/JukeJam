@@ -6,14 +6,21 @@ class Song: NSObject {
 
   // MARK: - Properties
     var title: String?
-    var duration: TimeInterval = 0
-    var artist: String?
+    var duration: Int = 0
+    var artist: [Artist]?
     var cover: UIImage?
     var imageColors: [UIColor] = []
     var imageAvColor: UIColor!
-    var album: String?
+    var album: Album?{
+        didSet{
+            cover = album?.cover
+            DispatchQueue.global().async {
+                self.initColors()
+            }
+        }
+    }
 
-    init(title: String, duration: TimeInterval, artist: String, cover: UIImage, album: String){
+    init(title: String, duration: Int, artist: [Artist], cover: UIImage, album: Album){
         super.init()
         self.cover = cover
         DispatchQueue.global().async {

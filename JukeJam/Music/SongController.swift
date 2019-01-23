@@ -189,9 +189,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
                 
             }
             DispatchQueue.main.async {
-                UIView.animate(withDuration: 1, animations: { () -> Void in
-                    self.updateColorUI()
-                })
+                self.updateColorUI()
                 self.gradientBackground.setNeedsDisplay()
                 self.gradientBackground.setNeedsLayout()
                   }
@@ -199,9 +197,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
                 
             }
             DispatchQueue.main.async {
-                UIView.animate(withDuration: 1, animations: { () -> Void in
-                    self.initUI()
-                })
+                self.initUI()
                 self.gradientBackground.setNeedsDisplay()
                 self.gradientBackground.setNeedsLayout()
             }

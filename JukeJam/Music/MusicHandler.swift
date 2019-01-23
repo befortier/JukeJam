@@ -23,11 +23,14 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
             checkPreference()
         }
     }
+    var spotifyFetcher: SpotifyFetcher!
+
     var currentSong: Song?{
         didSet{
             self.updateUI()
         }
     }
+    
     enum Pref {
     case apple
     case spotify
@@ -38,6 +41,7 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
         super.init()
         
         appleHandler = AppleHandler()
+        spotifyFetcher = SpotifyFetcher()
         spotifyHandler = SpotifyHandler()
         musicBar = MusicBar(frame: CGRect(x: 0, y: 0, width: 0, height: 0), handler: self)
         self.delegate = musicBar
@@ -154,6 +158,19 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
         else if preference == Pref.none{
             
         }
+    }
+    
+    func getUserID() -> String{
+        if preference == Pref.spotify {
+//           return spotifyHandler.appRemote.us
+        }
+        else if preference == Pref.apple {
+            
+        }
+        else if preference == Pref.none{
+            
+        }
+        return "false"
     }
     
     func loadUser() {

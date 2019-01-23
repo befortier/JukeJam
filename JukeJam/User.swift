@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import Spartan
 class Location: NSObject, NSCoding{
     var city: String
     var city_id: UInt32
@@ -73,7 +73,11 @@ class Location: NSObject, NSCoding{
     }
     
 }
+//I want a playlist object to have name, description, created, [tracks], following, followers, created by, collaborators, image, id
+
 class User: NSObject, NSCoding{
+    
+    //Maybe make object databasestuff
     var first_name: String?
     var last_name: String?
     var address: Location?
@@ -85,6 +89,9 @@ class User: NSObject, NSCoding{
     var F_id: String?
     var G_id: String?
     var username: String?
+    
+    //object spotifymusic
+    var playlists: [String: Playlist] = [:]
 
     init(name: String){
         self.name = name

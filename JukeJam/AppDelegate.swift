@@ -27,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
         didSet {
             let defaults = UserDefaults.standard
             defaults.set(accessToken, forKey: AppDelegate.kAccessTokenKey)
-            print("HERE access", accessToken)
             defaults.synchronize()
         }
     }
@@ -209,20 +208,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, SPTApp
     }
     
     func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
-        print("HERE didFailConnectionAttemptWithError", error)
+//        print("HERE didFailConnectionAttemptWithError", error)
         if homeScreen?.AppController!.musicHandler != nil {
             homeScreen?.AppController!.musicHandler.terminate()
         }
     }
     
     func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
-        print("HERE didDisconnectWithError", error)
+//        print("HERE didDisconnectWithError", error)
         terminateMusic()
     }
 
     func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
 //        self.playerState = playerState
-        print("HERE APPD playState changed2")
+//        print("HERE APPD playState changed2")
         
 //        delegate?.updateView(playerState: playerState)
     }
