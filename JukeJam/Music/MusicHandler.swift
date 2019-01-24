@@ -3,6 +3,8 @@ import StoreKit
 
 protocol MusicHandlerDelegate: class {
     func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState)
+    func updateUI(song: Song)
+    func songStateChange(isPaused: Bool)
 }
 
 class MusicHandler: NSObject, SpotifyHandlerDelegate {
@@ -27,7 +29,7 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
 
     var currentSong: Song?{
         didSet{
-            self.updateUI()
+            delegate!.updateUI(song: self.currentSong!)
         }
     }
     
@@ -156,10 +158,25 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
     }
     
     func updateView(playerState: SPTAppRemotePlayerState) {
-        delegate!.updateViewWithPlayerState(playerState)
-        musicBar!.updateViewWithPlayerState(playerState)
-
+        
+        //Track changed update currentSong
+        if playerState.track.name != currentSong?.title{
+            delegate!.updateViewWithPlayerState(playerState)
+            return
+        }
+        
+        //If musicBar songLabel does not match currentSong then fix it
+//        else if currentSong?.title != musicBar.song.text {
+            delegate?.updateUI(song: currentSong!)
+            delegate!.songStateChange(isPaused: playerState.isPaused)
+        
+//    }
+//        //Was a pause play fix
+//        else{
+//            delegate!.songStateChange(isPaused: playerState.isPaused)
+//        }
     }
+    
     func playSong(id: String){
         if preference == Pref.spotify {
             spotifyHandler.playTrackWithIdentifier(id)

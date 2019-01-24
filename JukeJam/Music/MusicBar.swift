@@ -81,10 +81,7 @@ class MusicBar: UIView, MusicHandlerDelegate {
         musicHandler?.nextSong()
     }
     
-    private func updateInfo(){
-        
-        
-    }
+   
     private func setupView() {
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.borderWidth = 0.3
@@ -109,11 +106,23 @@ class MusicBar: UIView, MusicHandlerDelegate {
             self.containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             ])
     }
+    func updateUI(song: Song){
+            let transition = CATransition()
+            transition.duration = 0.3
+            transition.type = CATransitionType.fade
+            self.cover.layer.add(transition, forKey: "transition")
+            self.cover.image = song.album?.cover
+            self.song.text = song.title
+    }
     
     func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
         if (musicHandler?.spotifyHandler.appRemote.isConnected)!{
             musicUIController?.updateCurrentSong(playerState: playerState)
         }
+    }
+    
+    func songStateChange(isPaused: Bool){
+        musicUIController!.updatePlayPauseButtonState(isPaused)
     }
     
     func reset(){

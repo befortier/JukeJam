@@ -35,12 +35,13 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        musicHandler?.updateUI()
         initBasics()
+        initUI()
         initMovableImageView()
         waitForColors()
         closingGesture()
         musicUIController = MusicUIController(state: state, next: nextSong, cover: newCover, song: song, prev: prevSong,  handler: musicHandler!)
-        print("HERE set?")
     }
     
     func initBasics(){
@@ -64,6 +65,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if allowChange{
+            //If !viewBigger that means that we can make it bigger. !viewBigger means the view is not big rn
             if scrollView.contentOffset.y >= scrollOffset && !viewBigger {
                 toggleScrollUI(adjust: true)
             }
@@ -137,6 +139,108 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
         playbackLocation.setThumbImage(UIImage(named: "Small Circle"), for: .normal)
     }
     
+  
+    func updateUI(song: Song){
+        self.newCover.image = song.album?.cover
+        waitForColors()
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.type = CATransitionType.fade
+        self.newCover.layer.add(transition, forKey: "transition")
+        self.song.text = song.title
+        assignMoreText(song: song)
+        
+    }
+    func assignMoreText(song: Song){
+        //TEST with multiple artists see what is looks like
+        var moreString = ""
+        if song.artist?.count != 0{
+            moreString = "\((song.artist![0].name)!)"
+            if song.album != nil {
+                if song.album?.name != ""{
+                    moreString = "\((song.artist![0].name)!) - \((song.album?.name)!)"
+                }
+            }
+        }
+        self.more.text = moreString
+    }
+
+    func updateColorUI(){
+        if musicHandler!.currentSong?.imageAvColor != nil{
+            averageColor = musicHandler!.currentSong?.imageAvColor
+            newCover.layer.borderColor = averageColor!.inverse().cgColor
+            newCoverFrame.layer.shadowColor = averageColor!.inverse().cgColor
+            playbackLocation.tintColor = UIColor.darkGray
+        }
+        setColors()
+       
+        
+    }
+    
+    func waitForColors(){
+        updateColorUI()
+        DispatchQueue.global(qos: .background).async {
+            while self.musicHandler!.currentSong?.imageAvColor == nil{
+                
+            }
+            while self.viewBigger{
+                
+            }
+            DispatchQueue.main.async {
+                self.setColors()
+                self.gradientBackground.setNeedsDisplay()
+                self.gradientBackground.setNeedsLayout()
+                  }
+            while self.musicHandler!.currentSong?.imageColors.count != 2{
+                
+            }
+            while self.viewBigger{
+                
+            }
+            DispatchQueue.main.async {
+                self.setColors()
+                self.gradientBackground.setNeedsDisplay()
+                self.gradientBackground.setNeedsLayout()
+            }
+                }       
+    }
+    
+    func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
+        if viewBigger{
+            toggleScrollUI(adjust: false)
+        }
+        if (musicHandler?.spotifyHandler.appRemote.isConnected)!{
+            musicUIController?.updateCurrentSong(playerState: playerState)
+        }
+    }
+    
+    func songStateChange(isPaused: Bool){
+        musicUIController.updatePlayPauseButtonState(isPaused)
+    }
+    
+    func reset(){
+        musicUIController?.reset()
+    }
+    
+ 
+ 
+    
+    
+    @IBAction func prevSong(_ sender: Any) {
+        musicHandler?.prevSong()
+    }
+    @IBAction func changeState(_ sender: Any) {
+        musicHandler?.PlayPauseMusic()
+    }
+    @IBAction func nextSong(_ sender: Any) {
+        musicHandler?.nextSong()
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        musicHandler?.delegate = musicHandler?.musicBar
+        musicHandler?.updateUI()
+    }
+    
+    
     @objc func closeViewFunc(){
         self.dismiss(animated: true)
     }
@@ -149,13 +253,13 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
                 playbackLocation.setThumbImage(UIImage(named: "Bigger Circle"), for: UIControl.State.normal)
                 playbackLocation.tintColor = (self.averageColor ?? UIColor.darkGray).inverse()
                 viewBigger = false
-
+                
                 
             case .ended:
                 toggleGestures(allow: true)
                 playbackLocation.tintColor = UIColor.darkGray
                 playbackLocation.setThumbImage(UIImage(named: "Small Circle"), for: .normal)
-
+                
             default:
                 break
             }
@@ -172,82 +276,6 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     }
 
     
-
-    func updateColorUI(){
-        if musicHandler!.currentSong?.imageAvColor != nil{
-            averageColor = musicHandler!.currentSong?.imageAvColor
-            newCover.layer.borderColor = averageColor!.inverse().cgColor
-            newCoverFrame.layer.shadowColor = averageColor!.inverse().cgColor
-            playbackLocation.tintColor = UIColor.darkGray
-        }
-        initUI()
-       
-        
-    }
-    
-    func waitForColors(){
-        updateColorUI()
-        print("HERE not working?")
-        DispatchQueue.global(qos: .background).async {
-            while self.musicHandler!.currentSong?.imageAvColor == nil{
-                
-            }
-            while self.viewBigger{
-                
-            }
-            DispatchQueue.main.async {
-                print("HERE color is", self.viewBigger)
-                self.setColors()
-                self.gradientBackground.setNeedsDisplay()
-                self.gradientBackground.setNeedsLayout()
-                  }
-            while self.musicHandler!.currentSong?.imageColors.count != 2{
-                
-            }
-            while self.viewBigger{
-                
-            }
-            DispatchQueue.main.async {
-                print("HERE color is", self.viewBigger)
-                self.setColors()
-                self.gradientBackground.setNeedsDisplay()
-                self.gradientBackground.setNeedsLayout()
-            }
-                }       
-    }
-    
-    func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
-        allowChange = false
-        musicUIController?.updateCurrentSong(playerState: playerState)
-        DispatchQueue.global(qos: .background).async {
-
-        while playerState.track.name != self.musicHandler!.currentSong?.title{
-        }
-            DispatchQueue.main.async {
-//                self.waitForColors()
-            }
-
-        }
-        allowChange = true
-    }
-    
-    func reset(){
-        musicUIController?.reset()
-    }
-    
-    @IBAction func prevSong(_ sender: Any) {
-        musicHandler?.prevSong()
-    }
-    @IBAction func changeState(_ sender: Any) {
-        musicHandler?.PlayPauseMusic()
-    }
-    @IBAction func nextSong(_ sender: Any) {
-        musicHandler?.nextSong()
-    }
-    override func viewDidDisappear(_ animated: Bool) {
-        musicHandler?.delegate = musicHandler?.musicBar
-        musicHandler?.updateUI()
-    }
 }
 
 

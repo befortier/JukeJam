@@ -44,6 +44,7 @@ class MusicUIController: NSObject {
 
      func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
         updatePlayPauseButtonState(playerState.isPaused)
+        print("HERE part 1")
         fetchAlbumArtForTrack(playerState.track) { (image) -> Void in
             let artist = Artist(id: playerState.track.artist.uri)
             artist.name = playerState.track.artist.name
@@ -52,8 +53,9 @@ class MusicUIController: NSObject {
             album.cover = image
             let newSong = Song(id: playerState.track.uri, title: playerState.track.name , duration: Int(playerState.track.duration), artist: [artist], cover: image, album: album)
             self.handler?.currentSong = newSong
-            self.updateAlbumArtWithImage(image)
-            self.fillInfo(song: newSong)
+//            self.updateAlbumArtWithImage(image)
+//            self.fillInfo(song: newSong)
+            print("HERE part 2")
             self.updateViewWithRestrictions(playerState.playbackRestrictions)
             
             //        updateInterfaceForPodcast(playerState: playerState)
@@ -74,7 +76,7 @@ class MusicUIController: NSObject {
         coverImageView.image = song.cover
     }
     
-    fileprivate func updatePlayPauseButtonState(_ paused: Bool) {
+     func updatePlayPauseButtonState(_ paused: Bool) {
         let playPauseButtonImage = paused ? playImage : pauseImage
         self.stateButton.setImage(playPauseButtonImage, for: UIControl.State())
         self.stateButton.setImage(playPauseButtonImage, for: .highlighted)
