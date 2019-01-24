@@ -35,7 +35,6 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        musicHandler?.updateUI()
         initBasics()
         initUI()
         initMovableImageView()
@@ -211,7 +210,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
             toggleScrollUI(adjust: false)
         }
         if (musicHandler?.spotifyHandler.appRemote.isConnected)!{
-            musicUIController?.updateCurrentSong(playerState: playerState)
+            musicUIController?.updateView(playerState: playerState)
         }
     }
     

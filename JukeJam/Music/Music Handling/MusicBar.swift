@@ -111,7 +111,7 @@ class MusicBar: UIView, MusicHandlerDelegate {
     
     func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
         if (musicHandler?.spotifyHandler.appRemote.isConnected)!{
-            musicUIController.updateCurrentSong(playerState: playerState)
+            musicUIController.updateView(playerState: playerState)
         }
     }
     

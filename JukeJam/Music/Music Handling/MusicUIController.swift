@@ -42,19 +42,15 @@ class MusicUIController: NSObject {
     }
     
 
-     func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
-        updatePlayPauseButtonState(playerState.isPaused)
+     func updateCurrentSong(_ playerState: SPTAppRemotePlayerState) {
         fetchAlbumArtForTrack(playerState.track) { (image) -> Void in
             let artist = Artist(id: playerState.track.artist.uri)
             artist.name = playerState.track.artist.name
             let album = Album(id: playerState.track.album.uri)
             album.name = playerState.track.album.name
             album.cover = image
-            let newSong = Song(id: playerState.track.uri, title: playerState.track.name , duration: Int(playerState.track.duration), artist: [artist], cover: image, album: album)
+            let newSong = Song(id: playerState.track.uri, title: playerState.track.name , duration: Int(playerState.track.duration), artist: [artist],  album: album)
             self.handler?.currentSong = newSong
-            self.updateViewWithRestrictions(playerState.playbackRestrictions)
-            
-            //        updateInterfaceForPodcast(playerState: playerState)
         }
     }
     fileprivate func fetchAlbumArtForTrack(_ track: SPTAppRemoteTrack, callback: @escaping (UIImage) -> Void ) {
@@ -90,15 +86,16 @@ class MusicUIController: NSObject {
     }
 
   
-    func updateCurrentSong(playerState: SPTAppRemotePlayerState){
+    func updateView(playerState: SPTAppRemotePlayerState){
         //If what is playing is not the same as the handler's current song update
         if playerState.track.name != handler.currentSong?.title{
-            updateViewWithPlayerState(playerState)
+            updateCurrentSong(playerState)
         }
         //If the current musicDisplayer isnt showing the same as the handler's current song
         else {
             updateViewWithRestrictions(playerState.playbackRestrictions)
             updatePlayPauseButtonState(playerState.isPaused)
+            //        updateInterfaceForPodcast(playerState: playerState)
         }
     }
     

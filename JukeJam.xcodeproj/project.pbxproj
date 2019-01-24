@@ -214,11 +214,7 @@
 		570CB7F021EBF75E009DCA6D /* Music */ = {
 			isa = PBXGroup;
 			children = (
-				5771801721F28979001799D4 /* MusicUIController.swift */,
-				570CB7E721E953B7009DCA6D /* SongController.swift */,
-				570CB7EA21EA8951009DCA6D /* MusicHandler.swift */,
-				5706201621E7B76D009869BE /* MusicBar.swift */,
-				5706201821E7BA8F009869BE /* MusicBar.xib */,
+				5736233821FA6A050063F94C /* Music Handling */,
 				570CB7E921E95BCE009DCA6D /* Spotify */,
 				5791022721EEA14E00343569 /* Extensions.swift */,
 			);
@@ -292,6 +288,18 @@
 				570CB7DB21E94A21009DCA6D /* ConnectionStatusIndicatorView.swift */,
 			);
 			path = Extra;
+			sourceTree = "<group>";
+		};
+		5736233821FA6A050063F94C /* Music Handling */ = {
+			isa = PBXGroup;
+			children = (
+				5771801721F28979001799D4 /* MusicUIController.swift */,
+				570CB7E721E953B7009DCA6D /* SongController.swift */,
+				570CB7EA21EA8951009DCA6D /* MusicHandler.swift */,
+				5706201621E7B76D009869BE /* MusicBar.swift */,
+				5706201821E7BA8F009869BE /* MusicBar.xib */,
+			);
+			path = "Music Handling";
 			sourceTree = "<group>";
 		};
 		576410F521DE63B70009525B /* Home */ = {

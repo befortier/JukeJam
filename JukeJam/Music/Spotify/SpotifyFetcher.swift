@@ -79,8 +79,7 @@ class SpotifyFetcher: NSObject {
                             var album = Album(id: track?.album.id as! String)
                             album.name = track?.album.name
                             album.cover = track?.album.images[0].url.toImage()
-                        let song = Song(id: id, title: title!, duration: duration!, artist: artists, cover: (track?.album.images[0].url.toImage())!, album: album)
-                            self.currentSong = song
+                        let song = Song(id: id, title: title!, duration: duration!, artist: artists, album: album)
 //                        })
                         
                     }, failure: { (error) in
