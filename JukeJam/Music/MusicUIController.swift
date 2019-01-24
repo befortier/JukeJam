@@ -44,7 +44,6 @@ class MusicUIController: NSObject {
 
      func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
         updatePlayPauseButtonState(playerState.isPaused)
-        print("HERE part 1")
         fetchAlbumArtForTrack(playerState.track) { (image) -> Void in
             let artist = Artist(id: playerState.track.artist.uri)
             artist.name = playerState.track.artist.name
@@ -53,9 +52,6 @@ class MusicUIController: NSObject {
             album.cover = image
             let newSong = Song(id: playerState.track.uri, title: playerState.track.name , duration: Int(playerState.track.duration), artist: [artist], cover: image, album: album)
             self.handler?.currentSong = newSong
-//            self.updateAlbumArtWithImage(image)
-//            self.fillInfo(song: newSong)
-            print("HERE part 2")
             self.updateViewWithRestrictions(playerState.playbackRestrictions)
             
             //        updateInterfaceForPodcast(playerState: playerState)
@@ -71,10 +67,7 @@ class MusicUIController: NSObject {
         })
     }
     
-    fileprivate func fillInfo(song: Song){
-        songLabel.text = song.title
-        coverImageView.image = song.cover
-    }
+
     
      func updatePlayPauseButtonState(_ paused: Bool) {
         let playPauseButtonImage = paused ? playImage : pauseImage
@@ -95,12 +88,7 @@ class MusicUIController: NSObject {
         //            }
         //            }()
     }
-    fileprivate func updateAlbumArtWithImage(_ image: UIImage) {
-        let transition = CATransition()
-        transition.duration = 0.3
-        transition.type = CATransitionType.fade
-        self.coverImageView.layer.add(transition, forKey: "transition")
-    }
+
   
     func updateCurrentSong(playerState: SPTAppRemotePlayerState){
         //If what is playing is not the same as the handler's current song update
@@ -108,12 +96,8 @@ class MusicUIController: NSObject {
             updateViewWithPlayerState(playerState)
         }
         //If the current musicDisplayer isnt showing the same as the handler's current song
-        else if handler.currentSong?.title != songLabel.text{
-            fillInfo(song: handler.currentSong!)
+        else {
             updateViewWithRestrictions(playerState.playbackRestrictions)
-            updatePlayPauseButtonState(playerState.isPaused)
-        }
-        else{
             updatePlayPauseButtonState(playerState.isPaused)
         }
     }
@@ -124,7 +108,6 @@ class MusicUIController: NSObject {
         self.stateButton.setImage(playPauseButtonImage, for: .highlighted)
         coverImageView.image = UIImage(named: "No Music")
         songLabel.text = "Nothing Playing"
-        enableInterface(false)
     }
     
     
@@ -145,14 +128,5 @@ class MusicUIController: NSObject {
         //        prevButton.isHidden = !skipBackward15Button.isHidden
         //        getCurrentPodcastSpeed()
     }
-    fileprivate func enableInterface(_ enabled: Bool = true) {
-//                buttons.forEach { (button) -> () in
-//                    button.isEnabled = enabled
-//                    button.setNeedsLayout()
-//                    button.setNeedsDisplay()
-//                }
-//                if (!enabled) {
-//                    updatePlayPauseButtonState(true);
-//                }
-    }
+
 }

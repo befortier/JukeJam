@@ -164,17 +164,10 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
             delegate!.updateViewWithPlayerState(playerState)
             return
         }
-        
-        //If musicBar songLabel does not match currentSong then fix it
-//        else if currentSong?.title != musicBar.song.text {
+        //else updateUI 
             delegate?.updateUI(song: currentSong!)
             delegate!.songStateChange(isPaused: playerState.isPaused)
-        
-//    }
-//        //Was a pause play fix
-//        else{
-//            delegate!.songStateChange(isPaused: playerState.isPaused)
-//        }
+
     }
     
     func playSong(id: String){
