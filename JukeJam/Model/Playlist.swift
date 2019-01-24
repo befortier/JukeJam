@@ -21,8 +21,13 @@ class Playlist: NSObject{
 extension String {
     func toImage() -> UIImage{
         let url = URL(string: self)
-        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-       return UIImage(data: data!)!
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url!)
+            DispatchQueue.main.async {
+                return UIImage(data: data!)!
+            }
+        }
+        return UIImage(named: "No Music")!
     }
    
 }

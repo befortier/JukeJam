@@ -50,7 +50,7 @@ class MusicUIController: NSObject {
             let album = Album(id: playerState.track.album.uri)
             album.name = playerState.track.album.name
             album.cover = image
-            let newSong = Song(title: playerState.track.name , duration: Int(playerState.track.duration), artist: [artist], cover: image, album: album)
+            let newSong = Song(id: playerState.track.uri, title: playerState.track.name , duration: Int(playerState.track.duration), artist: [artist], cover: image, album: album)
             self.handler?.currentSong = newSong
             self.updateAlbumArtWithImage(image)
             self.fillInfo(song: newSong)

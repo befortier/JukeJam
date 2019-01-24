@@ -41,12 +41,25 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
         super.init()
         
         appleHandler = AppleHandler()
-        spotifyFetcher = SpotifyFetcher()
+//        spotifyFetcher = SpotifyFetcher()
+    
         spotifyHandler = SpotifyHandler()
         musicBar = MusicBar(frame: CGRect(x: 0, y: 0, width: 0, height: 0), handler: self)
         self.delegate = musicBar
         musicBar.musicHandler = self
         initalizePreference()
+//        Need to have premium Spotify account to test this. Should test all non-premium functionality first.
+//        DispatchQueue.global().async {
+//            while self.spotifyFetcher.currentSong == nil{
+//
+//            }
+//            DispatchQueue.main.async {
+//                print("HERE Should update",  self.spotifyHandler.playURI)
+//                self.spotifyHandler.playURI = "spotify:track:\(self.spotifyFetcher.currentSong?.id)"
+//
+//                self.playSong(id: (self.spotifyFetcher.currentSong?.id)!)
+//            }
+//        }
     }
     
     func terminate(){
@@ -81,6 +94,7 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
         preference = Pref.spotify
         
     }
+    
     //Should recheck apple and spotify playback capabilities if they are changed mid app for some reason, and update preference otherwise
     func checkPreference(){
         
@@ -146,11 +160,20 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
         musicBar!.updateViewWithPlayerState(playerState)
 
     }
-    
+    func playSong(id: String){
+        if preference == Pref.spotify {
+            spotifyHandler.playTrackWithIdentifier(id)
+        }
+        else if preference == Pref.apple {
+            
+        }
+        else if preference == Pref.none{
+            
+        }
+    }
     func updateUI(){
         if preference == Pref.spotify {
             spotifyHandler.getPlayerState()
-//            loadUser()
         }
         else if preference == Pref.apple {
             
@@ -160,31 +183,7 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
         }
     }
     
-    func getUserID() -> String{
-        if preference == Pref.spotify {
-//           return spotifyHandler.appRemote.us
-        }
-        else if preference == Pref.apple {
-            
-        }
-        else if preference == Pref.none{
-            
-        }
-        return "false"
-    }
-    
-    func loadUser() {
-        if preference == Pref.spotify {           
-            
-        }
-        else if preference == Pref.apple {
-            
-        }
-        else if preference == Pref.none{
-            
-        }
-       
-    }
+
 
 }
 

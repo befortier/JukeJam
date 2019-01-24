@@ -13,6 +13,7 @@ class SpotifyFetcher: NSObject {
     
     var currentUserID: String!
     fileprivate var user: User!
+    var currentSong: Song?
     override init(){
         super.init()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -34,7 +35,6 @@ class SpotifyFetcher: NSObject {
     _ = Spartan.getMe(success: { (user) in
     // Do something with the user object
     self.currentUserID = user.id as! String
-        print("HERE set", self.currentUserID)
         self.getPlaylists(userId: self.currentUserID)
     }, failure: { (error) in
     print("HERE failure", error)
@@ -63,8 +63,10 @@ class SpotifyFetcher: NSObject {
                     //Used to get tracks from playlist
                     _ = Spartan.getPlaylistTracks(userId: userId, playlistId: playlistId, limit: 1, offset: 0, fields: nil, market: .us, success: { (pagingObject) in
                         //                    print("HERE success ful", pagingObject.items[0].track.name)
-                        pagingObject.items.forEach({ (track) in
-                           var track = track.track
+//                        pagingObject.items.forEach({ (track) in
+                        
+                           var track = pagingObject.items[0].track
+                        var id = track?.id as! String
                             var title = track?.name
                             var duration = track?.durationMs
                             var artists: [Artist] = []
@@ -73,11 +75,13 @@ class SpotifyFetcher: NSObject {
                                 curArtist.name = artist.name
                                 artists.append(curArtist)
                             })
-                            var cover = track?.album.images[0].url.toImage()
-                            var album = track?.album
-                            
-//                            let song = Song(title: title, duration: duration, artist: artists, cover: <#T##UIImage#>, album: <#T##String#>)
-                        })
+//                            var cover = track?.album.images[0].url.toImage()
+                            var album = Album(id: track?.album.id as! String)
+                            album.name = track?.album.name
+                            album.cover = track?.album.images[0].url.toImage()
+                        let song = Song(id: id, title: title!, duration: duration!, artist: artists, cover: (track?.album.images[0].url.toImage())!, album: album)
+                            self.currentSong = song
+//                        })
                         
                     }, failure: { (error) in
                         print("Here failed" ,error)

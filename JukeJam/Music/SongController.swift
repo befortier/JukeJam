@@ -26,7 +26,6 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
 
     let newCoverFrame = UIView()
     let newCover = UIImageView()
-
     var averageColor: UIColor?
     var musicUIController: MusicUIController!
     var viewBigger: Bool!
@@ -41,6 +40,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
         waitForColors()
         closingGesture()
         musicUIController = MusicUIController(state: state, next: nextSong, cover: newCover, song: song, prev: prevSong,  handler: musicHandler!)
+        print("HERE set?")
     }
     
     func initBasics(){
@@ -54,6 +54,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     }
     
     func initMovableImageView(){
+        
         newCoverFrame.frame = coverView.frame
         newCover.frame = cover.frame
         newCoverFrame.addSubview(newCover)
@@ -113,14 +114,16 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
 
     }
     
+    func setColors(){
+        self.gradientBackground.assignImageGradientColor(colors: (musicHandler!.currentSong?.imageColors)!)
+        self.gradientBackground.addFadeOut()
+
+    }
     
     func initUI(){
         self.modalPresentationCapturesStatusBarAppearance = true
-        self.gradientBackground.assignImageGradientColor(colors: (musicHandler!.currentSong?.imageColors)!)
-        self.gradientBackground.addFadeOut()
+        setColors()
       
-        
-        
         newCover.layer.cornerRadius = 10
         newCover.clipsToBounds = true
         newCover.layer.borderWidth = 0.1
@@ -184,20 +187,29 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     
     func waitForColors(){
         updateColorUI()
+        print("HERE not working?")
         DispatchQueue.global(qos: .background).async {
             while self.musicHandler!.currentSong?.imageAvColor == nil{
                 
             }
+            while self.viewBigger{
+                
+            }
             DispatchQueue.main.async {
-                self.updateColorUI()
+                print("HERE color is", self.viewBigger)
+                self.setColors()
                 self.gradientBackground.setNeedsDisplay()
                 self.gradientBackground.setNeedsLayout()
                   }
             while self.musicHandler!.currentSong?.imageColors.count != 2{
                 
             }
+            while self.viewBigger{
+                
+            }
             DispatchQueue.main.async {
-                self.initUI()
+                print("HERE color is", self.viewBigger)
+                self.setColors()
                 self.gradientBackground.setNeedsDisplay()
                 self.gradientBackground.setNeedsLayout()
             }
@@ -212,7 +224,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
         while playerState.track.name != self.musicHandler!.currentSong?.title{
         }
             DispatchQueue.main.async {
-                self.waitForColors()
+//                self.waitForColors()
             }
 
         }

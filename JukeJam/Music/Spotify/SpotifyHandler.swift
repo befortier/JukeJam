@@ -95,7 +95,7 @@ SKStoreProductViewControllerDelegate {
     
 
     
-    fileprivate let playURI = "spotify:playlist:6tFqMGY6cXdzEWdpoGeJVQ"
+     var playURI = "spotify:playlist:6tFqMGY6cXdzEWdpoGeJVQ"
     fileprivate let trackIdentifier = "spotify:track:32ftxJzxMPgUFCM6Km9WTS"
     
     
@@ -294,7 +294,7 @@ SKStoreProductViewControllerDelegate {
         })
     }
     
-    fileprivate func playTrackWithIdentifier(_ identifier: String) {
+     func playTrackWithIdentifier(_ identifier: String) {
         appRemote.playerAPI?.play(identifier, callback: defaultCallback)
     }
     

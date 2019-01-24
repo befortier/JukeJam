@@ -5,6 +5,7 @@ import ChameleonFramework
 class Song: NSObject {
 
   // MARK: - Properties
+    var id: String?
     var title: String?
     var duration: Int = 0
     var artist: [Artist]?
@@ -20,12 +21,13 @@ class Song: NSObject {
         }
     }
 
-    init(title: String, duration: Int, artist: [Artist], cover: UIImage, album: Album){
+    init(id: String, title: String, duration: Int, artist: [Artist], cover: UIImage, album: Album){
         super.init()
         self.cover = cover
         DispatchQueue.global().async {
             self.initColors()
         }
+        self.id = id
         self.title = title
         self.duration = duration
         self.artist = artist
