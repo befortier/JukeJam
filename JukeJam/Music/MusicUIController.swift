@@ -111,7 +111,7 @@ class MusicUIController: NSObject {
     }
     
     
-    fileprivate func updateViewWithRestrictions(_ restrictions: SPTAppRemotePlaybackRestrictions) {
+     func updateViewWithRestrictions(_ restrictions: SPTAppRemotePlaybackRestrictions) {
         nextButton.isEnabled = restrictions.canSkipNext
 
         if prevButton != nil{

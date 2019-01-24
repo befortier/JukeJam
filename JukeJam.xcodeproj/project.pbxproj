@@ -204,9 +204,9 @@
 		570CB7E921E95BCE009DCA6D /* Spotify */ = {
 			isa = PBXGroup;
 			children = (
-				570CB7DD21E94A22009DCA6D /* SpeedPickerViewController.swift */,
+				5736233721FA39750063F94C /* Extra */,
+				5736232D21F6D07F0063F94C /* SpotifyFetcher.swift */,
 				5764110421E3C5450009525B /* SpotifyHandler.swift */,
-				570CB7DB21E94A21009DCA6D /* ConnectionStatusIndicatorView.swift */,
 			);
 			path = Spotify;
 			sourceTree = "<group>";
@@ -221,7 +221,6 @@
 				5706201821E7BA8F009869BE /* MusicBar.xib */,
 				570CB7E921E95BCE009DCA6D /* Spotify */,
 				5791022721EEA14E00343569 /* Extensions.swift */,
-				5736232D21F6D07F0063F94C /* SpotifyFetcher.swift */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -255,15 +254,13 @@
 				5705940D21D2D3D300F4F5CB /* Base.lproj */,
 				5705942B21D5416A00F4F5CB /* Main.storyboard */,
 				570593F721D2D31300F4F5CB /* AppDelegate.swift */,
-				5705942421D4631000F4F5CB /* User.swift */,
 				576410FF21E2A7E30009525B /* Info.plist */,
 				5705942221D319E300F4F5CB /* GoogleService-Info.plist */,
-				5791021421EE611D00343569 /* Model */,
+				5791021421EE611D00343569 /* Classes */,
 				5705942D21D541D100F4F5CB /* Login */,
 				5706200B21E68444009869BE /* OverArching */,
 				576410F521DE63B70009525B /* Home */,
 				570CB7F021EBF75E009DCA6D /* Music */,
-				5764110121E2A8360009525B /* FocalUI */,
 				57A71B7A21D823DE0004FEDA /* AppleHandler.swift */,
 				5706200221E3DC9C009869BE /* JukeJam-Bridging-Header.h */,
 			);
@@ -286,6 +283,15 @@
 				572BA0D121D2CF06008B9611 /* Info.plist */,
 			);
 			path = JukeJamUITests;
+			sourceTree = "<group>";
+		};
+		5736233721FA39750063F94C /* Extra */ = {
+			isa = PBXGroup;
+			children = (
+				570CB7DD21E94A22009DCA6D /* SpeedPickerViewController.swift */,
+				570CB7DB21E94A21009DCA6D /* ConnectionStatusIndicatorView.swift */,
+			);
+			path = Extra;
 			sourceTree = "<group>";
 		};
 		576410F521DE63B70009525B /* Home */ = {
@@ -312,16 +318,18 @@
 			path = FocalUI;
 			sourceTree = "<group>";
 		};
-		5791021421EE611D00343569 /* Model */ = {
+		5791021421EE611D00343569 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5764110121E2A8360009525B /* FocalUI */,
 				5791022221EE62A600343569 /* Helpers */,
 				5791021621EE612500343569 /* Song.swift */,
 				5736232F21F90C2E0063F94C /* Playlist.swift */,
 				5736233121F919600063F94C /* Artist.swift */,
 				5736233321F919DA0063F94C /* Album.swift */,
+				5705942421D4631000F4F5CB /* User.swift */,
 			);
-			path = Model;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		5791022221EE62A600343569 /* Helpers */ = {

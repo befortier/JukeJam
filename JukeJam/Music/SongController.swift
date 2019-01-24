@@ -65,7 +65,6 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if allowChange{
-            //If !viewBigger that means that we can make it bigger. !viewBigger means the view is not big rn
             if scrollView.contentOffset.y >= scrollOffset && !viewBigger {
                 toggleScrollUI(adjust: true)
             }
@@ -153,12 +152,16 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     }
     func assignMoreText(song: Song){
         //TEST with multiple artists see what is looks like
-        var moreString = ""
+        var moreString:String = ""
         if song.artist?.count != 0{
-            moreString = "\((song.artist![0].name)!)"
+            
+            song.artist?.forEach({ (Artist) in
+                moreString += "\((Artist.name)!), "
+            })
+            moreString.removeLast(2)
             if song.album != nil {
                 if song.album?.name != ""{
-                    moreString = "\((song.artist![0].name)!) - \((song.album?.name)!)"
+                    moreString += " - \((song.album?.name)!)"
                 }
             }
         }
@@ -173,8 +176,6 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
             playbackLocation.tintColor = UIColor.darkGray
         }
         setColors()
-       
-        
     }
     
     func waitForColors(){
@@ -216,6 +217,10 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     
     func songStateChange(isPaused: Bool){
         musicUIController.updatePlayPauseButtonState(isPaused)
+    }
+    
+    func updateRestrictions(_ restrictions: SPTAppRemotePlaybackRestrictions){
+        musicUIController.updateViewWithRestrictions(restrictions)
     }
     
     func reset(){

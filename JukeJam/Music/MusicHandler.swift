@@ -5,6 +5,7 @@ protocol MusicHandlerDelegate: class {
     func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState)
     func updateUI(song: Song)
     func songStateChange(isPaused: Bool)
+    func updateRestrictions(_ restrictions: SPTAppRemotePlaybackRestrictions)
 }
 
 class MusicHandler: NSObject, SpotifyHandlerDelegate {
@@ -167,6 +168,8 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
         //else updateUI 
             delegate?.updateUI(song: currentSong!)
             delegate!.songStateChange(isPaused: playerState.isPaused)
+            delegate!.updateRestrictions(playerState.playbackRestrictions)
+
 
     }
     

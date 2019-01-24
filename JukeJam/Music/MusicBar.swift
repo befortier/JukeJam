@@ -26,31 +26,25 @@ class MusicBar: UIView, MusicHandlerDelegate {
     var coverImage: UIImage?
     var songText: String?
   
-    var musicUIController: MusicUIController?
+    var musicUIController: MusicUIController!
   
      init(frame: CGRect, handler: MusicHandler){
         super.init(frame:frame)
         self.musicHandler = handler
         overAllInit()
-
-
     }
     
 
  
     required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
-        overAllInit()
     }
     
     func overAllInit(){
-      
         commonInit()
         setupView()
         initSongController()
         musicUIController = MusicUIController(state: state, next: nextSong, cover: cover, song: song, handler: musicHandler!)
-      
-
     }
     
     private func initSongController(){
@@ -117,17 +111,19 @@ class MusicBar: UIView, MusicHandlerDelegate {
     
     func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
         if (musicHandler?.spotifyHandler.appRemote.isConnected)!{
-            musicUIController?.updateCurrentSong(playerState: playerState)
+            musicUIController.updateCurrentSong(playerState: playerState)
         }
     }
     
     func songStateChange(isPaused: Bool){
-        musicUIController!.updatePlayPauseButtonState(isPaused)
+        musicUIController.updatePlayPauseButtonState(isPaused)
+    }
+    func updateRestrictions(_ restrictions: SPTAppRemotePlaybackRestrictions){
+        musicUIController.updateViewWithRestrictions(restrictions)
     }
     
     func reset(){
-        musicUIController?.reset()
-
+        musicUIController.reset()
     }
  
 
