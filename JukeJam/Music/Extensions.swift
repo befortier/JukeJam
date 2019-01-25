@@ -1,6 +1,12 @@
 import Foundation
 import ChameleonFramework
 extension UIView{
+    func round(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        self.layer.mask = mask
+    }
     func assignImageGradientColor(colors: [UIColor]){
         if colors.count == 0{
             return

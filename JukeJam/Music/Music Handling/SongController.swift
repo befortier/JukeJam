@@ -2,7 +2,8 @@
 import UIKit
 import SPStorkController
 import ChameleonFramework
-
+import WCLShineButton
+import AVFoundation
 class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelegate {
     
     
@@ -42,7 +43,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         scheduledTimerWithTimeInterval()
-
+        addButtons()
         initBasics()
         initUI()
         initMovableImageView()
@@ -50,6 +51,78 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
         closingGesture()
         musicUIController = MusicUIController(state: state, next: nextSong, cover: newCover, song: song, prev: prevSong,  handler: musicHandler!)
         updateSlider()
+    }
+    var backgroundView: UIView!
+    var dragView: UISlider!
+    var newView: UIView!
+    func addButtons(){
+        var param2 = WCLShineParams()
+        param2.bigShineColor = UIColor(rgb: (255,95,89))
+        param2.smallShineColor = UIColor(rgb: (216,152,148))
+        param2.shineCount = 15
+        param2.animDuration = 2
+        param2.smallShineOffsetAngle = -5
+        backgroundView = UIView(frame: CGRect(x: 10, y: seeMoreButton.frame.maxY - 50, width: 50, height: 50))
+        backgroundView.layer.cornerRadius = backgroundView.frame.width/2
+        backgroundView.alpha = 0
+        backgroundView.backgroundColor = UIColor(rgb: (220,220,220))
+        backgroundView.layer.borderWidth = 4
+        backgroundView.layer.borderColor = UIColor(rgb: (255,95,89)).cgColor
+      
+        let bt1 = WCLShineButton(frame: .init(x: 23, y: seeMoreButton.frame.maxY - 40, width: 30, height: 30), params:param2)
+        bt1.image = .custom(UIImage(named: "lowsound")!)
+        bt1.addTarget(self, action: #selector(volumeAnimate), for: .valueChanged)
+        let width = 2*seeMoreButton.frame.minX/3 - 20
+       
+
+        dragView = VolumeSlider(frame: CGRect(x: bt1.center.x + 20, y: bt1.center.y - 10, width: width, height: 20))
+
+        dragView.round(corners: [.topRight, .bottomRight], radius: 10)
+        dragView.setThumbImage(UIImage(), for: .normal)
+
+        dragView.alpha = 0
+        dragView.value = 0
+        dragView.backgroundColor = UIColor(rgb: (255,95,89))
+        dragView.tintColor = UIColor(rgb: (255,95,89))
+        dragView.addTarget(self, action: #selector(volumeChange(sender:)), for: .valueChanged)
+
+//        dragView.trackRect(forBounds: dragView.frame)
+
+        buttonsView.addSubview(dragView)
+        buttonsView.addSubview(backgroundView)
+        buttonsView.addSubview(bt1)
+    }
+    
+    @objc func volumeChange(sender: UISlider){
+
+        print("HERE Value is: ",dragView.alpha)
+    }
+
+    @objc func volumeAnimate(){
+        print("HERE dragView: ", dragView.isSelected)
+        var alpha:CGFloat = 1
+        var duration = 0.7
+        if dragView.isSelected{
+            alpha = 0
+            duration = 0.2
+        }
+        dragView.isSelected = !dragView.isSelected
+
+        let  audioSession = AVAudioSession.sharedInstance()
+        let volume : Float = audioSession.outputVolume
+        UIView.animate(withDuration: duration, delay: 0, options: [], animations: {
+            self.dragView.value = volume
+            self.backgroundView.alpha = alpha
+            self.dragView.alpha = alpha
+
+
+
+        }, completion: {
+            (value: Bool) in
+ 
+        })
+        
+        
     }
     
     func initBasics(){
@@ -320,3 +393,16 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
 }
 
 
+class VolumeSlider: UISlider{
+    override func trackRect(forBounds bounds: CGRect) -> CGRect {
+        let customBounds = CGRect(origin: CGPoint(x: bounds.origin.x , y: bounds.origin.y), size: CGSize(width: bounds.size.width, height: 20))
+
+        super.trackRect(forBounds: customBounds)
+        return customBounds
+    }
+   
+    override func awakeFromNib() {
+        self.setThumbImage(UIImage(), for: .normal)
+        super.awakeFromNib()
+    }
+}

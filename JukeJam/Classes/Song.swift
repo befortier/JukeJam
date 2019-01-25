@@ -21,6 +21,7 @@ class Song: NSObject {
 
     init(id: String, title: String, duration: Int, artist: [Artist], album: Album){
         super.init()
+        self.album = album
         DispatchQueue.global().async {
             self.initColors()
         }
@@ -28,10 +29,10 @@ class Song: NSObject {
         self.title = title
         self.duration = duration
         self.artist = artist
-        self.album = album
         }
     
     func initColors(){
+       
         imageAvColor = AverageColorFromImage(self.album!.cover!)
         imageColors = [imageAvColor]
         var colors = ColorsFromImage(self.album!.cover!, withFlatScheme: true)

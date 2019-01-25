@@ -120,6 +120,7 @@ PODS:
   - SPStorkController (1.2.1)
   - SwiftIconFont (3.0.0)
   - SwiftyOnboard (1.3.8)
+  - WCLShineButton (1.0.7)
 
 DEPENDENCIES:
   - Alamofire
@@ -143,6 +144,7 @@ DEPENDENCIES:
   - SPStorkController
   - SwiftIconFont
   - SwiftyOnboard
+  - WCLShineButton
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -180,6 +182,7 @@ SPEC REPOS:
     - SPStorkController
     - SwiftIconFont
     - SwiftyOnboard
+    - WCLShineButton
 
 EXTERNAL SOURCES:
   ChameleonFramework:
@@ -226,7 +229,8 @@ SPEC CHECKSUMS:
   SPStorkController: 2af3d81bceda074761092718295577edf8daf99d
   SwiftIconFont: 2ba18554a77c44948dc35b561b344e3c23834a84
   SwiftyOnboard: de60e90c2af23dd61b01ec0c6a8d0be3370f857b
+  WCLShineButton: d8b979b6f6f9f6709f9e241e6e1a4712a1a9b36b
 
-PODFILE CHECKSUM: 240942d11ea1a83e30f40d428d94c6b8deab6508
+PODFILE CHECKSUM: d685dd90d61f1b04c241fdff1551d74511555a10
 
 COCOAPODS: 1.5.3

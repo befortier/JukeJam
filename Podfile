@@ -6,6 +6,7 @@ target 'JukeJam' do
   use_frameworks!
 
   # Pods for JukeJam
+pod 'WCLShineButton'
 pod 'Spartan'
 pod 'Alamofire'
 pod 'MarqueeLabel/Swift'
