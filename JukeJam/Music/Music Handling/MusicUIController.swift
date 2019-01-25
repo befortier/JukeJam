@@ -10,8 +10,8 @@ class MusicUIController: NSObject {
     var coverImageView: UIImageView!
     var songLabel: UILabel!
     var handler: MusicHandler!
-    var playImage: UIImage = UIImage(named: "play")!
-    var pauseImage: UIImage = UIImage(named: "pause")!
+    var playImage = UIImage(named: "play")!
+    var pauseImage = UIImage(named: "pause")!
     var buttons: [UIButton] = []
     
     init(state: UIButton, next: UIButton, cover: UIImageView, song: UILabel, handler: MusicHandler){
@@ -32,6 +32,8 @@ class MusicUIController: NSObject {
         prevButton.layer.cornerRadius = prevButton.frame.width/2
         prevButton.setBackgroundColor(color: .lightGray, forState: .highlighted)
         buttons.append(prevButton)
+        
+
     }
     
     func initButtons(){

@@ -57,6 +57,7 @@
 		57A71B8321DAC35E0004FEDA /* Home_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B8221DAC35E0004FEDA /* Home_Extensions.swift */; };
 		57A71B8521DAE7C20004FEDA /* FocalDiv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B8421DAE7C20004FEDA /* FocalDiv.swift */; };
 		57A71BCC21DD79A10004FEDA /* FocalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71BCB21DD79A10004FEDA /* FocalCell.swift */; };
+		57DB19B121FBAEE700499262 /* VolumeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB19B021FBAEE700499262 /* VolumeSlider.swift */; };
 		A192870A15E2A0E3907C222F /* Pods_JukeJam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C524A3C296FA0FA1ECB8D542 /* Pods_JukeJam.framework */; };
 		DDFE68C93A2BFA5D375DE21C /* Pods_JukeJamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004AFC0649B601D4D739F439 /* Pods_JukeJamUITests.framework */; };
 /* End PBXBuildFile section */
@@ -136,6 +137,7 @@
 		57A71B8221DAC35E0004FEDA /* Home_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_Extensions.swift; sourceTree = "<group>"; };
 		57A71B8421DAE7C20004FEDA /* FocalDiv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocalDiv.swift; sourceTree = "<group>"; };
 		57A71BCB21DD79A10004FEDA /* FocalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocalCell.swift; sourceTree = "<group>"; };
+		57DB19B021FBAEE700499262 /* VolumeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSlider.swift; sourceTree = "<group>"; };
 		67E3891D8656B3727F290E4F /* Pods-JukeJamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamUITests/Pods-JukeJamUITests.release.xcconfig"; sourceTree = "<group>"; };
 		80ABB1DCCD1F0460F42DC674 /* Pods_JukeJamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99D3010B0845393C4B227B9B /* Pods-JukeJamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamTests/Pods-JukeJamTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				57A71B8421DAE7C20004FEDA /* FocalDiv.swift */,
 				57A71BCB21DD79A10004FEDA /* FocalCell.swift */,
 				576410FA21E2A47F0009525B /* FocalButton.swift */,
+				57DB19B021FBAEE700499262 /* VolumeSlider.swift */,
 			);
 			path = FocalUI;
 			sourceTree = "<group>";
@@ -693,6 +696,7 @@
 				5705943121D5B2CA00F4F5CB /* profileImage.swift in Sources */,
 				570CB7E121E94A24009DCA6D /* ConnectionStatusIndicatorView.swift in Sources */,
 				5705940821D2D31500F4F5CB /* Login_Extension.swift in Sources */,
+				57DB19B121FBAEE700499262 /* VolumeSlider.swift in Sources */,
 				5705940C21D2D31500F4F5CB /* SignUpController.swift in Sources */,
 				570CB7D821E7DD55009DCA6D /* HomeController.swift in Sources */,
 				570CB7E821E953B7009DCA6D /* SongController.swift in Sources */,
