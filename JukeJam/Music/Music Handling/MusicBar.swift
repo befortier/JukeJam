@@ -101,12 +101,17 @@ class MusicBar: UIView, MusicHandlerDelegate {
             ])
     }
     func updateUI(song: Song){
+            self.cover.image = song.album?.cover
+            self.song.text = song.title
             let transition = CATransition()
             transition.duration = 0.3
             transition.type = CATransitionType.fade
             self.cover.layer.add(transition, forKey: "transition")
-            self.cover.image = song.album?.cover
-            self.song.text = song.title
+    }
+    
+    func updateState(state: SPTAppRemotePlayerState) {
+        musicUIController.updatePlayPauseButtonState(state.isPaused)
+        musicUIController.updateViewWithRestrictions(state.playbackRestrictions)
     }
     
     func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
@@ -114,13 +119,8 @@ class MusicBar: UIView, MusicHandlerDelegate {
             musicUIController.updateView(playerState: playerState)
         }
     }
-    
-    func songStateChange(isPaused: Bool){
-        musicUIController.updatePlayPauseButtonState(isPaused)
-    }
-    func updateRestrictions(_ restrictions: SPTAppRemotePlaybackRestrictions){
-        musicUIController.updateViewWithRestrictions(restrictions)
-    }
+
+
     
     func reset(){
         musicUIController.reset()

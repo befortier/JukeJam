@@ -4,8 +4,7 @@ import StoreKit
 protocol MusicHandlerDelegate: class {
     func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState)
     func updateUI(song: Song)
-    func songStateChange(isPaused: Bool)
-    func updateRestrictions(_ restrictions: SPTAppRemotePlaybackRestrictions)
+    func updateState(state: SPTAppRemotePlayerState)
 }
 
 class MusicHandler: NSObject, SpotifyHandlerDelegate {
@@ -159,18 +158,14 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
     }
     
     func updateView(playerState: SPTAppRemotePlayerState) {
-        
         //Track changed update currentSong
         if playerState.track.name != currentSong?.title{
             delegate!.updateViewWithPlayerState(playerState)
             return
         }
         //else updateUI 
-            delegate?.updateUI(song: currentSong!)
-            delegate!.songStateChange(isPaused: playerState.isPaused)
-            delegate!.updateRestrictions(playerState.playbackRestrictions)
-
-
+        delegate?.updateUI(song: currentSong!)
+        delegate?.updateState(state: playerState)
     }
     
     func playSong(id: String){

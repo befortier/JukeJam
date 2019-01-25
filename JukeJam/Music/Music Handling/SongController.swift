@@ -23,7 +23,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     @IBOutlet weak var nextSong: UIButton!
     @IBOutlet weak var state: UIButton!
     var musicHandler: MusicHandler?
-
+    var isPaused: Bool = true
     let newCoverFrame = UIView()
     let newCover = UIImageView()
     var averageColor: UIColor?
@@ -32,15 +32,24 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     var allowChange: Bool!
     var scrollOffset: CGFloat!
     var const: CGFloat!
+    var timer = Timer()
+    
+    
+    
 
+ 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        scheduledTimerWithTimeInterval()
+
         initBasics()
         initUI()
         initMovableImageView()
         waitForColors()
         closingGesture()
         musicUIController = MusicUIController(state: state, next: nextSong, cover: newCover, song: song, prev: prevSong,  handler: musicHandler!)
+        updateSlider()
     }
     
     func initBasics(){
@@ -120,6 +129,8 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
 
     }
     
+  
+    
     func initUI(){
         self.modalPresentationCapturesStatusBarAppearance = true
         setColors()
@@ -138,17 +149,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     }
     
   
-    func updateUI(song: Song){
-        self.newCover.image = song.album?.cover
-        waitForColors()
-        let transition = CATransition()
-        transition.duration = 0.3
-        transition.type = CATransitionType.fade
-        self.newCover.layer.add(transition, forKey: "transition")
-        self.song.text = song.title
-        assignMoreText(song: song)
-        
-    }
+ 
     func assignMoreText(song: Song){
         //TEST with multiple artists see what is looks like
         var moreString:String = ""
@@ -214,14 +215,44 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
         }
     }
     
-    func songStateChange(isPaused: Bool){
-        musicUIController.updatePlayPauseButtonState(isPaused)
+    func updateUI(song: Song){
+        self.newCover.image = song.album?.cover
+        waitForColors()
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.type = CATransitionType.fade
+        self.newCover.layer.add(transition, forKey: "transition")
+        self.song.text = song.title
+        assignMoreText(song: song)
+        updateSlider()
     }
     
-    func updateRestrictions(_ restrictions: SPTAppRemotePlaybackRestrictions){
-        musicUIController.updateViewWithRestrictions(restrictions)
+    func updateState(state: SPTAppRemotePlayerState){
+        musicUIController.updatePlayPauseButtonState(state.isPaused)
+        musicUIController.updateViewWithRestrictions(state.playbackRestrictions)
+        self.isPaused = state.isPaused
+        playbackLocation.value = Float(state.playbackPosition)
+
     }
     
+    func scheduledTimerWithTimeInterval(){
+        // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.updateCounting), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateCounting(){
+        if !self.isPaused{
+            playbackLocation.value += 100
+        }
+    }
+
+    func updateSlider(){
+        if let song = musicHandler?.currentSong{
+            playbackLocation.minimumValue = 0
+            playbackLocation.maximumValue = Float(song.duration)
+        }
+    }
+
     func reset(){
         musicUIController?.reset()
     }
