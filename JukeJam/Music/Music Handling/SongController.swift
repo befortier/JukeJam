@@ -35,7 +35,10 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     var scrollOffset: CGFloat!
     var const: CGFloat!
     var timer = Timer()
-    
+    var backgroundView: UIView!
+    var dragView: UISlider!
+    var newView: UIView!
+    var bt1: WCLShineButton!
     
     
 
@@ -53,9 +56,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
         musicUIController = MusicUIController(state: state, next: nextSong, cover: newCover, song: song, prev: prevSong,  handler: musicHandler!)
         updateSlider()
     }
-    var backgroundView: UIView!
-    var dragView: UISlider!
-    var newView: UIView!
+    
     func addButtons(){
         var param2 = WCLShineParams()
         param2.bigShineColor = UIColor(rgb: (255,95,89))
@@ -70,9 +71,8 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
         backgroundView.layer.borderWidth = 4
         backgroundView.layer.borderColor = UIColor(rgb: (255,95,89)).cgColor
       
-        let bt1 = WCLShineButton(frame: .init(x: 23, y: seeMoreButton.frame.maxY - 40, width: 30, height: 30), params:param2)
+         bt1 = WCLShineButton(frame: .init(x: 23, y: seeMoreButton.frame.maxY - 40, width: 30, height: 30), params:param2)
         bt1.image = .custom(UIImage(named: "lowsound")!)
-        bt1.addTarget(self, action: #selector(volumeAnimate), for: .valueChanged)
         let width = 2*seeMoreButton.frame.minX/3 - 20
        
 
@@ -85,22 +85,69 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
         dragView.value = 0
         dragView.backgroundColor = UIColor(rgb: (255,95,89))
         dragView.tintColor = UIColor(rgb: (255,95,89))
-        dragView.addTarget(self, action: #selector(volumeChange(sender:)), for: .valueChanged)
+        dragView.addTarget(self, action: #selector(volumeChange(slider:event:)), for: .valueChanged)
 
-//        dragView.trackRect(forBounds: dragView.frame)
+
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapHandler))
+        backgroundView.addGestureRecognizer(tap)
+        bt1.addTarget(self, action: #selector(volumeAnimate), for: .valueChanged)
 
         buttonsView.addSubview(dragView)
         buttonsView.addSubview(backgroundView)
         buttonsView.addSubview(bt1)
     }
-    
-    @objc func volumeChange(sender: UISlider){
-        MPVolumeView.setVolume(sender.value)
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        tapHandler()
+        super.touchesEnded(touches, with: event)
     }
+
+    @objc func tapHandler(){
+        if !scrollView.isScrollEnabled{
+            bt1.sendActions(for: .valueChanged)
+            bt1.setClicked(false)
+        }
+    }
+    @objc func volumeChange(slider: UISlider, event: UIEvent) {
+        if let touchEvent = event.allTouches?.first {
+            switch touchEvent.phase {
+            case .began:
+                toggleGestures(allow:false)
+
+                
+            case .moved:
+                MPVolumeView.setVolume(slider.value)
+                break
+                
+            case .ended:
+                toggleGestures(allow: true)
+
+            default:
+                break
+            }
+        }
+    }
+    func toggleVolume(duration: TimeInterval, alpha: CGFloat){
+        
+        let  audioSession = AVAudioSession.sharedInstance()
+        let volume : Float = audioSession.outputVolume
+        UIView.animate(withDuration: duration, delay: 0, options: [], animations: {
+            self.dragView.value = volume
+            self.backgroundView.alpha = alpha
+            self.dragView.alpha = alpha
+            
+            
+            
+        }, completion: {
+            (value: Bool) in
+            
+        })
+    }
+
 
     @objc func volumeAnimate(){
         var alpha:CGFloat = 1
-        var duration = 0.7
+        var duration = 0.5
         if dragView.isSelected{
             alpha = 0
             duration = 0.2
@@ -110,23 +157,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
             scrollView.isScrollEnabled = false
         }
         dragView.isSelected = !dragView.isSelected
-        
-
-        let  audioSession = AVAudioSession.sharedInstance()
-        let volume : Float = audioSession.outputVolume
-        UIView.animate(withDuration: duration, delay: 0, options: [], animations: {
-            self.dragView.value = volume
-            self.backgroundView.alpha = alpha
-            self.dragView.alpha = alpha
-
-
-
-        }, completion: {
-            (value: Bool) in
- 
-        })
-        
-        
+        toggleVolume(duration: duration, alpha: alpha)
     }
     
     func initBasics(){
@@ -173,7 +204,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
         if !adjust {
             adjustRate = 1
         }
-      
+        tapHandler()
         UIView.animate(withDuration: 0.4, delay: 0.0, options: UIView.AnimationOptions.layoutSubviews, animations: {
             self.gradientBackground.frame = CGRect(x: self.gradientBackground.frame.minX, y: self.gradientBackground.frame.minY, width: self.view.frame.width, height: self.gradientBackground.frame.height - self.const)
             self.newCoverFrame.center.y = self.gradientBackground.center.y + self.scrollOffset/10
@@ -371,7 +402,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
                 playbackLocation.setThumbImage(UIImage(named: "Bigger Circle"), for: UIControl.State.normal)
                 playbackLocation.tintColor = (self.averageColor ?? UIColor.darkGray).inverse()
                 viewBigger = false
-                
+          
                 
             case .ended:
                 toggleGestures(allow: true)
