@@ -4,6 +4,7 @@ import SPStorkController
 import ChameleonFramework
 import WCLShineButton
 import AVFoundation
+import MediaPlayer
 class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelegate {
     
     
@@ -94,19 +95,22 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     }
     
     @objc func volumeChange(sender: UISlider){
-
-        print("HERE Value is: ",dragView.alpha)
+        MPVolumeView.setVolume(sender.value)
     }
 
     @objc func volumeAnimate(){
-        print("HERE dragView: ", dragView.isSelected)
         var alpha:CGFloat = 1
         var duration = 0.7
         if dragView.isSelected{
             alpha = 0
             duration = 0.2
+            scrollView.isScrollEnabled = true
+        }
+        else{
+            scrollView.isScrollEnabled = false
         }
         dragView.isSelected = !dragView.isSelected
+        
 
         let  audioSession = AVAudioSession.sharedInstance()
         let volume : Float = audioSession.outputVolume

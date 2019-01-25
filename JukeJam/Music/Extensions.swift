@@ -1,5 +1,6 @@
 import Foundation
 import ChameleonFramework
+import MediaPlayer
 extension UIView{
     func round(corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
@@ -82,5 +83,15 @@ extension Dictionary {
         }
         
         return pairs.joined(separator: "&")
+    }
+}
+extension MPVolumeView {
+    static func setVolume(_ volume: Float) {
+        let volumeView = MPVolumeView()
+        let slider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01) {
+            slider?.value = volume
+        }
     }
 }
