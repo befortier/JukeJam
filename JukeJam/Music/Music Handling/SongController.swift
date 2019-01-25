@@ -145,7 +145,6 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
         newCoverFrame.layer.masksToBounds = false
         
 
-        playbackLocation.setThumbImage(UIImage(named: "Small Circle"), for: .normal)
     }
     
   
@@ -230,6 +229,13 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     func updateState(state: SPTAppRemotePlayerState){
         musicUIController.updatePlayPauseButtonState(state.isPaused)
         musicUIController.updateViewWithRestrictions(state.playbackRestrictions)
+        if !state.playbackRestrictions.canSeek{
+            playbackLocation.setThumbImage(UIImage(), for: .normal)
+        }
+        else{
+            playbackLocation.setThumbImage(UIImage(named: "Small Circle"), for: .normal)
+        }
+        playbackLocation.isEnabled = !state.playbackRestrictions.canSeek
         self.isPaused = state.isPaused
         playbackLocation.value = Float(state.playbackPosition)
 
