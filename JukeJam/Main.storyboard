@@ -1571,7 +1571,7 @@
                                                     <action selector="prevSong:" destination="sGq-3e-u4l" eventType="touchUpInside" id="TmB-Hs-aMh"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNb-sG-l0V">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNb-sG-l0V">
                                                 <rect key="frame" x="293" y="91" width="82" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <state key="normal" title="See More...">
@@ -1766,7 +1766,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="32W-tG-sNz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="417" y="3741"/>
+            <point key="canvasLocation" x="-63" y="2517"/>
         </scene>
         <!--Music-->
         <scene sceneID="kDs-aZ-k0I">

@@ -100,6 +100,8 @@ class MusicBar: UIView, MusicHandlerDelegate {
             self.containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             ])
     }
+    
+    
     func updateUI(song: Song){
             self.cover.image = song.album?.cover
             self.song.text = song.title
@@ -114,11 +116,7 @@ class MusicBar: UIView, MusicHandlerDelegate {
         musicUIController.updateViewWithRestrictions(state.playbackRestrictions)
     }
     
-    func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
-        if (musicHandler?.spotifyHandler.appRemote.isConnected)!{
-            musicUIController.updateView(playerState: playerState)
-        }
-    }
+  
 
 
     

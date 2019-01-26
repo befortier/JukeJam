@@ -44,26 +44,7 @@ class MusicUIController: NSObject {
     }
     
 
-     func updateCurrentSong(_ playerState: SPTAppRemotePlayerState) {
-        fetchAlbumArtForTrack(playerState.track) { (image) -> Void in
-            let artist = Artist(id: playerState.track.artist.uri)
-            artist.name = playerState.track.artist.name
-            let album = Album(id: playerState.track.album.uri)
-            album.name = playerState.track.album.name
-            album.cover = image
-            let newSong = Song(id: playerState.track.uri, title: playerState.track.name , duration: Int(playerState.track.duration), artist: [artist],  album: album)
-            self.handler?.currentSong = newSong
-        }
-    }
-    fileprivate func fetchAlbumArtForTrack(_ track: SPTAppRemoteTrack, callback: @escaping (UIImage) -> Void ) {
-        handler?.spotifyHandler.appRemote.imageAPI?.fetchImage(forItem: track, with:CGSize(width: 1000, height: 1000), callback: { (image, error) -> Void in
-            guard error == nil else {
-                return }
-            
-            let image = image as! UIImage
-            callback(image)
-        })
-    }
+  
     
 
     
@@ -88,18 +69,7 @@ class MusicUIController: NSObject {
     }
 
   
-    func updateView(playerState: SPTAppRemotePlayerState){
-        //If what is playing is not the same as the handler's current song update
-        if playerState.track.name != handler.currentSong?.title{
-            updateCurrentSong(playerState)
-        }
-        //If the current musicDisplayer isnt showing the same as the handler's current song
-        else {
-            updateViewWithRestrictions(playerState.playbackRestrictions)
-            updatePlayPauseButtonState(playerState.isPaused)
-            //        updateInterfaceForPodcast(playerState: playerState)
-        }
-    }
+ 
     
     func reset(){
         let playPauseButtonImage = playImage

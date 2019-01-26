@@ -2,7 +2,6 @@ import UIKit
 import StoreKit
 
 protocol MusicHandlerDelegate: class {
-    func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState)
     func updateUI(song: Song)
     func updateState(state: SPTAppRemotePlayerState)
 }
@@ -145,26 +144,17 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
     }
 
     
-    func addBar(frame: UIView) -> MusicBar{
-        frame.addSubview(musicBar)
-        NSLayoutConstraint.activate([
-            musicBar.topAnchor.constraint(equalTo: frame.topAnchor),
-            musicBar.bottomAnchor.constraint(equalTo: frame.bottomAnchor),
-            musicBar.leadingAnchor.constraint(equalTo: frame.leadingAnchor),
-            musicBar.trailingAnchor.constraint(equalTo: frame.trailingAnchor),
-            ])
-        self.musicBar.frame = CGRect(x: -2, y: frame.frame.height - 115, width: frame.frame.width + 4, height: 66)
-        return musicBar
-    }
+
     
     func updateView(playerState: SPTAppRemotePlayerState) {
         //Track changed update currentSong
         if playerState.track.name != currentSong?.title{
-            delegate!.updateViewWithPlayerState(playerState)
+            updateCurrentSong(playerState)
+//            delegate!.updateViewWithPlayerState(playerState)
             return
         }
         //else updateUI 
-        delegate?.updateUI(song: currentSong!)
+//        delegate?.updateUI(song: currentSong!)
         delegate?.updateState(state: playerState)
     }
     
@@ -191,8 +181,38 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
         }
     }
     
-
-
+    func addBar(frame: UIView) -> MusicBar{
+        frame.addSubview(musicBar)
+        NSLayoutConstraint.activate([
+            musicBar.topAnchor.constraint(equalTo: frame.topAnchor),
+            musicBar.bottomAnchor.constraint(equalTo: frame.bottomAnchor),
+            musicBar.leadingAnchor.constraint(equalTo: frame.leadingAnchor),
+            musicBar.trailingAnchor.constraint(equalTo: frame.trailingAnchor),
+            ])
+        self.musicBar.frame = CGRect(x: -2, y: frame.frame.height - 115, width: frame.frame.width + 4, height: 66)
+        return musicBar
+    }
+    
+    func updateCurrentSong(_ playerState: SPTAppRemotePlayerState) {
+        fetchAlbumArtForTrack(playerState.track) { (image) -> Void in
+            let artist = Artist(id: playerState.track.artist.uri)
+            artist.name = playerState.track.artist.name
+            let album = Album(id: playerState.track.album.uri)
+            album.name = playerState.track.album.name
+            album.cover = image
+            let newSong = Song(id: playerState.track.uri, title: playerState.track.name , duration: Int(playerState.track.duration), artist: [artist],  album: album)
+            self.currentSong = newSong
+        }
+    }
+    fileprivate func fetchAlbumArtForTrack(_ track: SPTAppRemoteTrack, callback: @escaping (UIImage) -> Void ) {
+       spotifyHandler.appRemote.imageAPI?.fetchImage(forItem: track, with:CGSize(width: 1000, height: 1000), callback: { (image, error) -> Void in
+            guard error == nil else {
+                return }
+            
+            let image = image as! UIImage
+            callback(image)
+        })
+    }
 }
 
 

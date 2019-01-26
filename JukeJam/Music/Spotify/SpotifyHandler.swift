@@ -38,9 +38,7 @@ SKStoreProductViewControllerDelegate {
             pausePlayback()
         }
     }
-    
-    
-    
+
     
     //Prev Song
     func didPressPreviousButton() {

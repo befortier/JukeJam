@@ -6,6 +6,7 @@ import WCLShineButton
 import AVFoundation
 import MediaPlayer
 class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelegate {
+ 
     
     
     @IBOutlet weak var ImagetoTop: NSLayoutConstraint!
@@ -50,6 +51,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
         closingGesture()
         musicUIController = MusicUIController(state: state, next: nextSong, cover: newCover, song: song, prev: prevSong,  handler: musicHandler!)
         updateSlider()
+        updateUI(song: (musicHandler?.currentSong)!)
     }
     
     func initBasics(){
@@ -208,17 +210,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     
  
     
-    func updateUI(song: Song){
-        self.newCover.image = song.album?.cover
-        waitForColors()
-        let transition = CATransition()
-        transition.duration = 0.3
-        transition.type = CATransitionType.fade
-        self.newCover.layer.add(transition, forKey: "transition")
-        self.song.text = song.title
-        assignMoreText(song: song)
-        updateSlider()
-    }
+  
     
   
     
@@ -229,13 +221,19 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     // *** MusicHandling Section ***************************************************
 
     //Should be called if song changes, update song majority of time. Should eventually move this/restructure
-    func updateViewWithPlayerState(_ playerState: SPTAppRemotePlayerState) {
-        if viewBigger{
-            toggleScrollUI(adjust: false)
-        }
-        if (musicHandler?.spotifyHandler.appRemote.isConnected)!{
-            musicUIController?.updateView(playerState: playerState)
-        }
+   
+    
+    // Called when currentSong is changed
+    func updateUI(song: Song){
+        self.newCover.image = song.album?.cover
+        waitForColors()
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.type = CATransitionType.fade
+        self.newCover.layer.add(transition, forKey: "transition")
+        self.song.text = song.title
+        assignMoreText(song: song)
+        updateSlider()
     }
     
     //Previous Song
@@ -457,7 +455,8 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
         volumeButton.params.bigShineColor = color
         volumeButton.params.smallShineColor = color2
         volumeButton.fillColor = color
-}
+    }
+    
 }
 
 
