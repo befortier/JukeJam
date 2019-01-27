@@ -41,6 +41,9 @@ class SpotifyFetcher: NSObject {
     })
     }
    
+    fileprivate func createSong(){
+        
+    }
     
     func getPlaylists(userId: Any ){
         var userId = userId as! String

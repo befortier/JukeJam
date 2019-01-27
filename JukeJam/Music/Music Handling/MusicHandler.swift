@@ -28,6 +28,7 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
 
     var currentSong: Song?{
         didSet{
+            print("HERE should only change song once")
             delegate!.updateUI(song: self.currentSong!)
         }
     }
@@ -148,13 +149,14 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
     
     func updateView(playerState: SPTAppRemotePlayerState) {
         //Track changed update currentSong
+        print("HERE ", playerState.track.name, currentSong?.title)
         if playerState.track.name != currentSong?.title{
             updateCurrentSong(playerState)
 //            delegate!.updateViewWithPlayerState(playerState)
             return
         }
-        //else updateUI 
-//        delegate?.updateUI(song: currentSong!)
+        
+
         delegate?.updateState(state: playerState)
     }
     

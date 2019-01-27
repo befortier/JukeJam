@@ -146,8 +146,6 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
         newCoverFrame.layer.shadowRadius = 4.0
         newCoverFrame.layer.shadowOpacity = 0.7
         newCoverFrame.layer.masksToBounds = false
-        
-
     }
     
   
@@ -264,6 +262,10 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     
     //Called from MusicHandler if state is changed, updates pause/play button, restrictions, local isPaused var used for playBack location, and updates playbackLocation value
     func updateState(state: SPTAppRemotePlayerState){
+        if song.text != musicHandler?.currentSong?.title{
+            updateUI(song: (musicHandler?.currentSong!)!)
+        }
+
         musicUIController.updatePlayPauseButtonState(state.isPaused)
         musicUIController.updateViewWithRestrictions(state.playbackRestrictions)
         if !state.playbackRestrictions.canSeek{
@@ -370,6 +372,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
                 
                 
             case .moved:
+                print("HERE should set it?")
                 MPVolumeView.setVolume(slider.value)
                 break
                 
@@ -384,10 +387,9 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     
     //Does actual animating of showing or hiding volume UI
     func animateVolume(duration: TimeInterval, alpha: CGFloat){
-        let  audioSession = AVAudioSession.sharedInstance()
-        let volume : Float = audioSession.outputVolume
+ 
         UIView.animate(withDuration: duration, delay: 0, options: [], animations: {
-            self.volumeSlider.value = volume
+//            self.volumeSlider.value = volume
             self.volumeBackgroundView.alpha = alpha
             self.volumeSlider.alpha = alpha
         }, completion: {
@@ -441,6 +443,9 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
         let width = 2*seeMoreButton.frame.minX/3 - 20
         let tempSlider = VolumeSlider(frame: CGRect(x: volumeButton.center.x + 20, y: volumeButton.center.y - 10, width: width, height: 20))
         tempSlider.addTarget(self, action: #selector(volumeChange(slider:event:)), for: .valueChanged)
+        let  audioSession = AVAudioSession.sharedInstance()
+        let volume : Float = audioSession.outputVolume
+        tempSlider.value = volume
         return tempSlider
     }
     

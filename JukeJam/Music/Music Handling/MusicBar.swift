@@ -112,8 +112,13 @@ class MusicBar: UIView, MusicHandlerDelegate {
     }
     
     func updateState(state: SPTAppRemotePlayerState) {
+        if song.text != musicHandler?.currentSong?.title{
+            updateUI(song: (musicHandler?.currentSong!)!)
+        }
         musicUIController.updatePlayPauseButtonState(state.isPaused)
         musicUIController.updateViewWithRestrictions(state.playbackRestrictions)
+        self.setNeedsDisplay()
+        self.setNeedsLayout()
     }
     
   
