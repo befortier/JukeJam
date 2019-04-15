@@ -123,7 +123,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     }
     
     func setColors(){
-        self.gradientBackground.assignImageGradientColor(colors: (musicHandler!.currentSong?.imageColors)!)
+        self.gradientBackground.assignImageGradientColor(colors: (musicHandler!.currentSong?.album?.imageColors)!)
         self.gradientBackground.addFadeOut()
 
     }
@@ -169,8 +169,8 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     }
 
     func updateColorUI(){
-        if musicHandler!.currentSong?.imageAvColor != nil{
-            averageColor = musicHandler!.currentSong?.imageAvColor
+        if musicHandler!.currentSong?.album?.imageAvColor != nil{
+            averageColor = musicHandler!.currentSong?.album?.imageAvColor
             newCover.layer.borderColor = averageColor!.inverse().cgColor
             newCoverFrame.layer.shadowColor = averageColor!.inverse().cgColor
             playbackLocation.tintColor = UIColor.darkGray
@@ -181,7 +181,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     func waitForColors(){
         updateColorUI()
         DispatchQueue.global(qos: .background).async {
-            while self.musicHandler!.currentSong?.imageAvColor == nil{
+            while self.musicHandler!.currentSong?.album?.imageAvColor == nil{
                 
             }
             while self.viewBigger{
@@ -192,7 +192,7 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
                 self.gradientBackground.setNeedsDisplay()
                 self.gradientBackground.setNeedsLayout()
                   }
-            while self.musicHandler!.currentSong?.imageColors.count != 2{
+            while self.musicHandler!.currentSong?.album?.imageColors.count != 2{
                 
             }
             while self.viewBigger{
@@ -444,7 +444,11 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
         let tempSlider = VolumeSlider(frame: CGRect(x: volumeButton.center.x + 20, y: volumeButton.center.y - 10, width: width, height: 20))
         tempSlider.addTarget(self, action: #selector(volumeChange(slider:event:)), for: .valueChanged)
         let  audioSession = AVAudioSession.sharedInstance()
+
+      
+
         let volume : Float = audioSession.outputVolume
+  
         tempSlider.value = volume
         return tempSlider
     }

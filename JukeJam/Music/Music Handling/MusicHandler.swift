@@ -28,7 +28,6 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
 
     var currentSong: Song?{
         didSet{
-            print("HERE should only change song once")
             delegate!.updateUI(song: self.currentSong!)
         }
     }
@@ -43,7 +42,7 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
         super.init()
         
         appleHandler = AppleHandler()
-//        spotifyFetcher = SpotifyFetcher()
+        spotifyFetcher = SpotifyFetcher()
     
         spotifyHandler = SpotifyHandler()
         musicBar = MusicBar(frame: CGRect(x: 0, y: 0, width: 0, height: 0), handler: self)
@@ -156,6 +155,7 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
             return
         }
         
+        
 
         delegate?.updateState(state: playerState)
     }
@@ -197,11 +197,8 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
     
     func updateCurrentSong(_ playerState: SPTAppRemotePlayerState) {
         fetchAlbumArtForTrack(playerState.track) { (image) -> Void in
-            let artist = Artist(id: playerState.track.artist.uri)
-            artist.name = playerState.track.artist.name
-            let album = Album(id: playerState.track.album.uri)
-            album.name = playerState.track.album.name
-            album.cover = image
+            let artist = Artist(id: playerState.track.artist.uri, name: playerState.track.artist.name)
+            let album = Album(id: playerState.track.album.uri, name: playerState.track.album.name, cover: image)
             let newSong = Song(id: playerState.track.uri, title: playerState.track.name , duration: Int(playerState.track.duration), artist: [artist],  album: album)
             self.currentSong = newSong
         }

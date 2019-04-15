@@ -52,16 +52,17 @@ class SpotifyFetcher: NSObject {
         _ = Spartan.getUsersPlaylists(userId: userId, limit: 20, offset: 0, success: { (pagingObject) in
 //            pagingObject.items.forEach({ (playlist) in
                 let playlistId = pagingObject.items[6].id as! String
-            let user_playlist = Playlist(id: playlistId)
-                
+//            let followers = pagingObj
+            
                 _ = Spartan.getUsersPlaylist(userId: userId, playlistId: playlistId, fields: nil, market: .us, success: { (playlist) in
-                    user_playlist.followers = playlist.followers.total
-                    user_playlist.name = playlist.name
-                    user_playlist.owner = playlist.owner
-                    user_playlist.about = playlist.description
+//                    user_playlist.followers = playlist.followers.total
+//                    user_playlist.name = playlist.name
+//                    user_playlist.owner = playlist.owner
+//                    user_playlist.about = playlist.description
                     //Might be worth it to just have one image, because first appears to be biggest for all. Will test
-                    user_playlist.cover? = playlist.images[0].url.toImage()
-                    print("HERE cover: ",user_playlist.cover, playlist.images[0].url.toImage(), playlist.images[0].url)
+                    let user_playlist = Playlist(id: playlistId, followers:playlist.followers.total, owner: playlist.owner, tracks: [], about: playlist.spotifyDescription as! String, name:playlist.name )
+
+//                    print("HERE cover: ",user_playlist.cover, playlist.images[0].url.toImage(), playlist.images[0].url)
 //                    user_playlist.cover
                     //Used to get tracks from playlist
                     _ = Spartan.getPlaylistTracks(userId: userId, playlistId: playlistId, limit: 1, offset: 0, fields: nil, market: .us, success: { (pagingObject) in
@@ -74,15 +75,14 @@ class SpotifyFetcher: NSObject {
                             var duration = track?.durationMs
                             var artists: [Artist] = []
                             track?.artists.forEach({ (artist) in
-                                let curArtist = Artist(id: artist.id as! String)
+                                let curArtist = Artist(id: artist.id as! String, name: artist.name as! String)
                                 curArtist.name = artist.name
                                 artists.append(curArtist)
                             })
 //                            var cover = track?.album.images[0].url.toImage()
-                            var album = Album(id: track?.album.id as! String)
-                            album.name = track?.album.name
-                            album.cover = track?.album.images[0].url.toImage()
+                        var album = Album(id: track?.album.id as! String, name: track?.album.name, cover:track?.album.images[0].url.toImage() )
                         let song = Song(id: id, title: title!, duration: duration!, artist: artists, album: album)
+//                        print("HERE Song is set", song.title, song.artist)
 //                        })
                         
                     }, failure: { (error) in

@@ -1,6 +1,5 @@
 
 import UIKit
-import ChameleonFramework
 
 class Song: NSObject {
 
@@ -9,37 +8,35 @@ class Song: NSObject {
     var title: String?
     var duration: Int = 0
     var artist: [Artist]?
-    var imageColors: [UIColor] = []
-    var imageAvColor: UIColor!
-    var album: Album?{
-        didSet{
-            DispatchQueue.global().async {
-                self.initColors()
-            }
-        }
-    }
+    var album: Album?
 
     init(id: String, title: String, duration: Int, artist: [Artist], album: Album){
         super.init()
         self.album = album
-        DispatchQueue.global().async {
-            self.initColors()
-        }
         self.id = id
         self.title = title
         self.duration = duration
         self.artist = artist
         }
     
-    func initColors(){
-       
-        imageAvColor = AverageColorFromImage(self.album!.cover!)
-        imageColors = [imageAvColor]
-        var colors = ColorsFromImage(self.album!.cover!, withFlatScheme: true)
-        imageColors = [colors[0],colors[1]]
-        imageColors.sort(by: {$0.hue < $1.hue})
+    required convenience init(coder aDecoder: NSCoder) {
+        let duration = aDecoder.decodeInteger(forKey: "duration")
+        let id = aDecoder.decodeObject(forKey: "id") as! String
+        let title = aDecoder.decodeObject(forKey: "title") as! String
+        let album = aDecoder.decodeObject(forKey: "album") as! Album
+        let artist = aDecoder.decodeObject(forKey: "artist") as! [Artist]
+        self.init(id: id, title: title, duration: duration, artist: artist, album: album)
     }
     
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(id, forKey: "id")
+        aCoder.encode(title, forKey: "title")
+        aCoder.encode(duration, forKey: "duration")
+        aCoder.encode(artist, forKey: "artist")
+        aCoder.encode(album, forKey: "album")
+    }
+    
+
    
 }
 

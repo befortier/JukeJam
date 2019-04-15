@@ -22,7 +22,6 @@
 		5705942C21D5416A00F4F5CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5705942B21D5416A00F4F5CB /* Main.storyboard */; };
 		5705942F21D571A500F4F5CB /* ConfirmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705942E21D571A500F4F5CB /* ConfirmController.swift */; };
 		5705943121D5B2CA00F4F5CB /* profileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5705943021D5B2CA00F4F5CB /* profileImage.swift */; };
-		57061FFA21E3CEC8009869BE /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57061FF921E3CEC8009869BE /* SpotifyiOS.framework */; };
 		5706200421E4107D009869BE /* ConnectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5706200321E4107D009869BE /* ConnectButton.swift */; };
 		5706200821E66D23009869BE /* MusicPlayingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5706200721E66D23009869BE /* MusicPlayingController.swift */; };
 		5706201721E7B76D009869BE /* MusicBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5706201621E7B76D009869BE /* MusicBar.swift */; };
@@ -57,6 +56,7 @@
 		57A71B8321DAC35E0004FEDA /* Home_Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B8221DAC35E0004FEDA /* Home_Extensions.swift */; };
 		57A71B8521DAE7C20004FEDA /* FocalDiv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71B8421DAE7C20004FEDA /* FocalDiv.swift */; };
 		57A71BCC21DD79A10004FEDA /* FocalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A71BCB21DD79A10004FEDA /* FocalCell.swift */; };
+		57A9DBD42265124B000C67C6 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A9DBD32265124B000C67C6 /* SpotifyiOS.framework */; };
 		57DB19B121FBAEE700499262 /* VolumeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DB19B021FBAEE700499262 /* VolumeSlider.swift */; };
 		A192870A15E2A0E3907C222F /* Pods_JukeJam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C524A3C296FA0FA1ECB8D542 /* Pods_JukeJam.framework */; };
 		DDFE68C93A2BFA5D375DE21C /* Pods_JukeJamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004AFC0649B601D4D739F439 /* Pods_JukeJamUITests.framework */; };
@@ -96,7 +96,6 @@
 		5705942B21D5416A00F4F5CB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5705942E21D571A500F4F5CB /* ConfirmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmController.swift; sourceTree = "<group>"; };
 		5705943021D5B2CA00F4F5CB /* profileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileImage.swift; sourceTree = "<group>"; };
-		57061FF921E3CEC8009869BE /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		5706200221E3DC9C009869BE /* JukeJam-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JukeJam-Bridging-Header.h"; sourceTree = "<group>"; };
 		5706200321E4107D009869BE /* ConnectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectButton.swift; sourceTree = "<group>"; };
 		5706200721E66D23009869BE /* MusicPlayingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayingController.swift; sourceTree = "<group>"; };
@@ -137,6 +136,7 @@
 		57A71B8221DAC35E0004FEDA /* Home_Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home_Extensions.swift; sourceTree = "<group>"; };
 		57A71B8421DAE7C20004FEDA /* FocalDiv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocalDiv.swift; sourceTree = "<group>"; };
 		57A71BCB21DD79A10004FEDA /* FocalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocalCell.swift; sourceTree = "<group>"; };
+		57A9DBD32265124B000C67C6 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		57DB19B021FBAEE700499262 /* VolumeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeSlider.swift; sourceTree = "<group>"; };
 		67E3891D8656B3727F290E4F /* Pods-JukeJamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JukeJamUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JukeJamUITests/Pods-JukeJamUITests.release.xcconfig"; sourceTree = "<group>"; };
 		80ABB1DCCD1F0460F42DC674 /* Pods_JukeJamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JukeJamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,8 +153,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57061FFA21E3CEC8009869BE /* SpotifyiOS.framework in Frameworks */,
 				A192870A15E2A0E3907C222F /* Pods_JukeJam.framework in Frameworks */,
+				57A9DBD42265124B000C67C6 /* SpotifyiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +248,7 @@
 		572BA0AE21D2CF05008B9611 /* JukeJam */ = {
 			isa = PBXGroup;
 			children = (
+				57A9DBD32265124B000C67C6 /* SpotifyiOS.framework */,
 				570593F921D2D31300F4F5CB /* Assets.xcassets */,
 				5705940D21D2D3D300F4F5CB /* Base.lproj */,
 				5705942B21D5416A00F4F5CB /* Main.storyboard */,
@@ -369,7 +370,6 @@
 		B99786CC9E10750F94305A57 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				57061FF921E3CEC8009869BE /* SpotifyiOS.framework */,
 				C524A3C296FA0FA1ECB8D542 /* Pods_JukeJam.framework */,
 				80ABB1DCCD1F0460F42DC674 /* Pods_JukeJamTests.framework */,
 				004AFC0649B601D4D739F439 /* Pods_JukeJamUITests.framework */,
