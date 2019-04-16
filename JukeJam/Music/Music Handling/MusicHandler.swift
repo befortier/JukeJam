@@ -149,6 +149,7 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
     func updateView(playerState: SPTAppRemotePlayerState) {
         //Track changed update currentSong
         if playerState.track.name != currentSong?.title{
+            self.currentSong?.title = playerState.track.name
             updateCurrentSong(playerState)
             return
         }
@@ -166,6 +167,7 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
             
         }
     }
+    
     func updateUI(){
         if preference == Pref.spotify {
             spotifyHandler.getPlayerState()
@@ -199,6 +201,7 @@ class MusicHandler: NSObject, SpotifyHandlerDelegate {
             self.delegate?.updateState(state: playerState)
         }
     }
+    
     fileprivate func fetchAlbumArtForTrack(_ track: SPTAppRemoteTrack, callback: @escaping (UIImage) -> Void ) {
        spotifyHandler.appRemote.imageAPI?.fetchImage(forItem: track, with:CGSize(width: 1000, height: 1000), callback: { (image, error) -> Void in
             guard error == nil else {

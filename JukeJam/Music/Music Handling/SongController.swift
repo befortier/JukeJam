@@ -66,7 +66,6 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     }
     
     func initMovableImageView(){
-        
         newCoverFrame.frame = coverView.frame
         newCover.frame = cover.frame
         newCoverFrame.addSubview(newCover)
@@ -125,7 +124,6 @@ class SongController: UIViewController, MusicHandlerDelegate, UIScrollViewDelega
     func setColors(){
         self.gradientBackground.assignImageGradientColor(colors: (musicHandler!.currentSong?.album?.imageColors)!)
         self.gradientBackground.addFadeOut()
-
     }
     
     
